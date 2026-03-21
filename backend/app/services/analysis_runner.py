@@ -57,8 +57,6 @@ def upsert_analysis_for_match(db: Session, match: Match) -> tuple[Analysis, list
 
     if analysis is None:
         analysis = Analysis(match_id=match.id)
-        db.add(analysis)
-        db.flush()
 
     analysis.confidence_score = prediction["confidence_score"]
     analysis.recommended_bet = prediction["recommended_bet"]
