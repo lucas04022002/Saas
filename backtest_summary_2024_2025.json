@@ -1,0 +1,95 @@
+{
+  "period": {
+    "start": "2025-05-31",
+    "end": "2026-02-04",
+    "seasons": [
+      2024,
+      2025
+    ]
+  },
+  "global_statistics": {
+    "total_matches": 1279,
+    "total_correct": 733,
+    "global_accuracy": 57.310398749022674
+  },
+  "leagues": [
+    {
+      "league": "Premier League (Ang)",
+      "total": 240,
+      "correct": 130,
+      "accuracy": 54.166666666666664,
+      "home_accuracy": 79.43925233644859,
+      "draw_accuracy": 4.6875,
+      "away_accuracy": 60.86956521739131,
+      "value_bets": 98,
+      "value_bets_accuracy": 66.3265306122449,
+      "roi_flat_pct": 59.93098719019771,
+      "roi_value_bets_pct": 47.50010442773602
+    },
+    {
+      "league": "Ligue 1 (Fra)",
+      "total": 180,
+      "correct": 103,
+      "accuracy": 57.22222222222222,
+      "home_accuracy": 80.68181818181817,
+      "draw_accuracy": 2.564102564102564,
+      "away_accuracy": 58.490566037735846,
+      "value_bets": 87,
+      "value_bets_accuracy": 74.71264367816092,
+      "roi_flat_pct": -30.309126984126976,
+      "roi_value_bets_pct": 39.38174603174605
+    },
+    {
+      "league": "La Liga (Esp)",
+      "total": 219,
+      "correct": 122,
+      "accuracy": 55.70776255707762,
+      "home_accuracy": 84.61538461538461,
+      "draw_accuracy": 3.571428571428571,
+      "away_accuracy": 54.23728813559322,
+      "value_bets": 98,
+      "value_bets_accuracy": 68.36734693877551,
+      "roi_flat_pct": null,
+      "roi_value_bets_pct": null
+    },
+    {
+      "league": "Bundesliga (All)",
+      "total": 179,
+      "correct": 109,
+      "accuracy": 60.893854748603346,
+      "home_accuracy": 85.0,
+      "draw_accuracy": 6.976744186046512,
+      "away_accuracy": 67.85714285714286,
+      "value_bets": 93,
+      "value_bets_accuracy": 73.11827956989248,
+      "roi_flat_pct": null,
+      "roi_value_bets_pct": null
+    },
+    {
+      "league": "Serie A (Ita)",
+      "total": 230,
+      "correct": 128,
+      "accuracy": 55.65217391304348,
+      "home_accuracy": 80.68181818181817,
+      "draw_accuracy": 3.076923076923077,
+      "away_accuracy": 71.42857142857143,
+      "value_bets": 124,
+      "value_bets_accuracy": 64.51612903225806,
+      "roi_flat_pct": null,
+      "roi_value_bets_pct": null
+    },
+    {
+      "league": "Ligue des Champions",
+      "total": 231,
+      "correct": 141,
+      "accuracy": 61.038961038961034,
+      "home_accuracy": 89.56521739130436,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 51.35135135135135,
+      "value_bets": 93,
+      "value_bets_accuracy": 77.41935483870968,
+      "roi_flat_pct": null,
+      "roi_value_bets_pct": null
+    }
+  ]
+}

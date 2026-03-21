@@ -1,0 +1,80 @@
+{
+  "period": {
+    "start": "2025-12-01",
+    "end": "2025-12-31",
+    "season": 2025
+  },
+  "global_statistics": {
+    "total_matches": 188,
+    "total_correct": 111,
+    "global_accuracy": 59.04255319148937
+  },
+  "leagues": [
+    {
+      "league": "Premier League (Ang)",
+      "total": 56,
+      "correct": 34,
+      "accuracy": 60.71428571428571,
+      "home_accuracy": 90.47619047619048,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 78.94736842105263,
+      "value_bets": 32,
+      "value_bets_accuracy": 65.625
+    },
+    {
+      "league": "Ligue 1 (Fra)",
+      "total": 18,
+      "correct": 14,
+      "accuracy": 77.77777777777779,
+      "home_accuracy": 90.9090909090909,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 80.0,
+      "value_bets": 12,
+      "value_bets_accuracy": 83.33333333333334
+    },
+    {
+      "league": "La Liga (Esp)",
+      "total": 32,
+      "correct": 18,
+      "accuracy": 56.25,
+      "home_accuracy": 75.0,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 66.66666666666666,
+      "value_bets": 21,
+      "value_bets_accuracy": 76.19047619047619
+    },
+    {
+      "league": "Bundesliga (All)",
+      "total": 27,
+      "correct": 12,
+      "accuracy": 44.44444444444444,
+      "home_accuracy": 58.333333333333336,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 62.5,
+      "value_bets": 15,
+      "value_bets_accuracy": 60.0
+    },
+    {
+      "league": "Serie A (Ita)",
+      "total": 37,
+      "correct": 22,
+      "accuracy": 59.45945945945946,
+      "home_accuracy": 75.0,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 66.66666666666666,
+      "value_bets": 20,
+      "value_bets_accuracy": 65.0
+    },
+    {
+      "league": "Ligue des Champions",
+      "total": 18,
+      "correct": 11,
+      "accuracy": 61.111111111111114,
+      "home_accuracy": 100.0,
+      "draw_accuracy": 0.0,
+      "away_accuracy": 50.0,
+      "value_bets": 10,
+      "value_bets_accuracy": 50.0
+    }
+  ]
+}

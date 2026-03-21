@@ -1,0 +1,302 @@
+[
+  {
+    "id": "2026-03-22_Aston Villa_West Ham",
+    "fixture_id": 1379269,
+    "date": "2026-03-22",
+    "league": "Premier League (Ang)",
+    "home_team": "Aston Villa",
+    "away_team": "West Ham",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.5566,
+      "draw": 0.2578,
+      "away": 0.1856
+    },
+    "odds": {
+      "home": 1.86,
+      "draw": 3.77,
+      "away": 4.12
+    },
+    "is_value_bet": false,
+    "kelly_pct": 4.2,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:08",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Marseille_Lille",
+    "fixture_id": 1387935,
+    "date": "2026-03-22",
+    "league": "Ligue 1 (Fra)",
+    "home_team": "Marseille",
+    "away_team": "Lille",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.5648,
+      "draw": 0.2347,
+      "away": 0.2005
+    },
+    "odds": {
+      "home": 1.89,
+      "draw": 3.73,
+      "away": 3.93
+    },
+    "is_value_bet": false,
+    "kelly_pct": 5.8,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:12",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Rennes_Metz",
+    "fixture_id": 1387939,
+    "date": "2026-03-22",
+    "league": "Ligue 1 (Fra)",
+    "home_team": "Rennes",
+    "away_team": "Metz",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.7142,
+      "draw": 0.1753,
+      "away": 0.1105
+    },
+    "odds": {
+      "home": 1.35,
+      "draw": 5.27,
+      "away": 8.55
+    },
+    "is_value_bet": false,
+    "kelly_pct": 0.0,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:13",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Nantes_Strasbourg",
+    "fixture_id": 1387936,
+    "date": "2026-03-22",
+    "league": "Ligue 1 (Fra)",
+    "home_team": "Nantes",
+    "away_team": "Strasbourg",
+    "predicted_outcome": "away",
+    "probabilities": {
+      "home": 0.1642,
+      "draw": 0.2292,
+      "away": 0.6066
+    },
+    "odds": {
+      "home": 3.57,
+      "draw": 3.57,
+      "away": 2.03
+    },
+    "is_value_bet": true,
+    "kelly_pct": 12.4,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:16",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Barcelona_Rayo Vallecano",
+    "fixture_id": 1391100,
+    "date": "2026-03-22",
+    "league": "La Liga (Esp)",
+    "home_team": "Barcelona",
+    "away_team": "Rayo Vallecano",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.6599,
+      "draw": 0.2353,
+      "away": 0.1048
+    },
+    "odds": {
+      "home": 1.23,
+      "draw": 7.01,
+      "away": 10.86
+    },
+    "is_value_bet": false,
+    "kelly_pct": 0.0,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:19",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Celta Vigo_Alaves",
+    "fixture_id": 1391101,
+    "date": "2026-03-22",
+    "league": "La Liga (Esp)",
+    "home_team": "Celta Vigo",
+    "away_team": "Alaves",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.5996,
+      "draw": 0.2512,
+      "away": 0.1493
+    },
+    "odds": {
+      "home": 1.93,
+      "draw": 3.26,
+      "away": 4.52
+    },
+    "is_value_bet": true,
+    "kelly_pct": 10.3,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:20",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Real Madrid_Atletico Madrid",
+    "fixture_id": 1391106,
+    "date": "2026-03-22",
+    "league": "La Liga (Esp)",
+    "home_team": "Real Madrid",
+    "away_team": "Atletico Madrid",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.5859,
+      "draw": 0.2326,
+      "away": 0.1815
+    },
+    "odds": {
+      "home": 1.88,
+      "draw": 4.01,
+      "away": 3.8
+    },
+    "is_value_bet": true,
+    "kelly_pct": 7.5,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:23",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_FC Augsburg_VfB Stuttgart",
+    "fixture_id": 1388542,
+    "date": "2026-03-22",
+    "league": "Bundesliga (All)",
+    "home_team": "FC Augsburg",
+    "away_team": "VfB Stuttgart",
+    "predicted_outcome": "away",
+    "probabilities": {
+      "home": 0.2206,
+      "draw": 0.2274,
+      "away": 0.5521
+    },
+    "odds": {
+      "home": 3.43,
+      "draw": 3.85,
+      "away": 2.01
+    },
+    "is_value_bet": true,
+    "kelly_pct": 6.9,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:28",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Como_Pisa",
+    "fixture_id": 1378157,
+    "date": "2026-03-22",
+    "league": "Serie A (Ita)",
+    "home_team": "Como",
+    "away_team": "Pisa",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.7138,
+      "draw": 0.1941,
+      "away": 0.0921
+    },
+    "odds": {
+      "home": 1.26,
+      "draw": 5.87,
+      "away": 11.78
+    },
+    "is_value_bet": false,
+    "kelly_pct": 0.0,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:32",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Atalanta_Hellas Verona",
+    "fixture_id": 1378154,
+    "date": "2026-03-22",
+    "league": "Serie A (Ita)",
+    "home_team": "Atalanta",
+    "away_team": "Hellas Verona",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.6862,
+      "draw": 0.2078,
+      "away": 0.106
+    },
+    "odds": {
+      "home": 1.39,
+      "draw": 4.75,
+      "away": 8.47
+    },
+    "is_value_bet": false,
+    "kelly_pct": 0.0,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:33",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_AS Roma_Lecce",
+    "fixture_id": 1378163,
+    "date": "2026-03-22",
+    "league": "Serie A (Ita)",
+    "home_team": "AS Roma",
+    "away_team": "Lecce",
+    "predicted_outcome": "home",
+    "probabilities": {
+      "home": 0.6416,
+      "draw": 0.2466,
+      "away": 0.1117
+    },
+    "odds": {
+      "home": 1.5,
+      "draw": 4.05,
+      "away": 7.49
+    },
+    "is_value_bet": false,
+    "kelly_pct": 0.0,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:35",
+    "updated_at": null
+  },
+  {
+    "id": "2026-03-22_Fiorentina_Inter",
+    "fixture_id": 1378158,
+    "date": "2026-03-22",
+    "league": "Serie A (Ita)",
+    "home_team": "Fiorentina",
+    "away_team": "Inter",
+    "predicted_outcome": "away",
+    "probabilities": {
+      "home": 0.108,
+      "draw": 0.1903,
+      "away": 0.7017
+    },
+    "odds": {
+      "home": 5.07,
+      "draw": 4.2,
+      "away": 1.63
+    },
+    "is_value_bet": true,
+    "kelly_pct": 14.1,
+    "actual_result": null,
+    "is_correct": null,
+    "logged_at": "2026-03-21 21:35:36",
+    "updated_at": null
+  }
+]

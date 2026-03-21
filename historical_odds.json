@@ -1,0 +1,1217 @@
+{
+  "2025-08-23_Burnley_Sunderland": {
+    "date": "2025-08-23",
+    "home_team": "Burnley",
+    "away_team": "Sunderland",
+    "home_avg": 5.036111111111111,
+    "draw_avg": 3.632222222222222,
+    "away_avg": 1.7266666666666666,
+    "saved_at": "2026-01-28 23:44:24"
+  },
+  "2025-08-23_Brentford_Aston Villa": {
+    "date": "2025-08-23",
+    "home_team": "Brentford",
+    "away_team": "Aston Villa",
+    "home_avg": 3.716315789473684,
+    "draw_avg": 3.6447368421052633,
+    "away_avg": 1.9673684210526317,
+    "saved_at": "2026-01-28 23:44:26"
+  },
+  "2025-08-24_Crystal Palace_Nottingham Forest": {
+    "date": "2025-08-24",
+    "home_team": "Crystal Palace",
+    "away_team": "Nottingham Forest",
+    "home_avg": 3.8394736842105264,
+    "draw_avg": 3.5036842105263153,
+    "away_avg": 1.9757894736842105,
+    "saved_at": "2026-01-28 23:44:30"
+  },
+  "2025-08-24_Fulham_Manchester United": {
+    "date": "2025-08-24",
+    "home_team": "Fulham",
+    "away_team": "Manchester United",
+    "home_avg": 5.234736842105263,
+    "draw_avg": 4.421052631578948,
+    "away_avg": 1.5742105263157895,
+    "saved_at": "2026-01-28 23:44:31"
+  },
+  "2025-11-08_Everton_Fulham": {
+    "date": "2025-11-08",
+    "home_team": "Everton",
+    "away_team": "Fulham",
+    "home_avg": 3.685714285714286,
+    "draw_avg": 3.210714285714286,
+    "away_avg": 2.055,
+    "saved_at": "2026-01-28 23:46:21"
+  },
+  "2025-11-08_Sunderland_Arsenal": {
+    "date": "2025-11-08",
+    "home_team": "Sunderland",
+    "away_team": "Arsenal",
+    "home_avg": 12.691333333333334,
+    "draw_avg": 5.689333333333334,
+    "away_avg": 1.226,
+    "saved_at": "2026-01-28 23:46:24"
+  },
+  "2025-11-09_Aston Villa_Bournemouth": {
+    "date": "2025-11-09",
+    "home_team": "Aston Villa",
+    "away_team": "Bournemouth",
+    "home_avg": 2.386,
+    "draw_avg": 3.6233333333333335,
+    "away_avg": 2.6540000000000004,
+    "saved_at": "2026-01-28 23:46:31"
+  },
+  "2025-11-09_Manchester City_Liverpool": {
+    "date": "2025-11-09",
+    "home_team": "Manchester City",
+    "away_team": "Liverpool",
+    "home_avg": 2.5985714285714288,
+    "draw_avg": 3.7342857142857144,
+    "away_avg": 2.4235714285714285,
+    "saved_at": "2026-01-28 23:46:32"
+  },
+  "2026-02-01_Manchester United_Fulham": {
+    "date": "2026-02-01",
+    "home_team": "Manchester United",
+    "away_team": "Fulham",
+    "home_avg": 1.5742105263157895,
+    "draw_avg": 4.421052631578948,
+    "away_avg": 5.234736842105263,
+    "saved_at": "2026-01-28 23:49:14"
+  },
+  "2026-02-01_Nottingham Forest_Crystal Palace": {
+    "date": "2026-02-01",
+    "home_team": "Nottingham Forest",
+    "away_team": "Crystal Palace",
+    "home_avg": 1.9757894736842105,
+    "draw_avg": 3.5036842105263153,
+    "away_avg": 3.8394736842105264,
+    "saved_at": "2026-01-28 23:49:16"
+  },
+  "2026-02-01_Aston Villa_Brentford": {
+    "date": "2026-02-01",
+    "home_team": "Aston Villa",
+    "away_team": "Brentford",
+    "home_avg": 1.9673684210526317,
+    "draw_avg": 3.6447368421052633,
+    "away_avg": 3.716315789473684,
+    "saved_at": "2026-01-28 23:49:17"
+  },
+  "2026-02-02_Sunderland_Burnley": {
+    "date": "2026-02-02",
+    "home_team": "Sunderland",
+    "away_team": "Burnley",
+    "home_avg": 1.7272222222222222,
+    "draw_avg": 3.631111111111111,
+    "away_avg": 5.033333333333334,
+    "saved_at": "2026-01-28 23:49:19"
+  },
+  "2026-02-07_Bournemouth_Aston Villa": {
+    "date": "2026-02-07",
+    "home_team": "Bournemouth",
+    "away_team": "Aston Villa",
+    "home_avg": 2.9121739130434783,
+    "draw_avg": 3.3869565217391306,
+    "away_avg": 2.392608695652174,
+    "saved_at": "2026-02-07 19:30:57"
+  },
+  "2026-02-07_Fulham_Everton": {
+    "date": "2026-02-07",
+    "home_team": "Fulham",
+    "away_team": "Everton",
+    "home_avg": 2.753,
+    "draw_avg": 3.16,
+    "away_avg": 2.403,
+    "saved_at": "2026-02-07 19:30:58"
+  },
+  "2026-02-07_Arsenal_Sunderland": {
+    "date": "2026-02-07",
+    "home_team": "Arsenal",
+    "away_team": "Sunderland",
+    "home_avg": 1.533,
+    "draw_avg": 3.8579999999999997,
+    "away_avg": 5.509,
+    "saved_at": "2026-02-07 19:31:00"
+  },
+  "2026-02-08_Liverpool_Manchester City": {
+    "date": "2026-02-08",
+    "home_team": "Liverpool",
+    "away_team": "Manchester City",
+    "home_avg": 2.19875,
+    "draw_avg": 3.8362499999999997,
+    "away_avg": 3.032083333333333,
+    "saved_at": "2026-02-08 14:56:48"
+  },
+  "2025-08-23_Marseille_Paris FC": {
+    "date": "2025-08-23",
+    "home_team": "Marseille",
+    "away_team": "Paris FC",
+    "home_avg": 1.8938888888888892,
+    "draw_avg": 3.7844444444444445,
+    "away_avg": 3.793888888888889,
+    "saved_at": "2026-01-28 23:53:05"
+  },
+  "2025-09-14_Strasbourg_Le Havre": {
+    "date": "2025-09-14",
+    "home_team": "Strasbourg",
+    "away_team": "Le Havre",
+    "home_avg": 1.9807142857142856,
+    "draw_avg": 3.419285714285714,
+    "away_avg": 3.684285714285714,
+    "saved_at": "2026-01-28 23:53:33"
+  },
+  "2025-09-14_Metz_Angers": {
+    "date": "2025-09-14",
+    "home_team": "Metz",
+    "away_team": "Angers",
+    "home_avg": 3.5752631578947374,
+    "draw_avg": 3.3289473684210527,
+    "away_avg": 2.1073684210526316,
+    "saved_at": "2026-01-28 23:53:36"
+  },
+  "2025-09-21_Auxerre_Toulouse": {
+    "date": "2025-09-21",
+    "home_team": "Auxerre",
+    "away_team": "Toulouse",
+    "home_avg": 5.0473684210526315,
+    "draw_avg": 3.5178947368421056,
+    "away_avg": 1.7442105263157894,
+    "saved_at": "2026-01-28 23:53:46"
+  },
+  "2025-09-22_Marseille_Paris Saint Germain": {
+    "date": "2025-09-22",
+    "home_team": "Marseille",
+    "away_team": "Paris Saint Germain",
+    "home_avg": 5.872142857142857,
+    "draw_avg": 4.759285714285714,
+    "away_avg": 1.45,
+    "saved_at": "2026-01-28 23:53:49"
+  },
+  "2025-09-28_Lille_Lyon": {
+    "date": "2025-09-28",
+    "home_team": "Lille",
+    "away_team": "Lyon",
+    "home_avg": 3.975263157894737,
+    "draw_avg": 3.7431578947368425,
+    "away_avg": 1.868421052631579,
+    "saved_at": "2026-01-28 23:53:58"
+  },
+  "2025-10-17_Paris Saint Germain_Strasbourg": {
+    "date": "2025-10-17",
+    "home_team": "Paris Saint Germain",
+    "away_team": "Strasbourg",
+    "home_avg": 1.5826315789473684,
+    "draw_avg": 4.322631578947369,
+    "away_avg": 5.262105263157895,
+    "saved_at": "2026-01-28 23:54:13"
+  },
+  "2025-10-26_Lille_Metz": {
+    "date": "2025-10-26",
+    "home_team": "Lille",
+    "away_team": "Metz",
+    "home_avg": 1.7006666666666665,
+    "draw_avg": 3.8939999999999997,
+    "away_avg": 4.3806666666666665,
+    "saved_at": "2026-01-28 23:54:30"
+  },
+  "2026-02-06_Leeds_Nottingham Forest": {
+    "date": "2026-02-06",
+    "home_team": "Leeds",
+    "away_team": "Nottingham Forest",
+    "home_avg": 2.2168,
+    "draw_avg": 3.2996,
+    "away_avg": 3.3712,
+    "saved_at": "2026-02-04 17:51:08"
+  },
+  "2026-02-06_Metz_Lille": {
+    "date": "2026-02-06",
+    "home_team": "Metz",
+    "away_team": "Lille",
+    "home_avg": 4.5284,
+    "draw_avg": 3.886,
+    "away_avg": 1.7352,
+    "saved_at": "2026-02-04 17:51:11"
+  },
+  "2026-02-06_Celta Vigo_Osasuna": {
+    "date": "2026-02-06",
+    "home_team": "Celta Vigo",
+    "away_team": "Osasuna",
+    "home_avg": 1.9768181818181818,
+    "draw_avg": 3.2613636363636362,
+    "away_avg": 4.141363636363637,
+    "saved_at": "2026-02-04 17:51:14"
+  },
+  "2026-02-06_Union Berlin_Eintracht Frankfurt": {
+    "date": "2026-02-06",
+    "home_team": "Union Berlin",
+    "away_team": "Eintracht Frankfurt",
+    "home_avg": 2.112,
+    "draw_avg": 3.4592,
+    "away_avg": 3.4288,
+    "saved_at": "2026-02-04 17:51:17"
+  },
+  "2026-02-06_Verona_Pisa": {
+    "date": "2026-02-06",
+    "home_team": "Verona",
+    "away_team": "Pisa",
+    "home_avg": 2.2812,
+    "draw_avg": 3.0304,
+    "away_avg": 3.484,
+    "saved_at": "2026-02-04 17:51:20"
+  },
+  "2026-02-07_Newcastle_Brentford": {
+    "date": "2026-02-07",
+    "home_team": "Newcastle",
+    "away_team": "Brentford",
+    "home_avg": 4.732,
+    "draw_avg": 3.4113333333333333,
+    "away_avg": 2.2026666666666666,
+    "saved_at": "2026-02-07 19:30:55"
+  },
+  "2026-02-07_Lens_Rennes": {
+    "date": "2026-02-07",
+    "home_team": "Lens",
+    "away_team": "Rennes",
+    "home_avg": 1.486875,
+    "draw_avg": 4.79375,
+    "away_avg": 5.536875,
+    "saved_at": "2026-02-07 19:31:06"
+  },
+  "2026-02-07_Stade Brestois 29_Lorient": {
+    "date": "2026-02-07",
+    "home_team": "Stade Brestois 29",
+    "away_team": "Lorient",
+    "home_avg": 2.54,
+    "draw_avg": 2.635625,
+    "away_avg": 3.381875,
+    "saved_at": "2026-02-07 19:31:05"
+  },
+  "2026-02-07_Nantes_Lyon": {
+    "date": "2026-02-07",
+    "home_team": "Nantes",
+    "away_team": "Lyon",
+    "home_avg": 4.902,
+    "draw_avg": 3.7372,
+    "away_avg": 1.7368000000000001,
+    "saved_at": "2026-02-07 19:31:08"
+  },
+  "2026-02-07_Rayo Vallecano_Oviedo": {
+    "date": "2026-02-07",
+    "home_team": "Rayo Vallecano",
+    "away_team": "Oviedo",
+    "home_avg": 2.177222222222222,
+    "draw_avg": 3.091666666666667,
+    "away_avg": 3.501111111111111,
+    "saved_at": "2026-02-07 19:31:13"
+  },
+  "2026-02-07_Sevilla_Girona": {
+    "date": "2026-02-07",
+    "home_team": "Sevilla",
+    "away_team": "Girona",
+    "home_avg": 1.3564705882352943,
+    "draw_avg": 5.542941176470588,
+    "away_avg": 6.765294117647059,
+    "saved_at": "2026-02-07 19:31:14"
+  },
+  "2026-02-07_Real Sociedad_Elche": {
+    "date": "2026-02-07",
+    "home_team": "Real Sociedad",
+    "away_team": "Elche",
+    "home_avg": 1.6509090909090909,
+    "draw_avg": 4.015454545454546,
+    "away_avg": 5.22,
+    "saved_at": "2026-02-07 19:31:15"
+  },
+  "2026-02-07_Borussia M\u00f6nchengladbach_Bayer Leverkusen": {
+    "date": "2026-02-07",
+    "home_team": "Borussia M\u00f6nchengladbach",
+    "away_team": "Bayer Leverkusen",
+    "home_avg": 3.3579999999999997,
+    "draw_avg": 2.7180000000000004,
+    "away_avg": 2.564,
+    "saved_at": "2026-02-07 19:31:18"
+  },
+  "2026-02-07_1. FC Heidenheim_Hamburger SV": {
+    "date": "2026-02-07",
+    "home_team": "1. FC Heidenheim",
+    "away_team": "Hamburger SV",
+    "home_avg": 4.0895,
+    "draw_avg": 3.6369999999999996,
+    "away_avg": 1.8265,
+    "saved_at": "2026-02-07 19:31:23"
+  },
+  "2026-02-07_Genoa_Napoli": {
+    "date": "2026-02-07",
+    "home_team": "Genoa",
+    "away_team": "Napoli",
+    "home_avg": 6.646428571428571,
+    "draw_avg": 1.9042857142857144,
+    "away_avg": 3.149285714285714,
+    "saved_at": "2026-02-07 19:31:27"
+  },
+  "2026-02-07_Fiorentina_Torino": {
+    "date": "2026-02-07",
+    "home_team": "Fiorentina",
+    "away_team": "Torino",
+    "home_avg": 1.6872,
+    "draw_avg": 3.7804,
+    "away_avg": 5.26,
+    "saved_at": "2026-02-07 19:31:28"
+  },
+  "2026-02-07_Manchester United_Tottenham": {
+    "date": "2026-02-07",
+    "home_team": "Manchester United",
+    "away_team": "Tottenham",
+    "home_avg": 1.796521739130435,
+    "draw_avg": 4.139130434782609,
+    "away_avg": 3.864782608695652,
+    "saved_at": "2026-02-07 19:30:56"
+  },
+  "2026-02-07_Wolves_Chelsea": {
+    "date": "2026-02-07",
+    "home_team": "Wolves",
+    "away_team": "Chelsea",
+    "home_avg": 5.310434782608696,
+    "draw_avg": 4.28695652173913,
+    "away_avg": 1.5595652173913046,
+    "saved_at": "2026-02-07 19:30:59"
+  },
+  "2026-02-07_Burnley_West Ham": {
+    "date": "2026-02-07",
+    "home_team": "Burnley",
+    "away_team": "West Ham",
+    "home_avg": 2.71,
+    "draw_avg": 3.511,
+    "away_avg": 2.257,
+    "saved_at": "2026-02-07 19:31:02"
+  },
+  "2026-02-07_Barcelona_Mallorca": {
+    "date": "2026-02-07",
+    "home_team": "Barcelona",
+    "away_team": "Mallorca",
+    "home_avg": 2.38625,
+    "draw_avg": 3.2075,
+    "away_avg": 2.988125,
+    "saved_at": "2026-02-07 19:31:12"
+  },
+  "2026-02-07_SC Freiburg_Werder Bremen": {
+    "date": "2026-02-07",
+    "home_team": "SC Freiburg",
+    "away_team": "Werder Bremen",
+    "home_avg": 1.3404761904761906,
+    "draw_avg": 5.6223809523809525,
+    "away_avg": 6.900476190476191,
+    "saved_at": "2026-02-07 19:31:19"
+  },
+  "2026-02-07_VfL Wolfsburg_Borussia Dortmund": {
+    "date": "2026-02-07",
+    "home_team": "VfL Wolfsburg",
+    "away_team": "Borussia Dortmund",
+    "home_avg": 5.757727272727273,
+    "draw_avg": 4.453181818181818,
+    "away_avg": 1.4904545454545455,
+    "saved_at": "2026-02-07 19:31:20"
+  },
+  "2026-02-07_FSV Mainz 05_FC Augsburg": {
+    "date": "2026-02-07",
+    "home_team": "FSV Mainz 05",
+    "away_team": "FC Augsburg",
+    "home_avg": 4.0895,
+    "draw_avg": 3.6369999999999996,
+    "away_avg": 1.8265,
+    "saved_at": "2026-02-07 19:31:22"
+  },
+  "2026-02-07_FC St. Pauli_VfB Stuttgart": {
+    "date": "2026-02-07",
+    "home_team": "FC St. Pauli",
+    "away_team": "VfB Stuttgart",
+    "home_avg": 5.6665,
+    "draw_avg": 4.5685,
+    "away_avg": 1.4914999999999998,
+    "saved_at": "2026-02-07 19:31:24"
+  },
+  "2026-02-08_Brighton_Crystal Palace": {
+    "date": "2026-02-08",
+    "home_team": "Brighton",
+    "away_team": "Crystal Palace",
+    "home_avg": 2.21,
+    "draw_avg": 3.2975,
+    "away_avg": 3.419583333333333,
+    "saved_at": "2026-02-08 14:56:46"
+  },
+  "2026-02-08_Nice_Monaco": {
+    "date": "2026-02-08",
+    "home_team": "Nice",
+    "away_team": "Monaco",
+    "home_avg": 3.2727999999999997,
+    "draw_avg": 3.8168,
+    "away_avg": 2.0608,
+    "saved_at": "2026-02-08 14:56:52"
+  },
+  "2026-02-08_Angers_Toulouse": {
+    "date": "2026-02-08",
+    "home_team": "Angers",
+    "away_team": "Toulouse",
+    "home_avg": 4.0068,
+    "draw_avg": 3.2196,
+    "away_avg": 2.0448,
+    "saved_at": "2026-02-08 14:56:54"
+  },
+  "2026-02-08_Auxerre_Paris FC": {
+    "date": "2026-02-08",
+    "home_team": "Auxerre",
+    "away_team": "Paris FC",
+    "home_avg": 2.5024,
+    "draw_avg": 3.2124,
+    "away_avg": 2.952,
+    "saved_at": "2026-02-08 14:56:56"
+  },
+  "2026-02-08_Le Havre_Strasbourg": {
+    "date": "2026-02-08",
+    "home_team": "Le Havre",
+    "away_team": "Strasbourg",
+    "home_avg": 4.2164,
+    "draw_avg": 3.662,
+    "away_avg": 1.8552000000000002,
+    "saved_at": "2026-02-08 14:56:58"
+  },
+  "2026-02-08_Paris Saint Germain_Marseille": {
+    "date": "2026-02-08",
+    "home_team": "Paris Saint Germain",
+    "away_team": "Marseille",
+    "home_avg": 1.4647999999999999,
+    "draw_avg": 5.0108,
+    "away_avg": 6.0691999999999995,
+    "saved_at": "2026-02-08 14:57:01"
+  },
+  "2026-02-08_Alaves_Getafe": {
+    "date": "2026-02-08",
+    "home_team": "Alaves",
+    "away_team": "Getafe",
+    "home_avg": 2.736923076923077,
+    "draw_avg": 2.0376923076923075,
+    "away_avg": 4.645384615384615,
+    "saved_at": "2026-02-08 14:57:05"
+  },
+  "2026-02-08_Athletic Club_Levante": {
+    "date": "2026-02-08",
+    "home_team": "Athletic Club",
+    "away_team": "Levante",
+    "home_avg": 1.6095454545454546,
+    "draw_avg": 3.936363636363636,
+    "away_avg": 5.858181818181818,
+    "saved_at": "2026-02-08 14:57:08"
+  },
+  "2026-02-08_Atletico Madrid_Real Betis": {
+    "date": "2026-02-08",
+    "home_team": "Atletico Madrid",
+    "away_team": "Real Betis",
+    "home_avg": 1.448,
+    "draw_avg": 4.763,
+    "away_avg": 6.907500000000001,
+    "saved_at": "2026-02-08 14:57:13"
+  },
+  "2026-02-08_Valencia_Real Madrid": {
+    "date": "2026-02-08",
+    "home_team": "Valencia",
+    "away_team": "Real Madrid",
+    "home_avg": 5.526818181818182,
+    "draw_avg": 4.428636363636364,
+    "away_avg": 1.570909090909091,
+    "saved_at": "2026-02-08 14:57:15"
+  },
+  "2026-02-08_1. FC K\u00f6ln_RB Leipzig": {
+    "date": "2026-02-08",
+    "home_team": "1. FC K\u00f6ln",
+    "away_team": "RB Leipzig",
+    "home_avg": 3.438,
+    "draw_avg": 3.9124,
+    "away_avg": 1.9896,
+    "saved_at": "2026-02-08 14:57:19"
+  },
+  "2026-02-08_Bayern M\u00fcnchen_1899 Hoffenheim": {
+    "date": "2026-02-08",
+    "home_team": "Bayern M\u00fcnchen",
+    "away_team": "1899 Hoffenheim",
+    "home_avg": 1.2704,
+    "draw_avg": 6.757999999999999,
+    "away_avg": 8.9008,
+    "saved_at": "2026-02-08 14:57:21"
+  },
+  "2026-02-08_Bologna_Parma": {
+    "date": "2026-02-08",
+    "home_team": "Bologna",
+    "away_team": "Parma",
+    "home_avg": 3.380952380952381,
+    "draw_avg": 2.8333333333333335,
+    "away_avg": 2.383809523809524,
+    "saved_at": "2026-02-08 14:57:26"
+  },
+  "2026-02-08_Lecce_Udinese": {
+    "date": "2026-02-08",
+    "home_team": "Lecce",
+    "away_team": "Udinese",
+    "home_avg": 2.926,
+    "draw_avg": 2.772,
+    "away_avg": 2.8775999999999997,
+    "saved_at": "2026-02-08 14:57:28"
+  },
+  "2026-02-08_Sassuolo_Inter": {
+    "date": "2026-02-08",
+    "home_team": "Sassuolo",
+    "away_team": "Inter",
+    "home_avg": 7.5352,
+    "draw_avg": 4.6396,
+    "away_avg": 1.426,
+    "saved_at": "2026-02-08 14:57:30"
+  },
+  "2026-02-08_Juventus_Lazio": {
+    "date": "2026-02-08",
+    "home_team": "Juventus",
+    "away_team": "Lazio",
+    "home_avg": 1.4168,
+    "draw_avg": 4.3924,
+    "away_avg": 8.733600000000001,
+    "saved_at": "2026-02-08 14:57:32"
+  },
+  "2026-02-08_Sevilla_Girona": {
+    "date": "2026-02-08",
+    "home_team": "Sevilla",
+    "away_team": "Girona",
+    "home_avg": 2.0863636363636364,
+    "draw_avg": 3.4131818181818185,
+    "away_avg": 3.6531818181818183,
+    "saved_at": "2026-02-08 14:57:10"
+  },
+  "2026-02-13_Rennes_Paris Saint Germain": {
+    "date": "2026-02-13",
+    "home_team": "Rennes",
+    "away_team": "Paris Saint Germain",
+    "home_avg": 6.6876,
+    "draw_avg": 5.2412,
+    "away_avg": 1.4132,
+    "saved_at": "2026-02-13 16:59:50"
+  },
+  "2026-02-13_Monaco_Nantes": {
+    "date": "2026-02-13",
+    "home_team": "Monaco",
+    "away_team": "Nantes",
+    "home_avg": 1.4504,
+    "draw_avg": 4.816,
+    "away_avg": 6.5776,
+    "saved_at": "2026-02-13 16:59:51"
+  },
+  "2026-02-13_Elche_Osasuna": {
+    "date": "2026-02-13",
+    "home_team": "Elche",
+    "away_team": "Osasuna",
+    "home_avg": 2.8868181818181817,
+    "draw_avg": 3.145,
+    "away_avg": 2.6081818181818184,
+    "saved_at": "2026-02-13 16:59:54"
+  },
+  "2026-02-13_Borussia Dortmund_FSV Mainz 05": {
+    "date": "2026-02-13",
+    "home_team": "Borussia Dortmund",
+    "away_team": "FSV Mainz 05",
+    "home_avg": 1.6064,
+    "draw_avg": 4.2672,
+    "away_avg": 5.1848,
+    "saved_at": "2026-02-13 16:59:57"
+  },
+  "2026-02-13_Pisa_AC Milan": {
+    "date": "2026-02-13",
+    "home_team": "Pisa",
+    "away_team": "AC Milan",
+    "home_avg": 6.537999999999999,
+    "draw_avg": 3.8851999999999998,
+    "away_avg": 1.5652000000000001,
+    "saved_at": "2026-02-13 17:00:00"
+  },
+  "2026-02-17_Galatasaray_Juventus": {
+    "date": "2026-02-17",
+    "home_team": "Galatasaray",
+    "away_team": "Juventus",
+    "home_avg": 3.2739999999999996,
+    "draw_avg": 3.4536000000000002,
+    "away_avg": 2.2344,
+    "saved_at": "2026-02-17 14:17:03"
+  },
+  "2026-02-17_Monaco_Paris Saint Germain": {
+    "date": "2026-02-17",
+    "home_team": "Monaco",
+    "away_team": "Paris Saint Germain",
+    "home_avg": 6.5976,
+    "draw_avg": 4.9212,
+    "away_avg": 1.4556,
+    "saved_at": "2026-02-17 14:17:05"
+  },
+  "2026-02-17_Borussia Dortmund_Atalanta": {
+    "date": "2026-02-17",
+    "home_team": "Borussia Dortmund",
+    "away_team": "Atalanta",
+    "home_avg": 2.120416666666667,
+    "draw_avg": 3.5525,
+    "away_avg": 3.42125,
+    "saved_at": "2026-02-17 14:17:06"
+  },
+  "2026-02-17_Benfica_Real Madrid": {
+    "date": "2026-02-17",
+    "home_team": "Benfica",
+    "away_team": "Real Madrid",
+    "home_avg": 3.1104000000000003,
+    "draw_avg": 3.6844,
+    "away_avg": 2.2248,
+    "saved_at": "2026-02-17 14:17:08"
+  },
+  "2026-02-22_Crystal Palace_Wolves": {
+    "date": "2026-02-22",
+    "home_team": "Crystal Palace",
+    "away_team": "Wolves",
+    "home_avg": 1.6536,
+    "draw_avg": 4.0024,
+    "away_avg": 5.2048000000000005,
+    "saved_at": "2026-02-21 19:49:27"
+  },
+  "2026-02-22_Nottingham Forest_Liverpool": {
+    "date": "2026-02-22",
+    "home_team": "Nottingham Forest",
+    "away_team": "Liverpool",
+    "home_avg": 4.0768,
+    "draw_avg": 3.9360000000000004,
+    "away_avg": 1.8236,
+    "saved_at": "2026-02-21 19:49:30"
+  },
+  "2026-02-22_Sunderland_Fulham": {
+    "date": "2026-02-22",
+    "home_team": "Sunderland",
+    "away_team": "Fulham",
+    "home_avg": 2.716,
+    "draw_avg": 3.2163999999999997,
+    "away_avg": 2.7144,
+    "saved_at": "2026-02-21 19:49:32"
+  },
+  "2026-02-22_Tottenham_Arsenal": {
+    "date": "2026-02-22",
+    "home_team": "Tottenham",
+    "away_team": "Arsenal",
+    "home_avg": 5.9475999999999996,
+    "draw_avg": 4.0632,
+    "away_avg": 1.5768,
+    "saved_at": "2026-02-21 19:49:34"
+  },
+  "2026-02-22_Auxerre_Rennes": {
+    "date": "2026-02-22",
+    "home_team": "Auxerre",
+    "away_team": "Rennes",
+    "home_avg": 2.9788,
+    "draw_avg": 3.3572,
+    "away_avg": 2.3928,
+    "saved_at": "2026-02-21 19:49:39"
+  },
+  "2026-02-22_Angers_Lille": {
+    "date": "2026-02-22",
+    "home_team": "Angers",
+    "away_team": "Lille",
+    "home_avg": 4.1904,
+    "draw_avg": 3.5172,
+    "away_avg": 1.8884,
+    "saved_at": "2026-02-21 19:49:41"
+  },
+  "2026-02-22_Nantes_Le Havre": {
+    "date": "2026-02-22",
+    "home_team": "Nantes",
+    "away_team": "Le Havre",
+    "home_avg": 2.4619999999999997,
+    "draw_avg": 3.2368,
+    "away_avg": 2.96,
+    "saved_at": "2026-02-21 19:49:43"
+  },
+  "2026-02-22_Nice_Lorient": {
+    "date": "2026-02-22",
+    "home_team": "Nice",
+    "away_team": "Lorient",
+    "home_avg": 2.0848,
+    "draw_avg": 3.532,
+    "away_avg": 3.4396,
+    "saved_at": "2026-02-21 19:49:45"
+  },
+  "2026-02-22_Strasbourg_Lyon": {
+    "date": "2026-02-22",
+    "home_team": "Strasbourg",
+    "away_team": "Lyon",
+    "home_avg": 2.344,
+    "draw_avg": 3.556,
+    "away_avg": 2.9036,
+    "saved_at": "2026-02-21 19:49:47"
+  },
+  "2026-02-22_Getafe_Sevilla": {
+    "date": "2026-02-22",
+    "home_team": "Getafe",
+    "away_team": "Sevilla",
+    "home_avg": 2.4172727272727275,
+    "draw_avg": 2.898636363636364,
+    "away_avg": 3.438181818181818,
+    "saved_at": "2026-02-21 19:49:52"
+  },
+  "2026-02-22_Barcelona_Levante": {
+    "date": "2026-02-22",
+    "home_team": "Barcelona",
+    "away_team": "Levante",
+    "home_avg": 1.0972727272727274,
+    "draw_avg": 11.648636363636363,
+    "away_avg": 20.18045454545455,
+    "saved_at": "2026-02-21 19:49:54"
+  },
+  "2026-02-22_Celta Vigo_Mallorca": {
+    "date": "2026-02-22",
+    "home_team": "Celta Vigo",
+    "away_team": "Mallorca",
+    "home_avg": 1.8731818181818183,
+    "draw_avg": 3.3818181818181823,
+    "away_avg": 4.577272727272727,
+    "saved_at": "2026-02-21 19:49:57"
+  },
+  "2026-02-22_Villarreal_Valencia": {
+    "date": "2026-02-22",
+    "home_team": "Villarreal",
+    "away_team": "Valencia",
+    "home_avg": 1.7045454545454546,
+    "draw_avg": 3.9622727272727274,
+    "away_avg": 4.747727272727273,
+    "saved_at": "2026-02-21 19:49:59"
+  },
+  "2026-02-22_SC Freiburg_Borussia M\u00f6nchengladbach": {
+    "date": "2026-02-22",
+    "home_team": "SC Freiburg",
+    "away_team": "Borussia M\u00f6nchengladbach",
+    "home_avg": 1.9931999999999999,
+    "draw_avg": 3.344,
+    "away_avg": 3.9896,
+    "saved_at": "2026-02-21 19:50:03"
+  },
+  "2026-02-22_FC St. Pauli_Werder Bremen": {
+    "date": "2026-02-22",
+    "home_team": "FC St. Pauli",
+    "away_team": "Werder Bremen",
+    "home_avg": 2.7324,
+    "draw_avg": 3.1132,
+    "away_avg": 2.7483999999999997,
+    "saved_at": "2026-02-21 19:50:06"
+  },
+  "2026-02-22_1. FC Heidenheim_VfB Stuttgart": {
+    "date": "2026-02-22",
+    "home_team": "1. FC Heidenheim",
+    "away_team": "VfB Stuttgart",
+    "home_avg": 4.4632,
+    "draw_avg": 4.1784,
+    "away_avg": 1.6956,
+    "saved_at": "2026-02-21 19:50:08"
+  },
+  "2026-02-22_Genoa_Torino": {
+    "date": "2026-02-22",
+    "home_team": "Genoa",
+    "away_team": "Torino",
+    "home_avg": 2.2880000000000003,
+    "draw_avg": 3.02,
+    "away_avg": 3.5656,
+    "saved_at": "2026-02-21 19:50:12"
+  },
+  "2026-02-22_Atalanta_Napoli": {
+    "date": "2026-02-22",
+    "home_team": "Atalanta",
+    "away_team": "Napoli",
+    "home_avg": 2.4788,
+    "draw_avg": 3.1048,
+    "away_avg": 3.0551999999999997,
+    "saved_at": "2026-02-21 19:50:15"
+  },
+  "2026-02-22_AC Milan_Parma": {
+    "date": "2026-02-22",
+    "home_team": "AC Milan",
+    "away_team": "Parma",
+    "home_avg": 1.3248000000000002,
+    "draw_avg": 5.226,
+    "away_avg": 9.4908,
+    "saved_at": "2026-02-21 19:50:17"
+  },
+  "2026-02-22_AS Roma_Cremonese": {
+    "date": "2026-02-22",
+    "home_team": "AS Roma",
+    "away_team": "Cremonese",
+    "home_avg": 1.3496000000000001,
+    "draw_avg": 4.8896,
+    "away_avg": 9.468,
+    "saved_at": "2026-02-21 19:50:19"
+  },
+  "2026-03-21_Manchester City_Crystal Palace": {
+    "date": "2026-03-21",
+    "home_team": "Manchester City",
+    "away_team": "Crystal Palace",
+    "home_avg": 2.4289473684210527,
+    "draw_avg": 3.4126315789473685,
+    "away_avg": 2.7373684210526315,
+    "saved_at": "2026-03-19 14:55:16"
+  },
+  "2026-03-21_Brighton_Liverpool": {
+    "date": "2026-03-21",
+    "home_team": "Brighton",
+    "away_team": "Liverpool",
+    "home_avg": 3.1060000000000003,
+    "draw_avg": 3.6044,
+    "away_avg": 2.2308000000000003,
+    "saved_at": "2026-03-19 14:55:19"
+  },
+  "2026-03-21_Fulham_Burnley": {
+    "date": "2026-03-21",
+    "home_team": "Fulham",
+    "away_team": "Burnley",
+    "home_avg": 1.5556,
+    "draw_avg": 4.078399999999999,
+    "away_avg": 6.2368,
+    "saved_at": "2026-03-19 14:55:21"
+  },
+  "2026-03-21_Everton_Chelsea": {
+    "date": "2026-03-21",
+    "home_team": "Everton",
+    "away_team": "Chelsea",
+    "home_avg": 3.4144,
+    "draw_avg": 3.528,
+    "away_avg": 2.1176,
+    "saved_at": "2026-03-19 14:55:23"
+  },
+  "2026-03-21_Leeds_Brentford": {
+    "date": "2026-03-21",
+    "home_team": "Leeds",
+    "away_team": "Brentford",
+    "home_avg": 2.4528,
+    "draw_avg": 3.4492000000000003,
+    "away_avg": 2.8504,
+    "saved_at": "2026-03-19 14:55:25"
+  },
+  "2026-03-21_Toulouse_Lorient": {
+    "date": "2026-03-21",
+    "home_team": "Toulouse",
+    "away_team": "Lorient",
+    "home_avg": 1.9768000000000001,
+    "draw_avg": 3.1272,
+    "away_avg": 4.3848,
+    "saved_at": "2026-03-19 14:55:30"
+  },
+  "2026-03-21_Auxerre_Stade Brestois 29": {
+    "date": "2026-03-21",
+    "home_team": "Auxerre",
+    "away_team": "Stade Brestois 29",
+    "home_avg": 2.3368,
+    "draw_avg": 3.234,
+    "away_avg": 3.1563999999999997,
+    "saved_at": "2026-03-19 14:55:32"
+  },
+  "2026-03-21_Nice_Paris Saint Germain": {
+    "date": "2026-03-21",
+    "home_team": "Nice",
+    "away_team": "Paris Saint Germain",
+    "home_avg": 7.441599999999999,
+    "draw_avg": 5.4963999999999995,
+    "away_avg": 1.3603999999999998,
+    "saved_at": "2026-03-19 14:55:35"
+  },
+  "2026-03-21_Elche_Mallorca": {
+    "date": "2026-03-21",
+    "home_team": "Elche",
+    "away_team": "Mallorca",
+    "home_avg": 2.1336363636363633,
+    "draw_avg": 3.3172727272727274,
+    "away_avg": 3.5913636363636368,
+    "saved_at": "2026-03-19 14:55:39"
+  },
+  "2026-03-21_Espanyol_Getafe": {
+    "date": "2026-03-21",
+    "home_team": "Espanyol",
+    "away_team": "Getafe",
+    "home_avg": 2.4268181818181818,
+    "draw_avg": 2.969090909090909,
+    "away_avg": 3.3318181818181816,
+    "saved_at": "2026-03-19 14:55:41"
+  },
+  "2026-03-21_Levante_Oviedo": {
+    "date": "2026-03-21",
+    "home_team": "Levante",
+    "away_team": "Oviedo",
+    "home_avg": 2.1913636363636364,
+    "draw_avg": 3.342727272727273,
+    "away_avg": 3.4,
+    "saved_at": "2026-03-19 14:55:44"
+  },
+  "2026-03-21_Osasuna_Girona": {
+    "date": "2026-03-21",
+    "home_team": "Osasuna",
+    "away_team": "Girona",
+    "home_avg": 2.169090909090909,
+    "draw_avg": 3.4063636363636363,
+    "away_avg": 3.377727272727273,
+    "saved_at": "2026-03-19 14:55:46"
+  },
+  "2026-03-21_Sevilla_Valencia": {
+    "date": "2026-03-21",
+    "home_team": "Sevilla",
+    "away_team": "Valencia",
+    "home_avg": 2.243181818181818,
+    "draw_avg": 3.175,
+    "away_avg": 3.440909090909091,
+    "saved_at": "2026-03-19 14:55:48"
+  },
+  "2026-03-21_Bayern M\u00fcnchen_Union Berlin": {
+    "date": "2026-03-21",
+    "home_team": "Bayern M\u00fcnchen",
+    "away_team": "Union Berlin",
+    "home_avg": 1.1608,
+    "draw_avg": 8.6256,
+    "away_avg": 14.1972,
+    "saved_at": "2026-03-19 14:55:53"
+  },
+  "2026-03-21_VfL Wolfsburg_Werder Bremen": {
+    "date": "2026-03-21",
+    "home_team": "VfL Wolfsburg",
+    "away_team": "Werder Bremen",
+    "home_avg": 2.3988,
+    "draw_avg": 3.6108,
+    "away_avg": 2.792,
+    "saved_at": "2026-03-19 14:55:55"
+  },
+  "2026-03-21_1. FC Heidenheim_Bayer Leverkusen": {
+    "date": "2026-03-21",
+    "home_team": "1. FC Heidenheim",
+    "away_team": "Bayer Leverkusen",
+    "home_avg": 5.2732,
+    "draw_avg": 4.4368,
+    "away_avg": 1.5696,
+    "saved_at": "2026-03-19 14:55:57"
+  },
+  "2026-03-21_1. FC K\u00f6ln_Borussia M\u00f6nchengladbach": {
+    "date": "2026-03-21",
+    "home_team": "1. FC K\u00f6ln",
+    "away_team": "Borussia M\u00f6nchengladbach",
+    "home_avg": 2.274,
+    "draw_avg": 3.4992,
+    "away_avg": 3.0616000000000003,
+    "saved_at": "2026-03-19 14:55:59"
+  },
+  "2026-03-21_Borussia Dortmund_Hamburger SV": {
+    "date": "2026-03-21",
+    "home_team": "Borussia Dortmund",
+    "away_team": "Hamburger SV",
+    "home_avg": 1.3963999999999999,
+    "draw_avg": 5.0636,
+    "away_avg": 7.3844,
+    "saved_at": "2026-03-19 14:56:01"
+  },
+  "2026-03-21_Parma_Cremonese": {
+    "date": "2026-03-21",
+    "home_team": "Parma",
+    "away_team": "Cremonese",
+    "home_avg": 2.074,
+    "draw_avg": 3.0944,
+    "away_avg": 4.102,
+    "saved_at": "2026-03-19 14:56:06"
+  },
+  "2026-03-21_AC Milan_Torino": {
+    "date": "2026-03-21",
+    "home_team": "AC Milan",
+    "away_team": "Torino",
+    "home_avg": 1.3684,
+    "draw_avg": 4.996,
+    "away_avg": 8.2344,
+    "saved_at": "2026-03-19 14:56:08"
+  },
+  "2026-03-21_Juventus_Sassuolo": {
+    "date": "2026-03-21",
+    "home_team": "Juventus",
+    "away_team": "Sassuolo",
+    "home_avg": 1.334,
+    "draw_avg": 5.2112,
+    "away_avg": 9.2076,
+    "saved_at": "2026-03-19 14:56:11"
+  },
+  "2026-03-22_Newcastle_Sunderland": {
+    "date": "2026-03-22",
+    "home_team": "Newcastle",
+    "away_team": "Sunderland",
+    "home_avg": 1.6791999999999998,
+    "draw_avg": 3.9156,
+    "away_avg": 5.1676,
+    "saved_at": "2026-03-21 21:35:03"
+  },
+  "2026-03-22_Tottenham_Nottingham Forest": {
+    "date": "2026-03-22",
+    "home_team": "Tottenham",
+    "away_team": "Nottingham Forest",
+    "home_avg": 2.3080000000000003,
+    "draw_avg": 3.3904,
+    "away_avg": 3.1412,
+    "saved_at": "2026-03-21 21:35:05"
+  },
+  "2026-03-22_Aston Villa_West Ham": {
+    "date": "2026-03-22",
+    "home_team": "Aston Villa",
+    "away_team": "West Ham",
+    "home_avg": 1.8636000000000001,
+    "draw_avg": 3.7727999999999997,
+    "away_avg": 4.118,
+    "saved_at": "2026-03-21 21:35:06"
+  },
+  "2026-03-22_Lyon_Monaco": {
+    "date": "2026-03-22",
+    "home_team": "Lyon",
+    "away_team": "Monaco",
+    "home_avg": 2.8651999999999997,
+    "draw_avg": 3.5692000000000004,
+    "away_avg": 2.38,
+    "saved_at": "2026-03-21 21:35:10"
+  },
+  "2026-03-22_Marseille_Lille": {
+    "date": "2026-03-22",
+    "home_team": "Marseille",
+    "away_team": "Lille",
+    "home_avg": 1.8936000000000002,
+    "draw_avg": 3.7268,
+    "away_avg": 3.9316000000000004,
+    "saved_at": "2026-03-21 21:35:11"
+  },
+  "2026-03-22_Rennes_Metz": {
+    "date": "2026-03-22",
+    "home_team": "Rennes",
+    "away_team": "Metz",
+    "home_avg": 1.348,
+    "draw_avg": 5.272,
+    "away_avg": 8.5524,
+    "saved_at": "2026-03-21 21:35:12"
+  },
+  "2026-03-22_Paris FC_Le Havre": {
+    "date": "2026-03-22",
+    "home_team": "Paris FC",
+    "away_team": "Le Havre",
+    "home_avg": 2.0272,
+    "draw_avg": 3.18,
+    "away_avg": 4.1376,
+    "saved_at": "2026-03-21 21:35:13"
+  },
+  "2026-03-22_Nantes_Strasbourg": {
+    "date": "2026-03-22",
+    "home_team": "Nantes",
+    "away_team": "Strasbourg",
+    "home_avg": 3.5716,
+    "draw_avg": 3.5676,
+    "away_avg": 2.032,
+    "saved_at": "2026-03-21 21:35:15"
+  },
+  "2026-03-22_Barcelona_Rayo Vallecano": {
+    "date": "2026-03-22",
+    "home_team": "Barcelona",
+    "away_team": "Rayo Vallecano",
+    "home_avg": 1.2309090909090907,
+    "draw_avg": 7.011818181818182,
+    "away_avg": 10.855909090909092,
+    "saved_at": "2026-03-21 21:35:18"
+  },
+  "2026-03-22_Celta Vigo_Alaves": {
+    "date": "2026-03-22",
+    "home_team": "Celta Vigo",
+    "away_team": "Alaves",
+    "home_avg": 1.9281818181818182,
+    "draw_avg": 3.2636363636363637,
+    "away_avg": 4.523181818181818,
+    "saved_at": "2026-03-21 21:35:19"
+  },
+  "2026-03-22_Athletic Club_Real Betis": {
+    "date": "2026-03-22",
+    "home_team": "Athletic Club",
+    "away_team": "Real Betis",
+    "home_avg": 2.162857142857143,
+    "draw_avg": 3.5042857142857144,
+    "away_avg": 3.3476190476190473,
+    "saved_at": "2026-03-21 21:35:20"
+  },
+  "2026-03-22_Real Madrid_Atletico Madrid": {
+    "date": "2026-03-22",
+    "home_team": "Real Madrid",
+    "away_team": "Atletico Madrid",
+    "home_avg": 1.8804761904761906,
+    "draw_avg": 4.009047619047619,
+    "away_avg": 3.7957142857142863,
+    "saved_at": "2026-03-21 21:35:21"
+  },
+  "2026-03-22_FSV Mainz 05_Eintracht Frankfurt": {
+    "date": "2026-03-22",
+    "home_team": "FSV Mainz 05",
+    "away_team": "Eintracht Frankfurt",
+    "home_avg": 2.1180000000000003,
+    "draw_avg": 3.6672000000000002,
+    "away_avg": 3.3051999999999997,
+    "saved_at": "2026-03-21 21:35:25"
+  },
+  "2026-03-22_FC St. Pauli_SC Freiburg": {
+    "date": "2026-03-22",
+    "home_team": "FC St. Pauli",
+    "away_team": "SC Freiburg",
+    "home_avg": 2.7448,
+    "draw_avg": 3.052,
+    "away_avg": 2.7996,
+    "saved_at": "2026-03-21 21:35:26"
+  },
+  "2026-03-22_FC Augsburg_VfB Stuttgart": {
+    "date": "2026-03-22",
+    "home_team": "FC Augsburg",
+    "away_team": "VfB Stuttgart",
+    "home_avg": 3.4276,
+    "draw_avg": 3.8476,
+    "away_avg": 2.0076,
+    "saved_at": "2026-03-21 21:35:27"
+  },
+  "2026-03-22_Como_Pisa": {
+    "date": "2026-03-22",
+    "home_team": "Como",
+    "away_team": "Pisa",
+    "home_avg": 1.2588,
+    "draw_avg": 5.8736,
+    "away_avg": 11.7796,
+    "saved_at": "2026-03-21 21:35:30"
+  },
+  "2026-03-22_Atalanta_Hellas Verona": {
+    "date": "2026-03-22",
+    "home_team": "Atalanta",
+    "away_team": "Hellas Verona",
+    "home_avg": 1.3912,
+    "draw_avg": 4.7508,
+    "away_avg": 8.474400000000001,
+    "saved_at": "2026-03-21 21:35:32"
+  },
+  "2026-03-22_Bologna_Lazio": {
+    "date": "2026-03-22",
+    "home_team": "Bologna",
+    "away_team": "Lazio",
+    "home_avg": 2.3348,
+    "draw_avg": 3.0395999999999996,
+    "away_avg": 3.43,
+    "saved_at": "2026-03-21 21:35:33"
+  },
+  "2026-03-22_AS Roma_Lecce": {
+    "date": "2026-03-22",
+    "home_team": "AS Roma",
+    "away_team": "Lecce",
+    "home_avg": 1.4956,
+    "draw_avg": 4.052,
+    "away_avg": 7.490399999999999,
+    "saved_at": "2026-03-21 21:35:34"
+  },
+  "2026-03-22_Fiorentina_Inter": {
+    "date": "2026-03-22",
+    "home_team": "Fiorentina",
+    "away_team": "Inter",
+    "home_avg": 5.0676,
+    "draw_avg": 4.1964,
+    "away_avg": 1.6336,
+    "saved_at": "2026-03-21 21:35:35"
+  }
+}

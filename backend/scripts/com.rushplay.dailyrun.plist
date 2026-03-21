@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>com.rushplay.dailyrun</string>
+
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/curl</string>
+      <string>--silent</string>
+      <string>--show-error</string>
+      <string>--fail</string>
+      <string>-X</string>
+      <string>POST</string>
+      <string>http://127.0.0.1:8000/api/v1/cron/daily-run?limit=50</string>
+      <string>-H</string>
+      <string>X-CRON-KEY: change-me-cron</string>
+    </array>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+      <key>Hour</key>
+      <integer>8</integer>
+      <key>Minute</key>
+      <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/lucasguilhot/Library/Logs/rushplay-daily.out.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/lucasguilhot/Library/Logs/rushplay-daily.err.log</string>
+  </dict>
+</plist>

@@ -1,0 +1,52 @@
+═══════════════════════════════════════════════════════════════
+  GUIDE D'INSTALLATION RAPIDE
+═══════════════════════════════════════════════════════════════
+
+📋 ÉTAPE 1 : INSTALLER LES DÉPENDANCES
+───────────────────────────────────────────────────────────────
+Ouvrir un terminal dans ce dossier et taper :
+
+    pip install -r requirements.txt
+
+───────────────────────────────────────────────────────────────
+
+🔑 ÉTAPE 2 : CONFIGURER LES CLÉS API
+───────────────────────────────────────────────────────────────
+1. Ouvrir "Algo plus APi.py"
+2. Ligne 22 : Remplacer KEY_API_FOOTBALL par votre clé
+3. Ligne 23 : Remplacer KEY_THE_ODDS par votre clé
+
+Puis dans "data_collector.py" :
+4. Ligne 10 : Remplacer KEY_API_FOOTBALL par votre clé
+
+───────────────────────────────────────────────────────────────
+
+🚀 ÉTAPE 3 : LANCER L'ALGORITHME
+───────────────────────────────────────────────────────────────
+Dans le terminal, taper :
+
+    python "Algo plus APi.py"
+
+───────────────────────────────────────────────────────────────
+
+📈 ÉTAPE 4 (OPTIONNEL) : AMÉLIORER LES DONNÉES
+───────────────────────────────────────────────────────────────
+Pour des prédictions plus précises :
+
+1. Lancer : python data_collector.py
+   (Prend 10-15 minutes la première fois)
+
+2. Dans "Algo plus APi.py", décommenter les lignes 11-13 :
+   
+   for ligue in LIGUES_A_SCANNER:
+       update_poisson_with_stats(...)
+
+───────────────────────────────────────────────────────────────
+
+✅ C'EST TOUT !
+───────────────────────────────────────────────────────────────
+Votre algorithme est prêt à analyser les cotes !
+
+Pour plus de détails, voir README.md
+
+═══════════════════════════════════════════════════════════════

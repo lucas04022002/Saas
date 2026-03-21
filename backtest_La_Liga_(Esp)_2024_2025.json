@@ -1,0 +1,3311 @@
+{
+  "league": "La Liga (Esp)",
+  "season": [
+    2024,
+    2025
+  ],
+  "period": {
+    "start": "2025-05-31",
+    "end": "2026-02-04"
+  },
+  "statistics": {
+    "total_matches": 219,
+    "correct_predictions": 122,
+    "accuracy": 55.70776255707762,
+    "home_accuracy": 84.61538461538461,
+    "draw_accuracy": 3.571428571428571,
+    "away_accuracy": 54.23728813559322,
+    "value_bets": 98,
+    "value_bets_accuracy": 68.36734693877551,
+    "roi_flat_pct": null,
+    "roi_value_bets_pct": null,
+    "matches_with_odds": 0
+  },
+  "results": [
+    {
+      "home_team": "Girona",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3866420889467949,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3866420889467949,
+        "draw": 0.30113665611747137,
+        "away": 0.3122212549357337
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6156472426334212,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6156472426334212,
+        "draw": 0.2297471093218181,
+        "away": 0.1546056480447608
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6302760988631794,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15685163595653384,
+        "draw": 0.21287226518028662,
+        "away": 0.6302760988631794
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Real Sociedad",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43038817075624397,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28835332666738606,
+        "draw": 0.28125850257637,
+        "away": 0.43038817075624397
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4192691818696423,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4192691818696423,
+        "draw": 0.29459959832236016,
+        "away": 0.2861312198079975
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Getafe",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.47355677709674443,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47355677709674443,
+        "draw": 0.28573457369702365,
+        "away": 0.24070864920623178
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.47903584180996445,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.47903584180996445,
+        "draw": 0.2931062639047172,
+        "away": 0.22785789428531833
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Atletico Madrid",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4877923004198842,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.25620981890778816,
+        "draw": 0.25599788067232754,
+        "away": 0.4877923004198842
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5263810387154604,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.21341414153136531,
+        "draw": 0.2602048197531742,
+        "away": 0.5263810387154604
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.606206139921618,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.606206139921618,
+        "draw": 0.24037356386773448,
+        "away": 0.15342029621064765
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5841168952605389,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5841168952605389,
+        "draw": 0.2400681180683492,
+        "away": 0.175814986671112
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Celta Vigo",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.47167759368578305,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24904503841065254,
+        "draw": 0.27927736790356433,
+        "away": 0.47167759368578305
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Elche",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6210250077081189,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6210250077081189,
+        "draw": 0.22973189826355395,
+        "away": 0.14924309402832717
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6450337613250984,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.14725422733242063,
+        "draw": 0.20771201134248093,
+        "away": 0.6450337613250984
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4540690835694733,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4540690835694733,
+        "draw": 0.2906026769841156,
+        "away": 0.2553282394464111
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Girona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5810274305576912,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5810274305576912,
+        "draw": 0.24117821964100875,
+        "away": 0.1777943498012999
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Espanyol",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.504841116250742,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.504841116250742,
+        "draw": 0.2798640946122985,
+        "away": 0.21529478913695935
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6360424671211057,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.153112479863407,
+        "draw": 0.2108450530154874,
+        "away": 0.6360424671211057
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42136384820498624,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42136384820498624,
+        "draw": 0.29837723680267947,
+        "away": 0.2802589149923342
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Getafe",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.3593392584183771,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.33432166100286587,
+        "draw": 0.30633908057875703,
+        "away": 0.3593392584183771
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39160584382183805,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39160584382183805,
+        "draw": 0.2943130232489556,
+        "away": 0.3140811329292062
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41844560765231364,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41844560765231364,
+        "draw": 0.29040094388274,
+        "away": 0.29115344846494634
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.39340704824800365,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.39340704824800365,
+        "draw": 0.29783601751465416,
+        "away": 0.30875693423734224
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.573961083858978,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1886019990499457,
+        "draw": 0.23743691709107628,
+        "away": 0.573961083858978
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Real Sociedad",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.556972522223371,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1980885286787599,
+        "draw": 0.24493894909786906,
+        "away": 0.556972522223371
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Sevilla",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.433496964837386,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.433496964837386,
+        "draw": 0.3004476760943651,
+        "away": 0.26605535906824884
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6250334724028036,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6250334724028036,
+        "draw": 0.22973189826355395,
+        "away": 0.14523462933364245
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Villarreal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4469529642125332,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2757444241491821,
+        "draw": 0.2773026116382848,
+        "away": 0.4469529642125332
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Athletic Club",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.506611462916828,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.506611462916828,
+        "draw": 0.27494976596840137,
+        "away": 0.21843877111477067
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35433931329429635,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35433931329429635,
+        "draw": 0.2990349222445796,
+        "away": 0.34662576446112403
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Barcelona",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.623714773552866,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.16108107847214273,
+        "draw": 0.21520414797499138,
+        "away": 0.623714773552866
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Elche",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.452612976484721,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.452612976484721,
+        "draw": 0.29494225404568825,
+        "away": 0.25244476946959077
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5536700703564589,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5536700703564589,
+        "draw": 0.25997622143980487,
+        "away": 0.1863537082037362
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.584341793986993,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18547558615882806,
+        "draw": 0.2301826198541788,
+        "away": 0.584341793986993
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Alaves",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5134272893615455,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5134272893615455,
+        "draw": 0.2764714434423312,
+        "away": 0.2101012671961233
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.46346524759784513,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.46346524759784513,
+        "draw": 0.25409993538882353,
+        "away": 0.2824348170133314
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Girona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5070922520235945,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5070922520235945,
+        "draw": 0.2789627153237773,
+        "away": 0.21394503265262813
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5158251417511412,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2290626137656933,
+        "draw": 0.2551122444831655,
+        "away": 0.5158251417511412
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4257193332317465,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4257193332317465,
+        "draw": 0.29250466693580446,
+        "away": 0.28177599983244905
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5892886893456266,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5892886893456266,
+        "draw": 0.26039332959648703,
+        "away": 0.1503179810578864
+      },
+      "score": "6-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42581031873169334,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42581031873169334,
+        "draw": 0.29633604721272905,
+        "away": 0.2778536340555775
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Real Sociedad",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4594637836226674,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4594637836226674,
+        "draw": 0.2831817475091532,
+        "away": 0.25735446886817936
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Levante",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4876468144550766,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4876468144550766,
+        "draw": 0.2895126235348776,
+        "away": 0.2228405620100457
+      },
+      "score": "0-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Espanyol",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6223844900313836,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6223844900313836,
+        "draw": 0.22941927327194758,
+        "away": 0.14819623669666895
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5739859671121552,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5739859671121552,
+        "draw": 0.24374111470592,
+        "away": 0.1822729181819247
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Sevilla",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.372817918531698,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.372817918531698,
+        "draw": 0.3075922244908196,
+        "away": 0.3195898569774823
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.368188322619081,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.368188322619081,
+        "draw": 0.29192072343414327,
+        "away": 0.3398909539467759
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Celta Vigo",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3573905751518887,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33931524955945014,
+        "draw": 0.30329417528866115,
+        "away": 0.3573905751518887
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.543095975776734,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19917117281123692,
+        "draw": 0.25773285141202923,
+        "away": 0.543095975776734
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4728947397954614,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4728947397954614,
+        "draw": 0.2773933288738065,
+        "away": 0.24971193133073197
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5622556800011456,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5622556800011456,
+        "draw": 0.2826354018124291,
+        "away": 0.1551089181864253
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Girona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4462861493571449,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4462861493571449,
+        "draw": 0.29399899147917835,
+        "away": 0.25971485916367687
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Valencia",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3879148270662302,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3879148270662302,
+        "draw": 0.2958373226538295,
+        "away": 0.31624785027994035
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Villarreal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5117345052485618,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24243833717846455,
+        "draw": 0.24582715757297366,
+        "away": 0.5117345052485618
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6272654673268317,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1587960534232401,
+        "draw": 0.213938479249928,
+        "away": 0.6272654673268317
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Alaves",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.501828092259534,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.501828092259534,
+        "draw": 0.2810847278302943,
+        "away": 0.21708717991017165
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5990236622685581,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5990236622685581,
+        "draw": 0.23480500766396684,
+        "away": 0.16617133006747506
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5194207426703963,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5194207426703963,
+        "draw": 0.28230009325512173,
+        "away": 0.19827916407448204
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Elche",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5233164328091918,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5233164328091918,
+        "draw": 0.27270155312568245,
+        "away": 0.20398201406512567
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.652283130482075,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1425195402294566,
+        "draw": 0.20519732928846848,
+        "away": 0.652283130482075
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Espanyol",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.44746090142500766,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44746090142500766,
+        "draw": 0.29347701867223813,
+        "away": 0.2590620799027542
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Levante",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.48579037739535563,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.48579037739535563,
+        "draw": 0.2902747488390977,
+        "away": 0.22393487376554666
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Real Madrid",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4551209638214891,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2889330739599751,
+        "draw": 0.25594596221853594,
+        "away": 0.4551209638214891
+      },
+      "score": "5-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4573421258067042,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4573421258067042,
+        "draw": 0.2892155504631008,
+        "away": 0.25344232373019493
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5699855397767823,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5699855397767823,
+        "draw": 0.24522021478221184,
+        "away": 0.1847942454410057
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Sevilla",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4338829715240407,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4338829715240407,
+        "draw": 0.3002735631892146,
+        "away": 0.26584346528674463
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Celta Vigo",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47074303275886464,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2651195957123648,
+        "draw": 0.2641373715287704,
+        "away": 0.47074303275886464
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Real Sociedad",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5447257718338935,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5447257718338935,
+        "draw": 0.277901093043839,
+        "away": 0.17737313512226754
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5111201469968669,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5111201469968669,
+        "draw": 0.27312957656157694,
+        "away": 0.2157502764415562
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Oviedo",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5344251528211403,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5344251528211403,
+        "draw": 0.26422197699213884,
+        "away": 0.20135287018672082
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4223128432106566,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4223128432106566,
+        "draw": 0.2932158835028246,
+        "away": 0.2844712732865187
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Levante",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.35711772176061235,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35711772176061235,
+        "draw": 0.29754961173188044,
+        "away": 0.3453326665075072
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4134018671932831,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4134018671932831,
+        "draw": 0.2973399932007238,
+        "away": 0.28925813960599317
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.48720161885359264,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.48720161885359264,
+        "draw": 0.2896947871795227,
+        "away": 0.22310359396688467
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5617160548658945,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5617160548658945,
+        "draw": 0.24153457591058303,
+        "away": 0.19674936922352249
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4437742951687304,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4437742951687304,
+        "draw": 0.28350222911769035,
+        "away": 0.2727234757135792
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Barcelona",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6450458158091439,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.14724635848524636,
+        "draw": 0.20770782570560964,
+        "away": 0.6450458158091439
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Real Betis",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46027669890705486,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2700968118954592,
+        "draw": 0.26962648919748583,
+        "away": 0.46027669890705486
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.47278305623982797,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47278305623982797,
+        "draw": 0.2958166775163925,
+        "away": 0.2314002662437795
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4438435650296513,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.276931700689134,
+        "draw": 0.2792247342812147,
+        "away": 0.4438435650296513
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Espanyol",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.40778601166668405,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.30739208492953723,
+        "draw": 0.2848219034037788,
+        "away": 0.40778601166668405
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Mallorca",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4214792076862035,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4214792076862035,
+        "draw": 0.3059573178610971,
+        "away": 0.2725634744526995
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Girona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.589317588307435,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.589317588307435,
+        "draw": 0.260393329596487,
+        "away": 0.15028908209607791
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5240315960291605,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5240315960291605,
+        "draw": 0.2635692679670958,
+        "away": 0.21239913600374366
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5979715820930662,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5979715820930662,
+        "draw": 0.23517253768842453,
+        "away": 0.16685588021850922
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Athletic Club",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.44836571316345514,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27518740027923216,
+        "draw": 0.2764468865573127,
+        "away": 0.44836571316345514
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Real Sociedad",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.41129774471959696,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.41129774471959696,
+        "draw": 0.2854383494350024,
+        "away": 0.3032639058454005
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.42990694955380415,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2782136215204497,
+        "draw": 0.29187942892574614,
+        "away": 0.42990694955380415
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6041775344213446,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17344309332888813,
+        "draw": 0.22237937224976723,
+        "away": 0.6041775344213446
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Valencia",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3800878690328382,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.34474375235237575,
+        "draw": 0.275168378614786,
+        "away": 0.3800878690328382
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5016201664014668,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5016201664014668,
+        "draw": 0.28116958133881803,
+        "away": 0.21721025225971516
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Oviedo",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5266239329271609,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5266239329271609,
+        "draw": 0.26712205817983264,
+        "away": 0.20625400889300627
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4739723566513271,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4739723566513271,
+        "draw": 0.2855619669853061,
+        "away": 0.24046567636336677
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Getafe",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4186849628415759,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4186849628415759,
+        "draw": 0.2996340042345891,
+        "away": 0.281681032923835
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Villarreal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4723250723313238,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26433177108496275,
+        "draw": 0.2633431565837134,
+        "away": 0.4723250723313238
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Levante",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4549838157334768,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4549838157334768,
+        "draw": 0.2902126764034381,
+        "away": 0.25480350786308514
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Barcelona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3619412202262768,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3619412202262768,
+        "draw": 0.289153407433508,
+        "away": 0.34890537234021524
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Celta Vigo",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3553772705869302,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3553772705869302,
+        "draw": 0.298476369254294,
+        "away": 0.3461463601587758
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4903028201160432,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4903028201160432,
+        "draw": 0.28843354698526213,
+        "away": 0.22126363289869455
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Atletico Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.3544873088044076,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3466912409402839,
+        "draw": 0.29882145025530843,
+        "away": 0.3544873088044076
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Girona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4336317112373868,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4336317112373868,
+        "draw": 0.29985801438609533,
+        "away": 0.2665102743765179
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5752763825278907,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5752763825278907,
+        "draw": 0.2432677405198169,
+        "away": 0.1814558769522925
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6087778539461344,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6087778539461344,
+        "draw": 0.23141316995731115,
+        "away": 0.1598089760965545
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4513059074694147,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4513059074694147,
+        "draw": 0.29112572515772905,
+        "away": 0.2575683673728562
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6185810332473748,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6185810332473748,
+        "draw": 0.22941927327194758,
+        "away": 0.1519996934806778
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Celta Vigo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5082792727638102,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23299465844661763,
+        "draw": 0.2587260687895722,
+        "away": 0.5082792727638102
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Espanyol",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.37633218841105576,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.37633218841105576,
+        "draw": 0.3057744172667358,
+        "away": 0.3178933943222084
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5984654470432474,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5984654470432474,
+        "draw": 0.26086917730907805,
+        "away": 0.1406653756476745
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5734007590297602,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5734007590297602,
+        "draw": 0.24395637587848298,
+        "away": 0.18264286509175687
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Osasuna",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.45283664151666814,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26809043365382584,
+        "draw": 0.27907292482950585,
+        "away": 0.45283664151666814
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Real Sociedad",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5005278448030016,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23683812191797102,
+        "draw": 0.26263403327902746,
+        "away": 0.5005278448030016
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4899405311953021,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4899405311953021,
+        "draw": 0.2885799727703266,
+        "away": 0.22147949603437125
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.35824900083067884,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33475416980617734,
+        "draw": 0.3069968293631438,
+        "away": 0.35824900083067884
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6191053324293574,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6191053324293574,
+        "draw": 0.22973189826355395,
+        "away": 0.15116276930708877
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Villarreal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5466959264851288,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19718868852513274,
+        "draw": 0.2561153849897385,
+        "away": 0.5466959264851288
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5642430170590996,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5642430170590996,
+        "draw": 0.2560413830860067,
+        "away": 0.1797155998548936
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Real Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6021354767154815,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17470962163477222,
+        "draw": 0.22315490164974622,
+        "away": 0.6021354767154815
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.435349712604064,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2769571132720033,
+        "draw": 0.2876931741239328,
+        "away": 0.435349712604064
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35380233919304444,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35380233919304444,
+        "draw": 0.2993256352991896,
+        "away": 0.3468720255077658
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5955858290730609,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17873192202889762,
+        "draw": 0.22568224889804137,
+        "away": 0.5955858290730609
+      },
+      "score": "2-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4962903480089807,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4962903480089807,
+        "draw": 0.2860467825816884,
+        "away": 0.21766286940933086
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Celta Vigo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4717100954297305,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2644940753641714,
+        "draw": 0.26379582920609795,
+        "away": 0.4717100954297305
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5716381704418336,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5716381704418336,
+        "draw": 0.2693856334591107,
+        "away": 0.15897619609905567
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Real Sociedad",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.35903775415284933,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35903775415284933,
+        "draw": 0.2965411211349889,
+        "away": 0.34442112471216174
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5935152579543012,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5935152579543012,
+        "draw": 0.23673482265719467,
+        "away": 0.16974991938850428
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4512148945468341,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26882182162284657,
+        "draw": 0.2799632838303194,
+        "away": 0.4512148945468341
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Girona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5494103218774515,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5494103218774515,
+        "draw": 0.2605004718615797,
+        "away": 0.19008920626096876
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Atletico Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4806548042697397,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2600471232869148,
+        "draw": 0.2592980724433454,
+        "away": 0.4806548042697397
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Real Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6242719544300106,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.16072313997165788,
+        "draw": 0.21500490559833138,
+        "away": 0.6242719544300106
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4128223175260363,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4128223175260363,
+        "draw": 0.29761617962565967,
+        "away": 0.28956150284830395
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5049117853667411,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5049117853667411,
+        "draw": 0.2798356626593161,
+        "away": 0.21525255197394286
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Osasuna",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.35490086200046095,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35490086200046095,
+        "draw": 0.29873218682074737,
+        "away": 0.34636695117879185
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5978037217111788,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5978037217111788,
+        "draw": 0.26086917730907805,
+        "away": 0.14132710097974313
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Athletic Club",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.44505815445984925,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.27149060531807284,
+        "draw": 0.2834512402220779,
+        "away": 0.44505815445984925
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6261010240579367,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6261010240579367,
+        "draw": 0.22973189826355395,
+        "away": 0.1441670776785094
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Villarreal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.45410585831788164,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2675102148079596,
+        "draw": 0.2783839268741587,
+        "away": 0.45410585831788164
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Real Betis",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48240586566317484,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2591190822479494,
+        "draw": 0.2584750520888758,
+        "away": 0.48240586566317484
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Espanyol",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5177474113871169,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5177474113871169,
+        "draw": 0.2748079329798419,
+        "away": 0.20744465563304118
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Real Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6024740575069829,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17450001694710354,
+        "draw": 0.22302592554591344,
+        "away": 0.6024740575069829
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Valencia",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4182167388096929,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4182167388096929,
+        "draw": 0.2998558412152246,
+        "away": 0.28192741997508236
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Atletico Madrid",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5298155969091957,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5298155969091957,
+        "draw": 0.27358247363935606,
+        "away": 0.19660192945144825
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5929541524084535,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18032964133632728,
+        "draw": 0.22671620625521913,
+        "away": 0.5929541524084535
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Mallorca",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4005740837526974,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31544562002272647,
+        "draw": 0.283980296224576,
+        "away": 0.4005740837526974
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5731057132876354,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5731057132876354,
+        "draw": 0.24406504536702164,
+        "away": 0.1828292413453429
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Real Sociedad",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.49597501861985815,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23899197559498922,
+        "draw": 0.2650330057851527,
+        "away": 0.49597501861985815
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5881931556209877,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18319074392977888,
+        "draw": 0.2286161004492333,
+        "away": 0.5881931556209877
+      },
+      "score": "3-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Atletico Madrid",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4678319010456172,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26654599867733686,
+        "draw": 0.265622100277046,
+        "away": 0.4678319010456172
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Girona",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.40587028723810437,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31210036847438816,
+        "draw": 0.28202934428750753,
+        "away": 0.40587028723810437
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Sevilla",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.44268342972112346,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44268342972112346,
+        "draw": 0.2964046467579728,
+        "away": 0.26091192352090375
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3559614408195994,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3559614408195994,
+        "draw": 0.2981639501967998,
+        "away": 0.3458746089836008
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Celta Vigo",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5895765345298607,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5895765345298607,
+        "draw": 0.23158018046742096,
+        "away": 0.1788432850027182
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5046438993254193,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5046438993254193,
+        "draw": 0.28281248908445683,
+        "away": 0.2125436115901238
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Girona",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4798648671898801,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4798648671898801,
+        "draw": 0.29275356206073605,
+        "away": 0.22738157074938387
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6036172285858038,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6036172285858038,
+        "draw": 0.2332048552279161,
+        "away": 0.16317791618628003
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4604951912182272,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4604951912182272,
+        "draw": 0.2879005148589647,
+        "away": 0.2516042939228082
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5625910898235466,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5625910898235466,
+        "draw": 0.2826354018124291,
+        "away": 0.15477350836402426
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Espanyol",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4700245920898886,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4700245920898886,
+        "draw": 0.29704220485212146,
+        "away": 0.23293320305798995
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49839613298975854,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49839613298975854,
+        "draw": 0.27836672446510274,
+        "away": 0.2232371425451386
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.469537257355246,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.469537257355246,
+        "draw": 0.27880257872776393,
+        "away": 0.2516601639169901
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6208716243109209,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16290360986288827,
+        "draw": 0.2162247658261908,
+        "away": 0.6208716243109209
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4432112727067088,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27225586914309696,
+        "draw": 0.28453285815019425,
+        "away": 0.4432112727067088
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Mallorca",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.46143422839233417,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.46143422839233417,
+        "draw": 0.28751273560768775,
+        "away": 0.2510530359999781
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Celta Vigo",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5605547028478765,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19614877656819904,
+        "draw": 0.24329652058392445,
+        "away": 0.5605547028478765
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Real Sociedad",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4907762223235442,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24027399233098995,
+        "draw": 0.26894978534546593,
+        "away": 0.4907762223235442
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5204940167637883,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5204940167637883,
+        "draw": 0.2737639837489315,
+        "away": 0.20574199948728017
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6213357317284179,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6213357317284179,
+        "draw": 0.22941927327194753,
+        "away": 0.14924499499963445
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Atletico Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4786723766464514,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2610867384724527,
+        "draw": 0.260240884881096,
+        "away": 0.4786723766464514
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5266360338147135,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23891594877228525,
+        "draw": 0.23444801741300123,
+        "away": 0.5266360338147135
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.42683875383859354,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2807454286830727,
+        "draw": 0.2924158174783338,
+        "away": 0.42683875383859354
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Getafe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5101249689201657,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5101249689201657,
+        "draw": 0.2735282075719687,
+        "away": 0.21634682350786563
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Espanyol",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.48235620498719856,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.48235620498719856,
+        "draw": 0.2917025250461192,
+        "away": 0.22594126996668232
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Getafe",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3918824224882397,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3918824224882397,
+        "draw": 0.30752324054452046,
+        "away": 0.3005943369672398
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5069983711180566,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5069983711180566,
+        "draw": 0.27900013070550006,
+        "away": 0.21400149817644343
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Athletic Club",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39904990476642516,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39904990476642516,
+        "draw": 0.29519071139833547,
+        "away": 0.3057593838352394
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Villarreal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5811294560751498,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1844044168914568,
+        "draw": 0.23446612703339337,
+        "away": 0.5811294560751498
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6306678604563506,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15659818989231847,
+        "draw": 0.21273394965133083,
+        "away": 0.6306678604563506
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Levante",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.44222286611268985,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44222286611268985,
+        "draw": 0.295397780003186,
+        "away": 0.2623793538841241
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Real Betis",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5841808071209872,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5841808071209872,
+        "draw": 0.23354093923503713,
+        "away": 0.18227825364397565
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Oviedo",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.506510216207993,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.506510216207993,
+        "draw": 0.27499106692869174,
+        "away": 0.2184987168633152
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Girona",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.363924517516281,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.363924517516281,
+        "draw": 0.2940369036650667,
+        "away": 0.34203857881865235
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.45096296427423055,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26893441419108477,
+        "draw": 0.2801026215346847,
+        "away": 0.45096296427423055
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Real Sociedad",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30848922374594273,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33798050823207965,
+        "draw": 0.30848922374594273,
+        "away": 0.3535302680219775
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Real Betis",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5679338310159107,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19204757135582756,
+        "draw": 0.24001859762826175,
+        "away": 0.5679338310159107
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6037167197829268,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6037167197829268,
+        "draw": 0.23388781907938014,
+        "away": 0.16239546113769293
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Osasuna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3850258529086378,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3850258529086378,
+        "draw": 0.3019478124644405,
+        "away": 0.3130263346269217
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Elche",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5014508105162429,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5014508105162429,
+        "draw": 0.28403653687479,
+        "away": 0.2145126526089671
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.46683575603923866,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.46683575603923866,
+        "draw": 0.2885762455909789,
+        "away": 0.24458799836978246
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Espanyol",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.37467507245008835,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.37467507245008835,
+        "draw": 0.3073730130138996,
+        "away": 0.3179519145360121
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Celta Vigo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46745805564156306,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.261027875086041,
+        "draw": 0.27151406927239596,
+        "away": 0.46745805564156306
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Girona",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3880186645874818,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3880186645874818,
+        "draw": 0.29578480376250593,
+        "away": 0.3161965316500123
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Levante",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6280194903131291,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6280194903131291,
+        "draw": 0.22973189826355395,
+        "away": 0.142248611423317
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4218835097428392,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2927856982263798,
+        "draw": 0.28533079203078104,
+        "away": 0.4218835097428392
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5706036304165675,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5706036304165675,
+        "draw": 0.25373209205882685,
+        "away": 0.17566427752460573
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4024433387228988,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31470199305904284,
+        "draw": 0.2828546682180584,
+        "away": 0.4024433387228988
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Valencia",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.43352858308200426,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.43352858308200426,
+        "draw": 0.2999076844173741,
+        "away": 0.2665637325006217
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Alaves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6199359970630423,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6199359970630423,
+        "draw": 0.22973189826355395,
+        "away": 0.15033210467340385
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celta Vigo",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.48927712685725666,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.48927712685725666,
+        "draw": 0.2883327306590636,
+        "away": 0.22239014248367972
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Barcelona",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6080675192732262,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17101541913755525,
+        "draw": 0.22091706158921848,
+        "away": 0.6080675192732262
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Sevilla",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3538628040194802,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3538628040194802,
+        "draw": 0.2992928399190685,
+        "away": 0.34684435606145125
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Elche",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4353153659302073,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4353153659302073,
+        "draw": 0.28734975979575283,
+        "away": 0.27733487427403997
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rayo Vallecano",
+      "away_team": "Osasuna",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4019748145711642,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4019748145711642,
+        "draw": 0.30284040405720775,
+        "away": 0.2951847813716281
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Valencia",
+      "away_team": "Espanyol",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45656805151397734,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45656805151397734,
+        "draw": 0.2895415317905481,
+        "away": 0.2538904166954746
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sevilla",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.3631634271283091,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33275592264799625,
+        "draw": 0.3040806502236947,
+        "away": 0.3631634271283091
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.45767564618786877,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2712647289263633,
+        "draw": 0.27105962488576796,
+        "away": 0.45767564618786877
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Mallorca",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6136231188476775,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6136231188476775,
+        "draw": 0.22973281840583448,
+        "away": 0.15664406274648793
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Oviedo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6015176731046207,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6015176731046207,
+        "draw": 0.26086917730907805,
+        "away": 0.13761314958630125
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Sociedad",
+      "away_team": "Celta Vigo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3780425943249007,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3780425943249007,
+        "draw": 0.30556200598682765,
+        "away": 0.31639539968827163
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Alaves",
+      "away_team": "Real Betis",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5218621258406311,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.21573291075730186,
+        "draw": 0.2624049634020671,
+        "away": 0.5218621258406311
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Girona",
+      "away_team": "Getafe",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.38393028030036436,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.38393028030036436,
+        "draw": 0.30250288796167774,
+        "away": 0.31356683173795785
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Espanyol",
+      "away_team": "Alaves",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4662191593027438,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4662191593027438,
+        "draw": 0.2845845990315017,
+        "away": 0.24919624166575444
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Oviedo",
+      "away_team": "Girona",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.44183511351697613,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27294840067608056,
+        "draw": 0.28521648580694337,
+        "away": 0.44183511351697613
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Osasuna",
+      "away_team": "Villarreal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4627633124527932,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2689533788604109,
+        "draw": 0.268283308686796,
+        "away": 0.4627633124527932
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Levante",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5820224677935122,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18387450799205568,
+        "draw": 0.2341030242144321,
+        "away": 0.5820224677935122
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Elche",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6425389312205511,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.14888214709322056,
+        "draw": 0.2085789216862283,
+        "away": 0.6425389312205511
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Rayo Vallecano",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6067850650018533,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6067850650018533,
+        "draw": 0.24037356386773442,
+        "away": 0.15284137113041232
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Betis",
+      "away_team": "Valencia",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5493195220340996,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5493195220340996,
+        "draw": 0.26053559836523266,
+        "away": 0.19014487960066767
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Getafe",
+      "away_team": "Celta Vigo",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3083055956362194,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3355837617182164,
+        "draw": 0.3083055956362194,
+        "away": 0.3561106426455641
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Real Sociedad",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30095993510693414,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3508248059762889,
+        "draw": 0.30095993510693414,
+        "away": 0.3482152589167768
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Mallorca",
+      "away_team": "Sevilla",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41337726801374,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41337726801374,
+        "draw": 0.297351695251615,
+        "away": 0.28927103673464505
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    }
+  ]
+}

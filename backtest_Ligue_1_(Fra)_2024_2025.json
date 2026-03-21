@@ -1,0 +1,2726 @@
+{
+  "league": "Ligue 1 (Fra)",
+  "season": [
+    2024,
+    2025
+  ],
+  "period": {
+    "start": "2025-05-31",
+    "end": "2026-02-04"
+  },
+  "statistics": {
+    "total_matches": 180,
+    "correct_predictions": 103,
+    "accuracy": 57.22222222222222,
+    "home_accuracy": 80.68181818181817,
+    "draw_accuracy": 2.564102564102564,
+    "away_accuracy": 58.490566037735846,
+    "value_bets": 87,
+    "value_bets_accuracy": 74.71264367816092,
+    "roi_flat_pct": -30.31,
+    "roi_value_bets_pct": 39.38,
+    "matches_with_odds": 8
+  },
+  "results": [
+    {
+      "home_team": "Rennes",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3549142531602448,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3549142531602448,
+        "draw": 0.29415579964892663,
+        "away": 0.35092994719082865
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Lyon",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49383466569888335,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49383466569888335,
+        "draw": 0.2586336102787734,
+        "away": 0.24753172402234327
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5807580767467987,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5807580767467987,
+        "draw": 0.241275391885728,
+        "away": 0.1779665313674734
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Toulouse",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30940504739322106,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33651238575178277,
+        "draw": 0.30940504739322106,
+        "away": 0.3540825668549962
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Lille",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36773001750314416,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36773001750314416,
+        "draw": 0.2921452617867739,
+        "away": 0.34012472071008176
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Paris FC",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3148745388505532,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35961525390419036,
+        "draw": 0.3148745388505532,
+        "away": 0.32551020724525626
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Lorient",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47896331007245746,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24588045851097062,
+        "draw": 0.275156231416572,
+        "away": 0.47896331007245746
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Strasbourg",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6037352361981158,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1705911389422363,
+        "draw": 0.2256736248596479,
+        "away": 0.6037352361981158
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6546033347112256,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.14073907232152078,
+        "draw": 0.2046575929672536,
+        "away": 0.6546033347112256
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Angers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6106154708994039,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6106154708994039,
+        "draw": 0.24072021399459037,
+        "away": 0.14866431510600572
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Paris FC",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5850191492073116,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5850191492073116,
+        "draw": 0.23974539995054425,
+        "away": 0.17523545084214415
+      },
+      "score": "5-2",
+      "predicted_odd": 1.8938888888888892
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.48484208017286573,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.48484208017286573,
+        "draw": 0.2906666428035377,
+        "away": 0.22449127702359656
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.61841338197196,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.61841338197196,
+        "draw": 0.22973189826355395,
+        "away": 0.15185471976448608
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Rennes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3545998430728565,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3545998430728565,
+        "draw": 0.29889430632437214,
+        "away": 0.34650585060277134
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Nantes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5714115984253888,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5714115984253888,
+        "draw": 0.24566573796038876,
+        "away": 0.1829226636142225
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.37328873602493734,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.37328873602493734,
+        "draw": 0.3094354665369052,
+        "away": 0.3172757974381575
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5629599103351393,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18785378421465707,
+        "draw": 0.24918630545020368,
+        "away": 0.5629599103351393
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3655664533832357,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3655664533832357,
+        "draw": 0.2885401316704233,
+        "away": 0.3458934149463409
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5588798673671274,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5588798673671274,
+        "draw": 0.2425868301321318,
+        "away": 0.19853330250074078
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Lille",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.36150010201799315,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36150010201799315,
+        "draw": 0.2952683546220302,
+        "away": 0.3432315433599765
+      },
+      "score": "1-7",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3832912266895402,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3832912266895402,
+        "draw": 0.3092431170597617,
+        "away": 0.30746565625069816
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6159202477357166,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16606042889689723,
+        "draw": 0.21801932336738616,
+        "away": 0.6159202477357166
+      },
+      "score": "3-6",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Rennes",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4863782235010589,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2569812869263879,
+        "draw": 0.2566404895725532,
+        "away": 0.4863782235010589
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Strasbourg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4780368466974147,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4780368466974147,
+        "draw": 0.27315002471834376,
+        "away": 0.2488131285842415
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.31393071448929183,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35705711852459165,
+        "draw": 0.31393071448929183,
+        "away": 0.3290121669861165
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5645977710463105,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5645977710463105,
+        "draw": 0.2552490417067517,
+        "away": 0.18015318724693768
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.36555801562985657,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.36555801562985657,
+        "draw": 0.28854440916609964,
+        "away": 0.34589757520404385
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Lorient",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.550025188095272,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.550025188095272,
+        "draw": 0.24593662176021747,
+        "away": 0.2040381901445105
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Nantes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5050574505231539,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5050574505231539,
+        "draw": 0.2797770859267935,
+        "away": 0.2151654635500526
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Monaco",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5693261585382379,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19125889438904936,
+        "draw": 0.23941494707271274,
+        "away": 0.5693261585382379
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Toulouse",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45578275780806216,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45578275780806216,
+        "draw": 0.2783413679437427,
+        "away": 0.2658758742481952
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Lens",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5452258554158936,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5452258554158936,
+        "draw": 0.24785518054299316,
+        "away": 0.2069189640411132
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5320867139900578,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5320867139900578,
+        "draw": 0.2650838975238883,
+        "away": 0.20282938848605392
+      },
+      "score": "1-0",
+      "predicted_odd": 1.9807142857142856
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Paris FC",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49815825174989675,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49815825174989675,
+        "draw": 0.28531438241125234,
+        "away": 0.2165273658388509
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Angers",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4577775463698713,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2656608174135236,
+        "draw": 0.2765616362166051,
+        "away": 0.4577775463698713
+      },
+      "score": "1-1",
+      "predicted_odd": 2.1073684210526316
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Lyon",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.40534384173552934,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.40534384173552934,
+        "draw": 0.28828308444626505,
+        "away": 0.30637307381820555
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Angers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5901757321138316,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5901757321138316,
+        "draw": 0.23791254256191893,
+        "away": 0.17191172532424948
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Rennes",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5918998540989018,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17792046090761168,
+        "draw": 0.23017968499348657,
+        "away": 0.5918998540989018
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49280822301912897,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49280822301912897,
+        "draw": 0.28742734893874966,
+        "away": 0.21976442804212148
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Lille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5431547675089463,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5431547675089463,
+        "draw": 0.248668225075997,
+        "away": 0.20817700741505665
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Strasbourg",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4457978604864346,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2711793804068555,
+        "draw": 0.28302275910670993,
+        "away": 0.4457978604864346
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6158200657765318,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6158200657765318,
+        "draw": 0.22973189826355395,
+        "away": 0.1544480359599143
+      },
+      "score": "5-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Toulouse",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.48225490766847273,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24437365562870156,
+        "draw": 0.2733714367028257,
+        "away": 0.48225490766847273
+      },
+      "score": "1-0",
+      "predicted_odd": 1.7442105263157894
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Lorient",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4522264781454193,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26836693979341636,
+        "draw": 0.27940658206116437,
+        "away": 0.4522264781454193
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4859486807150979,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26040404860415617,
+        "draw": 0.253647270680746,
+        "away": 0.4859486807150979
+      },
+      "score": "1-0",
+      "predicted_odd": 1.45
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4062555617677139,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.31117534350112275,
+        "draw": 0.28256909473116326,
+        "away": 0.4062555617677139
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4350440252167679,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27775316215539153,
+        "draw": 0.2872028126278407,
+        "away": 0.4350440252167679
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Nantes",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5387125550508959,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5387125550508959,
+        "draw": 0.265803954986564,
+        "away": 0.1954834899625401
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6239255147888326,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6239255147888326,
+        "draw": 0.22973189826355395,
+        "away": 0.14634258694761343
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Paris FC",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4154897530787091,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4154897530787091,
+        "draw": 0.3011611397654963,
+        "away": 0.2833491071557946
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4544045235969545,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2673727020766871,
+        "draw": 0.2782227743263584,
+        "away": 0.4544045235969545
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Lyon",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3701601926819223,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3701601926819223,
+        "draw": 0.2909623936104441,
+        "away": 0.33887741370763347
+      },
+      "score": "0-1",
+      "predicted_odd": 3.975263157894737
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Le Havre",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4793142496213626,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.260751437411813,
+        "draw": 0.2599343129668244,
+        "away": 0.4793142496213626
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Lens",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.35282302508692925,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35282302508692925,
+        "draw": 0.29531290203417476,
+        "away": 0.35186407287889593
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Lorient",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4252675244060592,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28476303303299255,
+        "draw": 0.28996944256094814,
+        "away": 0.4252675244060592
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6273006225898426,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15554029269749894,
+        "draw": 0.21715908471265835,
+        "away": 0.6273006225898426
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Nantes",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5555056866843137,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5555056866843137,
+        "draw": 0.2644505669205537,
+        "away": 0.1800437463951327
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.580053432038671,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18504094069384877,
+        "draw": 0.23490562726748024,
+        "away": 0.580053432038671
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Toulouse",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49626309712539635,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49626309712539635,
+        "draw": 0.2655265282350252,
+        "away": 0.23821037463957848
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Nice",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5681891254481112,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5681891254481112,
+        "draw": 0.24589044562046025,
+        "away": 0.18592042893142846
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Angers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5665741987005122,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5665741987005122,
+        "draw": 0.25411572602817273,
+        "away": 0.17931007527131504
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Rennes",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.48121192859366985,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.25975283284455186,
+        "draw": 0.25903523856177824,
+        "away": 0.48121192859366985
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5617809762191516,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19821906587350638,
+        "draw": 0.239999957907342,
+        "away": 0.5617809762191516
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Strasbourg",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5637566898452042,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5637566898452042,
+        "draw": 0.24838920222938973,
+        "away": 0.18785410792540605
+      },
+      "score": "3-3",
+      "predicted_odd": 1.5826315789473684
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Lyon",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.46998451435164407,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.265494202171661,
+        "draw": 0.264521283476695,
+        "away": 0.46998451435164407
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Monaco",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5013781836494469,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24854605987480954,
+        "draw": 0.2500757564757436,
+        "away": 0.5013781836494469
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5920247359518515,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5920247359518515,
+        "draw": 0.2372596580023521,
+        "away": 0.17071560604579641
+      },
+      "score": "6-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Paris FC",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5903498434266404,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5903498434266404,
+        "draw": 0.23785097341592,
+        "away": 0.1717991831574395
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Auxerre",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5916595285657461,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5916595285657461,
+        "draw": 0.23738844841557225,
+        "away": 0.17095202301868156
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5621896405795996,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5621896405795996,
+        "draw": 0.25679551167698056,
+        "away": 0.1810148477434198
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.40058278594425434,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40058278594425434,
+        "draw": 0.29448776501946883,
+        "away": 0.30492944903627683
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Lille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5460180411801608,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.21186454448138972,
+        "draw": 0.2421174143384495,
+        "away": 0.5460180411801608
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Nantes",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4933080650361998,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4933080650361998,
+        "draw": 0.28722791939855324,
+        "away": 0.219464015565247
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5788949849345038,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18865778535640892,
+        "draw": 0.23244722970908732,
+        "away": 0.5788949849345038
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Toulouse",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5039579559953513,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5039579559953513,
+        "draw": 0.2760386568056875,
+        "away": 0.22000338719896126
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4621026953377597,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4621026953377597,
+        "draw": 0.26236427038555565,
+        "away": 0.27553303427668463
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6030265366021497,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6030265366021497,
+        "draw": 0.24223360573395883,
+        "away": 0.15473985766389162
+      },
+      "score": "6-1",
+      "predicted_odd": 1.7006666666666665
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Lorient",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4574900589401362,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2659308167692644,
+        "draw": 0.2765791242905995,
+        "away": 0.4574900589401362
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Nice",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5559038675334491,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5559038675334491,
+        "draw": 0.25801891775043806,
+        "away": 0.18607721471611277
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Le Havre",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3749210921350976,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3749210921350976,
+        "draw": 0.3064987747507083,
+        "away": 0.31858013311419386
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Strasbourg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4699952463295809,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4699952463295809,
+        "draw": 0.2786089510122129,
+        "away": 0.25139580265820616
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Lille",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4472770618938403,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27054911745781085,
+        "draw": 0.28217382064834895,
+        "away": 0.4472770618938403
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5847290821891078,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18524708298055428,
+        "draw": 0.2300238348303378,
+        "away": 0.5847290821891078
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.44914245887519744,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26973965662097604,
+        "draw": 0.2811178845038266,
+        "away": 0.44914245887519744
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Lens",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6287288307648763,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.15461443029716473,
+        "draw": 0.216656738937959,
+        "away": 0.6287288307648763
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Angers",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5957973943726411,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5957973943726411,
+        "draw": 0.2359335633912335,
+        "away": 0.1682690422361252
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Monaco",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6012978170158197,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17035751846547945,
+        "draw": 0.2283446645187009,
+        "away": 0.6012978170158197
+      },
+      "score": "3-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5762644236734212,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5762644236734212,
+        "draw": 0.25062079111582647,
+        "away": 0.17311478521075235
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Rennes",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3720699560581018,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3288395931984563,
+        "draw": 0.2990904507434419,
+        "away": 0.3720699560581018
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Lyon",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.46780275990287534,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2665601207593724,
+        "draw": 0.2656371193377522,
+        "away": 0.46780275990287534
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6002866967496332,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6002866967496332,
+        "draw": 0.24208837373016856,
+        "away": 0.15762492952019833
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Paris FC",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5730796822511814,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5730796822511814,
+        "draw": 0.244074637526593,
+        "away": 0.1828456802222255
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5781152093193982,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18618190216132036,
+        "draw": 0.2357028885192815,
+        "away": 0.5781152093193982
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Strasbourg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.44803797820647967,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.44803797820647967,
+        "draw": 0.2767642956560855,
+        "away": 0.2751977261374348
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Angers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5737263164550467,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5737263164550467,
+        "draw": 0.25152838669465777,
+        "away": 0.1747452968502956
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Metz",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4694058875106411,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4694058875106411,
+        "draw": 0.2811288228681212,
+        "away": 0.24946528962123762
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Le Havre",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.48125329970201747,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.48125329970201747,
+        "draw": 0.2899265966578906,
+        "away": 0.22882010364009195
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Lorient",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5563221245920521,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5563221245920521,
+        "draw": 0.24354399233836774,
+        "away": 0.20013388306958016
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Lyon",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4207760141413616,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2952672915562365,
+        "draw": 0.28395669430240195,
+        "away": 0.4207760141413616
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Rennes",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4593927619166175,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.27049700780703473,
+        "draw": 0.2701102302763478,
+        "away": 0.4593927619166175
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5526741640292233,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5526741640292233,
+        "draw": 0.24492354902578284,
+        "away": 0.20240228694499385
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Nantes",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4623104555767694,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4623104555767694,
+        "draw": 0.2905464700874776,
+        "away": 0.247143074335753
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.40140018253067195,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40140018253067195,
+        "draw": 0.2903305343359504,
+        "away": 0.3082692831333776
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Toulouse",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39431745424133063,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39431745424133063,
+        "draw": 0.29740287973082136,
+        "away": 0.308279666027848
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4362877645524655,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4362877645524655,
+        "draw": 0.29859008019081945,
+        "away": 0.2651221552567151
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Lille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41257368643662096,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41257368643662096,
+        "draw": 0.2848425323225489,
+        "away": 0.3025837812408301
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.49471921293748666,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.25235671467347826,
+        "draw": 0.25292407238903514,
+        "away": 0.49471921293748666
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5330746635430357,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22537952828043406,
+        "draw": 0.24154580817653026,
+        "away": 0.5330746635430357
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48633515122070065,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25700470129805264,
+        "draw": 0.2566601474812466,
+        "away": 0.48633515122070065
+      },
+      "score": "1-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Strasbourg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5339049322793632,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5339049322793632,
+        "draw": 0.2595811918106303,
+        "away": 0.20651387591000658
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.36423257323171815,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.36423257323171815,
+        "draw": 0.2892195185990298,
+        "away": 0.346547908169252
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6087452992129814,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6087452992129814,
+        "draw": 0.24072021399459037,
+        "away": 0.1505344867924282
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Lyon",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.562377709844559,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19514837667174434,
+        "draw": 0.24247391348369668,
+        "away": 0.562377709844559
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Lorient",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.49889551637684154,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24997825077037508,
+        "draw": 0.2511262328527834,
+        "away": 0.49889551637684154
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Angers",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4965303155331078,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4965303155331078,
+        "draw": 0.2918210199794703,
+        "away": 0.21164866448742192
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5924070484106212,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5924070484106212,
+        "draw": 0.24603967399136203,
+        "away": 0.16155327759801674
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Paris FC",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.531700361969235,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.531700361969235,
+        "draw": 0.26522688700097086,
+        "away": 0.20307275102979405
+      },
+      "score": "4-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Rennes",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6087636465311392,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1674236204812538,
+        "draw": 0.22381273298760695,
+        "away": 0.6087636465311392
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5025804538705495,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.25193743770754895,
+        "draw": 0.2454821084219015,
+        "away": 0.5025804538705495
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Auxerre",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.48687030545352966,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.48687030545352966,
+        "draw": 0.2898305982537191,
+        "away": 0.22329909629275124
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Toulouse",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5471593325683727,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5471593325683727,
+        "draw": 0.24704403400482006,
+        "away": 0.2057966334268072
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4699135872140419,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4699135872140419,
+        "draw": 0.2786434418829923,
+        "away": 0.25144297090296575
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5783415316530008,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1831908689359653,
+        "draw": 0.23846759941103382,
+        "away": 0.5783415316530008
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4870931812607586,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4870931812607586,
+        "draw": 0.28973921449306406,
+        "away": 0.22316760424617726
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Lille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4939561194769975,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23867679919327645,
+        "draw": 0.2673670813297261,
+        "away": 0.4939561194769975
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Nantes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6044109298217158,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6044109298217158,
+        "draw": 0.2336463326232681,
+        "away": 0.16194273755501612
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.43254142467560763,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2839673043160718,
+        "draw": 0.2834912710083205,
+        "away": 0.43254142467560763
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4202162949053071,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.29649925004857575,
+        "draw": 0.2832844550461171,
+        "away": 0.4202162949053071
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6141967794637577,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16397099080492283,
+        "draw": 0.2218322297313194,
+        "away": 0.6141967794637577
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Strasbourg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35625691864221964,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35625691864221964,
+        "draw": 0.3039897601031667,
+        "away": 0.3397533212546136
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Rennes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.559044768366502,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.559044768366502,
+        "draw": 0.2500887941423306,
+        "away": 0.19086643749116736
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Angers",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4576237064697668,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4576237064697668,
+        "draw": 0.2882889823286916,
+        "away": 0.2540873112015415
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5168655747687199,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5168655747687199,
+        "draw": 0.27086075300155027,
+        "away": 0.21227367222972968
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Paris FC",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3913878952493626,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3913878952493626,
+        "draw": 0.3086486732096572,
+        "away": 0.2999634315409802
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Lyon",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4235102859882143,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28902100670934083,
+        "draw": 0.28746870730244484,
+        "away": 0.4235102859882143
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Nantes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.486186015906185,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.486186015906185,
+        "draw": 0.2837220890128219,
+        "away": 0.230091895080993
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49236209968564393,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49236209968564393,
+        "draw": 0.26710248250556307,
+        "away": 0.2405354178087931
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6612145442226243,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1341278628101221,
+        "draw": 0.2046575929672536,
+        "away": 0.6612145442226243
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Toulouse",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.43518045880191747,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2773990063920642,
+        "draw": 0.2874205348060184,
+        "away": 0.43518045880191747
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5861981664872553,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5861981664872553,
+        "draw": 0.23932463994779174,
+        "away": 0.17447719356495295
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Lorient",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.45008207626118,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.45008207626118,
+        "draw": 0.28075087317713654,
+        "away": 0.2691670505616835
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Lille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5104773310191038,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22981850000644863,
+        "draw": 0.25970416897444754,
+        "away": 0.5104773310191038
+      },
+      "score": "3-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5860584968787214,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5860584968787214,
+        "draw": 0.2393744293381162,
+        "away": 0.1745670737831626
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4714843372648947,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4714843372648947,
+        "draw": 0.27648168307165955,
+        "away": 0.2520339796634457
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Lens",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4735178029977942,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2574220933020795,
+        "draw": 0.26906010370012634,
+        "away": 0.4735178029977942
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Lyon",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4365940310195433,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4365940310195433,
+        "draw": 0.28250431055805425,
+        "away": 0.2809016584224024
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Strasbourg",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.44797878395348306,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27024650706450776,
+        "draw": 0.2817747089820092,
+        "away": 0.44797878395348306
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Rennes",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4149561565324562,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4149561565324562,
+        "draw": 0.2837423717854665,
+        "away": 0.30130147168207727
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Nantes",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6081423691880221,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6081423691880221,
+        "draw": 0.23163359912812956,
+        "away": 0.16022403168384824
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Metz",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5884813677985068,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5884813677985068,
+        "draw": 0.24740696836372653,
+        "away": 0.16411166383776662
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5351477361082343,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5351477361082343,
+        "draw": 0.2683481900026991,
+        "away": 0.1965040738890666
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Angers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41115468885791623,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41115468885791623,
+        "draw": 0.3032849329258754,
+        "away": 0.2855603782162084
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Paris FC",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6036136589627127,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6036136589627127,
+        "draw": 0.24093463497926165,
+        "away": 0.15545170605802566
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Lorient",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.507791618297195,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.507791618297195,
+        "draw": 0.27377040460264657,
+        "away": 0.2184379771001584
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Lille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5642801500961071,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5642801500961071,
+        "draw": 0.2482015673053501,
+        "away": 0.18751828259854286
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Auxerre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6095145887823968,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6095145887823968,
+        "draw": 0.23187408781010846,
+        "away": 0.15861132340749476
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4519221768654882,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4519221768654882,
+        "draw": 0.30561366722965044,
+        "away": 0.24246415590486126
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5666599184202112,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18599187034976083,
+        "draw": 0.24734821123002795,
+        "away": 0.5666599184202112
+      },
+      "score": "2-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5978298905130481,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5978298905130481,
+        "draw": 0.24403583647396343,
+        "away": 0.1581342730129885
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Paris FC",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4247250924733962,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3019064947403471,
+        "draw": 0.2733684127862567,
+        "away": 0.4247250924733962
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Le Havre",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5781826979965216,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5781826979965216,
+        "draw": 0.24220782518838274,
+        "away": 0.17960947681509565
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5171559310184838,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5171559310184838,
+        "draw": 0.2700355188540752,
+        "away": 0.212808550127441
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Auxerre",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6305058556987666,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15670300853917174,
+        "draw": 0.21279113576206152,
+        "away": 0.6305058556987666
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rennes",
+      "away_team": "Lorient",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4895091027415322,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4895091027415322,
+        "draw": 0.2682729922734656,
+        "away": 0.24221790498500229
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Le Havre",
+      "away_team": "Monaco",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5159693027804015,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.226789507517407,
+        "draw": 0.2572411897021914,
+        "away": 0.5159693027804015
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Lens",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.44157928863677864,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.44157928863677864,
+        "draw": 0.27115086202080335,
+        "away": 0.287269849342418
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nantes",
+      "away_team": "Nice",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.44099831277240675,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.289023328508095,
+        "draw": 0.2699783587194981,
+        "away": 0.44099831277240675
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Stade Brestois 29",
+      "away_team": "Toulouse",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.40046227144503677,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40046227144503677,
+        "draw": 0.29454279770546477,
+        "away": 0.30499493084949847
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Metz",
+      "away_team": "Lyon",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6153224511505317,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1632521138362364,
+        "draw": 0.2214254350132319,
+        "away": 0.6153224511505317
+      },
+      "score": "2-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Angers",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.45032104881572554,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.45032104881572554,
+        "draw": 0.2922203502680327,
+        "away": 0.25745860091624173
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lille",
+      "away_team": "Strasbourg",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.42098652119791663,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.42098652119791663,
+        "draw": 0.2810258837823866,
+        "away": 0.29798759501969685
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lens",
+      "away_team": "Le Havre",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5970284007174966,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5970284007174966,
+        "draw": 0.2355024172201079,
+        "away": 0.16746918206239542
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris FC",
+      "away_team": "Marseille",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.48419520895031193,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2581615871771268,
+        "draw": 0.2576432038725613,
+        "away": 0.48419520895031193
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lorient",
+      "away_team": "Nantes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5692377222898577,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5692377222898577,
+        "draw": 0.2542248061662807,
+        "away": 0.17653747154386157
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Rennes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4570356472717133,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4570356472717133,
+        "draw": 0.2842743661737927,
+        "away": 0.2586899865544941
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lyon",
+      "away_team": "Lille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4706576066256268,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4706576066256268,
+        "draw": 0.2783297086451568,
+        "away": 0.2510126847292164
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Angers",
+      "away_team": "Metz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5406906585400862,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5406906585400862,
+        "draw": 0.2650127779010602,
+        "away": 0.19429656355885358
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Stade Brestois 29",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30554763385930184,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.34283171729353357,
+        "draw": 0.30554763385930184,
+        "away": 0.3516206488471646
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Toulouse",
+      "away_team": "Auxerre",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5322297048992606,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5322297048992606,
+        "draw": 0.26844671267758685,
+        "away": 0.19932358242315262
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Strasbourg",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5708606712886958,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19323544305576407,
+        "draw": 0.23590388565554016,
+        "away": 0.5708606712886958
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    }
+  ]
+}

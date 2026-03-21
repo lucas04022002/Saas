@@ -1,0 +1,398 @@
+{
+  "league": "Bundesliga (All)",
+  "season": 2025,
+  "period": {
+    "start": "2025-12-01",
+    "end": "2025-12-31"
+  },
+  "statistics": {
+    "total_matches": 27,
+    "correct_predictions": 12,
+    "accuracy": 44.44444444444444,
+    "home_accuracy": 58.333333333333336,
+    "draw_accuracy": 0.0,
+    "away_accuracy": 62.5,
+    "value_bets": 15,
+    "value_bets_accuracy": 60.0
+  },
+  "results": [
+    {
+      "home_team": "FSV Mainz 05",
+      "away_team": "Borussia Mönchengladbach",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.46260369112147737,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.46260369112147737,
+        "draw": 0.27962836462352186,
+        "away": 0.2577679442550009
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "VfL Wolfsburg",
+      "away_team": "Union Berlin",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.425393914808908,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3760001668390023,
+        "draw": 0.19860591835208982,
+        "away": 0.425393914808908
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "FC Augsburg",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5030052375975856,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2794695864740121,
+        "draw": 0.21752517592840206,
+        "away": 0.5030052375975856
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "VfB Stuttgart",
+      "away_team": "Bayern München",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6094277269451762,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22542023621004859,
+        "draw": 0.16515203684477503,
+        "away": 0.6094277269451762
+      },
+      "score": "0-5"
+    },
+    {
+      "home_team": "1. FC Heidenheim",
+      "away_team": "SC Freiburg",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5316155368511903,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2615123381432535,
+        "draw": 0.20687212500555605,
+        "away": 0.5316155368511903
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "1. FC Köln",
+      "away_team": "FC St. Pauli",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6120808554734503,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6120808554734503,
+        "draw": 0.17436014663538102,
+        "away": 0.21355899789116858
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "RB Leipzig",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5598134432205835,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5598134432205835,
+        "draw": 0.23633941336262373,
+        "away": 0.20384714341679264
+      },
+      "score": "6-0"
+    },
+    {
+      "home_team": "Hamburger SV",
+      "away_team": "Werder Bremen",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4650730948332341,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3610891906512895,
+        "draw": 0.17383771451547628,
+        "away": 0.4650730948332341
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "1899 Hoffenheim",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6213120272921788,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6213120272921788,
+        "draw": 0.20031252970117625,
+        "away": 0.17837544300664496
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Union Berlin",
+      "away_team": "RB Leipzig",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.3945085780787545,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.34340583065003544,
+        "draw": 0.26208559127121006,
+        "away": 0.3945085780787545
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Borussia Mönchengladbach",
+      "away_team": "VfL Wolfsburg",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.484148225528213,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.484148225528213,
+        "draw": 0.2744322614131454,
+        "away": 0.24141951305864146
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "1899 Hoffenheim",
+      "away_team": "Hamburger SV",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6768275779422271,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6768275779422271,
+        "draw": 0.17808482472756654,
+        "away": 0.1450875973302064
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Eintracht Frankfurt",
+      "away_team": "FC Augsburg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5579427991268883,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5579427991268883,
+        "draw": 0.23821913345650808,
+        "away": 0.2038380674166037
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "FC St. Pauli",
+      "away_team": "1. FC Heidenheim",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5036160755142656,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5036160755142656,
+        "draw": 0.1908847298695035,
+        "away": 0.305499194616231
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Bayer Leverkusen",
+      "away_team": "1. FC Köln",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6658787044016482,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6658787044016482,
+        "draw": 0.20452072277935446,
+        "away": 0.1296005728189974
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "SC Freiburg",
+      "away_team": "Borussia Dortmund",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4544563016017442,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31695399319929524,
+        "draw": 0.22858970519896044,
+        "away": 0.4544563016017442
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Bayern München",
+      "away_team": "FSV Mainz 05",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.717489394779398,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.717489394779398,
+        "draw": 0.1449571301899108,
+        "away": 0.13755347503069126
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Werder Bremen",
+      "away_team": "VfB Stuttgart",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4338241046594779,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.30706177252131595,
+        "draw": 0.2591141228192062,
+        "away": 0.4338241046594779
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "Borussia Mönchengladbach",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7171529077132384,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7171529077132384,
+        "draw": 0.1512009199388192,
+        "away": 0.13164617234794238
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "VfL Wolfsburg",
+      "away_team": "SC Freiburg",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.457089178876951,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3192995714604449,
+        "draw": 0.22361124966260412,
+        "away": 0.457089178876951
+      },
+      "score": "3-4"
+    },
+    {
+      "home_team": "FC Augsburg",
+      "away_team": "Werder Bremen",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4431907517195322,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4431907517195322,
+        "draw": 0.2775870885176447,
+        "away": 0.27922215976282316
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "VfB Stuttgart",
+      "away_team": "1899 Hoffenheim",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5104100311094597,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5104100311094597,
+        "draw": 0.22720339566543557,
+        "away": 0.2623865732251046
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Hamburger SV",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4804495365331199,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3192880128370662,
+        "draw": 0.20026245062981377,
+        "away": 0.4804495365331199
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "1. FC Köln",
+      "away_team": "Union Berlin",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4703707887471322,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.34594479545927176,
+        "draw": 0.18368441579359615,
+        "away": 0.4703707887471322
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "RB Leipzig",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4108178208886246,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4108178208886246,
+        "draw": 0.24076755415530277,
+        "away": 0.34841462495607267
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "FSV Mainz 05",
+      "away_team": "FC St. Pauli",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6330224578719528,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6330224578719528,
+        "draw": 0.18397454914722722,
+        "away": 0.1830029929808199
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "1. FC Heidenheim",
+      "away_team": "Bayern München",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7240300106168457,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.13127522590053298,
+        "draw": 0.14469476348262122,
+        "away": 0.7240300106168457
+      },
+      "score": "0-4"
+    }
+  ]
+}

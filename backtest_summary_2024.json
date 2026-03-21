@@ -1,0 +1,80 @@
+{
+  "period": {
+    "start": "2024-07-08",
+    "end": "2025-05-31",
+    "season": 2024
+  },
+  "global_statistics": {
+    "total_matches": 2024,
+    "total_correct": 1135,
+    "global_accuracy": 56.077075098814234
+  },
+  "leagues": [
+    {
+      "league": "Premier League (Ang)",
+      "total": 380,
+      "correct": 215,
+      "accuracy": 56.57894736842105,
+      "home_accuracy": 81.93548387096774,
+      "draw_accuracy": 13.978494623655912,
+      "away_accuracy": 56.81818181818182,
+      "value_bets": 257,
+      "value_bets_accuracy": 63.42412451361867
+    },
+    {
+      "league": "Ligue 1 (Fra)",
+      "total": 307,
+      "correct": 174,
+      "accuracy": 56.67752442996743,
+      "home_accuracy": 76.22377622377621,
+      "draw_accuracy": 20.634920634920633,
+      "away_accuracy": 51.48514851485149,
+      "value_bets": 185,
+      "value_bets_accuracy": 64.86486486486487
+    },
+    {
+      "league": "La Liga (Esp)",
+      "total": 380,
+      "correct": 209,
+      "accuracy": 55.00000000000001,
+      "home_accuracy": 75.14792899408283,
+      "draw_accuracy": 29.896907216494846,
+      "away_accuracy": 46.49122807017544,
+      "value_bets": 228,
+      "value_bets_accuracy": 64.47368421052632
+    },
+    {
+      "league": "Bundesliga (All)",
+      "total": 308,
+      "correct": 166,
+      "accuracy": 53.896103896103895,
+      "home_accuracy": 75.42372881355932,
+      "draw_accuracy": 26.582278481012654,
+      "away_accuracy": 50.45045045045045,
+      "value_bets": 187,
+      "value_bets_accuracy": 58.82352941176471
+    },
+    {
+      "league": "Serie A (Ita)",
+      "total": 380,
+      "correct": 204,
+      "accuracy": 53.68421052631579,
+      "home_accuracy": 78.1456953642384,
+      "draw_accuracy": 21.296296296296298,
+      "away_accuracy": 52.066115702479344,
+      "value_bets": 252,
+      "value_bets_accuracy": 57.53968253968254
+    },
+    {
+      "league": "Ligue des Champions",
+      "total": 269,
+      "correct": 167,
+      "accuracy": 62.0817843866171,
+      "home_accuracy": 79.25925925925927,
+      "draw_accuracy": 11.627906976744185,
+      "away_accuracy": 60.43956043956044,
+      "value_bets": 176,
+      "value_bets_accuracy": 73.29545454545455
+    }
+  ]
+}

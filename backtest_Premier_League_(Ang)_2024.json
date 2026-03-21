@@ -1,0 +1,5340 @@
+{
+  "league": "Premier League (Ang)",
+  "season": 2024,
+  "period": {
+    "start": "2024-07-08",
+    "end": "2025-05-31"
+  },
+  "statistics": {
+    "total_matches": 380,
+    "correct_predictions": 215,
+    "accuracy": 56.57894736842105,
+    "home_accuracy": 81.93548387096774,
+    "draw_accuracy": 13.978494623655912,
+    "away_accuracy": 56.81818181818182,
+    "value_bets": 257,
+    "value_bets_accuracy": 63.42412451361867
+  },
+  "results": [
+    {
+      "home_team": "Manchester United",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5513427364529122,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5513427364529122,
+        "draw": 0.17847661954879399,
+        "away": 0.27018064399829383
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6806630937082713,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1601013699748752,
+        "draw": 0.15923553631685344,
+        "away": 0.6806630937082713
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7368052254771158,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7368052254771158,
+        "draw": 0.14847950176561076,
+        "away": 0.11471527275727349
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7445989478427496,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7445989478427496,
+        "draw": 0.14692447746250753,
+        "away": 0.10847657469474288
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5095644096601012,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5095644096601012,
+        "draw": 0.20078747664420515,
+        "away": 0.28964811369569365
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.36165705052370617,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35324330759526107,
+        "draw": 0.36165705052370617,
+        "away": 0.2850996418810328
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5666117796232751,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22370977897981964,
+        "draw": 0.20967844139690517,
+        "away": 0.5666117796232751
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Crystal Palace",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5682597532521052,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5682597532521052,
+        "draw": 0.19590352338846956,
+        "away": 0.2358367233594252
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4322811747405275,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4322811747405275,
+        "draw": 0.20176713857259512,
+        "away": 0.36595168668687716
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Tottenham",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.327800374727807,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26083962074866834,
+        "draw": 0.327800374727807,
+        "away": 0.41136000452352456
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5094473128350235,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5094473128350235,
+        "draw": 0.21068035742812674,
+        "away": 0.2798723297368498
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6606311722267177,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6606311722267177,
+        "draw": 0.18014880279314435,
+        "away": 0.15922002498013801
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6009830412592702,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.21081064592406804,
+        "draw": 0.18820631281666178,
+        "away": 0.6009830412592702
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.42094166436265196,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32498517521050513,
+        "draw": 0.2540731604268429,
+        "away": 0.42094166436265196
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7510551636563638,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7510551636563638,
+        "draw": 0.13411015398503037,
+        "away": 0.11483468235860593
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5904000244234148,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5904000244234148,
+        "draw": 0.20472180190442726,
+        "away": 0.20487817367215805
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4836094505919926,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4836094505919926,
+        "draw": 0.18237851496875807,
+        "away": 0.3340120344392493
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.43975068532052064,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.43975068532052064,
+        "draw": 0.220516497876935,
+        "away": 0.33973281680254436
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6013074474711034,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.20575605191885674,
+        "draw": 0.19293650061003986,
+        "away": 0.6013074474711034
+      },
+      "score": "2-6"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6536203399625007,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6536203399625007,
+        "draw": 0.1748987134814971,
+        "away": 0.17148094655600224
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Brighton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6671624424990888,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6671624424990888,
+        "draw": 0.1853785436881658,
+        "away": 0.14745901381274534
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5114100759706287,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5114100759706287,
+        "draw": 0.20388505107337793,
+        "away": 0.2847048729559933
+      },
+      "score": "2-3"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.693681690942071,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15767955147321325,
+        "draw": 0.14863875758471584,
+        "away": 0.693681690942071
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7153124361048983,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7153124361048983,
+        "draw": 0.142956730200239,
+        "away": 0.14173083369486278
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Fulham",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.607231847552928,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19539569334188167,
+        "draw": 0.19737245910519016,
+        "away": 0.607231847552928
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Wolves",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6142331761965961,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6142331761965961,
+        "draw": 0.21281871524772675,
+        "away": 0.17294810855567716
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5997860028905028,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2149833112263514,
+        "draw": 0.18523068588314565,
+        "away": 0.5997860028905028
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6341084457338282,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6341084457338282,
+        "draw": 0.17696361810763744,
+        "away": 0.18892793615853448
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6387643593308238,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6387643593308238,
+        "draw": 0.17841847375017683,
+        "away": 0.1828171669189994
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4471846063982565,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3725185647553583,
+        "draw": 0.18029682884638526,
+        "away": 0.4471846063982565
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Manchester United",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6629991258123998,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1721813382015737,
+        "draw": 0.1648195359860265,
+        "away": 0.6629991258123998
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "West Ham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5456086840694119,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5456086840694119,
+        "draw": 0.24973471621077745,
+        "away": 0.2046565997198108
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6084754348981872,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6084754348981872,
+        "draw": 0.20137569847407769,
+        "away": 0.19014886662773495
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5909339292120471,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5909339292120471,
+        "draw": 0.23294953592509335,
+        "away": 0.17611653486285944
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6870276832318107,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6870276832318107,
+        "draw": 0.18311896316943652,
+        "away": 0.1298533535987527
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Leicester",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6426051010607782,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6426051010607782,
+        "draw": 0.19759478516414686,
+        "away": 0.1598001137750748
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6296363903280388,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6296363903280388,
+        "draw": 0.1906499581803437,
+        "away": 0.17971365149161764
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.41854022220615067,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3362734705773636,
+        "draw": 0.24518630721648552,
+        "away": 0.41854022220615067
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6226927613306941,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22139626180661118,
+        "draw": 0.1559109768626948,
+        "away": 0.6226927613306941
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4904071934852094,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2343191433044707,
+        "draw": 0.2752736632103198,
+        "away": 0.4904071934852094
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46528946502362184,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26941270233451353,
+        "draw": 0.26529783264186463,
+        "away": 0.46528946502362184
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5024011240908217,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5024011240908217,
+        "draw": 0.21381920503512894,
+        "away": 0.28377967087404943
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Bournemouth",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.655344278534948,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.655344278534948,
+        "draw": 0.17887339103487895,
+        "away": 0.16578233043017304
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.28530908100177826,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.37678373412753213,
+        "draw": 0.28530908100177826,
+        "away": 0.33790718487068966
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5076198505695136,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2061187062057774,
+        "draw": 0.2862614432247089,
+        "away": 0.5076198505695136
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4514521895042614,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4514521895042614,
+        "draw": 0.23501845348196118,
+        "away": 0.31352935701377743
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7276864364782254,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7276864364782254,
+        "draw": 0.15877792837607152,
+        "away": 0.11353563514570297
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.38233760035115866,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.37036741238073073,
+        "draw": 0.24729498726811058,
+        "away": 0.38233760035115866
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Nottingham Forest",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.44201898920273214,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44201898920273214,
+        "draw": 0.326607349163124,
+        "away": 0.23137366163414375
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3736355906533834,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3736355906533834,
+        "draw": 0.2583130565597056,
+        "away": 0.36805135278691103
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.41070471577383844,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3362139134019335,
+        "draw": 0.25308137082422816,
+        "away": 0.41070471577383844
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7429849581363598,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7429849581363598,
+        "draw": 0.14387352998891295,
+        "away": 0.11314151187472728
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Crystal Palace",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5616988274133377,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5616988274133377,
+        "draw": 0.20771090341142426,
+        "away": 0.230590269175238
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5495688015125736,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5495688015125736,
+        "draw": 0.23109163850777986,
+        "away": 0.21933955997964655
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "West Ham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.57609093216961,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.57609093216961,
+        "draw": 0.23168991009737344,
+        "away": 0.1922191577330165
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.43229883493182925,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.43229883493182925,
+        "draw": 0.2525246783382099,
+        "away": 0.31517648672996074
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6226671377569294,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1962600598290891,
+        "draw": 0.18107280241398135,
+        "away": 0.6226671377569294
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Aston Villa",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6937232716831075,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.14759136651259366,
+        "draw": 0.15868536180429862,
+        "away": 0.6937232716831075
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6227215519060656,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6227215519060656,
+        "draw": 0.17327103616518405,
+        "away": 0.20400741192875035
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6782673195286746,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6782673195286746,
+        "draw": 0.17654759414248222,
+        "away": 0.14518508632884325
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4232883186423547,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.31590567354022103,
+        "draw": 0.2608060078174243,
+        "away": 0.4232883186423547
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.731993179785984,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.731993179785984,
+        "draw": 0.15429909448320456,
+        "away": 0.11370772573081149
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Bournemouth",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47812725603049683,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2329460836117068,
+        "draw": 0.28892666035779624,
+        "away": 0.47812725603049683
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5906890370921559,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5906890370921559,
+        "draw": 0.25179664620215153,
+        "away": 0.1575143167056926
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6676110891086046,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6676110891086046,
+        "draw": 0.15717607718756071,
+        "away": 0.17521283370383475
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6058914333335147,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6058914333335147,
+        "draw": 0.2123521618013805,
+        "away": 0.18175640486510466
+      },
+      "score": "5-3"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.45534244141929553,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.45534244141929553,
+        "draw": 0.25135435969348846,
+        "away": 0.2933031988872158
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Nottingham Forest",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6414398213309127,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6414398213309127,
+        "draw": 0.18057954516277097,
+        "away": 0.17798063350631632
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6154182175779657,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6154182175779657,
+        "draw": 0.19635562915283944,
+        "away": 0.18822615326919498
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6154567103184003,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6154567103184003,
+        "draw": 0.16910644671035824,
+        "away": 0.21543684297124152
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5274603899424619,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5274603899424619,
+        "draw": 0.2390267632621104,
+        "away": 0.2335128467954278
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5314287616393504,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5314287616393504,
+        "draw": 0.21685413517673735,
+        "away": 0.25171710318391227
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5017160544473438,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5017160544473438,
+        "draw": 0.20755993510669357,
+        "away": 0.2907240104459625
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4661178709499235,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3237041344625406,
+        "draw": 0.21017799458753572,
+        "away": 0.4661178709499235
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Leicester",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4601437731433666,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3103087254727795,
+        "draw": 0.22954750138385402,
+        "away": 0.4601437731433666
+      },
+      "score": "2-3"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5934300782458624,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19543763016033988,
+        "draw": 0.21113229159379768,
+        "away": 0.5934300782458624
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Arsenal",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5449703176545537,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2715862390017146,
+        "draw": 0.18344344334373153,
+        "away": 0.5449703176545537
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6284561941180007,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19029521209557884,
+        "draw": 0.18124859378642041,
+        "away": 0.6284561941180007
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5507886188728522,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5507886188728522,
+        "draw": 0.19498311826191278,
+        "away": 0.2542282628652349
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Crystal Palace",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5200163280785864,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5200163280785864,
+        "draw": 0.2269256139758293,
+        "away": 0.25305805794558434
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48501321850542684,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2444478121530149,
+        "draw": 0.27053896934155813,
+        "away": 0.48501321850542684
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7359308220668067,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7359308220668067,
+        "draw": 0.1624523109861523,
+        "away": 0.1016168669470411
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Wolves",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6607051424992062,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6607051424992062,
+        "draw": 0.18549040616322338,
+        "away": 0.15380445133757048
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6740595364976307,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6740595364976307,
+        "draw": 0.17269211167236825,
+        "away": 0.15324835183000107
+      },
+      "score": "4-3"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6116545639972414,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6116545639972414,
+        "draw": 0.22958459251201746,
+        "away": 0.15876084349074102
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Fulham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.524637089954553,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.524637089954553,
+        "draw": 0.20725852187268728,
+        "away": 0.2681043881727595
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3088781813642011,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2955868321669652,
+        "draw": 0.3088781813642011,
+        "away": 0.3955349864688336
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5584598394865283,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5584598394865283,
+        "draw": 0.2100374142788397,
+        "away": 0.23150274623463185
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.570422229970923,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.570422229970923,
+        "draw": 0.19563388703389314,
+        "away": 0.23394388299518398
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Liverpool",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6159474380461953,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6159474380461953,
+        "draw": 0.19117569207345944,
+        "away": 0.19287686988034514
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Arsenal",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4629022159736133,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3226123869341588,
+        "draw": 0.21448539709222778,
+        "away": 0.4629022159736133
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47047785106868867,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.29456945119857125,
+        "draw": 0.23495269773274016,
+        "away": 0.47047785106868867
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5906141457691295,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5906141457691295,
+        "draw": 0.20650274474549973,
+        "away": 0.20288310948537072
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6382581147239867,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18951340967009267,
+        "draw": 0.17222847560592047,
+        "away": 0.6382581147239867
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Leicester",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3375483057835229,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3432984047632269,
+        "draw": 0.3375483057835229,
+        "away": 0.3191532894532501
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6061189850948119,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6061189850948119,
+        "draw": 0.20681167613535884,
+        "away": 0.18706933876982915
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3361215803186069,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2644833701353666,
+        "draw": 0.3361215803186069,
+        "away": 0.39939504954602634
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5947383955905388,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2352498960722653,
+        "draw": 0.17001170833719592,
+        "away": 0.5947383955905388
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Chelsea",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.40167424724394657,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40167424724394657,
+        "draw": 0.24339142309812362,
+        "away": 0.3549343296579299
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5375595931336109,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5375595931336109,
+        "draw": 0.20347576529681208,
+        "away": 0.258964641569577
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5938429137078284,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5938429137078284,
+        "draw": 0.2397445574103251,
+        "away": 0.16641252888184657
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.32595525459003655,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3082188321179255,
+        "draw": 0.32595525459003655,
+        "away": 0.36582591329203784
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.43771392174250423,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.43771392174250423,
+        "draw": 0.2311280916160446,
+        "away": 0.33115798664145124
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Bournemouth",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5280860871435967,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5280860871435967,
+        "draw": 0.2213906968514165,
+        "away": 0.25052321600498684
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.429897396630395,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32922127884926544,
+        "draw": 0.24088132452033964,
+        "away": 0.429897396630395
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5234478312456421,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5234478312456421,
+        "draw": 0.19888652956743919,
+        "away": 0.2776656391869186
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7113900676689477,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7113900676689477,
+        "draw": 0.15616225007397405,
+        "away": 0.13244768225707826
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Ipswich",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.7107566117253185,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7107566117253185,
+        "draw": 0.14303458717512085,
+        "away": 0.1462088010995608
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47408854416707913,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3363056911893309,
+        "draw": 0.18960576464358983,
+        "away": 0.47408854416707913
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3921996027878029,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3921996027878029,
+        "draw": 0.23741805411707942,
+        "away": 0.3703823430951176
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6441581826552908,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1832932693556666,
+        "draw": 0.17254854798904262,
+        "away": 0.6441581826552908
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49588815888087034,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49588815888087034,
+        "draw": 0.20138353353539437,
+        "away": 0.30272830758373537
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6800284098289001,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6800284098289001,
+        "draw": 0.14659040861096226,
+        "away": 0.17338118156013768
+      },
+      "score": "1-4"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6902417843919276,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6902417843919276,
+        "draw": 0.18568429801662226,
+        "away": 0.12407391759145019
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Brentford",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5259800108485782,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5259800108485782,
+        "draw": 0.2178728456126921,
+        "away": 0.2561471435387298
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6151173954521684,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6151173954521684,
+        "draw": 0.21301730333261173,
+        "away": 0.17186530121521978
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6933036043826755,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6933036043826755,
+        "draw": 0.14546803722440635,
+        "away": 0.16122835839291821
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7031401350268712,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.14598213122819365,
+        "draw": 0.15087773374493504,
+        "away": 0.7031401350268712
+      },
+      "score": "2-3"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6135726379962063,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18320253471860293,
+        "draw": 0.20322482728519065,
+        "away": 0.6135726379962063
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.634624014254588,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.634624014254588,
+        "draw": 0.18367688021567313,
+        "away": 0.1816991055297389
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Southampton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.7406384816967913,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7406384816967913,
+        "draw": 0.1387674540199851,
+        "away": 0.12059406428322367
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47592952293781676,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2688691405227062,
+        "draw": 0.2552013365394771,
+        "away": 0.47592952293781676
+      },
+      "score": "2-4"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3161952921621815,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3145842006523509,
+        "draw": 0.3161952921621815,
+        "away": 0.3692205071854675
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6442341870977186,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6442341870977186,
+        "draw": 0.16441071716009772,
+        "away": 0.19135509574218357
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6786008490913338,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6786008490913338,
+        "draw": 0.17133526605652072,
+        "away": 0.15006388485214558
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.657710949338656,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17961551743545173,
+        "draw": 0.16267353322589218,
+        "away": 0.657710949338656
+      },
+      "score": "2-5"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49422340671140397,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49422340671140397,
+        "draw": 0.21775277205561316,
+        "away": 0.2880238212329829
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Fulham",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3885691510673674,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36087432901687244,
+        "draw": 0.25055651991576017,
+        "away": 0.3885691510673674
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4163517770840095,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4017702095071184,
+        "draw": 0.18187801340887194,
+        "away": 0.4163517770840095
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5759764479580584,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5759764479580584,
+        "draw": 0.16913024013926403,
+        "away": 0.2548933119026775
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5496121446953783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22852830086612272,
+        "draw": 0.22185955443849897,
+        "away": 0.5496121446953783
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.313558726607482,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28675450046881507,
+        "draw": 0.313558726607482,
+        "away": 0.3996867729237028
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Liverpool",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4483032899246003,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3327190567487572,
+        "draw": 0.21897765332664262,
+        "away": 0.4483032899246003
+      },
+      "score": "3-3"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7052005612253899,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1527985050894305,
+        "draw": 0.14200093368517958,
+        "away": 0.7052005612253899
+      },
+      "score": "1-5"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6325232844944964,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6325232844944964,
+        "draw": 0.20479375673831998,
+        "away": 0.16268295876718372
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6042005534611947,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6042005534611947,
+        "draw": 0.24273930040514785,
+        "away": 0.15306014613365748
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6357846413265235,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6357846413265235,
+        "draw": 0.21252593525176106,
+        "away": 0.1516894234217155
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6370861350278783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6370861350278783,
+        "draw": 0.21082427637522413,
+        "away": 0.15208958859689764
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4656951220690876,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4656951220690876,
+        "draw": 0.24613149898360323,
+        "away": 0.2881733789473092
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5481931284163394,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5481931284163394,
+        "draw": 0.20365586376329448,
+        "away": 0.24815100782036617
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5080978646283539,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26939170649072636,
+        "draw": 0.22251042888091954,
+        "away": 0.5080978646283539
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.2864235111891289,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3658453176223064,
+        "draw": 0.2864235111891289,
+        "away": 0.34773117118856484
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7356993481009274,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7356993481009274,
+        "draw": 0.15115493586426024,
+        "away": 0.11314571603481237
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5997463407612419,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5997463407612419,
+        "draw": 0.17840156479724179,
+        "away": 0.2218520944415163
+      },
+      "score": "2-3"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.531017685859244,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26947923712277444,
+        "draw": 0.19950307701798162,
+        "away": 0.531017685859244
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Brighton",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5299073982676377,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2135508860918382,
+        "draw": 0.2565417156405242,
+        "away": 0.5299073982676377
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5813293669097752,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.21384049440320194,
+        "draw": 0.20483013868702282,
+        "away": 0.5813293669097752
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.49409742164129344,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2957623072481396,
+        "draw": 0.21014027111056693,
+        "away": 0.49409742164129344
+      },
+      "score": "3-4"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.533061545206919,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.533061545206919,
+        "draw": 0.28021274293228693,
+        "away": 0.18672571186079412
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6998700768600473,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6998700768600473,
+        "draw": 0.16795925631417166,
+        "away": 0.1321706668257811
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Ipswich",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.608238708134173,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.608238708134173,
+        "draw": 0.21741461919420468,
+        "away": 0.17434667267162218
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Fulham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6139763775938989,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6139763775938989,
+        "draw": 0.19228095589198538,
+        "away": 0.1937426665141156
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6568528454382055,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6568528454382055,
+        "draw": 0.1930310416481222,
+        "away": 0.15011611291367238
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4887438737237807,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2902516468183928,
+        "draw": 0.22100447945782656,
+        "away": 0.4887438737237807
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5646771792822676,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5646771792822676,
+        "draw": 0.1938703264640184,
+        "away": 0.24145249425371404
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Manchester United",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6104013067384916,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6104013067384916,
+        "draw": 0.19087161508576334,
+        "away": 0.1987270781757452
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6431955369474429,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.20231867995038674,
+        "draw": 0.15448578310217032,
+        "away": 0.6431955369474429
+      },
+      "score": "0-5"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6102845025621767,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6102845025621767,
+        "draw": 0.20235669112151164,
+        "away": 0.1873588063163115
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "West Ham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6002494711507758,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6002494711507758,
+        "draw": 0.2156682031061893,
+        "away": 0.18408232574303504
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5327791695144521,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5327791695144521,
+        "draw": 0.21125896520694737,
+        "away": 0.25596186527860054
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Brighton",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.33205609163521915,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2877819492042503,
+        "draw": 0.33205609163521915,
+        "away": 0.38016195916053064
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5508587421408895,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5508587421408895,
+        "draw": 0.1940346562440096,
+        "away": 0.25510660161510096
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6220782135120984,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19324433904320207,
+        "draw": 0.18467744744469944,
+        "away": 0.6220782135120984
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5804849334426215,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23614543741644045,
+        "draw": 0.183369629140938,
+        "away": 0.5804849334426215
+      },
+      "score": "1-5"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5535467419840324,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5535467419840324,
+        "draw": 0.19345766861568592,
+        "away": 0.2529955894002817
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Southampton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.7122001205207968,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7122001205207968,
+        "draw": 0.1570895795142722,
+        "away": 0.13071029996493086
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Chelsea",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.40500129463234413,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36720521560128194,
+        "draw": 0.227793489766374,
+        "away": 0.40500129463234413
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3194262953776582,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4127965875619738,
+        "draw": 0.3194262953776582,
+        "away": 0.2677771170603681
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5472978818359836,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2532939965687396,
+        "draw": 0.1994081215952768,
+        "away": 0.5472978818359836
+      },
+      "score": "3-6"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6443606860865949,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6443606860865949,
+        "draw": 0.17879556320759477,
+        "away": 0.17684375070581043
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4435225714600257,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36276857249852723,
+        "draw": 0.19370885604144691,
+        "away": 0.4435225714600257
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5370411604323573,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5370411604323573,
+        "draw": 0.2224096274906278,
+        "away": 0.24054921207701488
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.510107756399082,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23567856617082744,
+        "draw": 0.2542136774300906,
+        "away": 0.510107756399082
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6565365187794185,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6565365187794185,
+        "draw": 0.15953152389255124,
+        "away": 0.18393195732803028
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5896591864283424,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5896591864283424,
+        "draw": 0.18230604926320848,
+        "away": 0.228034764308449
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4805442054700353,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2510575249769441,
+        "draw": 0.26839826955302043,
+        "away": 0.4805442054700353
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.739809725394259,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.739809725394259,
+        "draw": 0.14687744678843412,
+        "away": 0.11331282781730684
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Brentford",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.46450840337712423,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.46450840337712423,
+        "draw": 0.2725745315996606,
+        "away": 0.2629170650232153
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7635445473410105,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7635445473410105,
+        "draw": 0.1362284963994288,
+        "away": 0.10022695625956068
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6816041306589918,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1626404793249492,
+        "draw": 0.15575539001605904,
+        "away": 0.6816041306589918
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4952155862849014,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4952155862849014,
+        "draw": 0.24448349759605476,
+        "away": 0.26030091611904377
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5442705978972724,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5442705978972724,
+        "draw": 0.21312517759915878,
+        "away": 0.24260422450356864
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Wolves",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5801052774316978,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5801052774316978,
+        "draw": 0.2109962636132443,
+        "away": 0.208898458955058
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7006061881513411,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7006061881513411,
+        "draw": 0.17351199246133958,
+        "away": 0.12588181938731932
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5980769326774323,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22745790717933123,
+        "draw": 0.17446516014323646,
+        "away": 0.5980769326774323
+      },
+      "score": "0-5"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6580742155921798,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17099410737602677,
+        "draw": 0.17093167703179346,
+        "away": 0.6580742155921798
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Brighton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6448097719147109,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6448097719147109,
+        "draw": 0.1639031654904748,
+        "away": 0.19128706259481434
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.479573560288273,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.479573560288273,
+        "draw": 0.1951121964805019,
+        "away": 0.325314243231225
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.580040345941012,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24138177300578206,
+        "draw": 0.1785778810532059,
+        "away": 0.580040345941012
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4634322654336287,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.33908448459309565,
+        "draw": 0.1974832499732758,
+        "away": 0.4634322654336287
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5369608487602734,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5369608487602734,
+        "draw": 0.19643305192795574,
+        "away": 0.2666060993117708
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.663201937321202,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1834206502727809,
+        "draw": 0.15337741240601713,
+        "away": 0.663201937321202
+      },
+      "score": "0-5"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.66971856307604,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.66971856307604,
+        "draw": 0.18102441259547758,
+        "away": 0.1492570243284824
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Chelsea",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.2800810747089142,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3454635645111797,
+        "draw": 0.2800810747089142,
+        "away": 0.37445536077990615
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7329345827598428,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7329345827598428,
+        "draw": 0.14650199239519335,
+        "away": 0.12056342484496381
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4907413225931713,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31211838961992705,
+        "draw": 0.19714028778690157,
+        "away": 0.4907413225931713
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6813349907307572,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6813349907307572,
+        "draw": 0.1841020492143137,
+        "away": 0.13456296005492915
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6487724385320897,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6487724385320897,
+        "draw": 0.1576703308707796,
+        "away": 0.19355723059713062
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30222901961134035,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2996630402901989,
+        "draw": 0.30222901961134035,
+        "away": 0.3981079400984608
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.33922211332346364,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2993708990823525,
+        "draw": 0.33922211332346364,
+        "away": 0.36140698759418377
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6295151500510986,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6295151500510986,
+        "draw": 0.18581188504323576,
+        "away": 0.18467296490566554
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4604216359578583,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3002732470905894,
+        "draw": 0.23930511695155238,
+        "away": 0.4604216359578583
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Liverpool",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43010059566112974,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.31180886104585726,
+        "draw": 0.25809054329301306,
+        "away": 0.43010059566112974
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6663139207499695,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6663139207499695,
+        "draw": 0.1923587775638627,
+        "away": 0.14132730168616786
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4725442976097824,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.32651974908077874,
+        "draw": 0.20093595330943895,
+        "away": 0.4725442976097824
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4442395033072551,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25706228633112593,
+        "draw": 0.2986982103616188,
+        "away": 0.4442395033072551
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7155336137237709,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7155336137237709,
+        "draw": 0.1590182919726816,
+        "away": 0.1254480943035475
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6101461884107153,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19272359467743044,
+        "draw": 0.1971302169118541,
+        "away": 0.6101461884107153
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.727988101292485,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.727988101292485,
+        "draw": 0.15134688404484267,
+        "away": 0.12066501466267233
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5846269259765827,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5846269259765827,
+        "draw": 0.16586911112135405,
+        "away": 0.24950396290206325
+      },
+      "score": "1-4"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5396708541740474,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22918330951015567,
+        "draw": 0.23114583631579688,
+        "away": 0.5396708541740474
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.36892047870081346,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36892047870081346,
+        "draw": 0.26841758445754094,
+        "away": 0.3626619368416456
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.43471365123724515,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3336542551708997,
+        "draw": 0.2316320935918551,
+        "away": 0.43471365123724515
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Aston Villa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6458530877564433,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6458530877564433,
+        "draw": 0.16734303088908462,
+        "away": 0.1868038813544719
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.525128679261188,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.525128679261188,
+        "draw": 0.16317758635938195,
+        "away": 0.31169373437942993
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5077670138867253,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5077670138867253,
+        "draw": 0.27154145101685434,
+        "away": 0.22069153509642037
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6976804680611822,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6976804680611822,
+        "draw": 0.16924112466486838,
+        "away": 0.13307840727394946
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6814852427010146,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16031984938524774,
+        "draw": 0.1581949079137376,
+        "away": 0.6814852427010146
+      },
+      "score": "0-6"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6949254497330696,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6949254497330696,
+        "draw": 0.14918886725763225,
+        "away": 0.15588568300929825
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4755955213475681,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4755955213475681,
+        "draw": 0.2747183832788906,
+        "away": 0.2496860953735414
+      },
+      "score": "5-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6790239349719523,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15601711339200547,
+        "draw": 0.16495895163604216,
+        "away": 0.6790239349719523
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7324219965590029,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7324219965590029,
+        "draw": 0.15074481781233914,
+        "away": 0.11683318562865805
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6589736565221533,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16953939025669942,
+        "draw": 0.17148695322114715,
+        "away": 0.6589736565221533
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5201835361277409,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5201835361277409,
+        "draw": 0.19631137503522547,
+        "away": 0.2835050888370336
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5974439772982145,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5974439772982145,
+        "draw": 0.16205980937717984,
+        "away": 0.24049621332460555
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Leicester",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6430489615344165,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6430489615344165,
+        "draw": 0.17362784948144558,
+        "away": 0.18332318898413794
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4625973561033063,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4625973561033063,
+        "draw": 0.24550443576321798,
+        "away": 0.2918982081334757
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "West Ham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6680773668540092,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6680773668540092,
+        "draw": 0.18705989592774036,
+        "away": 0.14486273721825052
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Manchester United",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4161819426723615,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4161819426723615,
+        "draw": 0.26689835345546725,
+        "away": 0.3169197038721712
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.32040968918608514,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32773517437858346,
+        "draw": 0.32040968918608514,
+        "away": 0.3518551364353313
+      },
+      "score": "7-0"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5047660890450688,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5047660890450688,
+        "draw": 0.2021717885562651,
+        "away": 0.2930621223986662
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.43934075085985014,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.33073985776556475,
+        "draw": 0.22991939137458514,
+        "away": 0.43934075085985014
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6297831825472525,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6297831825472525,
+        "draw": 0.21416676477123364,
+        "away": 0.15605005268151395
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Southampton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49835745074043675,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49835745074043675,
+        "draw": 0.25063754122728915,
+        "away": 0.251005008032274
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.6668047720586247,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17416035487210346,
+        "draw": 0.15903487306927183,
+        "away": 0.6668047720586247
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.598208532642011,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.598208532642011,
+        "draw": 0.1855262968411412,
+        "away": 0.21626517051684782
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5346247578486188,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5346247578486188,
+        "draw": 0.19610815446422297,
+        "away": 0.26926708768715824
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.588246567313453,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.588246567313453,
+        "draw": 0.21323756722367807,
+        "away": 0.19851586546286892
+      },
+      "score": "5-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6876894798165343,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6876894798165343,
+        "draw": 0.16263091863168314,
+        "away": 0.14967960155178262
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Liverpool",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.38961884122656537,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33479590715471574,
+        "draw": 0.275585251618719,
+        "away": 0.38961884122656537
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4537322473931871,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3308963516309403,
+        "draw": 0.21537140097587273,
+        "away": 0.4537322473931871
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7066640008072439,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.14101293937461357,
+        "draw": 0.15232305981814262,
+        "away": 0.7066640008072439
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5746218821478152,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5746218821478152,
+        "draw": 0.2015193769687478,
+        "away": 0.2238587408834371
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6316815630772373,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18566610939034936,
+        "draw": 0.18265232753241334,
+        "away": 0.6316815630772373
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3897352827380236,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.30598964233371845,
+        "draw": 0.3897352827380236,
+        "away": 0.30427507492825784
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.619459941719581,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.619459941719581,
+        "draw": 0.2023286482667025,
+        "away": 0.1782114100137164
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.671610419582353,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.671610419582353,
+        "draw": 0.19143928013759812,
+        "away": 0.13695030028004881
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4114141613883879,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4114141613883879,
+        "draw": 0.22000351377921898,
+        "away": 0.3685823248323931
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7078292646480547,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7078292646480547,
+        "draw": 0.16230524730594906,
+        "away": 0.1298654880459962
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.399061087990758,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.37327487201991705,
+        "draw": 0.22766403998932502,
+        "away": 0.399061087990758
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Liverpool",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5291146021089307,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5291146021089307,
+        "draw": 0.23378976857664777,
+        "away": 0.23709562931442155
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5278317177156638,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22611121219246821,
+        "draw": 0.246057070091868,
+        "away": 0.5278317177156638
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3028488826284057,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.38267752723052706,
+        "draw": 0.3028488826284057,
+        "away": 0.31447359014106724
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6643131886946874,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6643131886946874,
+        "draw": 0.16056423246959453,
+        "away": 0.17512257883571805
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5494308628079113,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5494308628079113,
+        "draw": 0.20586232625723794,
+        "away": 0.2447068109348507
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6730690844589838,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17047458860903456,
+        "draw": 0.15645632693198153,
+        "away": 0.6730690844589838
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.7444840078774947,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7444840078774947,
+        "draw": 0.13388550949749312,
+        "away": 0.12163048262501222
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5802536705005513,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23026205688377793,
+        "draw": 0.1894842726156707,
+        "away": 0.5802536705005513
+      },
+      "score": "1-4"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5864534930771297,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5864534930771297,
+        "draw": 0.21005219663890812,
+        "away": 0.20349431028396206
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.616387772757911,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.616387772757911,
+        "draw": 0.1605192416776827,
+        "away": 0.2230929855644063
+      },
+      "score": "4-3"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5692714437065238,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5692714437065238,
+        "draw": 0.17573620181333174,
+        "away": 0.2549923544801443
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47932330263509637,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26865082613417335,
+        "draw": 0.25202587123073017,
+        "away": 0.47932330263509637
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Bournemouth",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5404677180910539,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5404677180910539,
+        "draw": 0.19709264583722966,
+        "away": 0.2624396360717165
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5055396834680852,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2699575767067377,
+        "draw": 0.22450273982517716,
+        "away": 0.5055396834680852
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7335626635209086,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7335626635209086,
+        "draw": 0.1378834769162733,
+        "away": 0.12855385956281798
+      },
+      "score": "4-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7064759565089571,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7064759565089571,
+        "draw": 0.16702643492071828,
+        "away": 0.1264976085703245
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5433319344542322,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.28477597716236114,
+        "draw": 0.17189208838340653,
+        "away": 0.5433319344542322
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4858492667416375,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4858492667416375,
+        "draw": 0.24421144908573572,
+        "away": 0.2699392841726267
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5749498742897623,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23587510469911055,
+        "draw": 0.18917502101112724,
+        "away": 0.5749498742897623
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5981998246537579,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5981998246537579,
+        "draw": 0.20736741056164337,
+        "away": 0.19443276478459862
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5795290646326329,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5795290646326329,
+        "draw": 0.24197725186411526,
+        "away": 0.1784936835032519
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.503809819409743,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27271128299746833,
+        "draw": 0.22347889759278863,
+        "away": 0.503809819409743
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7304253318591338,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7304253318591338,
+        "draw": 0.15294931581624602,
+        "away": 0.11662535232462007
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4774109315522935,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4774109315522935,
+        "draw": 0.23098237889014062,
+        "away": 0.29160668955756597
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.685876213365889,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.685876213365889,
+        "draw": 0.1745547951526627,
+        "away": 0.1395689914814481
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4648145162536049,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.33532682776359685,
+        "draw": 0.1998586559827982,
+        "away": 0.4648145162536049
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Everton",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4458599492941376,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23565742973788062,
+        "draw": 0.3184826209679818,
+        "away": 0.4458599492941376
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.40052239163273573,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40052239163273573,
+        "draw": 0.28318874583322357,
+        "away": 0.31628886253404054
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7327118396361318,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7327118396361318,
+        "draw": 0.14970644552869186,
+        "away": 0.11758171483517631
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.45144597600094727,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3278427621388705,
+        "draw": 0.22071126186018233,
+        "away": 0.45144597600094727
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4473120065189893,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.29969137121616496,
+        "draw": 0.2529966222648458,
+        "away": 0.4473120065189893
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.508551690152361,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2971226024591973,
+        "draw": 0.1943257073884417,
+        "away": 0.508551690152361
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "West Ham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5899144242610026,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5899144242610026,
+        "draw": 0.2243905936846118,
+        "away": 0.18569498205438562
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Brighton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6007060701896343,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6007060701896343,
+        "draw": 0.19490404525050897,
+        "away": 0.20438988455985677
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.545122658593953,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2279846815048357,
+        "draw": 0.22689265990121138,
+        "away": 0.545122658593953
+      },
+      "score": "2-4"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.47988586059171473,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47988586059171473,
+        "draw": 0.24227604497235355,
+        "away": 0.2778380944359316
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5437690550712259,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5437690550712259,
+        "draw": 0.22998996327410437,
+        "away": 0.22624098165466974
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6377970057556765,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6377970057556765,
+        "draw": 0.19420790170354635,
+        "away": 0.16799509254077713
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Manchester United",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5838950206136823,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.21553463426235403,
+        "draw": 0.20057034512396368,
+        "away": 0.5838950206136823
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.28895824543695453,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3656311295991936,
+        "draw": 0.28895824543695453,
+        "away": 0.3454106249638518
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6631560876500641,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6631560876500641,
+        "draw": 0.19951769096941505,
+        "away": 0.13732622138052092
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.39221324314947587,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.39221324314947587,
+        "draw": 0.22783877033877908,
+        "away": 0.37994798651174494
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Brentford",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.530081764055313,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.530081764055313,
+        "draw": 0.23557931258523676,
+        "away": 0.2343389233594503
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Ipswich",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.697559113702276,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.697559113702276,
+        "draw": 0.16835953314973756,
+        "away": 0.13408135314798644
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5866450390063024,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.20211583117441984,
+        "draw": 0.21123912981927784,
+        "away": 0.5866450390063024
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.749259415976836,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.749259415976836,
+        "draw": 0.14114967477986434,
+        "away": 0.10959090924329978
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47687418603109116,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.31679887696591985,
+        "draw": 0.206326937002989,
+        "away": 0.47687418603109116
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6414133911571739,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6414133911571739,
+        "draw": 0.1863462003016973,
+        "away": 0.1722404085411287
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6477192481567164,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6477192481567164,
+        "draw": 0.1743205612224413,
+        "away": 0.17796019062084226
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5192307421535445,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28753020416208397,
+        "draw": 0.1932390536843716,
+        "away": 0.5192307421535445
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3649530654071804,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.30967695457248995,
+        "draw": 0.3649530654071804,
+        "away": 0.32536998002032963
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4274134800888455,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4274134800888455,
+        "draw": 0.24971661968926026,
+        "away": 0.32286990022189427
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.41458005810866855,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.321432034629058,
+        "draw": 0.26398790726227345,
+        "away": 0.41458005810866855
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Nottingham Forest",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6061876792135027,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6061876792135027,
+        "draw": 0.24320318100524815,
+        "away": 0.15060913978124912
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Liverpool",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4402187826987688,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3027435977200625,
+        "draw": 0.2570376195811688,
+        "away": 0.4402187826987688
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7034802021193705,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7034802021193705,
+        "draw": 0.1506561630491166,
+        "away": 0.14586363483151285
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Chelsea",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3933366668603123,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3320177358923607,
+        "draw": 0.2746455972473268,
+        "away": 0.3933366668603123
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.3952265025063652,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.34361756765835155,
+        "draw": 0.2611559298352833,
+        "away": 0.3952265025063652
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5698954350532427,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2085300171555425,
+        "draw": 0.2215745477912149,
+        "away": 0.5698954350532427
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Crystal Palace",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5777983149242564,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5777983149242564,
+        "draw": 0.2594921416835771,
+        "away": 0.16270954339216656
+      },
+      "score": "5-2"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.706227018955542,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.13791375291457392,
+        "draw": 0.15585922812988398,
+        "away": 0.706227018955542
+      },
+      "score": "0-3"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Leicester",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6569167710498591,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6569167710498591,
+        "draw": 0.20054767709606505,
+        "away": 0.1425355518540759
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4108789242257297,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4108789242257297,
+        "draw": 0.23526885609708365,
+        "away": 0.3538522196771867
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Brentford",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6856632253253164,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6856632253253164,
+        "draw": 0.1758801207471738,
+        "away": 0.13845665392750964
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.341689155883707,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2859497434074437,
+        "draw": 0.341689155883707,
+        "away": 0.37236110070884915
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7119369081497372,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7119369081497372,
+        "draw": 0.13895614100496972,
+        "away": 0.14910695084529293
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.7263581126554352,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7263581126554352,
+        "draw": 0.1559181784296125,
+        "away": 0.11772370891495244
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5576422822668771,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5576422822668771,
+        "draw": 0.1803981983925058,
+        "away": 0.26195951934061723
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5307945232757398,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5307945232757398,
+        "draw": 0.2126616530467924,
+        "away": 0.25654382367746764
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Crystal Palace",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5352721596173451,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5352721596173451,
+        "draw": 0.2460440534694227,
+        "away": 0.2186837869132321
+      },
+      "score": "5-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4122690586420352,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.36598775339163303,
+        "draw": 0.2217431879663318,
+        "away": 0.4122690586420352
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Southampton",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6389432646314235,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6389432646314235,
+        "draw": 0.2112821039555108,
+        "away": 0.14977463141306563
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Bournemouth",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4228942221729431,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4228942221729431,
+        "draw": 0.31924157463138114,
+        "away": 0.2578642031956758
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Brighton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.46428116396390456,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.46428116396390456,
+        "draw": 0.26152480291433855,
+        "away": 0.27419403312175694
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6265141400695469,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6265141400695469,
+        "draw": 0.1934629575635699,
+        "away": 0.18002290236688331
+      },
+      "score": "4-1"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Wolves",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6686801220051355,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6686801220051355,
+        "draw": 0.1818803230888519,
+        "away": 0.14943955490601268
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.44488867277232336,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3694177133914536,
+        "draw": 0.18569361383622315,
+        "away": 0.44488867277232336
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7007255425295138,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.13744690127043288,
+        "draw": 0.16182755620005335,
+        "away": 0.7007255425295138
+      },
+      "score": "0-4"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6611887240679488,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1715563102810397,
+        "draw": 0.16725496565101144,
+        "away": 0.6611887240679488
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4823701373637608,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4823701373637608,
+        "draw": 0.23903701169902156,
+        "away": 0.2785928509372175
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5354963559864189,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5354963559864189,
+        "draw": 0.196270101744232,
+        "away": 0.26823354226934915
+      },
+      "score": "2-1"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.7205358310501081,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.7205358310501081,
+        "draw": 0.14248098721989017,
+        "away": 0.1369831817300018
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Everton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6093016359417979,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6093016359417979,
+        "draw": 0.19246022889269127,
+        "away": 0.1982381351655107
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7152463199450104,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7152463199450104,
+        "draw": 0.1588281990420567,
+        "away": 0.12592548101293294
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5531887794243355,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5531887794243355,
+        "draw": 0.24444882838837947,
+        "away": 0.2023623921872851
+      },
+      "score": "3-0"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.619233035596762,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17532805902179224,
+        "draw": 0.20543890538144563,
+        "away": 0.619233035596762
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "West Ham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5961785235570265,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5961785235570265,
+        "draw": 0.22181924101302206,
+        "away": 0.18200223542995142
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Manchester United",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4231529777519504,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4231529777519504,
+        "draw": 0.26653740759651057,
+        "away": 0.31030961465153895
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6696999563328815,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6696999563328815,
+        "draw": 0.16518209306822051,
+        "away": 0.16511795059889806
+      },
+      "score": "5-1"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4770882896668742,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4770882896668742,
+        "draw": 0.2424126477596429,
+        "away": 0.28049906257348284
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.7253603524007255,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.7253603524007255,
+        "draw": 0.15398573510896446,
+        "away": 0.12065391249030993
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Fulham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6441698640043967,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6441698640043967,
+        "draw": 0.18664675308867046,
+        "away": 0.169183382906933
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Ipswich",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6887698637431686,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6887698637431686,
+        "draw": 0.1711593089880538,
+        "away": 0.14007082726877762
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5547980014674654,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5547980014674654,
+        "draw": 0.2550462091046146,
+        "away": 0.19015578942792005
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Bournemouth",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6772877330399424,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6772877330399424,
+        "draw": 0.1847573027663176,
+        "away": 0.13795496419374012
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Tottenham",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3887026802900002,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.34764275687437346,
+        "draw": 0.3887026802900002,
+        "away": 0.26365456283562644
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4807979774995313,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4807979774995313,
+        "draw": 0.2409124271042715,
+        "away": 0.27828959539619724
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.27494053388061207,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36726838288064817,
+        "draw": 0.27494053388061207,
+        "away": 0.35779108323873965
+      },
+      "score": "4-3"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Liverpool",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.47902124693109177,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.47902124693109177,
+        "draw": 0.2350354815606984,
+        "away": 0.2859432715082098
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Nottingham Forest",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4887137873422529,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4887137873422529,
+        "draw": 0.26338730417170586,
+        "away": 0.24789890848604115
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5220097882167388,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5220097882167388,
+        "draw": 0.21053408018122904,
+        "away": 0.26745613160203224
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47657876693749285,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2542171335079336,
+        "draw": 0.2692040995545734,
+        "away": 0.47657876693749285
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6821139444285098,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.14207613660837876,
+        "draw": 0.17580991896311132,
+        "away": 0.6821139444285098
+      },
+      "score": "0-0"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "Brentford",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.574059147312892,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2070226268220202,
+        "draw": 0.21891822586508786,
+        "away": 0.574059147312892
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Aston Villa",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.3964479196594481,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3622756011770984,
+        "draw": 0.24127647916345354,
+        "away": 0.3964479196594481
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4276191867048376,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4276191867048376,
+        "draw": 0.23625928236878152,
+        "away": 0.3361215309263809
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6455594459771549,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6455594459771549,
+        "draw": 0.16697022123161456,
+        "away": 0.18747033279123054
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Crystal Palace",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4597928028963044,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4597928028963044,
+        "draw": 0.25870136398368,
+        "away": 0.2815058331200157
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Leicester",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6432109774032464,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6432109774032464,
+        "draw": 0.17349245947158334,
+        "away": 0.1832965631251703
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Arsenal",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39178283127278374,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39178283127278374,
+        "draw": 0.24463962649631807,
+        "away": 0.3635775422308983
+      },
+      "score": "2-2"
+    },
+    {
+      "home_team": "Aston Villa",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6594194013307549,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6594194013307549,
+        "draw": 0.19686483651956665,
+        "away": 0.14371576214967852
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Manchester United",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5780684638616295,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5780684638616295,
+        "draw": 0.19093958991590493,
+        "away": 0.23099194622246544
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Everton",
+      "away_team": "Southampton",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6892675426688145,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6892675426688145,
+        "draw": 0.18981829068444636,
+        "away": 0.12091416664673915
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "West Ham",
+      "away_team": "Nottingham Forest",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3348225778697066,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3245013329826708,
+        "draw": 0.3348225778697066,
+        "away": 0.3406760891476227
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Leicester",
+      "away_team": "Ipswich",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.48688020802778664,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.48688020802778664,
+        "draw": 0.2894971193493334,
+        "away": 0.22362267262288002
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Brentford",
+      "away_team": "Fulham",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49664772216598235,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49664772216598235,
+        "draw": 0.21578590496660105,
+        "away": 0.2875663728674166
+      },
+      "score": "2-3"
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6637691232974391,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6637691232974391,
+        "draw": 0.18927156140481624,
+        "away": 0.14695931529774456
+      },
+      "score": "1-0"
+    },
+    {
+      "home_team": "Brighton",
+      "away_team": "Liverpool",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.46453166553165937,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.30089307660535414,
+        "draw": 0.23457525786298655,
+        "away": 0.46453166553165937
+      },
+      "score": "3-2"
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Bournemouth",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6058657501678038,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6058657501678038,
+        "draw": 0.22676550549245775,
+        "away": 0.16736874433973853
+      },
+      "score": "3-1"
+    },
+    {
+      "home_team": "Crystal Palace",
+      "away_team": "Wolves",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.59863600573424,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.59863600573424,
+        "draw": 0.21931967059284696,
+        "away": 0.1820443236729131
+      },
+      "score": "4-2"
+    },
+    {
+      "home_team": "Manchester United",
+      "away_team": "Aston Villa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.40949258076378525,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.40949258076378525,
+        "draw": 0.2143847354944642,
+        "away": 0.3761226837417504
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Everton",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5046253622668436,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5046253622668436,
+        "draw": 0.20946117579852638,
+        "away": 0.28591346193463
+      },
+      "score": "0-1"
+    },
+    {
+      "home_team": "Bournemouth",
+      "away_team": "Leicester",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.656626668352804,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.656626668352804,
+        "draw": 0.1989920361266887,
+        "away": 0.14438129552050732
+      },
+      "score": "2-0"
+    },
+    {
+      "home_team": "Fulham",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48822225847276773,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3137674523868325,
+        "draw": 0.1980102891403996,
+        "away": 0.48822225847276773
+      },
+      "score": "0-2"
+    },
+    {
+      "home_team": "Wolves",
+      "away_team": "Brentford",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3466780154166058,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24461117304870617,
+        "draw": 0.3466780154166058,
+        "away": 0.4087108115346879
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Crystal Palace",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.591968668446223,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.591968668446223,
+        "draw": 0.23501949393668334,
+        "away": 0.1730118376170938
+      },
+      "score": "1-1"
+    },
+    {
+      "home_team": "Southampton",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.7274180623728849,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1297666388671518,
+        "draw": 0.14281529875996335,
+        "away": 0.7274180623728849
+      },
+      "score": "1-2"
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Brighton",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4534658543606547,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.352950839567023,
+        "draw": 0.1935833060723223,
+        "away": 0.4534658543606547
+      },
+      "score": "1-4"
+    },
+    {
+      "home_team": "Ipswich",
+      "away_team": "West Ham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5568709544500245,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24550076147133043,
+        "draw": 0.1976282840786451,
+        "away": 0.5568709544500245
+      },
+      "score": "1-3"
+    },
+    {
+      "home_team": "Nottingham Forest",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30782230687769135,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32053108931940666,
+        "draw": 0.30782230687769135,
+        "away": 0.37164660380290204
+      },
+      "score": "0-1"
+    }
+  ]
+}

@@ -1,0 +1,3476 @@
+{
+  "league": "Serie A (Ita)",
+  "season": [
+    2024,
+    2025
+  ],
+  "period": {
+    "start": "2025-05-31",
+    "end": "2026-02-04"
+  },
+  "statistics": {
+    "total_matches": 230,
+    "correct_predictions": 128,
+    "accuracy": 55.65217391304348,
+    "home_accuracy": 80.68181818181817,
+    "draw_accuracy": 3.076923076923077,
+    "away_accuracy": 71.42857142857143,
+    "value_bets": 124,
+    "value_bets_accuracy": 64.51612903225806,
+    "roi_flat_pct": null,
+    "roi_value_bets_pct": null,
+    "matches_with_odds": 0
+  },
+  "results": [
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5785541450353636,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18592415667832676,
+        "draw": 0.2355216982863096,
+        "away": 0.5785541450353636
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Lecce",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.49078445257236814,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49078445257236814,
+        "draw": 0.28823925316397714,
+        "away": 0.22097629426365464
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Cremonese",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6220334037606429,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6220334037606429,
+        "draw": 0.22973189826355395,
+        "away": 0.1482346979758032
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Bologna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5511456182042015,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5511456182042015,
+        "draw": 0.2529866111352709,
+        "away": 0.1958677706605276
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Fiorentina",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.42791540378459464,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27896900183498485,
+        "draw": 0.2931155943804205,
+        "away": 0.42791540378459464
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Lazio",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5613451387799946,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5613451387799946,
+        "draw": 0.2416716658520518,
+        "away": 0.19698319536795367
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Parma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6009949235342382,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6009949235342382,
+        "draw": 0.2341174982015727,
+        "away": 0.1648875782641892
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6102441401050896,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6102441401050896,
+        "draw": 0.2316210448336039,
+        "away": 0.15813481506130647
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Hellas Verona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5446322924811219,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5446322924811219,
+        "draw": 0.26281475512442426,
+        "away": 0.19255295239445377
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Torino",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6093396416704316,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6093396416704316,
+        "draw": 0.24037356386773442,
+        "away": 0.1502867944618339
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Sassuolo",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.46430079848311195,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26261900746505185,
+        "draw": 0.27308019405183626,
+        "away": 0.46430079848311195
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6161139280464565,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1659373855427514,
+        "draw": 0.21794868641079204,
+        "away": 0.6161139280464565
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Como",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4725558960720002,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26421610065632684,
+        "draw": 0.263228003271673,
+        "away": 0.4725558960720002
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Atalanta",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5624873803467315,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18813281936602172,
+        "draw": 0.24937980028724696,
+        "away": 0.5624873803467315
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Cagliari",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.614463639333866,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.614463639333866,
+        "draw": 0.230157747870913,
+        "away": 0.15537861279522108
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5970952216915418,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17472676631694192,
+        "draw": 0.2281780119915163,
+        "away": 0.5970952216915418
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4815291889969127,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2595848358605246,
+        "draw": 0.2588859751425626,
+        "away": 0.4815291889969127
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Fiorentina",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.38885417071004463,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.38885417071004463,
+        "draw": 0.3100743443753634,
+        "away": 0.3010714849145919
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5775818738290296,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5775818738290296,
+        "draw": 0.2512386990752307,
+        "away": 0.17117942709573972
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Udinese",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.6081264670823597,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6081264670823597,
+        "draw": 0.24037356386773442,
+        "away": 0.1514999690499058
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Parma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.36907703703035727,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.36907703703035727,
+        "draw": 0.309579814354381,
+        "away": 0.32134314861526164
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Inter",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47546327101096764,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26520966431284637,
+        "draw": 0.25932706467618605,
+        "away": 0.47546327101096764
+      },
+      "score": "4-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5693606533022325,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19123929811371626,
+        "draw": 0.23940004858405123,
+        "away": 0.5693606533022325
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Torino",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5872044408508903,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5872044408508903,
+        "draw": 0.238966349023457,
+        "away": 0.17382921012565264
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5928092442538636,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5928092442538636,
+        "draw": 0.2369832640531266,
+        "away": 0.17020749169300994
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Udinese",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.460990800987737,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26424988646273545,
+        "draw": 0.2747593125495276,
+        "away": 0.460990800987737
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Lazio",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30821371812934895,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3384260415257297,
+        "draw": 0.30821371812934895,
+        "away": 0.3533602403449213
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Bologna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5712617888770453,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5712617888770453,
+        "draw": 0.23812517911330092,
+        "away": 0.19061303200965377
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Cremonese",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3540286845633433,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3540286845633433,
+        "draw": 0.2950009444922571,
+        "away": 0.35097037094439965
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Genoa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5865541884570575,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5865541884570575,
+        "draw": 0.2391977909553012,
+        "away": 0.17424802058764116
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Cagliari",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4212342709309385,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4212342709309385,
+        "draw": 0.2984530334091982,
+        "away": 0.2803126956598632
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Genoa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4317490082787714,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4317490082787714,
+        "draw": 0.3012410474514712,
+        "away": 0.2670099442697575
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Juventus",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6257336113016441,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1565548033705085,
+        "draw": 0.21771158532784748,
+        "away": 0.6257336113016441
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5968214474571133,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1748960283922164,
+        "draw": 0.2282825241506702,
+        "away": 0.5968214474571133
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.41509976700046286,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3009421684295721,
+        "draw": 0.2839580645699651,
+        "away": 0.41509976700046286
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Atalanta",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5053717402815195,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24621537077590505,
+        "draw": 0.24841288894257538,
+        "away": 0.5053717402815195
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Parma",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4194959496909563,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.29912485609575407,
+        "draw": 0.2813791942132896,
+        "away": 0.4194959496909563
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Como",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4846963178758171,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25789181584011417,
+        "draw": 0.25741186628406876,
+        "away": 0.4846963178758171
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Sassuolo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6070281652915087,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6070281652915087,
+        "draw": 0.24037356386773448,
+        "away": 0.152598270840757
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Pisa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6216922496414214,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6216922496414214,
+        "draw": 0.22973189826355395,
+        "away": 0.14857585209502475
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Cremonese",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6210720261708774,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6210720261708774,
+        "draw": 0.22973189826355395,
+        "away": 0.14919607556556871
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Atalanta",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4503206689305488,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4503206689305488,
+        "draw": 0.2670163373226186,
+        "away": 0.2826629937468326
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6365457064035991,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15278536352086916,
+        "draw": 0.2106689300755316,
+        "away": 0.6365457064035991
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Udinese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4071780756651907,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4071780756651907,
+        "draw": 0.3003613518182319,
+        "away": 0.2924605725165773
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6119714222262499,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6119714222262499,
+        "draw": 0.24072021399459037,
+        "away": 0.14730836377915973
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Fiorentina",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.46490005715672483,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26231961089582756,
+        "draw": 0.2727803319474477,
+        "away": 0.46490005715672483
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Bologna",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.467746321751517,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26658746225813423,
+        "draw": 0.2656662159903488,
+        "away": 0.467746321751517
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45557358394576597,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45557358394576597,
+        "draw": 0.26566803168234293,
+        "away": 0.27875838437189115
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Torino",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.37875403810995945,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.37875403810995945,
+        "draw": 0.3006297088363487,
+        "away": 0.32061625305369185
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Lazio",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30311041118833537,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3470119023812067,
+        "draw": 0.30311041118833537,
+        "away": 0.3498776864304578
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Sassuolo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4899854895409576,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2550028887786512,
+        "draw": 0.2550116216803912,
+        "away": 0.4899854895409576
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Torino",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4797891402081264,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4797891402081264,
+        "draw": 0.2927857173168881,
+        "away": 0.22742514247498544
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Lecce",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4431679240035015,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4431679240035015,
+        "draw": 0.29540161104271495,
+        "away": 0.2614304649537835
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6323173836222352,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6323173836222352,
+        "draw": 0.22973189826355395,
+        "away": 0.13795071811421084
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Como",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.42062850729477264,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.42062850729477264,
+        "draw": 0.2821401132523121,
+        "away": 0.2972313794529153
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Cagliari",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.47036938893910557,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47036938893910557,
+        "draw": 0.2968879714493733,
+        "away": 0.23274263961152108
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Pisa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5708438005495033,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5708438005495033,
+        "draw": 0.2536456265571362,
+        "away": 0.1755105728933605
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4624252046324746,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2691103539621318,
+        "draw": 0.2684644414053936,
+        "away": 0.4624252046324746
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Genoa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5755718506085309,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5755718506085309,
+        "draw": 0.25075380919877566,
+        "away": 0.1736743401926935
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "AC Milan",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36457304777116023,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36457304777116023,
+        "draw": 0.28904549239579963,
+        "away": 0.34638145983304025
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Hellas Verona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4394496872790829,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4394496872790829,
+        "draw": 0.2811553361497412,
+        "away": 0.2793949765711759
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Sassuolo",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4190892962887034,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.29929697717663256,
+        "draw": 0.28161372653466393,
+        "away": 0.4190892962887034
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5916059574868638,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17809992576636155,
+        "draw": 0.2302941167467746,
+        "away": 0.5916059574868638
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5070561313657199,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2488631767029577,
+        "draw": 0.24408069193132242,
+        "away": 0.5070561313657199
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Juventus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.46848598659456936,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.46848598659456936,
+        "draw": 0.2596404326621546,
+        "away": 0.2718735807432762
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Bologna",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48332902885226064,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24425450382056407,
+        "draw": 0.27241646732717517,
+        "away": 0.48332902885226064
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Parma",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.47690832621389956,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47690832621389956,
+        "draw": 0.2940183639164107,
+        "away": 0.22907330986968982
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Lazio",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5354043706425495,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5354043706425495,
+        "draw": 0.25172496363750585,
+        "away": 0.21287066571994456
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5922310180184736,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5922310180184736,
+        "draw": 0.23718694730113157,
+        "away": 0.1705820346803948
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Udinese",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4611407009649182,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26417688306656606,
+        "draw": 0.2746824159685157,
+        "away": 0.4611407009649182
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6233230798681266,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6233230798681266,
+        "draw": 0.22973189826355395,
+        "away": 0.14694502186831943
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.464621706552698,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.464621706552698,
+        "draw": 0.29949993450068896,
+        "away": 0.23587835894661294
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Como",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.564851511041053,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1867325586425427,
+        "draw": 0.24841593031640435,
+        "away": 0.564851511041053
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Inter",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.45571000648815085,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27212741757746717,
+        "draw": 0.2721625759343819,
+        "away": 0.45571000648815085
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Atalanta",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6133947107616238,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.16448249885976549,
+        "draw": 0.22212279037861066,
+        "away": 0.6133947107616238
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Genoa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.36767022385674936,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.36767022385674936,
+        "draw": 0.30690360790860804,
+        "away": 0.32542616823464254
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.472170347389087,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26440920440176024,
+        "draw": 0.2634204482091527,
+        "away": 0.472170347389087
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Cagliari",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.38653322854908195,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32397939665614417,
+        "draw": 0.2894873747947739,
+        "away": 0.38653322854908195
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Bologna",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3582568644244206,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3582568644244206,
+        "draw": 0.2969495524919922,
+        "away": 0.34479358308358704
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Juventus",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4672086556511478,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26684733889083373,
+        "draw": 0.2659440054580184,
+        "away": 0.4672086556511478
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6149185346908507,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1666962045476696,
+        "draw": 0.21838526076147963,
+        "away": 0.6149185346908507
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "AC Milan",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.35904968231299433,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33833373605064715,
+        "draw": 0.3026165816363585,
+        "away": 0.35904968231299433
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Udinese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5910227001436767,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5910227001436767,
+        "draw": 0.2376132173203143,
+        "away": 0.17136408253600893
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Parma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5951411734083291,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5951411734083291,
+        "draw": 0.23616369161047912,
+        "away": 0.16869513498119182
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.624785554021525,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.624785554021525,
+        "draw": 0.22973189826355395,
+        "away": 0.14548254771492108
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Cremonese",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5568214700513051,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5568214700513051,
+        "draw": 0.2587893797150212,
+        "away": 0.18438915023367378
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Torino",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4788261926488617,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4788261926488617,
+        "draw": 0.2931956959137035,
+        "away": 0.2279781114374348
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6067626888974749,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6067626888974749,
+        "draw": 0.24037356386773442,
+        "away": 0.15286374723479074
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Sassuolo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.42734046166598183,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2794119239889636,
+        "draw": 0.29324761434505453,
+        "away": 0.42734046166598183
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Lazio",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5292322457239879,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.22168187261632938,
+        "draw": 0.24908588165968287,
+        "away": 0.5292322457239879
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Atalanta",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5095056228016335,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.24376991603479659,
+        "draw": 0.24672446116356994,
+        "away": 0.5095056228016335
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Como",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4671715355653733,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4671715355653733,
+        "draw": 0.2780596994573816,
+        "away": 0.25476876497724504
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6120169218864665,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16535974244932733,
+        "draw": 0.22262333566420617,
+        "away": 0.6120169218864665
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6599358504467024,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1354065565860439,
+        "draw": 0.2046575929672536,
+        "away": 0.6599358504467024
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Lecce",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.49180417099997925,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49180417099997925,
+        "draw": 0.2878292582896135,
+        "away": 0.22036657071040724
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5117966369691372,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5117966369691372,
+        "draw": 0.2728595810686261,
+        "away": 0.21534378196223652
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Bologna",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.439561553713683,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2737166204627699,
+        "draw": 0.286721825823547,
+        "away": 0.439561553713683
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "AS Roma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5093490860871445,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5093490860871445,
+        "draw": 0.27270479197793596,
+        "away": 0.21794612193491966
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Genoa",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.37883231821779023,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.37883231821779023,
+        "draw": 0.30514395621152407,
+        "away": 0.3160237255706857
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Cagliari",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5557562167549792,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5557562167549792,
+        "draw": 0.25918914513755537,
+        "away": 0.1850546381074654
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3991842987014981,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3991842987014981,
+        "draw": 0.2913467472892383,
+        "away": 0.30946895400926366
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Hellas Verona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.49882695160387047,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49882695160387047,
+        "draw": 0.27818407915841864,
+        "away": 0.22298896923771075
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Cagliari",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6156943948030128,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6156943948030128,
+        "draw": 0.22973189826355395,
+        "away": 0.15457370693343328
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Torino",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5935186636770818,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5935186636770818,
+        "draw": 0.2367336248733911,
+        "away": 0.1697477114495269
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "AC Milan",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5941276919573685,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1765557985408141,
+        "draw": 0.22931650950181734,
+        "away": 0.5941276919573685
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Sassuolo",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5676970341244718,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5676970341244718,
+        "draw": 0.24607472616573042,
+        "away": 0.1862282397097978
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Fiorentina",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.41628294114995174,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.41628294114995174,
+        "draw": 0.3007790997404021,
+        "away": 0.28293795910964614
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5384908395737019,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.21988405122101978,
+        "draw": 0.24162510920527838,
+        "away": 0.5384908395737019
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Udinese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5845624920461479,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5845624920461479,
+        "draw": 0.23990865671762346,
+        "away": 0.1755288512362286
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Lazio",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5836382522676398,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5836382522676398,
+        "draw": 0.24138516638225713,
+        "away": 0.17497658135010308
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Genoa",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43280292262087317,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27707612069238813,
+        "draw": 0.29012095668673876,
+        "away": 0.43280292262087317
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Bologna",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.3607463284591736,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.33375423121803516,
+        "draw": 0.3054994403227912,
+        "away": 0.3607463284591736
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Juventus",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4804232340169765,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2601691741948152,
+        "draw": 0.25940759178820827,
+        "away": 0.4804232340169765
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Atalanta",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4696930324140835,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4696930324140835,
+        "draw": 0.27689220579423235,
+        "away": 0.25341476179168426
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Parma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4560607742543783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26652410639997687,
+        "draw": 0.2774151193456449,
+        "away": 0.4560607742543783
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5916425319068075,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17559681122215604,
+        "draw": 0.23276065687103642,
+        "away": 0.5916425319068075
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5323373817410026,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5323373817410026,
+        "draw": 0.2729948952278601,
+        "away": 0.19466772303113733
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5414024208840492,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5414024208840492,
+        "draw": 0.2493615950162112,
+        "away": 0.20923598409973962
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Como",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.563597874682479,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18747638593957874,
+        "draw": 0.24892573937794232,
+        "away": 0.563597874682479
+      },
+      "score": "1-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.553977045389841,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.553977045389841,
+        "draw": 0.25920777007630535,
+        "away": 0.18681518453385348
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Sassuolo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5906142209955878,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5906142209955878,
+        "draw": 0.2377575210206203,
+        "away": 0.1716282579837919
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5570311972470786,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5570311972470786,
+        "draw": 0.25188909196706044,
+        "away": 0.1910797107858609
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Udinese",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.301148473815945,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35048577298787503,
+        "draw": 0.301148473815945,
+        "away": 0.3483657531961799
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Cagliari",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6143121431036099,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6143121431036099,
+        "draw": 0.2302102972328699,
+        "away": 0.15547755966352012
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Lazio",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5638156325545773,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5638156325545773,
+        "draw": 0.24076143149178278,
+        "away": 0.1954229359536399
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Torino",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30770530974197563,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.33520835037030217,
+        "draw": 0.30770530974197563,
+        "away": 0.35708633988772204
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6534538320353269,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.141754958571787,
+        "draw": 0.204791209392886,
+        "away": 0.6534538320353269
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5670710025844422,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5670710025844422,
+        "draw": 0.2463095999156995,
+        "away": 0.18661939749985812
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4358545518421974,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.29528086292570593,
+        "draw": 0.26886458523209655,
+        "away": 0.4358545518421974
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Cremonese",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5675744216011439,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5675744216011439,
+        "draw": 0.2548270811265759,
+        "away": 0.17759849727228022
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4032718513414534,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4032718513414534,
+        "draw": 0.3023235517027642,
+        "away": 0.29440459695578236
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Como",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5535087165035723,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5535087165035723,
+        "draw": 0.24460639172317175,
+        "away": 0.2018848917732561
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Atalanta",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.626964723105698,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.15575788080492226,
+        "draw": 0.21727739608937968,
+        "away": 0.626964723105698
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.30665693641692787,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.34097770247036335,
+        "draw": 0.30665693641692787,
+        "away": 0.35236536111270866
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "AS Roma",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5713285509387199,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19011687891716947,
+        "draw": 0.23855457014411058,
+        "away": 0.5713285509387199
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Bologna",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.41683494772913726,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.41683494772913726,
+        "draw": 0.30051438274438835,
+        "away": 0.2826506695264744
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Juventus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4714281474935689,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4714281474935689,
+        "draw": 0.27609905551638814,
+        "away": 0.25247279699004294
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Parma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4193462177157642,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.299188324750163,
+        "draw": 0.2814654575340727,
+        "away": 0.4193462177157642
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Genoa",
+      "actual_result": "away",
+      "predicted_result": "draw",
+      "predicted_prob": 0.31588400045405907,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35997389303983657,
+        "draw": 0.31588400045405907,
+        "away": 0.32414210650610437
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5929377898441673,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1772856009738038,
+        "draw": 0.22977660918202886,
+        "away": 0.5929377898441673
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Pisa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4918271768194007,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4918271768194007,
+        "draw": 0.28053082138016344,
+        "away": 0.22764200180043584
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.507909675999022,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.507909675999022,
+        "draw": 0.2744218872268283,
+        "away": 0.2176684367741495
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Lazio",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4496487888313466,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26951718926733814,
+        "draw": 0.2808340219013152,
+        "away": 0.4496487888313466
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Cagliari",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5979428678167079,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5979428678167079,
+        "draw": 0.23590247510070625,
+        "away": 0.1661546570825857
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Sassuolo",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5927490070873287,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5927490070873287,
+        "draw": 0.23700447400400465,
+        "away": 0.17024651890866663
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5955154215047274,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.17570203833466794,
+        "draw": 0.22878254016060467,
+        "away": 0.5955154215047274
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Hellas Verona",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5685099546139133,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5685099546139133,
+        "draw": 0.2538223659821658,
+        "away": 0.17766767940392092
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6106071796035177,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1694204645065599,
+        "draw": 0.21997235588992237,
+        "away": 0.6106071796035177
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46822341857619176,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2663559601079832,
+        "draw": 0.2654206213158251,
+        "away": 0.46822341857619176
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Como",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3689582504475256,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3689582504475256,
+        "draw": 0.28684085666343806,
+        "away": 0.3442008928890363
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Cremonese",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.549933026078407,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.549933026078407,
+        "draw": 0.2664549993921155,
+        "away": 0.18361197452947758
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "AS Roma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49634783624816836,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49634783624816836,
+        "draw": 0.257583824369483,
+        "away": 0.2460683393823487
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.49096824094505914,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49096824094505914,
+        "draw": 0.27152748766250173,
+        "away": 0.2375042713924392
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Torino",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4151915372717289,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4151915372717289,
+        "draw": 0.30130528795881073,
+        "away": 0.2835031747694604
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Udinese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41683350302793637,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41683350302793637,
+        "draw": 0.2957251791597484,
+        "away": 0.28744131781231524
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Atalanta",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48327550465305286,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25865487001274795,
+        "draw": 0.2580696253341992,
+        "away": 0.48327550465305286
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3033630886689328,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.34657161895093525,
+        "draw": 0.3033630886689328,
+        "away": 0.35006529238013184
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Cagliari",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4746990664906911,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4746990664906911,
+        "draw": 0.29497643662575945,
+        "away": 0.2303244968835494
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Como",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6004848619752373,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1726226938469431,
+        "draw": 0.2268924441778195,
+        "away": 0.6004848619752373
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Lazio",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.37085438690330425,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32939480577909863,
+        "draw": 0.2997508073175971,
+        "away": 0.37085438690330425
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6118997509993055,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1654342609035874,
+        "draw": 0.22266598809710708,
+        "away": 0.6118997509993055
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.625634581337489,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.625634581337489,
+        "draw": 0.22973189826355395,
+        "away": 0.1446335203989571
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6288415186730185,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15777890271279035,
+        "draw": 0.21337957861419105,
+        "away": 0.6288415186730185
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Sassuolo",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4478239603472648,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4478239603472648,
+        "draw": 0.29331639732347486,
+        "away": 0.2588596423292604
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5025569524124686,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2519121078598307,
+        "draw": 0.2455309397277008,
+        "away": 0.5025569524124686
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Genoa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5676441720585979,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5676441720585979,
+        "draw": 0.25413679308721937,
+        "away": 0.17821903485418267
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6080478172349255,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1710277624117977,
+        "draw": 0.22092442035327683,
+        "away": 0.6080478172349255
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Udinese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5928132564283665,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5928132564283665,
+        "draw": 0.23698185140978337,
+        "away": 0.17020489216185006
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Parma",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4580732270683391,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4580732270683391,
+        "draw": 0.29243658106556797,
+        "away": 0.24949019186609292
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5603361887470627,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5603361887470627,
+        "draw": 0.25748016157757553,
+        "away": 0.1821836496753618
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Lecce",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6098879041509622,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6098879041509622,
+        "draw": 0.23102819559070809,
+        "away": 0.15908390025832989
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "AS Roma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4700027828099498,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4700027828099498,
+        "draw": 0.26933455606266526,
+        "away": 0.260662661127385
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Napoli",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4984330195423783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.250848246504696,
+        "draw": 0.25071873395292565,
+        "away": 0.4984330195423783
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5290152128125034,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5290152128125034,
+        "draw": 0.26622544619892724,
+        "away": 0.2047593409885693
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Torino",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47596077085475075,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25658447955982977,
+        "draw": 0.2674547495854195,
+        "away": 0.47596077085475075
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Bologna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5896443695985304,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5896443695985304,
+        "draw": 0.23929989177499741,
+        "away": 0.17105573862647216
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Como",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6152505513223051,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1632980646791945,
+        "draw": 0.22145138399850028,
+        "away": 0.6152505513223051
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5807051635954503,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18465566873304384,
+        "draw": 0.2346391676715058,
+        "away": 0.5807051635954503
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4899753426155683,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25500850127065355,
+        "draw": 0.2550161561137782,
+        "away": 0.4899753426155683
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Hellas Verona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.6241317530557221,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.6241317530557221,
+        "draw": 0.22973189826355395,
+        "away": 0.14613634868072403
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Atalanta",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46999494415214405,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26548906514860765,
+        "draw": 0.26451599069924836,
+        "away": 0.46999494415214405
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Fiorentina",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.47258615800314474,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47258615800314474,
+        "draw": 0.29590352830682226,
+        "away": 0.23151031369003294
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Udinese",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.39277066199421823,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39277066199421823,
+        "draw": 0.3078827802985289,
+        "away": 0.2993465577072529
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.629177669966571,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15756174333046827,
+        "draw": 0.2132605867029607,
+        "away": 0.629177669966571
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Cagliari",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3032077790247927,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3468420508030087,
+        "draw": 0.3032077790247927,
+        "away": 0.34995017017219854
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Genoa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5794717416066668,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5794717416066668,
+        "draw": 0.24936549558121,
+        "away": 0.17116276281212323
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Pisa",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5077174463434538,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5077174463434538,
+        "draw": 0.274499854787829,
+        "away": 0.21778269886871707
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Bologna",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5693300812534494,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5693300812534494,
+        "draw": 0.23875242769515884,
+        "away": 0.19191749105139172
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "Sassuolo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5725988119515844,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5725988119515844,
+        "draw": 0.25190577104559675,
+        "away": 0.1754954170028188
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Torino",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5732403985779174,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5732403985779174,
+        "draw": 0.24401542710687005,
+        "away": 0.18274417431521245
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Parma",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3660799422079491,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3660799422079491,
+        "draw": 0.3122205182927935,
+        "away": 0.32169953949925745
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "AC Milan",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5708084677885681,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19041436256880465,
+        "draw": 0.2387771696426272,
+        "away": 0.5708084677885681
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Lazio",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5863616874920614,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18127915781061482,
+        "draw": 0.23235915469732377,
+        "away": 0.5863616874920614
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Napoli",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5427630565245471,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5427630565245471,
+        "draw": 0.24882277712883963,
+        "away": 0.20841416634661314
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Cagliari",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5098214849080972,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5098214849080972,
+        "draw": 0.27788148341476726,
+        "away": 0.21229703167713554
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6202412048153572,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6202412048153572,
+        "draw": 0.22973189826355395,
+        "away": 0.1500268969210889
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Parma",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5918758891412412,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5918758891412412,
+        "draw": 0.24501018046175316,
+        "away": 0.16311393039700556
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6180487896875607,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6180487896875607,
+        "draw": 0.24072021399459037,
+        "away": 0.141230996317849
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Bologna",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5373395653330674,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.21701075192021524,
+        "draw": 0.24564968274671733,
+        "away": 0.5373395653330674
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3671505318095424,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3671505318095424,
+        "draw": 0.28774154910726724,
+        "away": 0.34510791908319033
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Atalanta",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.6132787003978003,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.16455643301029488,
+        "draw": 0.22216486659190474,
+        "away": 0.6132787003978003
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.631359612174654,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15615044247271198,
+        "draw": 0.21248994535263385,
+        "away": 0.631359612174654
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Sassuolo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.588986531105543,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.588986531105543,
+        "draw": 0.23833359182185324,
+        "away": 0.17267987707260368
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Juventus",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5880230645268936,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18027683771798844,
+        "draw": 0.23170009775511793,
+        "away": 0.5880230645268936
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Genoa",
+      "actual_result": "draw",
+      "predicted_result": "draw",
+      "predicted_prob": 0.3062471608945346,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3416590766849829,
+        "draw": 0.3062471608945346,
+        "away": 0.35209376242048257
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "Fiorentina",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.44709756765512737,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44709756765512737,
+        "draw": 0.2936380887193353,
+        "away": 0.2592643436255374
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "AS Roma",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48641938005243596,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25695890926698445,
+        "draw": 0.25662171068057954,
+        "away": 0.48641938005243596
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AC Milan",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6141863003442459,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6141863003442459,
+        "draw": 0.23025394669212693,
+        "away": 0.1555597529636272
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Hellas Verona",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.44397582304775574,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44397582304775574,
+        "draw": 0.2833764424827139,
+        "away": 0.27264773446953033
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Como",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4715438621879273,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26472188825403853,
+        "draw": 0.2637342495580342,
+        "away": 0.4715438621879273
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Pisa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6331605133897347,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6331605133897347,
+        "draw": 0.22973189826355395,
+        "away": 0.1371075883467114
+      },
+      "score": "6-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Torino",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.595267115448176,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.595267115448176,
+        "draw": 0.23611950893653683,
+        "away": 0.1686133756152871
+      },
+      "score": "6-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fiorentina",
+      "away_team": "Cagliari",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5108184036813193,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5108184036813193,
+        "draw": 0.27748958804388824,
+        "away": 0.21169200827479243
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lecce",
+      "away_team": "Lazio",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4974060899684127,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23690605733370704,
+        "draw": 0.2656878526978803,
+        "away": 0.4974060899684127
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sassuolo",
+      "away_team": "Cremonese",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5207635471572616,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5207635471572616,
+        "draw": 0.2693510723283463,
+        "away": 0.209885380514392
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Genoa",
+      "away_team": "Bologna",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3785455986114207,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3785455986114207,
+        "draw": 0.30529544907450495,
+        "away": 0.3161589523140743
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Parma",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5821026695572791,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5821026695572791,
+        "draw": 0.24079094943587115,
+        "away": 0.17710638100684964
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3660882587565213,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3660882587565213,
+        "draw": 0.28827609623096967,
+        "away": 0.34563564501250904
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "AS Roma",
+      "away_team": "AC Milan",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43654923696261255,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.29376192343626484,
+        "draw": 0.26968883960112255,
+        "away": 0.43654923696261255
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hellas Verona",
+      "away_team": "Udinese",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4869028814739536,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.25669567750657507,
+        "draw": 0.2564014410194713,
+        "away": 0.4869028814739536
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lazio",
+      "away_team": "Genoa",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45729223746949976,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45729223746949976,
+        "draw": 0.2927900040062631,
+        "away": 0.2499177585242371
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pisa",
+      "away_team": "Sassuolo",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46415119863807847,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2626935551809331,
+        "draw": 0.2731552461809884,
+        "away": 0.46415119863807847
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Fiorentina",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5884503391446798,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5884503391446798,
+        "draw": 0.2385237436679658,
+        "away": 0.1730259171873543
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cagliari",
+      "away_team": "Hellas Verona",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.527088872123485,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.527088872123485,
+        "draw": 0.2633317916076821,
+        "away": 0.20957933626883296
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Torino",
+      "away_team": "Lecce",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45849801337977786,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45849801337977786,
+        "draw": 0.29224502508682365,
+        "away": 0.24925696153339855
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Como",
+      "away_team": "Atalanta",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.46675857711500746,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.46675857711500746,
+        "draw": 0.26041970107137796,
+        "away": 0.27282172181361464
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Cremonese",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6535338104604597,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1417027304282555,
+        "draw": 0.20476345911128466,
+        "away": 0.6535338104604597
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Parma",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5608423325104381,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18910088366400163,
+        "draw": 0.25005678382556035,
+        "away": 0.5608423325104381
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Udinese",
+      "away_team": "AS Roma",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.490783496083132,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.25456067600368,
+        "draw": 0.254655827913188,
+        "away": 0.490783496083132
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bologna",
+      "away_team": "AC Milan",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5402602690102773,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2191103835372696,
+        "draw": 0.24062934745245312,
+        "away": 0.5402602690102773
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    }
+  ]
+}

@@ -1,0 +1,3491 @@
+{
+  "league": "Ligue des Champions",
+  "season": [
+    2024,
+    2025
+  ],
+  "period": {
+    "start": "2025-05-31",
+    "end": "2026-02-04"
+  },
+  "statistics": {
+    "total_matches": 231,
+    "correct_predictions": 141,
+    "accuracy": 61.038961038961034,
+    "home_accuracy": 89.56521739130436,
+    "draw_accuracy": 0.0,
+    "away_accuracy": 51.35135135135135,
+    "value_bets": 93,
+    "value_bets_accuracy": 77.41935483870968,
+    "roi_flat_pct": null,
+    "roi_value_bets_pct": null,
+    "matches_with_odds": 0
+  },
+  "results": [
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Inter",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.555228399519828,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.555228399519828,
+        "draw": 0.2440185517714344,
+        "away": 0.20075304870873753
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "KuPS",
+      "away_team": "Milsami Orhei",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4497835430875629,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4497835430875629,
+        "draw": 0.29341152904889295,
+        "away": 0.2568049278635441
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Saburtalo",
+      "away_team": "Malmo FF",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4359259705934217,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.27543042192672695,
+        "draw": 0.28864360747985135,
+        "away": 0.4359259705934217
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Noah",
+      "away_team": "Buducnost Podgorica",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4217917295140653,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4217917295140653,
+        "draw": 0.29345104348040874,
+        "away": 0.284757227005526
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Levadia Tallinn",
+      "away_team": "Rīgas FS",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.35608292776056305,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35608292776056305,
+        "draw": 0.29809915156835426,
+        "away": 0.34581792067108275
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Olimpija Ljubljana",
+      "away_team": "Kairat Almaty",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.500935877566793,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.500935877566793,
+        "draw": 0.28423530794411833,
+        "away": 0.2148288144890887
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "The New Saints",
+      "away_team": "Shkendija",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39182932950987864,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39182932950987864,
+        "draw": 0.29388334123479926,
+        "away": 0.3142873292553221
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Vikingur Gota",
+      "away_team": "Lincoln Red Imps FC",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4301972645528876,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4301972645528876,
+        "draw": 0.29437357217776433,
+        "away": 0.275429163269348
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Drita",
+      "away_team": "FC Differdange 03",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4770829975995398,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4770829975995398,
+        "draw": 0.28428080347794404,
+        "away": 0.2386361989225161
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Egnatia Rrogozhinë",
+      "away_team": "Breidablik",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42268060242783245,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42268060242783245,
+        "draw": 0.29305035372746724,
+        "away": 0.28426904384470036
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Virtus",
+      "away_team": "Zrinjski",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.41078799692266,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.30262657769791157,
+        "draw": 0.2865854253794285,
+        "away": 0.41078799692266
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FK Zalgiris Vilnius",
+      "away_team": "Hamrun Spartans",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5767779297491477,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5767779297491477,
+        "draw": 0.25152409233848205,
+        "away": 0.1716979779123703
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FCSB",
+      "away_team": "Inter Club d'Escaldes",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41567199226110935,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41567199226110935,
+        "draw": 0.29626787525786064,
+        "away": 0.28806013248103013
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ludogorets",
+      "away_team": "Dinamo Minsk",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4345049591345578,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4345049591345578,
+        "draw": 0.28790358776067804,
+        "away": 0.27759145310476435
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Shelbourne",
+      "away_team": "Linfield",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4147581447820754,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4147581447820754,
+        "draw": 0.2966976188112087,
+        "away": 0.28854423640671595
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Olimpija Ljubljana",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.39159771267128196,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.32817235679000284,
+        "draw": 0.28022993053871514,
+        "away": 0.39159771267128196
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lincoln Red Imps FC",
+      "away_team": "Vikingur Gota",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.410723168579703,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.410723168579703,
+        "draw": 0.29862522346738785,
+        "away": 0.2906516079529092
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Malmo FF",
+      "away_team": "Saburtalo",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5224729817161882,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5224729817161882,
+        "draw": 0.27301798914929093,
+        "away": 0.20450902913452093
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Milsami Orhei",
+      "away_team": "KuPS",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.39573797078853307,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.39573797078853307,
+        "draw": 0.29198307850716787,
+        "away": 0.312278950704299
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rīgas FS",
+      "away_team": "FC Levadia Tallinn",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4697663361663887,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4697663361663887,
+        "draw": 0.28310277505353154,
+        "away": 0.24713088878007974
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Differdange 03",
+      "away_team": "Drita",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.35900174010166175,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35900174010166175,
+        "draw": 0.29655990613712,
+        "away": 0.3444383537612181
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter Club d'Escaldes",
+      "away_team": "FCSB",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42399687633639255,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42399687633639255,
+        "draw": 0.29246075257597054,
+        "away": 0.2835423710876369
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Breidablik",
+      "away_team": "Egnatia Rrogozhinë",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4260888027160223,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4260888027160223,
+        "draw": 0.29620999199031406,
+        "away": 0.2777012052936636
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Buducnost Podgorica",
+      "away_team": "FC Noah",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4178972674905575,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4178972674905575,
+        "draw": 0.2952315425715118,
+        "away": 0.28687118993793076
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Zrinjski",
+      "away_team": "Virtus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5169874239956095,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5169874239956095,
+        "draw": 0.2750986250474725,
+        "away": 0.20791395095691806
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Linfield",
+      "away_team": "Shelbourne",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4364842219091503,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4364842219091503,
+        "draw": 0.29164288670253746,
+        "away": 0.2718728913883122
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "KuPS",
+      "away_team": "Kairat Almaty",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5352105403314622,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5352105403314622,
+        "draw": 0.2683254637492038,
+        "away": 0.19646399591933397
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lincoln Red Imps FC",
+      "away_team": "FK Crvena Zvezda",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4250998509297739,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.28517915375065106,
+        "draw": 0.28972099531957507,
+        "away": 0.4250998509297739
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Noah",
+      "away_team": "Ferencvarosi TC",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.43420445244588024,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2798946329684694,
+        "draw": 0.2859009145856504,
+        "away": 0.43420445244588024
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Drita",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.48160921368139226,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.48160921368139226,
+        "draw": 0.2824491150891806,
+        "away": 0.2359416712294271
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Plzen",
+      "away_team": "Servette FC",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.448370184282776,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.448370184282776,
+        "draw": 0.2930753528888109,
+        "away": 0.25855446282841305
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Maccabi Tel Aviv",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.49566301792229717,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49566301792229717,
+        "draw": 0.2862940143949626,
+        "away": 0.21804296768274015
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rīgas FS",
+      "away_team": "Malmo FF",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3566145809459626,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3566145809459626,
+        "draw": 0.2978162767110584,
+        "away": 0.3455691423429789
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Hamrun Spartans",
+      "away_team": "Dynamo Kyiv",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4571612579574743,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26608627676105506,
+        "draw": 0.2767524652814706,
+        "away": 0.4571612579574743
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Shkendija",
+      "away_team": "FCSB",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3949276051428558,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3949276051428558,
+        "draw": 0.29711399161235647,
+        "away": 0.3079584032447877
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Slovan Bratislava",
+      "away_team": "Zrinjski",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35519309246869457,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35519309246869457,
+        "draw": 0.2985751572966674,
+        "away": 0.34623175023463787
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lech Poznan",
+      "away_team": "Breidablik",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.446300054761518,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.446300054761518,
+        "draw": 0.29486670246872204,
+        "away": 0.25883324276975994
+      },
+      "score": "7-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rangers",
+      "away_team": "Panathinaikos",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.37041579609343683,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.37041579609343683,
+        "draw": 0.30886206268072125,
+        "away": 0.32072214122584175
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "HNK Rijeka",
+      "away_team": "Ludogorets",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.40873547734835364,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40873547734835364,
+        "draw": 0.2994373958663283,
+        "away": 0.2918271267853181
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Brann",
+      "away_team": "Red Bull Salzburg",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.437881967198153,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.437881967198153,
+        "draw": 0.2984921837818618,
+        "away": 0.2636258490199852
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Shelbourne",
+      "away_team": "Qarabag",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3631961956439139,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3631961956439139,
+        "draw": 0.2944046362533077,
+        "away": 0.3423991681027782
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "KuPS",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4524840823480008,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2735042520357773,
+        "draw": 0.27401166561622187,
+        "away": 0.4524840823480008
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Dynamo Kyiv",
+      "away_team": "Hamrun Spartans",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5421268979901177,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5421268979901177,
+        "draw": 0.26931225760549055,
+        "away": 0.1885608444043918
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Drita",
+      "away_team": "FC Copenhagen",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.360916853446027,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.360916853446027,
+        "draw": 0.2955677873787407,
+        "away": 0.3435153591752322
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Zrinjski",
+      "away_team": "Slovan Bratislava",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.46826711272451155,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.46826711272451155,
+        "draw": 0.2837259286140124,
+        "away": 0.24800695866147604
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FK Crvena Zvezda",
+      "away_team": "Lincoln Red Imps FC",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4947921328532783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4947921328532783,
+        "draw": 0.2866383018839174,
+        "away": 0.21856956526280422
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Shelbourne",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.46787551488341667,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.46787551488341667,
+        "draw": 0.2881302347346442,
+        "away": 0.24399425038193923
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Malmo FF",
+      "away_team": "Rīgas FS",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4918104825035337,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4918104825035337,
+        "draw": 0.2878267263719066,
+        "away": 0.2203627911245597
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FCSB",
+      "away_team": "Shkendija",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.42860601016478145,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.42860601016478145,
+        "draw": 0.29507974863530445,
+        "away": 0.27631424119991405
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Maccabi Tel Aviv",
+      "away_team": "Pafos",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.37409707165298445,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3366921878746252,
+        "draw": 0.28921074047239037,
+        "away": 0.37409707165298445
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Panathinaikos",
+      "away_team": "Rangers",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.477886020824661,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.477886020824661,
+        "draw": 0.2839530862723545,
+        "away": 0.23816089290298453
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ferencvarosi TC",
+      "away_team": "FC Noah",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.511931762868246,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.511931762868246,
+        "draw": 0.27705379129330454,
+        "away": 0.2110144458384493
+      },
+      "score": "4-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Breidablik",
+      "away_team": "Lech Poznan",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.390710399473575,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.390710399473575,
+        "draw": 0.29443652529821057,
+        "away": 0.31485307522821443
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Red Bull Salzburg",
+      "away_team": "Brann",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3938898951675834,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3938898951675834,
+        "draw": 0.3072689524344004,
+        "away": 0.29884115239801634
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Servette FC",
+      "away_team": "Plzen",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.40629208227159386,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.40629208227159386,
+        "draw": 0.30069934100922263,
+        "away": 0.2930085767191835
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Malmo FF",
+      "away_team": "FC Copenhagen",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4006934251918832,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4006934251918832,
+        "draw": 0.2944372764836003,
+        "away": 0.3048692983245165
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Dynamo Kyiv",
+      "away_team": "Pafos",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3580585804319747,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3580585804319747,
+        "draw": 0.29705363677733254,
+        "away": 0.34488778279069265
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Shkendija",
+      "away_team": "Qarabag",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.416757887744374,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.416757887744374,
+        "draw": 0.29576039079425626,
+        "away": 0.2874817214613697
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rangers",
+      "away_team": "Plzen",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3514039317147644,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3514039317147644,
+        "draw": 0.3006390550800549,
+        "away": 0.34795701320518074
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Slovan Bratislava",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35572924721173665,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35572924721173665,
+        "draw": 0.29828796341832164,
+        "away": 0.3459827893699417
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Red Bull Salzburg",
+      "away_team": "Club Brugge KV",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.47641758820961694,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26225443155353556,
+        "draw": 0.2613279802368476,
+        "away": 0.47641758820961694
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ludogorets",
+      "away_team": "Ferencvarosi TC",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36290948933912154,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36290948933912154,
+        "draw": 0.2945499116059219,
+        "away": 0.3425405990549567
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Lech Poznan",
+      "away_team": "FK Crvena Zvezda",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.402008378763987,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.402008378763987,
+        "draw": 0.29383973440817546,
+        "away": 0.3041518868278376
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Nice",
+      "away_team": "Benfica",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.46421479219123074,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.26827424937903643,
+        "draw": 0.26751095842973277,
+        "away": 0.46421479219123074
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Feyenoord",
+      "away_team": "Fenerbahçe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.39749435161187113,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.39749435161187113,
+        "draw": 0.2959107327872388,
+        "away": 0.3065949156008901
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Shkendija",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42395553973052025,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42395553973052025,
+        "draw": 0.29718089896898015,
+        "away": 0.2788635613004996
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Malmo FF",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.41095866696508265,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.41095866696508265,
+        "draw": 0.2898889897406995,
+        "away": 0.29915234329421786
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Plzen",
+      "away_team": "Rangers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4912841230975845,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4912841230975845,
+        "draw": 0.2880381216843395,
+        "away": 0.22067775521807614
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fenerbahçe",
+      "away_team": "Feyenoord",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.44688564838589556,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.44688564838589556,
+        "draw": 0.29462032833155993,
+        "away": 0.25849402328254456
+      },
+      "score": "5-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Dynamo Kyiv",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4482601029671588,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4482601029671588,
+        "draw": 0.2940448651135406,
+        "away": 0.25769503191930065
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Red Bull Salzburg",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5507911108650263,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5507911108650263,
+        "draw": 0.26614459342993074,
+        "away": 0.183064295705043
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ferencvarosi TC",
+      "away_team": "Ludogorets",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4872696978121051,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4872696978121051,
+        "draw": 0.28966690643068804,
+        "away": 0.2230633957572069
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Nice",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5544603391293673,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5544603391293673,
+        "draw": 0.25902460089976453,
+        "away": 0.18651505997086823
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FK Crvena Zvezda",
+      "away_team": "Lech Poznan",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4179922983736345,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4179922983736345,
+        "draw": 0.2951875994023757,
+        "away": 0.2868201022239898
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Rangers",
+      "away_team": "Club Brugge KV",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4975684459588206,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.23800546070770934,
+        "draw": 0.26442609333347,
+        "away": 0.4975684459588206
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FK Crvena Zvezda",
+      "away_team": "Pafos",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3671361564882562,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3671361564882562,
+        "draw": 0.28774875660155463,
+        "away": 0.34511508691018916
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ferencvarosi TC",
+      "away_team": "Qarabag",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5053282840524668,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5053282840524668,
+        "draw": 0.2796682748378983,
+        "away": 0.21500344110963504
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Celtic",
+      "away_team": "Kairat Almaty",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5193913036334281,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5193913036334281,
+        "draw": 0.2741818859864735,
+        "away": 0.2064268103800983
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bodo/Glimt",
+      "away_team": "Sturm Graz",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6113776989289075,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6113776989289075,
+        "draw": 0.23122793479388398,
+        "away": 0.15739436627720846
+      },
+      "score": "5-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Basel 1893",
+      "away_team": "FC Copenhagen",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.35780183497710616,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.35780183497710616,
+        "draw": 0.29718863634329523,
+        "away": 0.34500952867959866
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Fenerbahçe",
+      "away_team": "Benfica",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36361994640330825,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36361994640330825,
+        "draw": 0.2941904548283413,
+        "away": 0.3421895987683505
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sturm Graz",
+      "away_team": "Bodo/Glimt",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5606003979911893,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1961238076487768,
+        "draw": 0.24327579436003383,
+        "away": 0.5606003979911893
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "FK Crvena Zvezda",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.44328549441070764,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.44328549441070764,
+        "draw": 0.29614663143374653,
+        "away": 0.26056787415554583
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Ferencvarosi TC",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4266981478492343,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.28371382059159095,
+        "draw": 0.28958803155917473,
+        "away": 0.4266981478492343
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Fenerbahçe",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4618241899777494,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4618241899777494,
+        "draw": 0.28213400259605054,
+        "away": 0.2560418074262001
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "FC Basel 1893",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.49654107744719733,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.49654107744719733,
+        "draw": 0.28594814832943943,
+        "away": 0.21751077422336318
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Rangers",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5758727961002831,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5758727961002831,
+        "draw": 0.2518459513068599,
+        "away": 0.17228125259285712
+      },
+      "score": "6-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "PSV Eindhoven",
+      "away_team": "Union St. Gilloise",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5008102279777763,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5008102279777763,
+        "draw": 0.2842838698346153,
+        "away": 0.21490590218760847
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6110058434240049,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1691694153327794,
+        "draw": 0.21982474124321572,
+        "away": 0.6110058434240049
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6215897391695493,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6215897391695493,
+        "draw": 0.22973189826355395,
+        "away": 0.14867836256689682
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Qarabag",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4967970779910454,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4967970779910454,
+        "draw": 0.2831613690621594,
+        "away": 0.2200415529467952
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Borussia Dortmund",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3949901961214115,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3949901961214115,
+        "draw": 0.29234285416120376,
+        "away": 0.3126669497173848
+      },
+      "score": "4-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.61845649369103,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.61845649369103,
+        "draw": 0.22941927327194753,
+        "away": 0.15212423303702247
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Olympiakos Piraeus",
+      "away_team": "Pafos",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3616269540289682,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3616269540289682,
+        "draw": 0.29520339576059296,
+        "away": 0.3431696502104388
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Slavia Praha",
+      "away_team": "Bodo/Glimt",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5621646139014954,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.19526576363313997,
+        "draw": 0.2425696224653646,
+        "away": 0.5621646139014954
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Atletico Madrid",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5457184114280206,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5457184114280206,
+        "draw": 0.25501868406575723,
+        "away": 0.19926290450622214
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Atalanta",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5750641956233051,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5750641956233051,
+        "draw": 0.24437967062340188,
+        "away": 0.1805561337532929
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayern München",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.567898658258813,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.567898658258813,
+        "draw": 0.25114687547332554,
+        "away": 0.18095446626786138
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ajax",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5866345569881294,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18111485248072248,
+        "draw": 0.23225059053114808,
+        "away": 0.5866345569881294
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36686717955867076,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36686717955867076,
+        "draw": 0.29256987283772556,
+        "away": 0.34056294760360356
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.43903404081533715,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.43903404081533715,
+        "draw": 0.2905608619800448,
+        "away": 0.270405097204618
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3563989670042425,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3563989670042425,
+        "draw": 0.29211284713583674,
+        "away": 0.3514881858599208
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5334599342054384,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5334599342054384,
+        "draw": 0.2642977625155335,
+        "away": 0.20224230327902815
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Eintracht Frankfurt",
+      "away_team": "Galatasaray",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5008772022469614,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23636285497613926,
+        "draw": 0.2627599427768995,
+        "away": 0.5008772022469614
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sporting CP",
+      "away_team": "Kairat Almaty",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5788915298383237,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5788915298383237,
+        "draw": 0.24303939818419487,
+        "away": 0.1780690719774814
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Club Brugge KV",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.39926061145778974,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.39926061145778974,
+        "draw": 0.29572508370572054,
+        "away": 0.3050143048364897
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6210411039524758,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16279516004944844,
+        "draw": 0.2161637359980757,
+        "away": 0.6210411039524758
+      },
+      "score": "0-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Benfica",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.44445142843225366,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.44445142843225366,
+        "draw": 0.2788129219247786,
+        "away": 0.27673564964296765
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Ajax",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4778570971266707,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4778570971266707,
+        "draw": 0.2839648691305468,
+        "away": 0.23817803374278246
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bodo/Glimt",
+      "away_team": "Tottenham",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4382316459488359,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4382316459488359,
+        "draw": 0.27385088165529925,
+        "away": 0.28791747239586485
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Slavia Praha",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.608048242501279,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.608048242501279,
+        "draw": 0.2323828427054449,
+        "away": 0.1595689147932762
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6179469248959152,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6179469248959152,
+        "draw": 0.22941927327194753,
+        "away": 0.15263380183213723
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Galatasaray",
+      "away_team": "Liverpool",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5269368820643027,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2281940438970064,
+        "draw": 0.24486907403869088,
+        "away": 0.5269368820643027
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Bayern München",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5820996157856173,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1867927611131939,
+        "draw": 0.2311076231011889,
+        "away": 0.5820996157856173
+      },
+      "score": "1-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "FC Copenhagen",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.35460836201298773,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.35460836201298773,
+        "draw": 0.29888971314014445,
+        "away": 0.34650192484686765
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Union St. Gilloise",
+      "away_team": "Newcastle",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5545297137763016,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1948968114152457,
+        "draw": 0.25057347480845266,
+        "away": 0.5545297137763016
+      },
+      "score": "0-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Olympiakos Piraeus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5672417708306816,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5672417708306816,
+        "draw": 0.2826354018124291,
+        "away": 0.1501228273568893
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Manchester City",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.40489699181959715,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3143940775883722,
+        "draw": 0.2807089305920306,
+        "away": 0.40489699181959715
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5249796874991605,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5249796874991605,
+        "draw": 0.2677427833790082,
+        "away": 0.20727752912183126
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayer Leverkusen",
+      "away_team": "PSV Eindhoven",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.49498323137906597,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.49498323137906597,
+        "draw": 0.26604055608133914,
+        "away": 0.2389762125395948
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Sporting CP",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3548364055404644,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3548364055404644,
+        "draw": 0.2987668696335982,
+        "away": 0.34639672482593736
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.369470167176698,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.369470167176698,
+        "draw": 0.285320598544817,
+        "away": 0.345209234278485
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Juventus",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.5780351406836072,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.1862288780122138,
+        "draw": 0.23573598130417897,
+        "away": 0.5780351406836072
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Olympiakos Piraeus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5972116860925497,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5972116860925497,
+        "draw": 0.24315515327295822,
+        "away": 0.15963316063449215
+      },
+      "score": "6-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Pafos",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4651770968467351,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.267819385885786,
+        "draw": 0.2670035172674789,
+        "away": 0.4651770968467351
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Benfica",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5368470662556757,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5368470662556757,
+        "draw": 0.2584252797335987,
+        "away": 0.20472765401072565
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Atletico Madrid",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5439417435135884,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5439417435135884,
+        "draw": 0.26862272233794887,
+        "away": 0.18743553414846273
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayer Leverkusen",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5217658673678485,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24150526813863893,
+        "draw": 0.2367288644935127,
+        "away": 0.5217658673678485
+      },
+      "score": "2-7",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "PSV Eindhoven",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.42433202090499655,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.42433202090499655,
+        "draw": 0.29231133629694384,
+        "away": 0.28335664279805955
+      },
+      "score": "6-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Borussia Dortmund",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.36073781380756625,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36073781380756625,
+        "draw": 0.29565995610440965,
+        "away": 0.3436022300880241
+      },
+      "score": "2-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5923583546498943,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.17764021802066418,
+        "draw": 0.23000142732944148,
+        "away": 0.5923583546498943
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Union St. Gilloise",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5486196717932109,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.19611582358023258,
+        "draw": 0.2552645046265566,
+        "away": 0.5486196717932109
+      },
+      "score": "0-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Qarabag",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.43102351904141023,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.43102351904141023,
+        "draw": 0.2940093606019408,
+        "away": 0.27496712035664894
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Galatasaray",
+      "away_team": "Bodo/Glimt",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.43099152208838065,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.28759445256231647,
+        "draw": 0.28141402534930277,
+        "away": 0.43099152208838065
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Ajax",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5952907626258759,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5952907626258759,
+        "draw": 0.23611121397093102,
+        "away": 0.16859802340319302
+      },
+      "score": "5-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Tottenham",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43636103160748857,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27493805656485054,
+        "draw": 0.28870091182766083,
+        "away": 0.43636103160748857
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayern München",
+      "away_team": "Club Brugge KV",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5916011265687158,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5916011265687158,
+        "draw": 0.2386213318051691,
+        "away": 0.16977754162611508
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Eintracht Frankfurt",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6170607262917903,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.16533535909303884,
+        "draw": 0.2176039146151707,
+        "away": 0.6170607262917903
+      },
+      "score": "1-5",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sporting CP",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5330138080587227,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5330138080587227,
+        "draw": 0.2647414626483509,
+        "away": 0.20224472929292636
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Slavia Praha",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5602900405821606,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5602900405821606,
+        "draw": 0.25749725765304055,
+        "away": 0.1822127017647988
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Juventus",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5834674274502633,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5834674274502633,
+        "draw": 0.23371823518521323,
+        "away": 0.1828143373645234
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5286893901353187,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5286893901353187,
+        "draw": 0.27070577172655386,
+        "away": 0.20060483813812746
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Slavia Praha",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6391811256622626,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.15107055462637692,
+        "draw": 0.20974831971136035,
+        "away": 0.6391811256622626
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Real Madrid",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.444389619487615,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.444389619487615,
+        "draw": 0.2622945640874179,
+        "away": 0.29331581642496696
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "FC Copenhagen",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5493023775840972,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5493023775840972,
+        "draw": 0.2536727202723699,
+        "away": 0.19702490214353294
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Bayern München",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.42833756527016126,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.42833756527016126,
+        "draw": 0.2699265345698912,
+        "away": 0.3017359001599475
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bodo/Glimt",
+      "away_team": "Monaco",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5349743404794534,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5349743404794534,
+        "draw": 0.2628381310341718,
+        "away": 0.20218752848637483
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Sporting CP",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.41804175407008065,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.41804175407008065,
+        "draw": 0.28234057053208095,
+        "away": 0.2996176753978384
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Union St. Gilloise",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6084147821127291,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6084147821127291,
+        "draw": 0.23153910363922703,
+        "away": 0.1600461142480439
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Olympiakos Piraeus",
+      "away_team": "PSV Eindhoven",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.38838950232142533,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.38838950232142533,
+        "draw": 0.30026974849301946,
+        "away": 0.31134074918555527
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Chelsea",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.43586427330616995,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.27559558154107905,
+        "draw": 0.28854014515275095,
+        "away": 0.43586427330616995
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5858308114611435,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5858308114611435,
+        "draw": 0.24833327361514787,
+        "away": 0.16583591492370872
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "Athletic Club",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5788145421301526,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5788145421301526,
+        "draw": 0.24197849020551884,
+        "away": 0.17920696766432861
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Borussia Dortmund",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45970701728319685,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45970701728319685,
+        "draw": 0.2722051459465337,
+        "away": 0.2680878367702695
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Atalanta",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4370878100732585,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.27466576827129874,
+        "draw": 0.28824642165544284,
+        "away": 0.4370878100732585
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ajax",
+      "away_team": "Galatasaray",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.48909732186345944,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.24110309355988213,
+        "draw": 0.2697995845766583,
+        "away": 0.48909732186345944
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3884424172504739,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3884424172504739,
+        "draw": 0.2962195728877364,
+        "away": 0.31533800986178967
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Kairat Almaty",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6137840987956404,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6137840987956404,
+        "draw": 0.22967697184746833,
+        "away": 0.15653892935689134
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Barcelona",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.47737858837738834,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2625486107397813,
+        "draw": 0.2600728008828303,
+        "away": 0.47737858837738834
+      },
+      "score": "3-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ajax",
+      "away_team": "Benfica",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5170985258800005,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.22838222032143832,
+        "draw": 0.2545192537985612,
+        "away": 0.5170985258800005
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Galatasaray",
+      "away_team": "Union St. Gilloise",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5124660286031563,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5124660286031563,
+        "draw": 0.27987131746037386,
+        "away": 0.20766265393646985
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Barcelona",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.46911240722024616,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.26788029773874983,
+        "draw": 0.263007295041004,
+        "away": 0.46911240722024616
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4775973854260763,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4775973854260763,
+        "draw": 0.2754575647686646,
+        "away": 0.246945049805259
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Newcastle",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.48241577511297434,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2591138048618974,
+        "draw": 0.2584704200251282,
+        "away": 0.48241577511297434
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.614622085765718,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.614622085765718,
+        "draw": 0.22941927327194753,
+        "away": 0.15595864096233442
+      },
+      "score": "4-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bodo/Glimt",
+      "away_team": "Juventus",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5078541121048948,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5078541121048948,
+        "draw": 0.26099364924866264,
+        "away": 0.2311522386464427
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Qarabag",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4400920329527955,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4400920329527955,
+        "draw": 0.29752459860882935,
+        "away": 0.2623833684383752
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Slavia Praha",
+      "away_team": "Athletic Club",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4259698201178716,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2829948575904876,
+        "draw": 0.29103532229164075,
+        "away": 0.4259698201178716
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Kairat Almaty",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5593538147759137,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5593538147759137,
+        "draw": 0.263080834490847,
+        "away": 0.17756535073323926
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Monaco",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4023158402788625,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4023158402788625,
+        "draw": 0.29370068081697503,
+        "away": 0.3039834789041625
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "PSV Eindhoven",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5903800735813185,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5903800735813185,
+        "draw": 0.23137439167982393,
+        "away": 0.17824553473885763
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Bayern München",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4986974838972731,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4986974838972731,
+        "draw": 0.26568999864482884,
+        "away": 0.2356125174578981
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Tottenham",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5599967514133691,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5599967514133691,
+        "draw": 0.24223646601958987,
+        "away": 0.19776678256704108
+      },
+      "score": "5-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Eintracht Frankfurt",
+      "away_team": "Atalanta",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5122704845973525,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2309367683450337,
+        "draw": 0.25679274705761396,
+        "away": 0.5122704845973525
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sporting CP",
+      "away_team": "Club Brugge KV",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.426862944161783,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.426862944161783,
+        "draw": 0.27846553450718303,
+        "away": 0.294671521331034
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Inter",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4505803235834782,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4505803235834782,
+        "draw": 0.2676486419221958,
+        "away": 0.28177103449432594
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Olympiakos Piraeus",
+      "away_team": "Real Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5760922233269848,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1873648536398055,
+        "draw": 0.23654292303320965,
+        "away": 0.5760922233269848
+      },
+      "score": "3-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Olympiakos Piraeus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.45041217401317785,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2743618314315715,
+        "draw": 0.2752259945552506,
+        "away": 0.45041217401317785
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayern München",
+      "away_team": "Sporting CP",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.589006927164384,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.589006927164384,
+        "draw": 0.23952097772589337,
+        "away": 0.17147209510972264
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Slavia Praha",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6088686393140694,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6088686393140694,
+        "draw": 0.23209817271450622,
+        "away": 0.15903318797142438
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Galatasaray",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3972572801752764,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3972572801752764,
+        "draw": 0.2960210683125133,
+        "away": 0.30672165151221026
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "PSV Eindhoven",
+      "away_team": "Atletico Madrid",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.44978099619996126,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2746187721114378,
+        "draw": 0.275600231688601,
+        "away": 0.44978099619996126
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Chelsea",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.3791083871482774,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3791083871482774,
+        "draw": 0.3049983965308329,
+        "away": 0.3158932163208897
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.4046744439018065,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3270553839292828,
+        "draw": 0.2682701721689107,
+        "away": 0.4046744439018065
+      },
+      "score": "0-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6264645231345429,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6264645231345429,
+        "draw": 0.22973189826355395,
+        "away": 0.1438035786019033
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Union St. Gilloise",
+      "away_team": "Marseille",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4014028320500896,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4014028320500896,
+        "draw": 0.29022832897202877,
+        "away": 0.3083688389778817
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "FC Copenhagen",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.565546866403518,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1933890006310056,
+        "draw": 0.24106413296547635,
+        "away": 0.565546866403518
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Ajax",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5101021541318491,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5101021541318491,
+        "draw": 0.2780809763444931,
+        "away": 0.21181686952365772
+      },
+      "score": "2-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "Bodo/Glimt",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4102347857663398,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4102347857663398,
+        "draw": 0.28471944102176105,
+        "away": 0.305045773211899
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayer Leverkusen",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.3544744532394971,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3544744532394971,
+        "draw": 0.2943975570865092,
+        "away": 0.3511279896739936
+      },
+      "score": "2-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Napoli",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4643611043304499,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4643611043304499,
+        "draw": 0.28102309412530785,
+        "away": 0.2546158015442422
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Pafos",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.45138431851711813,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.45138431851711813,
+        "draw": 0.28474364986129586,
+        "away": 0.26387203162158596
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.58820823351234,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.18318174534427936,
+        "draw": 0.22861002114338078,
+        "away": 0.58820823351234
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Manchester City",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.5717439316186874,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5717439316186874,
+        "draw": 0.23795189904900335,
+        "away": 0.19030416933230931
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5876380235241855,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18352176541368392,
+        "draw": 0.22884021106213048,
+        "away": 0.5876380235241855
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Kairat Almaty",
+      "away_team": "Club Brugge KV",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5239395537349226,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2142127363759383,
+        "draw": 0.261847709889139,
+        "away": 0.5239395537349226
+      },
+      "score": "1-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bodo/Glimt",
+      "away_team": "Manchester City",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.47129388796866767,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.47129388796866767,
+        "draw": 0.271512505352398,
+        "away": 0.25719360667893426
+      },
+      "score": "3-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Tottenham",
+      "away_team": "Borussia Dortmund",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4775404699540723,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4775404699540723,
+        "draw": 0.2754807394496252,
+        "away": 0.24697879059630243
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Sporting CP",
+      "away_team": "Paris Saint Germain",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.5561385863578723,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.20120084078731704,
+        "draw": 0.2426605728548106,
+        "away": 0.5561385863578723
+      },
+      "score": "2-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "FC Copenhagen",
+      "away_team": "Napoli",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.4486935824277164,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4486935824277164,
+        "draw": 0.2938641786278204,
+        "away": 0.2574422389444632
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Inter",
+      "away_team": "Arsenal",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5208273568310736,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.2419961650380353,
+        "draw": 0.23717647813089107,
+        "away": 0.5208273568310736
+      },
+      "score": "1-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Villarreal",
+      "away_team": "Ajax",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.354140669544755,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.3475263418439278,
+        "draw": 0.2983329886113172,
+        "away": 0.354140669544755
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Real Madrid",
+      "away_team": "Monaco",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5923965905961989,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5923965905961989,
+        "draw": 0.23059807263713591,
+        "away": 0.17700533676666524
+      },
+      "score": "6-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Olympiakos Piraeus",
+      "away_team": "Bayer Leverkusen",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.4253443599377428,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2845715945599558,
+        "draw": 0.2900840455023014,
+        "away": 0.4253443599377428
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Qarabag",
+      "away_team": "Eintracht Frankfurt",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5168408024385593,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5168408024385593,
+        "draw": 0.2751548007983166,
+        "away": 0.20800439676312413
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Galatasaray",
+      "away_team": "Atletico Madrid",
+      "actual_result": "draw",
+      "predicted_result": "away",
+      "predicted_prob": 0.4331834745944793,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2824193016731563,
+        "draw": 0.28439722373236426,
+        "away": 0.4331834745944793
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Newcastle",
+      "away_team": "PSV Eindhoven",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5634774297863371,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5634774297863371,
+        "draw": 0.24088564831167866,
+        "away": 0.19563692190198417
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Chelsea",
+      "away_team": "Pafos",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4955111065505322,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4955111065505322,
+        "draw": 0.265828196619299,
+        "away": 0.23866069683016874
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Marseille",
+      "away_team": "Liverpool",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5830455032547391,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18326564056025155,
+        "draw": 0.23368885618500929,
+        "away": 0.5830455032547391
+      },
+      "score": "0-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayern München",
+      "away_team": "Union St. Gilloise",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6201271503964958,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6201271503964958,
+        "draw": 0.24072021399459037,
+        "away": 0.13915263560891386
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Juventus",
+      "away_team": "Benfica",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.4171825105108405,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.4171825105108405,
+        "draw": 0.2827283832108705,
+        "away": 0.300089106278289
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atalanta",
+      "away_team": "Athletic Club",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.47471753937127825,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.47471753937127825,
+        "draw": 0.2949683783364146,
+        "away": 0.23031408229230715
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Slavia Praha",
+      "away_team": "Barcelona",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.6011616599414196,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1753115976318222,
+        "draw": 0.2235267424267583,
+        "away": 0.6011616599414196
+      },
+      "score": "2-4",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Liverpool",
+      "away_team": "Qarabag",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5999651161464795,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5999651161464795,
+        "draw": 0.2421998984312979,
+        "away": 0.15783498542222263
+      },
+      "score": "6-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Arsenal",
+      "away_team": "Kairat Almaty",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6026699493182599,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6026699493182599,
+        "draw": 0.26086917730907805,
+        "away": 0.13646087337266205
+      },
+      "score": "3-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Manchester City",
+      "away_team": "Galatasaray",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5247966652645983,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5247966652645983,
+        "draw": 0.2666455520343271,
+        "away": 0.20855778270107445
+      },
+      "score": "2-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Paris Saint Germain",
+      "away_team": "Newcastle",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.5551554642703471,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.5551554642703471,
+        "draw": 0.2439832981664625,
+        "away": 0.2008612375631904
+      },
+      "score": "1-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Monaco",
+      "away_team": "Juventus",
+      "actual_result": "draw",
+      "predicted_result": "home",
+      "predicted_prob": 0.36340265132802635,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36340265132802635,
+        "draw": 0.2943002053930892,
+        "away": 0.3422971432788844
+      },
+      "score": "0-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Borussia Dortmund",
+      "away_team": "Inter",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.36670287477527763,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.36670287477527763,
+        "draw": 0.28796633295849605,
+        "away": 0.3453307922662263
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Bayer Leverkusen",
+      "away_team": "Villarreal",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.6093672663880005,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.6093672663880005,
+        "draw": 0.2319251915001492,
+        "away": 0.1587075421118502
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Eintracht Frankfurt",
+      "away_team": "Tottenham",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5790042030154764,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.18422219497883346,
+        "draw": 0.23677360200569011,
+        "away": 0.5790042030154764
+      },
+      "score": "0-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Ajax",
+      "away_team": "Olympiakos Piraeus",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.43833194644963214,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.27474004261201684,
+        "draw": 0.286928010938351,
+        "away": 0.43833194644963214
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "PSV Eindhoven",
+      "away_team": "Bayern München",
+      "actual_result": "away",
+      "predicted_result": "away",
+      "predicted_prob": 0.5893035227360476,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.1825269852360285,
+        "draw": 0.22816949202792386,
+        "away": 0.5893035227360476
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Benfica",
+      "away_team": "Real Madrid",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.529479373202228,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.23737326648479204,
+        "draw": 0.23314736031297995,
+        "away": 0.529479373202228
+      },
+      "score": "4-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Napoli",
+      "away_team": "Chelsea",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3536027906050342,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3536027906050342,
+        "draw": 0.29487919853734257,
+        "away": 0.35151801085762313
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Barcelona",
+      "away_team": "FC Copenhagen",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5862846952975617,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5862846952975617,
+        "draw": 0.23273018677977186,
+        "away": 0.18098511792266642
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Atletico Madrid",
+      "away_team": "Bodo/Glimt",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.4670344243042162,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.4670344243042162,
+        "draw": 0.26800660977188584,
+        "away": 0.2649589659238979
+      },
+      "score": "1-2",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Athletic Club",
+      "away_team": "Sporting CP",
+      "actual_result": "away",
+      "predicted_result": "home",
+      "predicted_prob": 0.3528270324785756,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.3528270324785756,
+        "draw": 0.2998567615664573,
+        "away": 0.3473162059549671
+      },
+      "score": "2-3",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Club Brugge KV",
+      "away_team": "Marseille",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5229436391954686,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5229436391954686,
+        "draw": 0.27284130389067107,
+        "away": 0.20421505691386024
+      },
+      "score": "3-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Union St. Gilloise",
+      "away_team": "Atalanta",
+      "actual_result": "home",
+      "predicted_result": "away",
+      "predicted_prob": 0.47519736216087316,
+      "is_correct": false,
+      "probabilities": {
+        "home": 0.2475468344546979,
+        "draw": 0.277255803384429,
+        "away": 0.47519736216087316
+      },
+      "score": "1-0",
+      "predicted_odd": null
+    },
+    {
+      "home_team": "Pafos",
+      "away_team": "Slavia Praha",
+      "actual_result": "home",
+      "predicted_result": "home",
+      "predicted_prob": 0.5308360852438438,
+      "is_correct": true,
+      "probabilities": {
+        "home": 0.5308360852438438,
+        "draw": 0.2699174324483029,
+        "away": 0.1992464823078532
+      },
+      "score": "4-1",
+      "predicted_odd": null
+    }
+  ]
+}

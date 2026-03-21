@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-03-21 21:31:51",
+  "default": {
+    "draw_prob_min": 25.0,
+    "draw_balance_max": 10.0,
+    "draw_margin_to_best": 5.0
+  },
+  "leagues": {
+    "Bundesliga (All)": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 4.0
+    },
+    "78": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 4.0
+    },
+    "La Liga (Esp)": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 2.0
+    },
+    "140": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 2.0
+    },
+    "Ligue 1 (Fra)": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 8.0,
+      "draw_margin_to_best": 3.0
+    },
+    "61": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 8.0,
+      "draw_margin_to_best": 3.0
+    },
+    "Ligue des Champions": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 8.0,
+      "draw_margin_to_best": 4.0
+    },
+    "2": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 8.0,
+      "draw_margin_to_best": 4.0
+    },
+    "Premier League (Ang)": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 10.0,
+      "draw_margin_to_best": 6.0
+    },
+    "39": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 10.0,
+      "draw_margin_to_best": 6.0
+    },
+    "Serie A (Ita)": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 6.0
+    },
+    "135": {
+      "draw_prob_min": 22.0,
+      "draw_balance_max": 15.0,
+      "draw_margin_to_best": 6.0
+    }
+  },
+  "source_files": [
+    "backtest_Bundesliga_(All)_2024.json",
+    "backtest_Bundesliga_(All)_2024_2025.json",
+    "backtest_Bundesliga_(All)_2025.json",
+    "backtest_La_Liga_(Esp)_2024.json",
+    "backtest_La_Liga_(Esp)_2024_2025.json",
+    "backtest_La_Liga_(Esp)_2025.json",
+    "backtest_Ligue_1_(Fra)_2024.json",
+    "backtest_Ligue_1_(Fra)_2024_2025.json",
+    "backtest_Ligue_1_(Fra)_2025.json",
+    "backtest_Ligue_des_Champions_2024.json",
+    "backtest_Ligue_des_Champions_2024_2025.json",
+    "backtest_Ligue_des_Champions_2025.json",
+    "backtest_Premier_League_(Ang)_2024.json",
+    "backtest_Premier_League_(Ang)_2024_2025.json",
+    "backtest_Premier_League_(Ang)_2025.json",
+    "backtest_Serie_A_(Ita)_2024.json",
+    "backtest_Serie_A_(Ita)_2024_2025.json",
+    "backtest_Serie_A_(Ita)_2025.json"
+  ],
+  "metrics": {
+    "Bundesliga (All)": {
+      "baseline_accuracy": 54.55,
+      "baseline_draw_accuracy": 15.19,
+      "optimized_accuracy": 56.17,
+      "optimized_draw_accuracy": 18.99,
+      "optimized_pred_draw": 21,
+      "draw_total": 79,
+      "matches": 308
+    },
+    "La Liga (Esp)": {
+      "baseline_accuracy": 55.53,
+      "baseline_draw_accuracy": 13.4,
+      "optimized_accuracy": 57.89,
+      "optimized_draw_accuracy": 21.65,
+      "optimized_pred_draw": 34,
+      "draw_total": 97,
+      "matches": 380
+    },
+    "Ligue 1 (Fra)": {
+      "baseline_accuracy": 57.98,
+      "baseline_draw_accuracy": 11.11,
+      "optimized_accuracy": 59.61,
+      "optimized_draw_accuracy": 11.11,
+      "optimized_pred_draw": 12,
+      "draw_total": 63,
+      "matches": 307
+    },
+    "Ligue des Champions": {
+      "baseline_accuracy": 65.06,
+      "baseline_draw_accuracy": 6.98,
+      "optimized_accuracy": 65.43,
+      "optimized_draw_accuracy": 6.98,
+      "optimized_pred_draw": 11,
+      "draw_total": 43,
+      "matches": 269
+    },
+    "Premier League (Ang)": {
+      "baseline_accuracy": 56.05,
+      "baseline_draw_accuracy": 6.45,
+      "optimized_accuracy": 56.32,
+      "optimized_draw_accuracy": 7.53,
+      "optimized_pred_draw": 12,
+      "draw_total": 93,
+      "matches": 380
+    },
+    "Serie A (Ita)": {
+      "baseline_accuracy": 52.37,
+      "baseline_draw_accuracy": 10.19,
+      "optimized_accuracy": 52.63,
+      "optimized_draw_accuracy": 13.89,
+      "optimized_pred_draw": 27,
+      "draw_total": 108,
+      "matches": 380
+    }
+  },
+  "selected_files": {
+    "Bundesliga (All)": "backtest_Bundesliga_(All)_2024.json",
+    "La Liga (Esp)": "backtest_La_Liga_(Esp)_2024.json",
+    "Ligue 1 (Fra)": "backtest_Ligue_1_(Fra)_2024.json",
+    "Ligue des Champions": "backtest_Ligue_des_Champions_2024.json",
+    "Premier League (Ang)": "backtest_Premier_League_(Ang)_2024.json",
+    "Serie A (Ita)": "backtest_Serie_A_(Ita)_2024.json"
+  }
+}

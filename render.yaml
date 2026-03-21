@@ -1,0 +1,52 @@
+services:
+  - type: web
+    name: rushplay-api
+    env: python
+    plan: starter
+    rootDir: .
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: ENV
+        value: production
+      - key: PREDICTION_PROVIDER
+        value: local
+      - key: PREDICTION_MODEL_ROOT
+        value: /opt/render/project/src
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+
+  - type: cron
+    name: rushplay-daily-analysis
+    env: python
+    plan: starter
+    rootDir: .
+    schedule: "0 8 * * *"
+    buildCommand: cd backend && pip install -r requirements.txt
+    startCommand: cd backend && python scripts/daily_run.py --limit 50
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: ENV
+        value: production
+      - key: PREDICTION_PROVIDER
+        value: local
+      - key: PREDICTION_MODEL_ROOT
+        value: /opt/render/project/src
+      - key: DATABASE_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
