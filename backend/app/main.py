@@ -48,11 +48,14 @@ async def generic_exception_handler(_: Request, exc: Exception):
 @app.on_event("startup")
 def startup_event():
     try:
-        ensure_runtime_columns(engine)
         Base.metadata.create_all(bind=engine)
     except Exception as exc:
-        # Keep API alive for non-DB endpoints (health/prediction) until DB is configured.
         log.warning("Database initialization skipped: %s", exc)
+        return
+    try:
+        ensure_runtime_columns(engine)
+    except Exception as exc:
+        log.warning("Runtime column migration skipped: %s", exc)
 
 
 @app.get("/health")

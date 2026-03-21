@@ -9,6 +9,7 @@ from app.core.config import settings
 from app.models.analysis import Analysis
 from app.models.match import Match
 from app.services.analysis_runner import run_bulk_analyses
+from app.services.match_importer import import_upcoming_matches
 
 router = APIRouter(prefix="/cron", tags=["cron"])
 
@@ -47,3 +48,19 @@ def daily_run(
 
     summary = run_bulk_analyses(db, matches)
     return {"success": True, "message": "Daily cron run completed", "data": summary}
+
+
+@router.post("/import-matches")
+def import_matches(
+    _: None = Depends(_verify_cron_key),
+    next_days: int = Query(default=7, ge=1, le=30),
+    db: Session = Depends(get_db),
+):
+    if not settings.api_football_key:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="API_FOOTBALL_KEY not configured on this server",
+        )
+
+    summary = import_upcoming_matches(db, settings.api_football_key, next_days=next_days)
+    return {"success": True, "message": "Match import completed", "data": summary}

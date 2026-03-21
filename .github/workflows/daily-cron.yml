@@ -28,7 +28,29 @@ jobs:
           test -n "${RUSHPLAY_API_BASE_URL}"
           test -n "${CRON_SECRET}"
 
-      - name: Call RushPlay daily cron endpoint
+      - name: Import upcoming matches from API-Football
+        env:
+          RUSHPLAY_API_BASE_URL: ${{ secrets.RUSHPLAY_API_BASE_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        run: |
+          set -euo pipefail
+
+          API_URL="${RUSHPLAY_API_BASE_URL%/}/api/v1/cron/import-matches?next_days=7"
+          echo "Calling: ${API_URL}"
+
+          RESPONSE="$(curl -sS -w '\n%{http_code}' -X POST "${API_URL}" -H "X-CRON-KEY: ${CRON_SECRET}")"
+          BODY="$(echo "${RESPONSE}" | sed '$d')"
+          STATUS="$(echo "${RESPONSE}" | tail -n1)"
+
+          echo "HTTP status: ${STATUS}"
+          echo "Response body: ${BODY}"
+
+          if [ "${STATUS}" -lt 200 ] || [ "${STATUS}" -ge 300 ]; then
+            echo "Match import failed"
+            exit 1
+          fi
+
+      - name: Run daily analyses on imported matches
         env:
           RUSHPLAY_API_BASE_URL: ${{ secrets.RUSHPLAY_API_BASE_URL }}
           CRON_SECRET: ${{ secrets.CRON_SECRET }}
@@ -48,6 +70,6 @@ jobs:
           echo "Response body: ${BODY}"
 
           if [ "${STATUS}" -lt 200 ] || [ "${STATUS}" -ge 300 ]; then
-            echo "Cron call failed"
+            echo "Daily run failed"
             exit 1
           fi

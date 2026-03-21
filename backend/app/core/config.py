@@ -26,6 +26,7 @@ class Settings(BaseSettings):
     cors_origins: str = "http://localhost:3000"
     prediction_provider: str = Field(default="local", pattern="^(mock|local)$")
     prediction_model_root: str | None = None
+    api_football_key: str | None = None
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
