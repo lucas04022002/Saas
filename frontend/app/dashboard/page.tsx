@@ -2,12 +2,12 @@ import { LockIcon, TrendingUpIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 
 import RushPlayLogo from "../../components/logos/rushplay";
-import { fetchMatches, formatKickoff, riskColors, riskLabel } from "../../lib/api";
+import { ApiMatch, fetchMatches, formatKickoff, riskColors, riskLabel } from "../../lib/api";
 
 const FREE_SLOTS = 3;
 
 export default async function DashboardPage() {
-  let matches = [];
+  let matches: ApiMatch[] = [];
   let error = false;
 
   try {

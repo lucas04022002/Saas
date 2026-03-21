@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import RushPlayLogo from "../../components/logos/rushplay";
-import { fetchAnalyses, formatDate, riskColors, riskLabel } from "../../lib/api";
+import { ApiAnalysis, fetchAnalyses, formatDate, riskColors, riskLabel } from "../../lib/api";
 
 export default async function HistoriquePage() {
-  let analyses = [];
+  let analyses: ApiAnalysis[] = [];
   let error = false;
 
   try {
