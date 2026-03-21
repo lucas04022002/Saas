@@ -1,20 +1,26 @@
 import Link from "next/link";
 
 import RushPlayLogo from "../../components/logos/rushplay";
-import { mockMatches } from "../../data/mock";
+import { fetchAnalyses, formatDate, riskColors, riskLabel } from "../../lib/api";
 
-const riskColors = {
-  faible: { border: "#4ade80", bg: "rgba(34,197,94,0.10)", text: "#4ade80" },
-  modéré: { border: "#eab308", bg: "rgba(234,179,8,0.10)", text: "#eab308" },
-  élevé: { border: "#f87171", bg: "rgba(248,113,113,0.10)", text: "#f87171" },
-};
+export default async function HistoriquePage() {
+  let analyses = [];
+  let error = false;
 
-const historique = [
-  ...mockMatches.map((m) => ({ ...m, date: "19 mars 2026", resultat: "✓ Correct" })),
-  ...mockMatches.slice(0, 3).map((m) => ({ ...m, id: m.id + 10, date: "18 mars 2026", resultat: "✗ Incorrect" })),
-];
+  try {
+    analyses = await fetchAnalyses();
+  } catch {
+    error = true;
+  }
 
-export default function HistoriquePage() {
+  // Grouper par date
+  const grouped = analyses.reduce<Record<string, typeof analyses>>((acc, a) => {
+    const date = formatDate(a.created_at);
+    acc[date] = acc[date] || [];
+    acc[date].push(a);
+    return acc;
+  }, {});
+
   return (
     <div className="flex min-h-screen bg-[#06090F] text-[#DDD5C4]">
       {/* Sidebar */}
@@ -65,7 +71,7 @@ export default function HistoriquePage() {
               Historique des signaux
             </div>
             <div className="text-xs text-[#7A8FA8] font-[family-name:var(--font-mono)]">
-              Résultats des analyses passées
+              {analyses.length} analyse{analyses.length !== 1 ? "s" : ""} au total
             </div>
           </div>
           <Link href="/" className="text-sm text-[#7A8FA8] hover:text-[#DDD5C4] transition-colors">
@@ -74,45 +80,47 @@ export default function HistoriquePage() {
         </header>
 
         <main className="flex-1 p-6 flex flex-col gap-4">
-          {Object.entries(
-            historique.reduce<Record<string, typeof historique>>((acc, m) => {
-              acc[m.date] = acc[m.date] || [];
-              acc[m.date].push(m);
-              return acc;
-            }, {})
-          ).map(([date, matches]) => (
+          {error && (
+            <div className="rounded-xl border border-[#f87171] bg-[rgba(248,113,113,0.08)] p-4 text-sm text-[#f87171]">
+              Impossible de charger l&apos;historique. Vérifiez votre connexion.
+            </div>
+          )}
+
+          {!error && analyses.length === 0 && (
+            <div className="rounded-xl border border-[#1E2D42] bg-[#0E1828] p-8 text-center text-[#7A8FA8] text-sm">
+              Aucune analyse dans l&apos;historique pour le moment.
+            </div>
+          )}
+
+          {Object.entries(grouped).map(([date, items]) => (
             <div key={date} className="flex flex-col gap-2">
               <div className="text-xs text-[#7A8FA8] uppercase tracking-wide font-semibold mb-1">{date}</div>
-              {matches.map((match) => {
-                const colors = riskColors[match.risk];
-                const correct = match.resultat.startsWith("✓");
+              {items.map((a) => {
+                const colors = riskColors(a.risk_level);
                 return (
                   <div
-                    key={match.id}
+                    key={a.match_id}
                     className="rounded-xl border border-[#1E2D42] bg-[#0E1828] p-4 flex items-center gap-4"
                     style={{ borderLeft: `3px solid ${colors.border}` }}
                   >
                     <div className="flex-1 min-w-0">
                       <div className="font-bold text-[#DDD5C4] truncate" style={{ fontFamily: "var(--font-heading, sans-serif)" }}>
-                        {match.home} vs {match.away}
+                        {a.home_team} vs {a.away_team}
                       </div>
-                      <div className="text-xs text-[#7A8FA8]">{match.league} · {match.time}</div>
+                      <div className="text-xs text-[#7A8FA8]">{a.recommended_bet}</div>
                     </div>
                     <div className="flex items-center gap-3 shrink-0">
                       <span className="font-[family-name:var(--font-mono)] font-semibold" style={{ color: "#C8F000" }}>
-                        +{match.divergence}%
+                        +{a.value_percent.toFixed(1)}%
                       </span>
                       <span
                         className="text-xs px-2 py-0.5 rounded font-medium"
                         style={{ background: colors.bg, color: colors.text }}
                       >
-                        {match.risk}
+                        {riskLabel(a.risk_level)}
                       </span>
-                      <span
-                        className="text-xs font-semibold"
-                        style={{ color: correct ? "#4ade80" : "#f87171" }}
-                      >
-                        {match.resultat}
+                      <span className="text-xs text-[#7A8FA8] font-[family-name:var(--font-mono)]">
+                        {a.confidence_score.toFixed(0)}%
                       </span>
                     </div>
                   </div>
