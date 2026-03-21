@@ -29,7 +29,7 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
-config.py
+/config.py
 
 # Python
 __pycache__/
