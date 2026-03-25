@@ -2,6 +2,7 @@ import { LockIcon, TrendingUpIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 
 import RushPlayLogo from "../../components/logos/rushplay";
+import UserPlan from "../../components/ui/user-plan";
 import { ApiMatch, fetchMatches, formatKickoff, riskColors, riskLabel } from "../../lib/api";
 
 const FREE_SLOTS = 3;
@@ -55,18 +56,7 @@ export default async function DashboardPage() {
         </nav>
 
         <div className="mt-auto">
-          <div className="rounded-xl border border-[#1E2D42] bg-[#0E1828] p-4 flex flex-col gap-3">
-            <div className="text-xs text-[#7A8FA8] font-medium uppercase tracking-wide">Plan actuel</div>
-            <div className="font-bold text-[#DDD5C4]">Starter</div>
-            <div className="text-xs text-[#7A8FA8]">3 signaux / jour</div>
-            <Link
-              href="/#pricing"
-              className="mt-1 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-xs font-semibold transition-colors"
-              style={{ background: "#C8F000", color: "#06090F" }}
-            >
-              Passer Pro
-            </Link>
-          </div>
+          <UserPlan />
         </div>
       </aside>
 
