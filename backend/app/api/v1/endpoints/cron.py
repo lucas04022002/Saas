@@ -1,8 +1,11 @@
 import hmac
+import logging
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+
+log = logging.getLogger("rushplay.cron")
 
 from app.api.deps import get_db
 from app.core.config import settings
@@ -38,7 +41,12 @@ def daily_run(
     if limit:
         query = query.limit(limit)
 
-    matches = db.scalars(query).all()
+    try:
+        matches = db.scalars(query).all()
+    except Exception as exc:
+        log.error("Failed to fetch matches for cron: %s", exc)
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=f"Database error: {exc}")
+
     if not matches:
         return {
             "success": True,
@@ -46,7 +54,12 @@ def daily_run(
             "data": {"processed": 0, "created": 0, "updated": 0, "failed": 0, "errors": []},
         }
 
-    summary = run_bulk_analyses(db, matches)
+    try:
+        summary = run_bulk_analyses(db, matches)
+    except Exception as exc:
+        log.error("Unhandled error in run_bulk_analyses: %s", exc)
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Analysis runner error: {exc}")
+
     return {"success": True, "message": "Daily cron run completed", "data": summary}
 
 
