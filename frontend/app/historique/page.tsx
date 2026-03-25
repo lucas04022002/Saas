@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 
 import RushPlayLogo from "../../components/logos/rushplay";

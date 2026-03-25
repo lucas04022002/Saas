@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { LockIcon, TrendingUpIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 
