@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import RushPlayLogo from "../../components/logos/rushplay";
 import { login } from "../../lib/auth";
@@ -13,6 +13,13 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [slowWarning, setSlowWarning] = useState(false);
+
+  useEffect(() => {
+    if (!loading) { setSlowWarning(false); return; }
+    const t = setTimeout(() => setSlowWarning(true), 6000);
+    return () => clearTimeout(t);
+  }, [loading]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -20,7 +27,7 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await login(email, password);
-      router.push("/dashboard");
+      window.location.href = "/dashboard";
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur de connexion");
     } finally {
@@ -81,6 +88,12 @@ export default function LoginPage() {
             {error && (
               <div className="rounded-lg border border-[#f87171] bg-[rgba(248,113,113,0.08)] px-3 py-2 text-xs text-[#f87171]">
                 {error}
+              </div>
+            )}
+
+            {slowWarning && (
+              <div className="text-xs text-[#7A8FA8] text-center">
+                Le serveur se réveille, patiente encore quelques secondes…
               </div>
             )}
 
