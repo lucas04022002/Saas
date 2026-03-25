@@ -17,7 +17,7 @@ export async function login(email: string, password: string): Promise<AuthUser> 
 
   const json = await res.json();
   if (!res.ok) {
-    throw new Error(json.detail ?? "Identifiants incorrects");
+    throw new Error(json.message ?? json.detail ?? "Identifiants incorrects");
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
@@ -37,9 +37,9 @@ export async function signup(
 
   const json = await res.json();
   if (!res.ok) {
-    const detail = json.detail;
-    if (detail === "Email already exists") throw new Error("Cet email est déjà utilisé");
-    throw new Error(detail ?? "Erreur lors de la création du compte");
+    const msg = json.message ?? json.detail;
+    if (msg === "Email already exists") throw new Error("Cet email est déjà utilisé");
+    throw new Error(msg ?? "Erreur lors de la création du compte");
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
