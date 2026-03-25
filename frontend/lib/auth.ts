@@ -9,11 +9,25 @@ export interface AuthUser {
 }
 
 export async function login(email: string, password: string): Promise<AuthUser> {
-  const res = await fetch(`${API_URL}/api/v1/auth/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password }),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}/api/v1/auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+      signal: controller.signal,
+    });
+  } catch (e: unknown) {
+    if (e instanceof Error && e.name === "AbortError") {
+      throw new Error("Le serveur met trop de temps à répondre. Réessaie dans quelques secondes.");
+    }
+    throw new Error("Impossible de contacter le serveur. Vérifie ta connexion.");
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const json = await res.json();
   if (!res.ok) {
@@ -29,11 +43,25 @@ export async function signup(
   email: string,
   password: string
 ): Promise<AuthUser> {
-  const res = await fetch(`${API_URL}/api/v1/auth/signup`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ first_name, email, password }),
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 60000);
+
+  let res: Response;
+  try {
+    res = await fetch(`${API_URL}/api/v1/auth/signup`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ first_name, email, password }),
+      signal: controller.signal,
+    });
+  } catch (e: unknown) {
+    if (e instanceof Error && e.name === "AbortError") {
+      throw new Error("Le serveur met trop de temps à répondre. Réessaie dans quelques secondes.");
+    }
+    throw new Error("Impossible de contacter le serveur. Vérifie ta connexion.");
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const json = await res.json();
   if (!res.ok) {
