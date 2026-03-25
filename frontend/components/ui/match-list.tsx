@@ -14,8 +14,11 @@ async function fetchPlan(): Promise<string> {
   const token = getToken();
   if (!token) return "STARTER";
   try {
+    const controller = new AbortController();
+    setTimeout(() => controller.abort(), 8000);
     const res = await fetch(`${API_URL}/api/v1/auth/me`, {
       headers: { Authorization: `Bearer ${token}` },
+      signal: controller.signal,
     });
     const json = await res.json();
     return json?.data?.subscription_plan ?? "STARTER";

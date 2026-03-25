@@ -52,7 +52,7 @@ export async function fetchMatches(params?: {
 
 export async function fetchAnalyses(): Promise<ApiAnalysis[]> {
   const res = await fetch(`${API_URL}/api/v1/analyses`, {
-    next: { revalidate: 300 },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erreur lors de la récupération des analyses");
