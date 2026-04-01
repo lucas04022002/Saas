@@ -90,8 +90,8 @@ export default function Hero() {
                   />
                   <path
                     style={{
-                      strokeDasharray: 1000,
-                      strokeDashoffset: 1000,
+                      strokeDasharray: 2000,
+                      strokeDashoffset: 2000,
                       animation: "chart-draw 3s ease-out forwards",
                     }}
                     d="M0,280 L100,260 L200,270 L300,220 L400,190 L500,210 L600,150 L700,120 L800,140 L900,80 L1000,40"
