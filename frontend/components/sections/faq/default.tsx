@@ -6,7 +6,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../../ui/accordion";
-import { Section } from "../../ui/section";
 
 interface FAQItemProps {
   question: string;
@@ -64,31 +63,36 @@ export default function FAQ({
       ),
     },
   ],
-  className,
 }: FAQProps) {
   return (
-    <Section className={className}>
-      <div className="max-w-container mx-auto flex flex-col items-center gap-8">
+    <section className="py-24 bg-[#0b0e14]">
+      <div className="max-w-3xl mx-auto px-6">
         <h2
-          className="text-center text-3xl font-semibold sm:text-5xl"
+          className="text-3xl font-black text-white mb-12 text-center"
           style={{ fontFamily: "var(--font-heading, sans-serif)" }}
         >
           {title}
         </h2>
         {items !== false && items.length > 0 && (
-          <Accordion type="single" collapsible className="w-full max-w-[800px]">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {items.map((item, index) => (
               <AccordionItem
                 key={index}
                 value={item.value || `item-${index + 1}`}
+                className="bg-[#1d2027] rounded-xl border border-[#454933]/15 overflow-hidden px-6"
               >
-                <AccordionTrigger>{item.question}</AccordionTrigger>
+                <AccordionTrigger
+                  className="text-white font-bold hover:text-[#c8f000] hover:no-underline py-5"
+                  style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+                >
+                  {item.question}
+                </AccordionTrigger>
                 <AccordionContent>{item.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
         )}
       </div>
-    </Section>
+    </section>
   );
 }

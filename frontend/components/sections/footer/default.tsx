@@ -1,118 +1,78 @@
-import { ReactNode } from "react";
-
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
 
-import RushPlayLogo from "../../logos/rushplay";
-import {
-  Footer,
-  FooterBottom,
-  FooterColumn,
-  FooterContent,
-} from "../../ui/footer";
+const COLUMNS = [
+  {
+    title: "Produit",
+    links: [
+      { text: "Dashboard", href: "/dashboard" },
+      { text: "Historique", href: "/historique" },
+      { text: "Tarifs", href: "/#pricing" },
+    ],
+  },
+  {
+    title: "Compagnie",
+    links: [
+      { text: "À propos", href: "#" },
+      { text: "Contact", href: "#" },
+      { text: "Aide", href: "#" },
+    ],
+  },
+  {
+    title: "Légal",
+    links: [
+      { text: "Confidentialité", href: siteConfig.url },
+      { text: "Conditions d'utilisation", href: siteConfig.url },
+    ],
+  },
+];
 
-interface FooterLink {
-  text: string;
-  href: string;
-}
-
-interface FooterColumnProps {
-  title: string;
-  links: FooterLink[];
-}
-
-interface FooterProps {
-  logo?: ReactNode;
-  name?: string;
-  columns?: FooterColumnProps[];
-  copyright?: string;
-  policies?: FooterLink[];
-  showModeToggle?: boolean;
-  className?: string;
-}
-
-export default function FooterSection({
-  logo = <RushPlayLogo />,
-  name = "RushPlay",
-  columns = [
-    {
-      title: "Produit",
-      links: [
-        { text: "Dashboard", href: "/dashboard" },
-        { text: "Historique", href: "/historique" },
-        { text: "Tarifs", href: "#pricing" },
-      ],
-    },
-    {
-      title: "Légal",
-      links: [
-        { text: "Mentions légales", href: siteConfig.url },
-        { text: "Confidentialité", href: siteConfig.url },
-        { text: "CGU", href: siteConfig.url },
-      ],
-    },
-    {
-      title: "Contact",
-      links: [
-        { text: "Support", href: siteConfig.links.email },
-      ],
-    },
-  ],
-  copyright = `© ${new Date().getFullYear()} RushPlay. Tous droits réservés.`,
-  policies = [
-    { text: "Politique de confidentialité", href: siteConfig.url },
-    { text: "Conditions d'utilisation", href: siteConfig.url },
-  ],
-  className,
-}: FooterProps) {
+export default function FooterSection() {
   return (
-    <footer className={cn("bg-background w-full px-4", className)}>
-      <div className="max-w-container mx-auto">
-        <Footer>
-          <FooterContent>
-            <FooterColumn className="col-span-2 sm:col-span-3 md:col-span-1">
-              <div className="flex items-center gap-2">
-                {logo}
-                <h3 className="text-xl font-bold">{name}</h3>
-              </div>
-            </FooterColumn>
-            {columns.map((column, index) => (
-              <FooterColumn key={index}>
-                <h3 className="text-md pt-1 font-semibold">{column.title}</h3>
-                {column.links.map((link, linkIndex) => (
-                  <a
-                    key={linkIndex}
-                    href={link.href}
-                    className="text-muted-foreground text-sm hover:text-foreground transition-colors"
-                  >
-                    {link.text}
-                  </a>
-                ))}
-              </FooterColumn>
+    <footer className="bg-[#0b0e14] w-full border-t border-[#454933]/15">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto py-12 px-6">
+        {/* Brand column */}
+        <div className="space-y-4">
+          <div
+            className="text-xl font-bold text-[#c8f000]"
+            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+          >
+            RushPlay
+          </div>
+          <p className="text-sm text-slate-500 max-w-xs leading-relaxed">
+            Le leader de l&apos;analyse algorithmique pour les parieurs
+            exigeants.
+          </p>
+        </div>
+        {/* Link columns */}
+        {COLUMNS.map((col) => (
+          <div key={col.title} className="flex flex-col gap-4">
+            <h4
+              className="text-white font-bold uppercase text-xs tracking-widest"
+              style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+            >
+              {col.title}
+            </h4>
+            {col.links.map((link) => (
+              <a
+                key={link.text}
+                href={link.href}
+                className="text-slate-500 hover:text-white transition-colors text-sm"
+              >
+                {link.text}
+              </a>
             ))}
-          </FooterContent>
-          <FooterBottom>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <p>{copyright}</p>
-              <p className="text-xs max-w-[640px]">
-                RushPlay est un outil d&apos;analyse statistique du football. Il ne garantit aucun gain.
-                Les paris sportifs comportent un risque de perte d&apos;argent. Jouez responsable.
-                Aide : 09 74 75 13 13
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              {policies.map((policy, index) => (
-                <a
-                  key={index}
-                  href={policy.href}
-                  className="text-muted-foreground text-xs hover:text-foreground transition-colors"
-                >
-                  {policy.text}
-                </a>
-              ))}
-            </div>
-          </FooterBottom>
-        </Footer>
+          </div>
+        ))}
+      </div>
+      {/* Bottom bar */}
+      <div className="max-w-7xl mx-auto px-6 py-6 border-t border-[#454933]/15 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-sm text-slate-500">
+          © {new Date().getFullYear()} RushPlay. Tous droits réservés.
+        </p>
+        <div className="flex gap-6 text-xs text-slate-600">
+          <span>Made for winners.</span>
+          <span>Version 4.2.0</span>
+        </div>
       </div>
     </footer>
   );

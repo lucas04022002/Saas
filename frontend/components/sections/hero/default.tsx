@@ -1,189 +1,144 @@
-import { type VariantProps } from "class-variance-authority";
-import { ReactNode } from "react";
-
-import { cn } from "@/lib/utils";
-
-import { Badge } from "../../ui/badge";
-import { Button, buttonVariants } from "../../ui/button";
-import Glow from "../../ui/glow";
-import { Mockup, MockupFrame } from "../../ui/mockup";
-import Screenshot from "../../ui/screenshot";
-import { Section } from "../../ui/section";
-
-interface HeroButtonProps {
-  href: string;
-  text: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-}
-
-interface HeroProps {
-  title?: string;
-  description?: string;
-  mockup?: ReactNode | false;
-  badge?: ReactNode | false;
-  buttons?: HeroButtonProps[] | false;
-  className?: string;
-}
-
-function _DashboardPlaceholder() {
+export default function Hero() {
   return (
-    <div className="w-full rounded-xl bg-[#0A1220] p-6 min-h-[340px] flex flex-col gap-4">
-      <div className="flex items-center justify-between mb-2">
-        <div className="flex gap-2 items-center">
-          <div className="w-3 h-3 rounded-full bg-red-500/60" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-          <div className="w-3 h-3 rounded-full bg-green-500/60" />
-        </div>
-        <div className="text-xs text-[#7A8FA8] font-[family-name:var(--font-mono)]">
-          RushPlay · signaux du jour
-        </div>
-      </div>
-      <div className="grid grid-cols-3 gap-3">
-        {[
-          { label: "Précision", value: "57.6%", color: "#C8F000" },
-          { label: "Signaux actifs", value: "6", color: "#C8F000" },
-          { label: "Écart moyen", value: "+11.3%", color: "#C8F000" },
-        ].map((kpi) => (
-          <div key={kpi.label} className="rounded-lg bg-[#0E1828] border border-[#1E2D42] p-3">
-            <div className="text-[#7A8FA8] text-xs mb-1">{kpi.label}</div>
-            <div
-              className="text-xl font-semibold font-[family-name:var(--font-mono)]"
-              style={{ color: kpi.color }}
-            >
-              {kpi.value}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="flex flex-col gap-2 mt-2">
-        {[
-          { match: "PSG vs Marseille", league: "Ligue 1", ecart: "+11.3%", conf: 74, risk: "faible" },
-          { match: "Real Madrid vs Sevilla", league: "La Liga", ecart: "+8.7%", conf: 68, risk: "modéré" },
-          { match: "Bayern vs Leverkusen", league: "Bundesliga", ecart: "+7.1%", conf: 63, risk: "modéré" },
-        ].map((m) => (
-          <div
-            key={m.match}
-            className="flex items-center justify-between rounded-lg bg-[#0E1828] border border-[#1E2D42] px-4 py-3"
-          >
-            <div>
-              <div className="text-sm font-semibold text-[#DDD5C4] font-[family-name:var(--font-heading)]">
-                {m.match}
-              </div>
-              <div className="text-xs text-[#7A8FA8]">{m.league}</div>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="font-[family-name:var(--font-mono)] text-sm font-semibold" style={{ color: "#C8F000" }}>
-                {m.ecart}
-              </span>
-              <span
-                className="text-xs px-2 py-0.5 rounded"
-                style={{
-                  background: m.risk === "faible" ? "rgba(34,197,94,0.12)" : "rgba(234,179,8,0.12)",
-                  color: m.risk === "faible" ? "#4ade80" : "#eab308",
-                }}
-              >
-                {m.risk}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-export default function Hero({
-  title = "Les bookmakers se trompent. RushPlay le voit.",
-  description = "Détection algorithmique des écarts entre probabilités réelles et cotes bookmakers — 6 ligues, mis à jour chaque matin.",
-  mockup = (
-    <Screenshot
-      srcLight="/dashboard-light.png"
-      srcDark="/dashboard-dark.png"
-      alt="RushPlay dashboard"
-      width={1248}
-      height={765}
-      className="w-full"
-    />
-  ),
-  badge = (
-    <Badge variant="outline" className="animate-appear">
-      <span className="text-muted-foreground">Radar d&apos;opportunités football</span>
-    </Badge>
-  ),
-  buttons = [
-    {
-      href: "/dashboard",
-      text: "Voir les signaux du jour",
-      variant: "default",
-    },
-    {
-      href: "/historique",
-      text: "Résultats passés",
-      variant: "glow",
-    },
-  ],
-  className,
-}: HeroProps) {
-  return (
-    <Section
-      className={cn(
-        "fade-bottom overflow-hidden pb-0 sm:pb-0 md:pb-0",
-        className,
-      )}
-    >
-      <div className="max-w-container mx-auto flex flex-col gap-12 pt-16 sm:gap-24">
-        <div className="flex flex-col items-center gap-6 text-center sm:gap-12">
-          {badge !== false && badge}
-          <h1
-            className="animate-appear from-foreground to-foreground dark:to-muted-foreground relative z-10 inline-block bg-linear-to-r bg-clip-text text-4xl leading-tight font-semibold text-balance text-transparent drop-shadow-2xl sm:text-6xl sm:leading-tight md:text-8xl md:leading-tight"
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden hero-glow pt-16">
+      <div className="max-w-4xl text-center z-10">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-[#272a31] px-4 py-1.5 rounded-full mb-8 border border-[#454933]/20">
+          <span className="flex h-2 w-2 rounded-full bg-[#c8f000] animate-pulse" />
+          <span
+            className="text-xs uppercase tracking-widest text-[#c8f000]"
             style={{ fontFamily: "var(--font-heading, sans-serif)" }}
           >
-            {title}
-          </h1>
-          <p className="text-md animate-appear text-muted-foreground relative z-10 max-w-[740px] font-medium text-balance opacity-0 delay-100 sm:text-xl">
-            {description}
-          </p>
-          {buttons !== false && buttons.length > 0 && (
-            <div className="animate-appear relative z-10 flex justify-center gap-4 opacity-0 delay-300">
-              {buttons.map((button, index) => (
-                <Button
-                  key={index}
-                  variant={button.variant || "default"}
-                  size="lg"
-                  asChild
-                >
-                  <a href={button.href}>
-                    {button.icon}
-                    {button.text}
-                    {button.iconRight}
-                  </a>
-                </Button>
-              ))}
-            </div>
-          )}
-          {mockup !== false && (
-            <div className="relative w-full pt-12">
-              <MockupFrame
-                className="animate-appear opacity-0 delay-700"
-                size="small"
-              >
-                <Mockup
-                  type="responsive"
-                  className="bg-background/90 w-full rounded-xl border-0"
-                >
-                  {mockup}
-                </Mockup>
-              </MockupFrame>
-              <Glow
-                variant="top"
-                className="animate-appear-zoom opacity-0 delay-1000"
-              />
-            </div>
-          )}
+            Algorithme V4.2 Live
+          </span>
+        </div>
+
+        {/* Titre */}
+        <h1
+          className="text-5xl md:text-8xl font-black tracking-tighter mb-6 leading-[0.9] text-white"
+          style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+        >
+          Les bookmakers se trompent.{" "}
+          <br />
+          <span className="text-[#c8f000]">RushPlay le voit.</span>
+        </h1>
+
+        {/* Description */}
+        <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          L&apos;intelligence artificielle au service de vos analyses sportives.
+          Identifiez les valeurs cachées et battez le marché avec une précision
+          mathématique.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <a
+            href="/dashboard"
+            className="w-full sm:w-auto bg-[#c8f000] text-[#2a3400] px-8 py-4 rounded-xl font-extrabold text-lg transition-transform hover:scale-105 active:scale-95 shadow-[0_20px_40px_rgba(200,240,0,0.2)]"
+            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+          >
+            Accéder aux signaux
+          </a>
+          <a
+            href="/historique"
+            className="w-full sm:w-auto bg-[#272a31]/50 border border-[#454933]/20 px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#272a31] transition-colors text-white"
+            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+          >
+            Voir les résultats
+          </a>
         </div>
       </div>
-    </Section>
+
+      {/* Performance Chart */}
+      <div className="relative w-full max-w-6xl mx-auto group">
+        <div className="absolute -inset-1 bg-gradient-to-r from-[#c8f000]/20 to-slate-500/20 rounded-xl blur-2xl opacity-30 group-hover:opacity-50 transition-opacity" />
+        <div className="relative bg-[#16191f] border border-[#454933]/20 rounded-xl p-8 shadow-2xl overflow-hidden">
+          <div className="flex flex-col lg:flex-row gap-12 items-center">
+            {/* Chart */}
+            <div className="flex-1 w-full">
+              <div className="flex items-center justify-between mb-8">
+                <h3
+                  className="text-2xl font-black text-white"
+                  style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+                >
+                  La transparence comme argument
+                </h3>
+                <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <span className="w-3 h-3 rounded-full bg-[#c8f000]" />
+                  Profits
+                </div>
+              </div>
+              <div className="relative h-[260px] w-full">
+                <svg
+                  className="w-full h-full"
+                  viewBox="0 0 1000 300"
+                  preserveAspectRatio="none"
+                >
+                  <defs>
+                    <linearGradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+                      <stop offset="0%" stopColor="#c8f000" />
+                      <stop offset="100%" stopColor="transparent" />
+                    </linearGradient>
+                  </defs>
+                  <line stroke="#454933" strokeDasharray="5,5" strokeWidth="0.5" x1="0" x2="1000" y1="50" y2="50" />
+                  <line stroke="#454933" strokeDasharray="5,5" strokeWidth="0.5" x1="0" x2="1000" y1="150" y2="150" />
+                  <line stroke="#454933" strokeDasharray="5,5" strokeWidth="0.5" x1="0" x2="1000" y1="250" y2="250" />
+                  <path
+                    d="M0,280 L100,260 L200,270 L300,220 L400,190 L500,210 L600,150 L700,120 L800,140 L900,80 L1000,40 V300 H0 Z"
+                    fill="url(#chartGradient)"
+                    opacity="0.1"
+                  />
+                  <path
+                    style={{
+                      strokeDasharray: 1000,
+                      strokeDashoffset: 1000,
+                      animation: "chart-draw 3s ease-out forwards",
+                    }}
+                    d="M0,280 L100,260 L200,270 L300,220 L400,190 L500,210 L600,150 L700,120 L800,140 L900,80 L1000,40"
+                    fill="none"
+                    stroke="#c8f000"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                  />
+                </svg>
+                <div className="flex justify-between mt-4 text-[10px] text-slate-500 uppercase tracking-widest">
+                  <span>Jan 2024</span>
+                  <span>Mars 2024</span>
+                  <span>Mai 2024</span>
+                  <span>Juillet 2024</span>
+                  <span>Sept 2024</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Métriques */}
+            <div className="lg:w-72 w-full grid grid-cols-2 lg:grid-cols-1 gap-4">
+              {[
+                { label: "ROI Global", value: "+145.2%", sub: "▲ 12.4% vs mois dernier", highlight: true },
+                { label: "Taux de réussite", value: "74.8%", sub: "Moyenne signaux High Conf.", highlight: false },
+                { label: "Mise moy. conseillée", value: "2.5%", sub: "Bankroll management", highlight: false },
+              ].map((m) => (
+                <div
+                  key={m.label}
+                  className="p-5 rounded-xl bg-[#32353c]/40 border border-[#454933]/15"
+                >
+                  <div className="text-slate-400 text-xs uppercase mb-1 tracking-wide">
+                    {m.label}
+                  </div>
+                  <div
+                    className={`text-2xl font-black ${m.highlight ? "text-[#c8f000]" : "text-white"}`}
+                    style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+                  >
+                    {m.value}
+                  </div>
+                  <div className="text-[10px] text-slate-500 mt-1">{m.sub}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

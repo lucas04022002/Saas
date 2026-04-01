@@ -1,157 +1,103 @@
-import { type VariantProps } from "class-variance-authority";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { ReactNode } from "react";
 
-import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-import RushPlayLogo from "../../logos/rushplay";
-import { Button, buttonVariants } from "../../ui/button";
-import {
-  Navbar as NavbarComponent,
-  NavbarLeft,
-  NavbarRight,
-} from "../../ui/navbar";
+import { Button } from "../../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
-interface NavbarLink {
-  text: string;
-  href: string;
-}
-
-interface NavbarActionProps {
-  text: string;
-  href: string;
-  variant?: VariantProps<typeof buttonVariants>["variant"];
-  icon?: ReactNode;
-  iconRight?: ReactNode;
-  isButton?: boolean;
-}
-
 interface NavbarProps {
-  logo?: ReactNode;
-  name?: string;
-  homeUrl?: string;
-  mobileLinks?: NavbarLink[];
-  actions?: NavbarActionProps[];
-  showNavigation?: boolean;
-  customNavigation?: ReactNode;
   className?: string;
 }
 
-export default function Navbar({
-  logo = <RushPlayLogo />,
-  name = "RushPlay",
-  homeUrl = siteConfig.url,
-  mobileLinks = [
+export default function Navbar({ className }: NavbarProps) {
+  const links = [
     { text: "Accueil", href: "/" },
     { text: "Dashboard", href: "/dashboard" },
     { text: "Historique", href: "/historique" },
-    { text: "Tarifs", href: "#pricing" },
-  ],
-  actions = [
-    { text: "Connexion", href: "/login", isButton: false },
-    {
-      text: "Commencer",
-      href: "/signup",
-      isButton: true,
-      variant: "default",
-    },
-  ],
-  showNavigation = true,
-  customNavigation,
-  className,
-}: NavbarProps) {
-  const rushplayNav = (
-    <nav className="hidden items-center gap-6 md:flex">
-      <Link href="/" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-        Accueil
-      </Link>
-      <Link href="/dashboard" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-        Dashboard
-      </Link>
-      <Link href="/historique" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-        Historique
-      </Link>
-      <Link href="/#pricing" className="text-muted-foreground hover:text-foreground text-sm transition-colors">
-        Tarifs
-      </Link>
-    </nav>
-  );
+    { text: "Tarifs", href: "/#pricing" },
+  ];
 
   return (
-    <header className={cn("sticky top-0 z-50 -mb-4 px-4 pb-4", className)}>
-      <div className="fade-bottom bg-background/15 absolute left-0 h-24 w-full backdrop-blur-lg"></div>
-      <div className="max-w-container relative mx-auto">
-        <NavbarComponent>
-          <NavbarLeft>
-            <a
-              href={homeUrl}
-              className="flex items-center gap-2 text-xl font-bold"
+    <header
+      className={cn(
+        "fixed top-0 z-50 w-full bg-[#10131a]/80 backdrop-blur-xl border-b border-[#454933]/20",
+        className,
+      )}
+    >
+      <div className="max-w-7xl mx-auto flex h-16 items-center justify-between px-6">
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-2xl font-black tracking-tighter text-[#c8f000]"
+          style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+        >
+          RushPlay
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+              style={{ fontFamily: "var(--font-heading, sans-serif)" }}
             >
-              {logo}
-              {name}
-            </a>
-            {showNavigation && (customNavigation || rushplayNav)}
-          </NavbarLeft>
-          <NavbarRight>
-            {actions.map((action, index) =>
-              action.isButton ? (
-                <Button
-                  key={index}
-                  variant={action.variant || "default"}
-                  asChild
-                >
-                  <a href={action.href}>
-                    {action.icon}
-                    {action.text}
-                    {action.iconRight}
-                  </a>
-                </Button>
-              ) : (
+              {link.text}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Actions */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href="/login"
+            className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+          >
+            Connexion
+          </a>
+          <a
+            href="/signup"
+            className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl text-sm font-extrabold hover:brightness-110 transition-all"
+            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+          >
+            Commencer
+          </a>
+        </div>
+
+        {/* Mobile menu */}
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="ghost" size="icon" className="md:hidden">
+              <Menu className="size-5" />
+              <span className="sr-only">Menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="right">
+            <nav className="grid gap-6 text-lg font-medium mt-8">
+              <Link href="/" className="text-2xl font-black text-[#c8f000]">
+                RushPlay
+              </Link>
+              {links.map((link) => (
                 <a
-                  key={index}
-                  href={action.href}
-                  className="hidden text-sm md:block text-muted-foreground hover:text-foreground transition-colors"
+                  key={link.href}
+                  href={link.href}
+                  className="text-slate-400 hover:text-white transition-colors"
                 >
-                  {action.text}
+                  {link.text}
                 </a>
-              ),
-            )}
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="shrink-0 md:hidden"
-                >
-                  <Menu className="size-5" />
-                  <span className="sr-only">Toggle navigation menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <nav className="grid gap-6 text-lg font-medium">
-                  <a
-                    href={homeUrl}
-                    className="flex items-center gap-2 text-xl font-bold"
-                  >
-                    <span>{name}</span>
-                  </a>
-                  {mobileLinks.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.href}
-                      className="text-muted-foreground hover:text-foreground"
-                    >
-                      {link.text}
-                    </a>
-                  ))}
-                </nav>
-              </SheetContent>
-            </Sheet>
-          </NavbarRight>
-        </NavbarComponent>
+              ))}
+              <a
+                href="/signup"
+                className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl font-extrabold text-center"
+              >
+                Commencer
+              </a>
+            </nav>
+          </SheetContent>
+        </Sheet>
       </div>
     </header>
   );

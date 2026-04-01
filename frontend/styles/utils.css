@@ -82,3 +82,13 @@
 @utility line-dashed {
   @apply border-dashed;
 }
+
+@utility glass-card {
+  background: rgba(49, 53, 60, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+@utility hero-glow {
+  background: radial-gradient(circle at center, rgba(200, 240, 0, 0.06) 0%, transparent 70%);
+}

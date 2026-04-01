@@ -1,72 +1,48 @@
-import { Section } from "../../ui/section";
+const STATS = [
+  {
+    value: "57.6%",
+    label: "Précision Moyenne",
+    description: "Basé sur les 10 000 derniers signaux générés par l'IA.",
+    color: "text-[#c8f000]",
+  },
+  {
+    value: "+12.4%",
+    label: "ROI Mensuel Moyen",
+    description: "Performance nette après frais de gestion de bankroll.",
+    color: "text-slate-300",
+  },
+  {
+    value: "24/7",
+    label: "Analyse en Temps Réel",
+    description: "Plus de 80 championnats scannés à chaque seconde.",
+    color: "text-white",
+  },
+];
 
-interface StatItemProps {
-  label?: string;
-  value: string | number;
-  suffix?: string;
-  description?: string;
-}
-
-interface StatsProps {
-  items?: StatItemProps[] | false;
-  className?: string;
-}
-
-export default function Stats({
-  items = [
-    {
-      value: "57.6",
-      suffix: "%",
-      description: "Précision algorithme",
-    },
-    {
-      value: "+11.3",
-      suffix: "%",
-      description: "Écart moyen détecté",
-    },
-    {
-      value: "6",
-      description: "Ligues analysées",
-    },
-    {
-      value: "24h",
-      description: "Mise à jour quotidienne",
-    },
-  ],
-  className,
-}: StatsProps) {
+export default function Stats() {
   return (
-    <Section className={className}>
-      <div className="container mx-auto max-w-[960px]">
-        {items !== false && items.length > 0 && (
-          <div className="grid grid-cols-2 gap-12 sm:grid-cols-4">
-            {items.map((item, index) => (
+    <section className="py-24 bg-[#0b0e14]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+          {STATS.map((stat) => (
+            <div key={stat.label} className="space-y-2">
               <div
-                key={index}
-                className="flex flex-col items-start gap-3 text-left"
+                className={`text-6xl md:text-7xl font-bold tracking-tighter ${stat.color}`}
+                style={{ fontFamily: "var(--font-mono, monospace)" }}
               >
-                <div className="flex items-baseline gap-1">
-                  <div
-                    className="from-foreground to-foreground dark:to-brand bg-linear-to-r bg-clip-text text-4xl font-medium text-transparent drop-shadow-[2px_1px_24px_var(--brand-foreground)] transition-all duration-300 sm:text-5xl md:text-6xl font-[family-name:var(--font-mono)]"
-                  >
-                    {item.value}
-                  </div>
-                  {item.suffix && (
-                    <div className="text-brand text-2xl font-semibold font-[family-name:var(--font-mono)]">
-                      {item.suffix}
-                    </div>
-                  )}
-                </div>
-                {item.description && (
-                  <div className="text-muted-foreground text-sm font-semibold text-pretty">
-                    {item.description}
-                  </div>
-                )}
+                {stat.value}
               </div>
-            ))}
-          </div>
-        )}
+              <div
+                className="text-slate-400 font-bold text-lg"
+                style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+              >
+                {stat.label}
+              </div>
+              <p className="text-slate-500 text-sm">{stat.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
   );
 }
