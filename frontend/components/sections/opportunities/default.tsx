@@ -78,7 +78,7 @@ function SignalCard({ opp }: { opp: Opportunity }) {
         <div className="flex justify-between text-sm">
           <span className="text-slate-400">Probabilité IA</span>
           <span className="text-[#c8f000] font-bold">
-            {(opp.confidence_score * 100).toFixed(1)}%
+            {opp.confidence_score.toFixed(1)}%
           </span>
         </div>
       </div>
