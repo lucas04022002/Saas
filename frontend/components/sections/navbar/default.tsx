@@ -8,9 +8,10 @@ import { Sheet, SheetContent, SheetTrigger } from "../../ui/sheet";
 
 interface NavbarProps {
   className?: string;
+  activePath?: string;
 }
 
-export default function Navbar({ className }: NavbarProps) {
+export default function Navbar({ className, activePath = "/" }: NavbarProps) {
   const links = [
     { text: "Accueil", href: "/" },
     { text: "Dashboard", href: "/dashboard" },
@@ -37,16 +38,23 @@ export default function Navbar({ className }: NavbarProps) {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
-              style={{ fontFamily: "var(--font-heading, sans-serif)" }}
-            >
-              {link.text}
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = activePath === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-semibold transition-colors ${
+                  isActive
+                    ? "text-[#c8f000] border-b-2 border-[#c8f000] pb-1"
+                    : "text-slate-400 hover:text-white"
+                }`}
+                style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+              >
+                {link.text}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* Actions */}
