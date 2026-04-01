@@ -160,16 +160,6 @@ export default async function Opportunities() {
               Aperçu en temps réel des opportunités détectées.
             </p>
           </div>
-          <div className="flex gap-2">
-            {["Foot", "Tennis", "NBA"].map((sport) => (
-              <span
-                key={sport}
-                className="px-4 py-2 bg-[#272a31] rounded-lg text-xs font-bold uppercase text-slate-400 border border-[#454933]/15"
-              >
-                {sport}
-              </span>
-            ))}
-          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
