@@ -27,26 +27,32 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
   const [selectedLeague, setSelectedLeague] = useState<string>("all");
   const [minConfidence, setMinConfidence] = useState<number>(0);
 
+  const sorted = useMemo(() => {
+    return [...analyses].sort(
+      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  }, [analyses]);
+
   const periodFiltered = useMemo(() => {
-    if (period === "ALL") return analyses;
+    if (period === "ALL") return sorted;
     const days = period === "7J" ? 7 : 30;
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - days);
-    return analyses.filter((a) => new Date(a.created_at) >= cutoff);
-  }, [analyses, period]);
+    return sorted.filter((a) => new Date(a.created_at) >= cutoff);
+  }, [sorted, period]);
 
   const leagues = useMemo(() => {
     const counts: Record<string, number> = {};
-    for (const a of periodFiltered) {
-      const league = (a as any).league ?? "Football";
+    for (const a of sorted) {
+      const league = a.league ?? "Football";
       counts[league] = (counts[league] ?? 0) + 1;
     }
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
-  }, [periodFiltered]);
+  }, [sorted]);
 
   const filtered = useMemo(() => {
     return periodFiltered.filter((a) => {
-      const league = (a as any).league ?? "Football";
+      const league = a.league ?? "Football";
       const leagueOk = selectedLeague === "all" || league === selectedLeague;
       const confOk = a.confidence_score >= minConfidence;
       return leagueOk && confOk;
@@ -195,7 +201,7 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
             onChange={(e) => setSelectedLeague(e.target.value)}
             className="w-full bg-[#32353c] border-none rounded-lg text-sm text-white py-2.5 px-4 focus:ring-1 focus:ring-[#c8f000] outline-none cursor-pointer"
           >
-            <option value="all">Toutes les ligues ({periodFiltered.length})</option>
+            <option value="all">Toutes les ligues ({sorted.length})</option>
             {leagues.map(([league, count]) => (
               <option key={league} value={league}>
                 {league} ({count})
@@ -272,7 +278,7 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                           {a.home_team} vs {a.away_team}
                         </div>
                         <div className="text-xs text-slate-500">
-                          {(a as any).league ?? "Football"}
+                          {a.league ?? "Football"}
                         </div>
                       </td>
 

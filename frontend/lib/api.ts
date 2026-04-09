@@ -20,6 +20,7 @@ export interface ApiAnalysis {
   match_id: string;
   home_team: string;
   away_team: string;
+  league?: string;
   confidence_score: number;
   recommended_bet: string;
   bookmaker_odds: number;
