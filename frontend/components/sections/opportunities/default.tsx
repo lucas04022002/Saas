@@ -15,10 +15,13 @@ interface Opportunity {
 
 async function fetchTopOpportunities(): Promise<Opportunity[]> {
   try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10000);
     const res = await fetch(
       `${BACKEND_URL}/api/v1/opportunities/top?limit=3`,
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 3600 }, signal: controller.signal },
     );
+    clearTimeout(timer);
     if (!res.ok) return [];
     const json = await res.json();
     return json.data ?? [];
