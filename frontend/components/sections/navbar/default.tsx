@@ -16,7 +16,7 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
     { text: "Accueil", href: "/" },
     { text: "Dashboard", href: "/dashboard" },
     { text: "Historique", href: "/historique" },
-    { text: "Tarifs", href: "/#pricing" },
+    { text: "Tarifs", href: "/tarifs" },
   ];
 
   return (
