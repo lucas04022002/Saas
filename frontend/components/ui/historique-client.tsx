@@ -39,11 +39,14 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
   const [period, setPeriod] = useState<"7J" | "30J" | "ALL">("30J");
   const [selectedLeague, setSelectedLeague] = useState<string>("all");
   const [minConfidence, setMinConfidence] = useState<number>(0);
+  const [search, setSearch] = useState<string>("");
 
   const sorted = useMemo(() => {
-    return [...analyses].sort(
-      (a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
-    );
+    return [...analyses].sort((a, b) => {
+      const dateA = new Date(a.kickoff_at ?? a.created_at).getTime();
+      const dateB = new Date(b.kickoff_at ?? b.created_at).getTime();
+      return dateB - dateA;
+    });
   }, [analyses]);
 
   const periodFiltered = useMemo(() => {
@@ -51,7 +54,7 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
     const days = period === "7J" ? 7 : 30;
     const cutoff = new Date();
     cutoff.setDate(cutoff.getDate() - days);
-    return sorted.filter((a) => new Date(a.created_at) >= cutoff);
+    return sorted.filter((a) => new Date(a.kickoff_at ?? a.created_at) >= cutoff);
   }, [sorted, period]);
 
   const leagues = useMemo(() => {
@@ -64,13 +67,15 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
   }, [sorted]);
 
   const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return periodFiltered.filter((a) => {
       const league = a.league ?? "Football";
       const leagueOk = selectedLeague === "all" || league === selectedLeague;
       const confOk = a.confidence_score >= minConfidence;
-      return leagueOk && confOk;
+      const searchOk = !q || a.home_team.toLowerCase().includes(q) || a.away_team.toLowerCase().includes(q);
+      return leagueOk && confOk && searchOk;
     });
-  }, [periodFiltered, selectedLeague, minConfidence]);
+  }, [periodFiltered, selectedLeague, minConfidence, search]);
 
   // Stats
   const totalSignaux = filtered.length;
@@ -205,6 +210,18 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
 
       {/* Filters */}
       <div className="bg-[#1d2027] rounded-xl p-4 mb-6 flex flex-wrap gap-4 items-end border border-[#454933]/15">
+        <div className="flex-1 min-w-[200px]">
+          <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 font-bold">
+            Recherche
+          </label>
+          <input
+            type="text"
+            placeholder="Nom d'équipe..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full bg-[#32353c] border-none rounded-lg text-sm text-white py-2.5 px-4 focus:ring-1 focus:ring-[#c8f000] outline-none placeholder-slate-600"
+          />
+        </div>
         <div className="flex-1 min-w-[180px]">
           <label className="block text-[10px] uppercase tracking-widest text-slate-500 mb-2 font-bold">
             Ligue
