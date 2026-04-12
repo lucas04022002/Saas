@@ -1,49 +1,26 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
-import { getToken } from "@/lib/auth";
 import { ApiMatch, riskColors, riskLabel } from "@/lib/api";
 import TeamLogo from "./team-logo";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
-
-async function fetchPlan(): Promise<string> {
-  const token = getToken();
-  if (!token) return "STARTER";
-  try {
-    const controller = new AbortController();
-    setTimeout(() => controller.abort(), 8000);
-    const res = await fetch(`${API_URL}/api/v1/auth/me`, {
-      headers: { Authorization: `Bearer ${token}` },
-      signal: controller.signal,
-    });
-    const json = await res.json();
-    return json?.data?.subscription_plan ?? "STARTER";
-  } catch {
-    return "STARTER";
-  }
-}
 
 interface DashboardClientProps {
   matches: ApiMatch[];
   todayMatches: ApiMatch[];
   avgConfidence: number;
+  isPro: boolean;
 }
 
 export default function DashboardClient({
   matches,
   todayMatches,
   avgConfidence,
+  isPro,
 }: DashboardClientProps) {
-  const [plan, setPlan] = useState<string | null>(null);
   const [selectedLeague, setSelectedLeague] = useState<string>("all");
   const [minConfidence, setMinConfidence] = useState<number>(0);
   const [search, setSearch] = useState<string>("");
-
-  useEffect(() => {
-    fetchPlan().then(setPlan);
-  }, []);
 
   const leagues = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -65,7 +42,6 @@ export default function DashboardClient({
     });
   }, [baseMatches, selectedLeague, minConfidence, search]);
 
-  const isPro = plan === "PRO" || plan === "ELITE";
   const FREE_SLOTS = 3;
   const visibleMatches = isPro ? filtered : filtered.slice(0, FREE_SLOTS);
   const lockedCount = isPro ? 0 : Math.max(0, filtered.length - FREE_SLOTS);
@@ -135,7 +111,7 @@ export default function DashboardClient({
               />
             </div>
           )}
-          {!isPro && plan !== null && (
+          {!isPro && (
             <div className="bg-[#16191f] p-4 rounded-xl flex items-center gap-3">
               <span className="text-slate-600 text-xs">🔒 Recherche réservée aux membres Pro</span>
             </div>
@@ -219,13 +195,8 @@ export default function DashboardClient({
             </span>
           </div>
 
-          {plan === null && (
-            <div className="text-sm text-slate-500 animate-pulse mb-4">
-              Chargement…
-            </div>
-          )}
 
-          {filtered.length === 0 && plan !== null && (
+          {filtered.length === 0 && (
             <div className="rounded-xl border border-[#454933]/20 bg-[#16191f] p-8 text-center text-slate-500 text-sm">
               Aucun signal ne correspond aux filtres sélectionnés.
             </div>

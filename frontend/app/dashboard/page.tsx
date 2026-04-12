@@ -1,15 +1,36 @@
 export const dynamic = "force-dynamic";
 
+import { cookies } from "next/headers";
 import FooterSection from "../../components/sections/footer/default";
 import Navbar from "../../components/sections/navbar/default";
 import DashboardClient from "../../components/ui/dashboard-client";
 import { ApiMatch, fetchMatches } from "../../lib/api";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
 export default async function DashboardPage() {
   let matches: ApiMatch[] = [];
   let error = false;
+  let isPro = false;
 
   let todayMatches: ApiMatch[] = [];
+
+  // Vérifier le plan côté serveur
+  const cookieStore = await cookies();
+  const token = cookieStore.get("rushplay_token")?.value;
+  if (token) {
+    try {
+      const meRes = await fetch(`${API_URL}/api/v1/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      });
+      const me = await meRes.json();
+      const plan = me?.data?.subscription_plan ?? "STARTER";
+      isPro = plan === "PRO" || plan === "ELITE";
+    } catch {
+      // STARTER par défaut
+    }
+  }
 
   try {
     const now = new Date();
@@ -68,7 +89,7 @@ export default async function DashboardPage() {
         )}
 
         {!error && matches.length > 0 && (
-          <DashboardClient matches={matches} todayMatches={todayMatches} avgConfidence={avgConfidence} />
+          <DashboardClient matches={matches} todayMatches={todayMatches} avgConfidence={avgConfidence} isPro={isPro} />
         )}
       </main>
 
