@@ -34,25 +34,20 @@ export default async function DashboardPage() {
 
   try {
     const now = new Date();
-    const tomorrow = new Date(now);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const toDateStr = (d: Date) => d.toISOString().split("T")[0];
-
-    const [todayData, tomorrowData, allData] = await Promise.all([
-      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(now), status: "SCHEDULED" }),
-      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(tomorrow), status: "SCHEDULED" }),
-      fetchMatches({ limit: 100, sort_by: "kickoff_at", order: "asc", status: "SCHEDULED" }),
-    ]);
-
-    todayMatches = [...todayData.items, ...tomorrowData.items]
-      .filter((m) => m.confidence_score !== null)
-      .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
-
+    const in4Days = new Date(now);
+    in4Days.setDate(in4Days.getDate() + 4);
     const in7Days = new Date(now);
     in7Days.setDate(in7Days.getDate() + 7);
-    matches = allData.items.filter(
-      (m) => m.confidence_score !== null && new Date(m.kickoff_at) <= in7Days,
-    );
+
+    const allData = await fetchMatches({ limit: 100, sort_by: "kickoff_at", order: "asc", status: "SCHEDULED" });
+
+    const allFiltered = allData.items.filter((m) => m.confidence_score !== null);
+
+    todayMatches = allFiltered
+      .filter((m) => new Date(m.kickoff_at) <= in4Days)
+      .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
+
+    matches = allFiltered.filter((m) => new Date(m.kickoff_at) <= in7Days);
   } catch {
     error = true;
   }
