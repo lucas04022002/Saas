@@ -27,13 +27,28 @@ def _is_valid_cron_key(x_cron_key: str | None) -> bool:
 
 
 @router.get("")
-def list_analyses(db: Session = Depends(get_db)):
-    rows = db.execute(select(Analysis, Match).join(Match, Match.id == Analysis.match_id)).all()
+def list_analyses(
+    status_filter: str | None = Query(default=None, alias="status"),
+    db: Session = Depends(get_db),
+):
+    from app.models.enums import MatchStatus
+    query = select(Analysis, Match).join(Match, Match.id == Analysis.match_id)
+    if status_filter:
+        try:
+            query = query.where(Match.status == MatchStatus(status_filter))
+        except ValueError:
+            pass
+    rows = db.execute(query).all()
     data = [
         {
             "match_id": str(analysis.match_id),
             "home_team": match.home_team,
             "away_team": match.away_team,
+            "league": match.league,
+            "kickoff_at": match.kickoff_at.isoformat(),
+            "match_status": match.status.value,
+            "home_score": match.home_score,
+            "away_score": match.away_score,
             "confidence_score": analysis.confidence_score,
             "recommended_bet": analysis.recommended_bet,
             "bookmaker_odds": analysis.bookmaker_odds,

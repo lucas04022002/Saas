@@ -21,6 +21,10 @@ export interface ApiAnalysis {
   home_team: string;
   away_team: string;
   league?: string;
+  kickoff_at?: string;
+  match_status?: string;
+  home_score?: number | null;
+  away_score?: number | null;
   confidence_score: number;
   recommended_bet: string;
   bookmaker_odds: number;
@@ -53,8 +57,9 @@ export async function fetchMatches(params?: {
   return json.data;
 }
 
-export async function fetchAnalyses(): Promise<ApiAnalysis[]> {
-  const res = await fetch(`${API_URL}/api/v1/analyses`, {
+export async function fetchAnalyses(status?: string): Promise<ApiAnalysis[]> {
+  const query = status ? `?status=${status}` : "";
+  const res = await fetch(`${API_URL}/api/v1/analyses${query}`, {
     cache: "no-store",
   });
 

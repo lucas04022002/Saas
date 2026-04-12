@@ -10,7 +10,7 @@ export default async function HistoriquePage() {
   let error = false;
 
   try {
-    analyses = await fetchAnalyses();
+    analyses = await fetchAnalyses("FINISHED");
   } catch {
     error = true;
   }

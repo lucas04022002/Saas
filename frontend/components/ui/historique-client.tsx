@@ -8,6 +8,19 @@ interface HistoriqueClientProps {
   analyses: ApiAnalysis[];
 }
 
+function getPredictionResult(a: ApiAnalysis): "win" | "loss" | null {
+  if (a.home_score == null || a.away_score == null) return null;
+  const h = a.home_score;
+  const aw = a.away_score;
+  const actual = h > aw ? "home" : h < aw ? "away" : "draw";
+  const predicted = a.recommended_bet.toLowerCase().includes("domicile")
+    ? "home"
+    : a.recommended_bet.toLowerCase().includes("exterieur") || a.recommended_bet.toLowerCase().includes("extérieur")
+    ? "away"
+    : "draw";
+  return actual === predicted ? "win" : "loss";
+}
+
 function formatShortDate(iso: string) {
   return new Date(iso).toLocaleDateString("fr-FR", {
     day: "2-digit",
@@ -246,16 +259,17 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                 <tr className="bg-[#272a31]/50 text-[10px] uppercase tracking-widest text-slate-500">
                   <th className="px-6 py-4 font-bold">Date</th>
                   <th className="px-6 py-4 font-bold">Événement</th>
+                  <th className="px-6 py-4 font-bold text-center">Score</th>
                   <th className="px-6 py-4 font-bold">Conseil IA</th>
-                  <th className="px-6 py-4 font-bold text-center">Cotes</th>
+                  <th className="px-6 py-4 font-bold text-center">Résultat</th>
                   <th className="px-6 py-4 font-bold text-center">Confiance</th>
-                  <th className="px-6 py-4 font-bold text-center">Risque</th>
-                  <th className="px-6 py-4 font-bold text-right">Valeur</th>
+                  <th className="px-6 py-4 font-bold text-center">Cotes</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#32353c]/30">
                 {filtered.map((a) => {
-                  const colors = riskColors(a.risk_level);
+                  const hasScore = a.home_score != null && a.away_score != null;
+                  const predResult = hasScore ? getPredictionResult(a) : null;
                   return (
                     <tr
                       key={a.match_id}
@@ -263,10 +277,10 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                     >
                       <td className="px-6 py-5">
                         <div className="text-sm font-medium text-white">
-                          {formatShortDate(a.created_at)}
+                          {formatShortDate(a.kickoff_at ?? a.created_at)}
                         </div>
                         <div className="text-xs text-slate-500">
-                          {formatTime(a.created_at)}
+                          {formatTime(a.kickoff_at ?? a.created_at)}
                         </div>
                       </td>
 
@@ -282,14 +296,30 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                         </div>
                       </td>
 
+                      <td className="px-6 py-5 text-center">
+                        {hasScore ? (
+                          <span className="font-black text-white text-base">
+                            {a.home_score} - {a.away_score}
+                          </span>
+                        ) : (
+                          <span className="text-slate-600 text-xs">—</span>
+                        )}
+                      </td>
+
                       <td className="px-6 py-5 text-sm text-slate-300">
                         {a.recommended_bet}
                       </td>
 
                       <td className="px-6 py-5 text-center">
-                        <span className="font-bold text-white text-sm">
-                          {a.bookmaker_odds.toFixed(2)}
-                        </span>
+                        {predResult === "win" && (
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[rgba(34,197,94,0.15)] text-[#4ade80]">✓ Gagné</span>
+                        )}
+                        {predResult === "loss" && (
+                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[rgba(248,113,113,0.15)] text-[#f87171]">✗ Perdu</span>
+                        )}
+                        {predResult === null && (
+                          <span className="text-slate-600 text-xs">—</span>
+                        )}
                       </td>
 
                       <td className="px-6 py-5 text-center">
@@ -299,20 +329,8 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                       </td>
 
                       <td className="px-6 py-5 text-center">
-                        <span
-                          className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider"
-                          style={{ background: colors.bg, color: colors.text }}
-                        >
-                          {riskLabel(a.risk_level)}
-                        </span>
-                      </td>
-
-                      <td className="px-6 py-5 text-right">
-                        <span
-                          className="font-black text-sm"
-                          style={{ fontFamily: "var(--font-heading, sans-serif)", color: "#c8f000" }}
-                        >
-                          +{a.value_percent.toFixed(1)}%
+                        <span className="font-bold text-white text-sm">
+                          {a.bookmaker_odds.toFixed(2)}
                         </span>
                       </td>
                     </tr>

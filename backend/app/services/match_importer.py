@@ -110,6 +110,11 @@ def _upsert_fixture(
     else:
         db_status = MatchStatus.SCHEDULED
 
+    # Store final score for finished matches
+    goals = fixture.get("goals", {})
+    home_score = goals.get("home") if db_status == MatchStatus.FINISHED else None
+    away_score = goals.get("away") if db_status == MatchStatus.FINISHED else None
+
     existing = db.scalars(select(Match).where(Match.external_id == external_id)).first()
 
     if existing:
@@ -119,6 +124,9 @@ def _upsert_fixture(
         existing.status = db_status
         existing.home_team_ext_id = home_team_ext_id
         existing.away_team_ext_id = away_team_ext_id
+        if home_score is not None:
+            existing.home_score = home_score
+            existing.away_score = away_score
         summary["updated"] += 1
     else:
         db.add(
@@ -132,6 +140,8 @@ def _upsert_fixture(
                 status=db_status,
                 home_team_ext_id=home_team_ext_id,
                 away_team_ext_id=away_team_ext_id,
+                home_score=home_score,
+                away_score=away_score,
             )
         )
         summary["created"] += 1
