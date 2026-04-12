@@ -1,6 +1,7 @@
 export const dynamic = "force-dynamic";
 
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import FooterSection from "../../../components/sections/footer/default";
 import Navbar from "../../../components/sections/navbar/default";
 
@@ -114,6 +115,24 @@ export default async function SignalPage({
   params: Promise<{ match_id: string }>;
 }) {
   const { match_id } = await params;
+
+  // Check plan
+  const cookieStore = await cookies();
+  const token = cookieStore.get("rushplay_token")?.value;
+  if (token) {
+    try {
+      const meRes = await fetch(`${API_URL}/api/v1/auth/me`, {
+        headers: { Authorization: `Bearer ${token}` },
+        cache: "no-store",
+      });
+      const me = await meRes.json();
+      const plan = me?.data?.subscription_plan ?? "STARTER";
+      if (plan === "STARTER") redirect("/tarifs");
+    } catch {
+      // si erreur on laisse passer
+    }
+  }
+
   const data = await fetchSignal(match_id);
   if (!data) notFound();
 

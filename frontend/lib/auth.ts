@@ -36,6 +36,7 @@ export async function login(email: string, password: string): Promise<AuthUser> 
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
+  document.cookie = `rushplay_token=${json.data.access_token}; path=/; max-age=2592000; SameSite=Lax`;
   return json.data.user;
 }
 
@@ -73,6 +74,7 @@ export async function signup(
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
+  document.cookie = `rushplay_token=${json.data.access_token}; path=/; max-age=2592000; SameSite=Lax`;
   return json.data.user;
 }
 
@@ -83,4 +85,5 @@ export function getToken(): string | null {
 
 export function logout(): void {
   localStorage.removeItem("rushplay_token");
+  document.cookie = "rushplay_token=; path=/; max-age=0";
 }
