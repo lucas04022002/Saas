@@ -43,7 +43,7 @@ export async function fetchMatches(params?: {
   if (params?.order) query.set("order", params.order);
 
   const res = await fetch(`${API_URL}/api/v1/matches?${query}`, {
-    next: { revalidate: 300 }, // revalidate toutes les 5 minutes
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error("Erreur lors de la récupération des matchs");
