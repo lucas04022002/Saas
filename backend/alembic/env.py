@@ -31,11 +31,11 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
-        prefix="sqlalchemy.",
+    from sqlalchemy import create_engine
+    connectable = create_engine(
+        settings.database_url,
         poolclass=pool.NullPool,
-        connect_args={"prepare_threshold": 0},
+        connect_args={"prepare_threshold": None},
     )
     with connectable.connect() as connection:
         context.configure(connection=connection, target_metadata=target_metadata)
