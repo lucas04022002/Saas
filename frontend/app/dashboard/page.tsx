@@ -9,29 +9,34 @@ export default async function DashboardPage() {
   let matches: ApiMatch[] = [];
   let error = false;
 
+  let todayMatches: ApiMatch[] = [];
+
   try {
     const now = new Date();
     const tomorrow = new Date(now);
     tomorrow.setDate(tomorrow.getDate() + 1);
     const toDateStr = (d: Date) => d.toISOString().split("T")[0];
 
-    const [todayData, tomorrowData] = await Promise.all([
+    const [todayData, tomorrowData, allData] = await Promise.all([
       fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(now) }),
       fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(tomorrow) }),
+      fetchMatches({ limit: 200, sort_by: "kickoff_at", order: "asc" }),
     ]);
 
-    matches = [...todayData.items, ...tomorrowData.items]
+    todayMatches = [...todayData.items, ...tomorrowData.items]
       .filter((m) => m.confidence_score !== null)
       .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
+
+    matches = allData.items.filter((m) => m.confidence_score !== null);
   } catch {
     error = true;
   }
 
   const avgConfidence =
-    matches.length > 0
+    todayMatches.length > 0
       ? Math.round(
-          matches.reduce((s, m) => s + (m.confidence_score ?? 0), 0) /
-            matches.length,
+          todayMatches.reduce((s, m) => s + (m.confidence_score ?? 0), 0) /
+            todayMatches.length,
         )
       : 0;
 
@@ -59,7 +64,7 @@ export default async function DashboardPage() {
         )}
 
         {!error && matches.length > 0 && (
-          <DashboardClient matches={matches} avgConfidence={avgConfidence} />
+          <DashboardClient matches={matches} todayMatches={todayMatches} avgConfidence={avgConfidence} />
         )}
       </main>
 
