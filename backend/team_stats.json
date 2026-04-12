@@ -1,0 +1,699 @@
+{
+  "Premier League (Ang)": {
+    "last_update": "2026-03-21 21:21:24",
+    "stats": {
+      "Manchester United": {
+        "matches_played": 31,
+        "goals_for": 56,
+        "goals_against": 43,
+        "avg_goals_for": 1.8064516129032258,
+        "avg_goals_against": 1.3870967741935485
+      },
+      "Newcastle": {
+        "matches_played": 30,
+        "goals_for": 43,
+        "goals_against": 43,
+        "avg_goals_for": 1.4333333333333333,
+        "avg_goals_against": 1.4333333333333333
+      },
+      "Bournemouth": {
+        "matches_played": 31,
+        "goals_for": 46,
+        "goals_against": 48,
+        "avg_goals_for": 1.4838709677419355,
+        "avg_goals_against": 1.5483870967741935
+      },
+      "Fulham": {
+        "matches_played": 31,
+        "goals_for": 43,
+        "goals_against": 44,
+        "avg_goals_for": 1.3870967741935485,
+        "avg_goals_against": 1.4193548387096775
+      },
+      "Wolves": {
+        "matches_played": 31,
+        "goals_for": 24,
+        "goals_against": 54,
+        "avg_goals_for": 0.7741935483870968,
+        "avg_goals_against": 1.7419354838709677
+      },
+      "Liverpool": {
+        "matches_played": 31,
+        "goals_for": 50,
+        "goals_against": 42,
+        "avg_goals_for": 1.6129032258064515,
+        "avg_goals_against": 1.3548387096774193
+      },
+      "Arsenal": {
+        "matches_played": 31,
+        "goals_for": 61,
+        "goals_against": 22,
+        "avg_goals_for": 1.967741935483871,
+        "avg_goals_against": 0.7096774193548387
+      },
+      "Burnley": {
+        "matches_played": 31,
+        "goals_for": 33,
+        "goals_against": 61,
+        "avg_goals_for": 1.064516129032258,
+        "avg_goals_against": 1.967741935483871
+      },
+      "Everton": {
+        "matches_played": 30,
+        "goals_for": 34,
+        "goals_against": 35,
+        "avg_goals_for": 1.1333333333333333,
+        "avg_goals_against": 1.1666666666666667
+      },
+      "Tottenham": {
+        "matches_played": 30,
+        "goals_for": 40,
+        "goals_against": 47,
+        "avg_goals_for": 1.3333333333333333,
+        "avg_goals_against": 1.5666666666666667
+      },
+      "West Ham": {
+        "matches_played": 30,
+        "goals_for": 36,
+        "goals_against": 55,
+        "avg_goals_for": 1.2,
+        "avg_goals_against": 1.8333333333333333
+      },
+      "Chelsea": {
+        "matches_played": 30,
+        "goals_for": 53,
+        "goals_against": 35,
+        "avg_goals_for": 1.7666666666666666,
+        "avg_goals_against": 1.1666666666666667
+      },
+      "Manchester City": {
+        "matches_played": 30,
+        "goals_for": 60,
+        "goals_against": 28,
+        "avg_goals_for": 2.0,
+        "avg_goals_against": 0.9333333333333333
+      },
+      "Brighton": {
+        "matches_played": 31,
+        "goals_for": 41,
+        "goals_against": 37,
+        "avg_goals_for": 1.3225806451612903,
+        "avg_goals_against": 1.1935483870967742
+      },
+      "Crystal Palace": {
+        "matches_played": 30,
+        "goals_for": 33,
+        "goals_against": 35,
+        "avg_goals_for": 1.1,
+        "avg_goals_against": 1.1666666666666667
+      },
+      "Brentford": {
+        "matches_played": 30,
+        "goals_for": 46,
+        "goals_against": 42,
+        "avg_goals_for": 1.5333333333333334,
+        "avg_goals_against": 1.4
+      },
+      "Leeds": {
+        "matches_played": 30,
+        "goals_for": 37,
+        "goals_against": 48,
+        "avg_goals_for": 1.2333333333333334,
+        "avg_goals_against": 1.6
+      },
+      "Nottingham Forest": {
+        "matches_played": 30,
+        "goals_for": 28,
+        "goals_against": 43,
+        "avg_goals_for": 0.9333333333333333,
+        "avg_goals_against": 1.4333333333333333
+      },
+      "Aston Villa": {
+        "matches_played": 30,
+        "goals_for": 40,
+        "goals_against": 37,
+        "avg_goals_for": 1.3333333333333333,
+        "avg_goals_against": 1.2333333333333334
+      },
+      "Sunderland": {
+        "matches_played": 30,
+        "goals_for": 30,
+        "goals_against": 35,
+        "avg_goals_for": 1.0,
+        "avg_goals_against": 1.1666666666666667
+      }
+    }
+  },
+  "Ligue 1 (Fra)": {
+    "last_update": "2026-03-21 21:21:45",
+    "stats": {
+      "Angers": {
+        "matches_played": 27,
+        "goals_for": 24,
+        "goals_against": 37,
+        "avg_goals_for": 0.8888888888888888,
+        "avg_goals_against": 1.3703703703703705
+      },
+      "Lille": {
+        "matches_played": 26,
+        "goals_for": 40,
+        "goals_against": 33,
+        "avg_goals_for": 1.5384615384615385,
+        "avg_goals_against": 1.2692307692307692
+      },
+      "Lyon": {
+        "matches_played": 26,
+        "goals_for": 40,
+        "goals_against": 27,
+        "avg_goals_for": 1.5384615384615385,
+        "avg_goals_against": 1.0384615384615385
+      },
+      "Marseille": {
+        "matches_played": 26,
+        "goals_for": 53,
+        "goals_against": 33,
+        "avg_goals_for": 2.0384615384615383,
+        "avg_goals_against": 1.2692307692307692
+      },
+      "Nantes": {
+        "matches_played": 25,
+        "goals_for": 22,
+        "goals_against": 42,
+        "avg_goals_for": 0.88,
+        "avg_goals_against": 1.68
+      },
+      "Nice": {
+        "matches_played": 26,
+        "goals_for": 32,
+        "goals_against": 48,
+        "avg_goals_for": 1.2307692307692308,
+        "avg_goals_against": 1.8461538461538463
+      },
+      "Paris Saint Germain": {
+        "matches_played": 25,
+        "goals_for": 54,
+        "goals_against": 22,
+        "avg_goals_for": 2.16,
+        "avg_goals_against": 0.88
+      },
+      "Monaco": {
+        "matches_played": 26,
+        "goals_for": 45,
+        "goals_against": 37,
+        "avg_goals_for": 1.7307692307692308,
+        "avg_goals_against": 1.4230769230769231
+      },
+      "Rennes": {
+        "matches_played": 26,
+        "goals_for": 43,
+        "goals_against": 37,
+        "avg_goals_for": 1.6538461538461537,
+        "avg_goals_against": 1.4230769230769231
+      },
+      "Strasbourg": {
+        "matches_played": 26,
+        "goals_for": 40,
+        "goals_against": 31,
+        "avg_goals_for": 1.5384615384615385,
+        "avg_goals_against": 1.1923076923076923
+      },
+      "Toulouse": {
+        "matches_played": 27,
+        "goals_for": 38,
+        "goals_against": 32,
+        "avg_goals_for": 1.4074074074074074,
+        "avg_goals_against": 1.1851851851851851
+      },
+      "Lorient": {
+        "matches_played": 27,
+        "goals_for": 37,
+        "goals_against": 41,
+        "avg_goals_for": 1.3703703703703705,
+        "avg_goals_against": 1.5185185185185186
+      },
+      "Stade Brestois 29": {
+        "matches_played": 26,
+        "goals_for": 34,
+        "goals_against": 36,
+        "avg_goals_for": 1.3076923076923077,
+        "avg_goals_against": 1.3846153846153846
+      },
+      "Auxerre": {
+        "matches_played": 26,
+        "goals_for": 19,
+        "goals_against": 36,
+        "avg_goals_for": 0.7307692307692307,
+        "avg_goals_against": 1.3846153846153846
+      },
+      "Le Havre": {
+        "matches_played": 26,
+        "goals_for": 20,
+        "goals_against": 32,
+        "avg_goals_for": 0.7692307692307693,
+        "avg_goals_against": 1.2307692307692308
+      },
+      "Metz": {
+        "matches_played": 26,
+        "goals_for": 25,
+        "goals_against": 60,
+        "avg_goals_for": 0.9615384615384616,
+        "avg_goals_against": 2.3076923076923075
+      },
+      "Paris FC": {
+        "matches_played": 26,
+        "goals_for": 29,
+        "goals_against": 41,
+        "avg_goals_for": 1.1153846153846154,
+        "avg_goals_against": 1.5769230769230769
+      },
+      "Lens": {
+        "matches_played": 27,
+        "goals_for": 54,
+        "goals_against": 24,
+        "avg_goals_for": 2.0,
+        "avg_goals_against": 0.8888888888888888
+      }
+    }
+  },
+  "La Liga (Esp)": {
+    "last_update": "2026-03-21 21:22:14",
+    "stats": {
+      "Barcelona": {
+        "matches_played": 28,
+        "goals_for": 77,
+        "goals_against": 28,
+        "avg_goals_for": 2.75,
+        "avg_goals_against": 1.0
+      },
+      "Atletico Madrid": {
+        "matches_played": 28,
+        "goals_for": 47,
+        "goals_against": 25,
+        "avg_goals_for": 1.6785714285714286,
+        "avg_goals_against": 0.8928571428571429
+      },
+      "Athletic Club": {
+        "matches_played": 28,
+        "goals_for": 30,
+        "goals_against": 40,
+        "avg_goals_for": 1.0714285714285714,
+        "avg_goals_against": 1.4285714285714286
+      },
+      "Valencia": {
+        "matches_played": 28,
+        "goals_for": 30,
+        "goals_against": 42,
+        "avg_goals_for": 1.0714285714285714,
+        "avg_goals_against": 1.5
+      },
+      "Villarreal": {
+        "matches_played": 29,
+        "goals_for": 54,
+        "goals_against": 34,
+        "avg_goals_for": 1.8620689655172413,
+        "avg_goals_against": 1.1724137931034482
+      },
+      "Sevilla": {
+        "matches_played": 28,
+        "goals_for": 37,
+        "goals_against": 47,
+        "avg_goals_for": 1.3214285714285714,
+        "avg_goals_against": 1.6785714285714286
+      },
+      "Celta Vigo": {
+        "matches_played": 28,
+        "goals_for": 38,
+        "goals_against": 31,
+        "avg_goals_for": 1.3571428571428572,
+        "avg_goals_against": 1.1071428571428572
+      },
+      "Levante": {
+        "matches_played": 29,
+        "goals_for": 34,
+        "goals_against": 48,
+        "avg_goals_for": 1.1724137931034482,
+        "avg_goals_against": 1.6551724137931034
+      },
+      "Espanyol": {
+        "matches_played": 29,
+        "goals_for": 36,
+        "goals_against": 44,
+        "avg_goals_for": 1.2413793103448276,
+        "avg_goals_against": 1.5172413793103448
+      },
+      "Real Madrid": {
+        "matches_played": 28,
+        "goals_for": 60,
+        "goals_against": 24,
+        "avg_goals_for": 2.142857142857143,
+        "avg_goals_against": 0.8571428571428571
+      },
+      "Alaves": {
+        "matches_played": 28,
+        "goals_for": 26,
+        "goals_against": 38,
+        "avg_goals_for": 0.9285714285714286,
+        "avg_goals_against": 1.3571428571428572
+      },
+      "Real Betis": {
+        "matches_played": 28,
+        "goals_for": 43,
+        "goals_against": 35,
+        "avg_goals_for": 1.5357142857142858,
+        "avg_goals_against": 1.25
+      },
+      "Getafe": {
+        "matches_played": 29,
+        "goals_for": 25,
+        "goals_against": 31,
+        "avg_goals_for": 0.8620689655172413,
+        "avg_goals_against": 1.0689655172413792
+      },
+      "Girona": {
+        "matches_played": 28,
+        "goals_for": 31,
+        "goals_against": 43,
+        "avg_goals_for": 1.1071428571428572,
+        "avg_goals_against": 1.5357142857142858
+      },
+      "Real Sociedad": {
+        "matches_played": 29,
+        "goals_for": 44,
+        "goals_against": 45,
+        "avg_goals_for": 1.5172413793103448,
+        "avg_goals_against": 1.5517241379310345
+      },
+      "Oviedo": {
+        "matches_played": 28,
+        "goals_for": 18,
+        "goals_against": 44,
+        "avg_goals_for": 0.6428571428571429,
+        "avg_goals_against": 1.5714285714285714
+      },
+      "Osasuna": {
+        "matches_played": 29,
+        "goals_for": 34,
+        "goals_against": 35,
+        "avg_goals_for": 1.1724137931034482,
+        "avg_goals_against": 1.206896551724138
+      },
+      "Rayo Vallecano": {
+        "matches_played": 28,
+        "goals_for": 28,
+        "goals_against": 34,
+        "avg_goals_for": 1.0,
+        "avg_goals_against": 1.2142857142857142
+      },
+      "Elche": {
+        "matches_played": 29,
+        "goals_for": 38,
+        "goals_against": 46,
+        "avg_goals_for": 1.3103448275862069,
+        "avg_goals_against": 1.5862068965517242
+      },
+      "Mallorca": {
+        "matches_played": 29,
+        "goals_for": 34,
+        "goals_against": 47,
+        "avg_goals_for": 1.1724137931034482,
+        "avg_goals_against": 1.6206896551724137
+      }
+    }
+  },
+  "Bundesliga (All)": {
+    "last_update": "2026-03-21 21:22:40",
+    "stats": {
+      "Bayern M\u00fcnchen": {
+        "matches_played": 27,
+        "goals_for": 97,
+        "goals_against": 25,
+        "avg_goals_for": 3.5925925925925926,
+        "avg_goals_against": 0.9259259259259259
+      },
+      "SC Freiburg": {
+        "matches_played": 26,
+        "goals_for": 37,
+        "goals_against": 43,
+        "avg_goals_for": 1.4230769230769231,
+        "avg_goals_against": 1.6538461538461537
+      },
+      "VfL Wolfsburg": {
+        "matches_played": 27,
+        "goals_for": 35,
+        "goals_against": 57,
+        "avg_goals_for": 1.2962962962962963,
+        "avg_goals_against": 2.111111111111111
+      },
+      "Werder Bremen": {
+        "matches_played": 27,
+        "goals_for": 30,
+        "goals_against": 47,
+        "avg_goals_for": 1.1111111111111112,
+        "avg_goals_against": 1.7407407407407407
+      },
+      "Borussia M\u00f6nchengladbach": {
+        "matches_played": 27,
+        "goals_for": 33,
+        "goals_against": 46,
+        "avg_goals_for": 1.2222222222222223,
+        "avg_goals_against": 1.7037037037037037
+      },
+      "FSV Mainz 05": {
+        "matches_played": 26,
+        "goals_for": 31,
+        "goals_against": 41,
+        "avg_goals_for": 1.1923076923076923,
+        "avg_goals_against": 1.5769230769230769
+      },
+      "Borussia Dortmund": {
+        "matches_played": 26,
+        "goals_for": 55,
+        "goals_against": 26,
+        "avg_goals_for": 2.1153846153846154,
+        "avg_goals_against": 1.0
+      },
+      "1899 Hoffenheim": {
+        "matches_played": 27,
+        "goals_for": 54,
+        "goals_against": 39,
+        "avg_goals_for": 2.0,
+        "avg_goals_against": 1.4444444444444444
+      },
+      "Bayer Leverkusen": {
+        "matches_played": 27,
+        "goals_for": 52,
+        "goals_against": 36,
+        "avg_goals_for": 1.9259259259259258,
+        "avg_goals_against": 1.3333333333333333
+      },
+      "Eintracht Frankfurt": {
+        "matches_played": 26,
+        "goals_for": 49,
+        "goals_against": 49,
+        "avg_goals_for": 1.8846153846153846,
+        "avg_goals_against": 1.8846153846153846
+      },
+      "FC Augsburg": {
+        "matches_played": 26,
+        "goals_for": 31,
+        "goals_against": 45,
+        "avg_goals_for": 1.1923076923076923,
+        "avg_goals_against": 1.7307692307692308
+      },
+      "VfB Stuttgart": {
+        "matches_played": 26,
+        "goals_for": 51,
+        "goals_against": 34,
+        "avg_goals_for": 1.9615384615384615,
+        "avg_goals_against": 1.3076923076923077
+      },
+      "RB Leipzig": {
+        "matches_played": 27,
+        "goals_for": 53,
+        "goals_against": 35,
+        "avg_goals_for": 1.962962962962963,
+        "avg_goals_against": 1.2962962962962963
+      },
+      "Hamburger SV": {
+        "matches_played": 26,
+        "goals_for": 29,
+        "goals_against": 37,
+        "avg_goals_for": 1.1153846153846154,
+        "avg_goals_against": 1.4230769230769231
+      },
+      "1. FC Heidenheim": {
+        "matches_played": 27,
+        "goals_for": 27,
+        "goals_against": 61,
+        "avg_goals_for": 1.0,
+        "avg_goals_against": 2.259259259259259
+      },
+      "Union Berlin": {
+        "matches_played": 27,
+        "goals_for": 31,
+        "goals_against": 46,
+        "avg_goals_for": 1.1481481481481481,
+        "avg_goals_against": 1.7037037037037037
+      },
+      "FC St. Pauli": {
+        "matches_played": 26,
+        "goals_for": 23,
+        "goals_against": 42,
+        "avg_goals_for": 0.8846153846153846,
+        "avg_goals_against": 1.6153846153846154
+      },
+      "1. FC K\u00f6ln": {
+        "matches_played": 27,
+        "goals_for": 38,
+        "goals_against": 47,
+        "avg_goals_for": 1.4074074074074074,
+        "avg_goals_against": 1.7407407407407407
+      }
+    }
+  },
+  "Serie A (Ita)": {
+    "last_update": "2026-03-21 21:23:02",
+    "stats": {
+      "Lazio": {
+        "matches_played": 29,
+        "goals_for": 29,
+        "goals_against": 28,
+        "avg_goals_for": 1.0,
+        "avg_goals_against": 0.9655172413793104
+      },
+      "Sassuolo": {
+        "matches_played": 29,
+        "goals_for": 35,
+        "goals_against": 39,
+        "avg_goals_for": 1.206896551724138,
+        "avg_goals_against": 1.3448275862068966
+      },
+      "AC Milan": {
+        "matches_played": 29,
+        "goals_for": 44,
+        "goals_against": 21,
+        "avg_goals_for": 1.5172413793103448,
+        "avg_goals_against": 0.7241379310344828
+      },
+      "Cagliari": {
+        "matches_played": 30,
+        "goals_for": 31,
+        "goals_against": 42,
+        "avg_goals_for": 1.0333333333333334,
+        "avg_goals_against": 1.4
+      },
+      "Napoli": {
+        "matches_played": 30,
+        "goals_for": 46,
+        "goals_against": 30,
+        "avg_goals_for": 1.5333333333333334,
+        "avg_goals_against": 1.0
+      },
+      "Udinese": {
+        "matches_played": 30,
+        "goals_for": 35,
+        "goals_against": 42,
+        "avg_goals_for": 1.1666666666666667,
+        "avg_goals_against": 1.4
+      },
+      "Genoa": {
+        "matches_played": 30,
+        "goals_for": 36,
+        "goals_against": 42,
+        "avg_goals_for": 1.2,
+        "avg_goals_against": 1.4
+      },
+      "Juventus": {
+        "matches_played": 29,
+        "goals_for": 51,
+        "goals_against": 28,
+        "avg_goals_for": 1.7586206896551724,
+        "avg_goals_against": 0.9655172413793104
+      },
+      "AS Roma": {
+        "matches_played": 29,
+        "goals_for": 39,
+        "goals_against": 23,
+        "avg_goals_for": 1.3448275862068966,
+        "avg_goals_against": 0.7931034482758621
+      },
+      "Atalanta": {
+        "matches_played": 29,
+        "goals_for": 40,
+        "goals_against": 27,
+        "avg_goals_for": 1.3793103448275863,
+        "avg_goals_against": 0.9310344827586207
+      },
+      "Bologna": {
+        "matches_played": 29,
+        "goals_for": 38,
+        "goals_against": 34,
+        "avg_goals_for": 1.3103448275862069,
+        "avg_goals_against": 1.1724137931034482
+      },
+      "Fiorentina": {
+        "matches_played": 29,
+        "goals_for": 34,
+        "goals_against": 43,
+        "avg_goals_for": 1.1724137931034482,
+        "avg_goals_against": 1.4827586206896552
+      },
+      "Torino": {
+        "matches_played": 29,
+        "goals_for": 32,
+        "goals_against": 50,
+        "avg_goals_for": 1.103448275862069,
+        "avg_goals_against": 1.7241379310344827
+      },
+      "Hellas Verona": {
+        "matches_played": 29,
+        "goals_for": 22,
+        "goals_against": 51,
+        "avg_goals_for": 0.7586206896551724,
+        "avg_goals_against": 1.7586206896551724
+      },
+      "Inter": {
+        "matches_played": 29,
+        "goals_for": 65,
+        "goals_against": 23,
+        "avg_goals_for": 2.2413793103448274,
+        "avg_goals_against": 0.7931034482758621
+      },
+      "Cremonese": {
+        "matches_played": 30,
+        "goals_for": 25,
+        "goals_against": 44,
+        "avg_goals_for": 0.8333333333333334,
+        "avg_goals_against": 1.4666666666666666
+      },
+      "Parma": {
+        "matches_played": 30,
+        "goals_for": 21,
+        "goals_against": 38,
+        "avg_goals_for": 0.7,
+        "avg_goals_against": 1.2666666666666666
+      },
+      "Pisa": {
+        "matches_played": 29,
+        "goals_for": 23,
+        "goals_against": 49,
+        "avg_goals_for": 0.7931034482758621,
+        "avg_goals_against": 1.6896551724137931
+      },
+      "Lecce": {
+        "matches_played": 29,
+        "goals_for": 21,
+        "goals_against": 39,
+        "avg_goals_for": 0.7241379310344828,
+        "avg_goals_against": 1.3448275862068966
+      },
+      "Como": {
+        "matches_played": 29,
+        "goals_for": 48,
+        "goals_against": 22,
+        "avg_goals_for": 1.6551724137931034,
+        "avg_goals_against": 0.7586206896551724
+      }
+    }
+  }
+}
