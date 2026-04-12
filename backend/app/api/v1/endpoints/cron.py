@@ -13,7 +13,7 @@ from app.models.analysis import Analysis
 from app.models.match import Match
 from app.services.analysis_runner import run_bulk_analyses
 from app.services.match_importer import import_upcoming_matches
-from app.services.odds_fetcher import fetch_upcoming_odds
+from app.services.odds_fetcher import fetch_odds_for_matches
 
 router = APIRouter(prefix="/cron", tags=["cron"])
 
@@ -56,10 +56,9 @@ def daily_run(
         }
 
     odds_map: dict | None = None
-    if settings.api_football_key:
+    if settings.the_odds_api_key:
         try:
-            odds_map = fetch_upcoming_odds(settings.api_football_key)
-            log.info("Fetched odds for %d fixtures", len(odds_map))
+            odds_map = fetch_odds_for_matches(settings.the_odds_api_key, matches)
         except Exception as exc:
             log.warning("Odds fetch failed, continuing without real odds: %s", exc)
 

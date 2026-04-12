@@ -27,6 +27,7 @@ class Settings(BaseSettings):
     prediction_provider: str = Field(default="local", pattern="^(mock|local)$")
     prediction_model_root: str | None = None
     api_football_key: str | None = None
+    the_odds_api_key: str | None = None
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
