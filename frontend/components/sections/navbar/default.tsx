@@ -17,6 +17,7 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
     { text: "Dashboard", href: "/dashboard" },
     { text: "Historique", href: "/historique" },
     { text: "Tarifs", href: "/tarifs" },
+    { text: "Profil", href: "/profil" },
   ];
 
   return (
@@ -67,7 +68,7 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
             Connexion
           </a>
           <a
-            href="/signup"
+            href="/register"
             className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl text-sm font-extrabold hover:brightness-110 transition-all"
             style={{ fontFamily: "var(--font-heading, sans-serif)" }}
           >
@@ -98,7 +99,7 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
                 </a>
               ))}
               <a
-                href="/signup"
+                href="/register"
                 className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl font-extrabold text-center"
               >
                 Commencer
