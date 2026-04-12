@@ -44,8 +44,14 @@ def build_warning_points(prediction: dict) -> list[str]:
     return warnings
 
 
-def upsert_analysis_for_match(db: Session, match: Match) -> tuple[Analysis, list[str], bool]:
-    prediction = prediction_service.get_prediction(match.home_team, match.away_team, match.league)
+def upsert_analysis_for_match(
+    db: Session,
+    match: Match,
+    odds_by_outcome: dict[str, float] | None = None,
+) -> tuple[Analysis, list[str], bool]:
+    prediction = prediction_service.get_prediction(
+        match.home_team, match.away_team, match.league, odds_by_outcome=odds_by_outcome
+    )
 
     try:
         risk_level = RiskLevel(prediction["risk_level"])
@@ -81,7 +87,11 @@ def upsert_analysis_for_match(db: Session, match: Match) -> tuple[Analysis, list
 BATCH_SIZE = 50
 
 
-def run_bulk_analyses(db: Session, matches: list[Match]) -> dict:
+def run_bulk_analyses(
+    db: Session,
+    matches: list[Match],
+    odds_map: dict[str, dict[str, float]] | None = None,
+) -> dict:
     created_count = 0
     updated_count = 0
     errors: list[dict[str, str]] = []
@@ -89,8 +99,9 @@ def run_bulk_analyses(db: Session, matches: list[Match]) -> dict:
 
     for match in matches:
         added_current = False
+        match_odds = (odds_map or {}).get(match.external_id or "") if odds_map else None
         try:
-            _, _, created = upsert_analysis_for_match(db, match)
+            _, _, created = upsert_analysis_for_match(db, match, odds_by_outcome=match_odds)
             pending_batch.append((match, created))
             added_current = True
 

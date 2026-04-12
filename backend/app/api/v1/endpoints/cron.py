@@ -13,6 +13,7 @@ from app.models.analysis import Analysis
 from app.models.match import Match
 from app.services.analysis_runner import run_bulk_analyses
 from app.services.match_importer import import_upcoming_matches
+from app.services.odds_fetcher import fetch_upcoming_odds
 
 router = APIRouter(prefix="/cron", tags=["cron"])
 
@@ -54,8 +55,16 @@ def daily_run(
             "data": {"processed": 0, "created": 0, "updated": 0, "failed": 0, "errors": []},
         }
 
+    odds_map: dict | None = None
+    if settings.api_football_key:
+        try:
+            odds_map = fetch_upcoming_odds(settings.api_football_key)
+            log.info("Fetched odds for %d fixtures", len(odds_map))
+        except Exception as exc:
+            log.warning("Odds fetch failed, continuing without real odds: %s", exc)
+
     try:
-        summary = run_bulk_analyses(db, matches)
+        summary = run_bulk_analyses(db, matches, odds_map=odds_map)
     except Exception as exc:
         log.error("Unhandled error in run_bulk_analyses: %s", exc)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Analysis runner error: {exc}")

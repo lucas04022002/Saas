@@ -96,7 +96,13 @@ class PredictionService:
 
         return "home" if home >= away else "away"
 
-    def get_prediction(self, home_team: str, away_team: str, league: str | None = None, bookmaker_odds: float = 1.95) -> dict:
+    def get_prediction(
+        self,
+        home_team: str,
+        away_team: str,
+        league: str | None = None,
+        odds_by_outcome: dict[str, float] | None = None,
+    ) -> dict:
         prediction = self.provider.predict_match(PredictionInput(home_team=home_team, away_team=away_team, league=league))
 
         probs = {
@@ -106,6 +112,8 @@ class PredictionService:
         }
         recommended_bet = self._select_recommended_outcome(probs, league=league)
         confidence_score = round(probs[recommended_bet] * 100, 2)
+
+        bookmaker_odds = odds_by_outcome.get(recommended_bet, 1.95) if odds_by_outcome else 1.95
 
         implied = (1 / bookmaker_odds) * 100
         value_percent = round(confidence_score - implied, 2)
