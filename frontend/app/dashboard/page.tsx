@@ -27,7 +27,11 @@ export default async function DashboardPage() {
       .filter((m) => m.confidence_score !== null)
       .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
 
-    matches = allData.items.filter((m) => m.confidence_score !== null);
+    const in7Days = new Date(now);
+    in7Days.setDate(in7Days.getDate() + 7);
+    matches = allData.items.filter(
+      (m) => m.confidence_score !== null && new Date(m.kickoff_at) <= in7Days,
+    );
   } catch (err) {
     console.error("[dashboard] fetch error:", err);
     error = true;
