@@ -28,7 +28,8 @@ export default async function DashboardPage() {
       .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
 
     matches = allData.items.filter((m) => m.confidence_score !== null);
-  } catch {
+  } catch (err) {
+    console.error("[dashboard] fetch error:", err);
     error = true;
   }
 
