@@ -37,6 +37,7 @@ export default function DashboardClient({
   const [plan, setPlan] = useState<string | null>(null);
   const [selectedLeague, setSelectedLeague] = useState<string>("all");
   const [minConfidence, setMinConfidence] = useState<number>(0);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     fetchPlan().then(setPlan);
@@ -51,13 +52,14 @@ export default function DashboardClient({
   }, [matches]);
 
   const filtered = useMemo(() => {
+    const q = search.trim().toLowerCase();
     return matches.filter((m) => {
-      const leagueOk =
-        selectedLeague === "all" || m.league === selectedLeague;
+      const leagueOk = selectedLeague === "all" || m.league === selectedLeague;
       const confOk = (m.confidence_score ?? 0) >= minConfidence;
-      return leagueOk && confOk;
+      const searchOk = !q || m.home_team.toLowerCase().includes(q) || m.away_team.toLowerCase().includes(q);
+      return leagueOk && confOk && searchOk;
     });
-  }, [matches, selectedLeague, minConfidence]);
+  }, [matches, selectedLeague, minConfidence, search]);
 
   const isPro = plan === "PRO" || plan === "ELITE";
   const FREE_SLOTS = 3;
@@ -117,6 +119,17 @@ export default function DashboardClient({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sidebar */}
         <aside className="lg:col-span-3 space-y-6">
+          {/* Search */}
+          <div className="bg-[#16191f] p-4 rounded-xl">
+            <input
+              type="text"
+              placeholder="Rechercher une équipe..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full bg-[#32353c] rounded-lg text-sm text-white py-2.5 px-4 focus:ring-1 focus:ring-[#c8f000] outline-none placeholder-slate-600 border-none"
+            />
+          </div>
+
           {/* Ligues */}
           <div className="bg-[#16191f] p-6 rounded-xl space-y-3">
             <h3
