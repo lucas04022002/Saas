@@ -18,9 +18,9 @@ export default async function DashboardPage() {
     const toDateStr = (d: Date) => d.toISOString().split("T")[0];
 
     const [todayData, tomorrowData, allData] = await Promise.all([
-      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(now) }),
-      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(tomorrow) }),
-      fetchMatches({ limit: 100, sort_by: "kickoff_at", order: "asc" }),
+      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(now), status: "SCHEDULED" }),
+      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(tomorrow), status: "SCHEDULED" }),
+      fetchMatches({ limit: 100, sort_by: "kickoff_at", order: "asc", status: "SCHEDULED" }),
     ]);
 
     todayMatches = [...todayData.items, ...tomorrowData.items]

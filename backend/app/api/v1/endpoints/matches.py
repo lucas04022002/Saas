@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_db
 from app.models.analysis import Analysis
+from app.models.enums import MatchStatus
 from app.models.match import Match
 
 router = APIRouter(prefix="/matches", tags=["matches"])
@@ -20,6 +21,7 @@ def list_matches(
     min_confidence: float | None = Query(default=None, ge=0, le=100),
     recommended_bet: str | None = None,
     match_date: date | None = Query(default=None, alias="date"),
+    status: str | None = Query(default=None, pattern="^(SCHEDULED|LIVE|FINISHED)$"),
     sort_by: str = Query(default="kickoff_at", pattern="^(kickoff_at|confidence_score|value_percent)$"),
     order: str = Query(default="asc", pattern="^(asc|desc)$"),
     db: Session = Depends(get_db),
@@ -38,6 +40,8 @@ def list_matches(
         start_dt = datetime.combine(match_date, datetime.min.time(), tzinfo=timezone.utc)
         end_dt = datetime.combine(match_date, datetime.max.time(), tzinfo=timezone.utc)
         query = query.where(Match.kickoff_at >= start_dt, Match.kickoff_at <= end_dt)
+    if status:
+        query = query.where(Match.status == MatchStatus(status))
 
     total = db.scalar(select(func.count()).select_from(query.subquery()))
 

@@ -40,6 +40,7 @@ export async function fetchMatches(params?: {
   sort_by?: string;
   order?: string;
   date?: string;
+  status?: string;
 }): Promise<{ items: ApiMatch[]; pagination: { page: number; limit: number; total: number } }> {
   const query = new URLSearchParams();
   if (params?.page) query.set("page", String(params.page));
@@ -47,6 +48,7 @@ export async function fetchMatches(params?: {
   if (params?.sort_by) query.set("sort_by", params.sort_by);
   if (params?.order) query.set("order", params.order);
   if (params?.date) query.set("date", params.date);
+  if (params?.status) query.set("status", params.status);
 
   const res = await fetch(`${API_URL}/api/v1/matches?${query}`, {
     cache: "no-store",
