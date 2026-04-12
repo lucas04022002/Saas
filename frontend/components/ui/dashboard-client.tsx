@@ -123,16 +123,23 @@ export default function DashboardClient({
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         {/* Sidebar */}
         <aside className="lg:col-span-3 space-y-6">
-          {/* Search */}
-          <div className="bg-[#16191f] p-4 rounded-xl">
-            <input
-              type="text"
-              placeholder="Rechercher une équipe..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full bg-[#32353c] rounded-lg text-sm text-white py-2.5 px-4 focus:ring-1 focus:ring-[#c8f000] outline-none placeholder-slate-600 border-none"
-            />
-          </div>
+          {/* Search — PRO only */}
+          {isPro && (
+            <div className="bg-[#16191f] p-4 rounded-xl">
+              <input
+                type="text"
+                placeholder="Rechercher une équipe..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full bg-[#32353c] rounded-lg text-sm text-white py-2.5 px-4 focus:ring-1 focus:ring-[#c8f000] outline-none placeholder-slate-600 border-none"
+              />
+            </div>
+          )}
+          {!isPro && plan !== null && (
+            <div className="bg-[#16191f] p-4 rounded-xl flex items-center gap-3">
+              <span className="text-slate-600 text-xs">🔒 Recherche réservée aux membres Pro</span>
+            </div>
+          )}
 
           {/* Ligues */}
           <div className="bg-[#16191f] p-6 rounded-xl space-y-3">
