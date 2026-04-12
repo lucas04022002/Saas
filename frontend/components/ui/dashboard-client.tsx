@@ -27,11 +27,13 @@ async function fetchPlan(): Promise<string> {
 
 interface DashboardClientProps {
   matches: ApiMatch[];
+  todayMatches: ApiMatch[];
   avgConfidence: number;
 }
 
 export default function DashboardClient({
   matches,
+  todayMatches,
   avgConfidence,
 }: DashboardClientProps) {
   const [plan, setPlan] = useState<string | null>(null);
@@ -51,15 +53,17 @@ export default function DashboardClient({
     return Object.entries(counts).sort((a, b) => b[1] - a[1]);
   }, [matches]);
 
+  const baseMatches = search.trim() ? matches : todayMatches;
+
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
-    return matches.filter((m) => {
+    return baseMatches.filter((m) => {
       const leagueOk = selectedLeague === "all" || m.league === selectedLeague;
       const confOk = (m.confidence_score ?? 0) >= minConfidence;
       const searchOk = !q || m.home_team.toLowerCase().includes(q) || m.away_team.toLowerCase().includes(q);
       return leagueOk && confOk && searchOk;
     });
-  }, [matches, selectedLeague, minConfidence, search]);
+  }, [baseMatches, selectedLeague, minConfidence, search]);
 
   const isPro = plan === "PRO" || plan === "ELITE";
   const FREE_SLOTS = 3;
