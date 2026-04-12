@@ -10,12 +10,19 @@ export default async function DashboardPage() {
   let error = false;
 
   try {
-    const data = await fetchMatches({
-      limit: 20,
-      sort_by: "confidence_score",
-      order: "desc",
-    });
-    matches = data.items.filter((m) => m.confidence_score !== null);
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const toDateStr = (d: Date) => d.toISOString().split("T")[0];
+
+    const [todayData, tomorrowData] = await Promise.all([
+      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(now) }),
+      fetchMatches({ limit: 50, sort_by: "confidence_score", order: "desc", date: toDateStr(tomorrow) }),
+    ]);
+
+    matches = [...todayData.items, ...tomorrowData.items]
+      .filter((m) => m.confidence_score !== null)
+      .sort((a, b) => (b.confidence_score ?? 0) - (a.confidence_score ?? 0));
   } catch {
     error = true;
   }
