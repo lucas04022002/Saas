@@ -16,6 +16,8 @@ class Match(Base):
     external_id: Mapped[str | None] = mapped_column(String(120), unique=True, nullable=True)
     home_team: Mapped[str] = mapped_column(String(120), nullable=False)
     away_team: Mapped[str] = mapped_column(String(120), nullable=False)
+    home_team_ext_id: Mapped[str | None] = mapped_column(String(50), nullable=True)
+    away_team_ext_id: Mapped[str | None] = mapped_column(String(50), nullable=True)
     league: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
     country: Mapped[str] = mapped_column(String(120), nullable=False)
     kickoff_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, index=True)

@@ -292,7 +292,7 @@ export default function DashboardClient({
                     </div>
 
                     <a
-                      href="/historique"
+                      href={`/signal/${match.id}`}
                       className="block w-full py-3 bg-[#c8f000] text-[#2a3400] font-black text-sm text-center rounded-xl group-hover:brightness-110 transition-all shadow-[0_4px_12px_rgba(200,240,0,0.15)]"
                       style={{ fontFamily: "var(--font-heading, sans-serif)" }}
                     >

@@ -91,6 +91,8 @@ def _upsert_fixture(
     external_id = str(f.get("id", ""))
     home_team = teams.get("home", {}).get("name", "")
     away_team = teams.get("away", {}).get("name", "")
+    home_team_ext_id = str(teams.get("home", {}).get("id", "")) or None
+    away_team_ext_id = str(teams.get("away", {}).get("id", "")) or None
     date_str: str = f.get("date", "")
 
     if not external_id or not home_team or not away_team or not date_str:
@@ -115,6 +117,8 @@ def _upsert_fixture(
         existing.away_team = away_team
         existing.kickoff_at = kickoff_at
         existing.status = db_status
+        existing.home_team_ext_id = home_team_ext_id
+        existing.away_team_ext_id = away_team_ext_id
         summary["updated"] += 1
     else:
         db.add(
@@ -126,6 +130,8 @@ def _upsert_fixture(
                 country=country,
                 kickoff_at=kickoff_at,
                 status=db_status,
+                home_team_ext_id=home_team_ext_id,
+                away_team_ext_id=away_team_ext_id,
             )
         )
         summary["created"] += 1

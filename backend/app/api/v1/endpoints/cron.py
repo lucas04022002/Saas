@@ -1,5 +1,6 @@
 import hmac
 import logging
+from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, Header, HTTPException, Query, status
 from sqlalchemy import select
@@ -12,6 +13,7 @@ from app.core.config import settings
 from app.models.analysis import Analysis
 from app.models.match import Match
 from app.services.analysis_runner import run_bulk_analyses
+from app.services.form_fetcher import populate_team_stats
 from app.services.match_importer import import_upcoming_matches
 from app.services.odds_fetcher import fetch_odds_for_matches
 
@@ -67,6 +69,18 @@ def daily_run(
     except Exception as exc:
         log.error("Unhandled error in run_bulk_analyses: %s", exc)
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Analysis runner error: {exc}")
+
+    # Fetch team form for upcoming matches (today + tomorrow only) to limit API calls
+    if settings.api_football_key:
+        now = datetime.now(timezone.utc)
+        cutoff = now + timedelta(days=2)
+        upcoming = [m for m in matches if m.kickoff_at and now <= m.kickoff_at <= cutoff]
+        if upcoming:
+            try:
+                populate_team_stats(settings.api_football_key, upcoming, db)
+                log.info("Team form fetched for %d upcoming matches", len(upcoming))
+            except Exception as exc:
+                log.warning("Team form fetch failed: %s", exc)
 
     return {"success": True, "message": "Daily cron run completed", "data": summary}
 
