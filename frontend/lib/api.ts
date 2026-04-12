@@ -52,7 +52,10 @@ export async function fetchMatches(params?: {
     cache: "no-store",
   });
 
-  if (!res.ok) throw new Error("Erreur lors de la récupération des matchs");
+  if (!res.ok) {
+    console.error("[fetchMatches] status:", res.status, "url:", `${API_URL}/api/v1/matches?${query}`);
+    throw new Error("Erreur lors de la récupération des matchs");
+  }
   const json = await res.json();
   return json.data;
 }
