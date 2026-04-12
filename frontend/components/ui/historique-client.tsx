@@ -278,7 +278,6 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
                   <th className="px-6 py-4 font-bold">Événement</th>
                   <th className="px-6 py-4 font-bold text-center">Score</th>
                   <th className="px-6 py-4 font-bold">Conseil IA</th>
-                  <th className="px-6 py-4 font-bold text-center">Résultat</th>
                   <th className="px-6 py-4 font-bold text-center">Confiance</th>
                   <th className="px-6 py-4 font-bold text-center">Cotes</th>
                 </tr>
@@ -325,18 +324,6 @@ export default function HistoriqueClient({ analyses }: HistoriqueClientProps) {
 
                       <td className="px-6 py-5 text-sm text-slate-300">
                         {a.recommended_bet}
-                      </td>
-
-                      <td className="px-6 py-5 text-center">
-                        {predResult === "win" && (
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[rgba(34,197,94,0.15)] text-[#4ade80]">✓ Gagné</span>
-                        )}
-                        {predResult === "loss" && (
-                          <span className="px-3 py-1 rounded-full text-[10px] font-bold bg-[rgba(248,113,113,0.15)] text-[#f87171]">✗ Perdu</span>
-                        )}
-                        {predResult === null && (
-                          <span className="text-slate-600 text-xs">—</span>
-                        )}
                       </td>
 
                       <td className="px-6 py-5 text-center">
