@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 
@@ -11,13 +12,15 @@ interface NavbarProps {
   activePath?: string;
 }
 
-export default function Navbar({ className, activePath = "/" }: NavbarProps) {
+export default async function Navbar({ className, activePath = "/" }: NavbarProps) {
+  const cookieStore = await cookies();
+  const isLoggedIn = !!cookieStore.get("rushplay_token")?.value;
+
   const links = [
     { text: "Accueil", href: "/" },
     { text: "Dashboard", href: "/dashboard" },
     { text: "Historique", href: "/historique" },
     { text: "Tarifs", href: "/tarifs" },
-    { text: "Profil", href: "/profil" },
   ];
 
   return (
@@ -60,20 +63,36 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
 
         {/* Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <a
-            href="/login"
-            className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
-            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
-          >
-            Connexion
-          </a>
-          <a
-            href="/register"
-            className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl text-sm font-extrabold hover:brightness-110 transition-all"
-            style={{ fontFamily: "var(--font-heading, sans-serif)" }}
-          >
-            Commencer
-          </a>
+          {isLoggedIn ? (
+            <a
+              href="/profil"
+              className={`text-sm font-semibold transition-colors ${
+                activePath === "/profil"
+                  ? "text-[#c8f000]"
+                  : "text-slate-400 hover:text-white"
+              }`}
+              style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+            >
+              Mon Profil
+            </a>
+          ) : (
+            <>
+              <a
+                href="/login"
+                className="text-sm font-semibold text-slate-400 hover:text-white transition-colors"
+                style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+              >
+                Connexion
+              </a>
+              <a
+                href="/register"
+                className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl text-sm font-extrabold hover:brightness-110 transition-all"
+                style={{ fontFamily: "var(--font-heading, sans-serif)" }}
+              >
+                Commencer
+              </a>
+            </>
+          )}
         </div>
 
         {/* Mobile menu */}
@@ -98,12 +117,18 @@ export default function Navbar({ className, activePath = "/" }: NavbarProps) {
                   {link.text}
                 </a>
               ))}
-              <a
-                href="/register"
-                className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl font-extrabold text-center"
-              >
-                Commencer
-              </a>
+              {isLoggedIn ? (
+                <a href="/profil" className="text-slate-400 hover:text-white transition-colors">
+                  Mon Profil
+                </a>
+              ) : (
+                <a
+                  href="/register"
+                  className="bg-[#c8f000] text-[#2a3400] px-5 py-2 rounded-xl font-extrabold text-center"
+                >
+                  Commencer
+                </a>
+              )}
             </nav>
           </SheetContent>
         </Sheet>
