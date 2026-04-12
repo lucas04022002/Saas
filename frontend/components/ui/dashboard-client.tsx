@@ -42,7 +42,7 @@ export default function DashboardClient({
     });
   }, [baseMatches, selectedLeague, minConfidence, search]);
 
-  const FREE_SLOTS = 3;
+  const FREE_SLOTS = 2;
   const visibleMatches = isPro ? filtered : filtered.slice(0, FREE_SLOTS);
   const lockedCount = isPro ? 0 : Math.max(0, filtered.length - FREE_SLOTS);
 
