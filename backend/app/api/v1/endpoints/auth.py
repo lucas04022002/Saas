@@ -22,6 +22,7 @@ def signup(payload: SignUpRequest, db: Session = Depends(get_db)):
 
     user = User(
         first_name=payload.first_name.strip(),
+        last_name=payload.last_name.strip() if payload.last_name else None,
         email=payload.email.lower(),
         password_hash=hash_password(payload.password),
     )
@@ -48,6 +49,7 @@ def signup(payload: SignUpRequest, db: Session = Depends(get_db)):
             "user": {
                 "id": str(user.id),
                 "first_name": user.first_name,
+                "last_name": user.last_name,
                 "email": user.email,
                 "role": user.role.value,
                 "subscription_plan": user.subscription_plan.value,
@@ -72,6 +74,7 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)):
             "user": {
                 "id": str(user.id),
                 "first_name": user.first_name,
+                "last_name": user.last_name,
                 "email": user.email,
                 "role": user.role.value,
                 "subscription_plan": user.subscription_plan.value,

@@ -11,6 +11,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 interface UserData {
   id: string;
   first_name: string;
+  last_name: string | null;
   email: string;
   role: string;
   subscription_plan: string;
@@ -92,7 +93,7 @@ export default function ProfilPage() {
                       className="text-xl font-bold text-white"
                       style={{ fontFamily: "var(--font-heading, sans-serif)" }}
                     >
-                      {user.first_name}
+                      {user.first_name}{user.last_name ? ` ${user.last_name}` : ""}
                     </p>
                     <p className="text-sm text-slate-400">{user.email}</p>
                   </div>

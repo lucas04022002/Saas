@@ -10,6 +10,7 @@ import { signup } from "../../lib/auth";
 export default function RegisterPage() {
   const router = useRouter();
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -24,7 +25,7 @@ export default function RegisterPage() {
     }
     setLoading(true);
     try {
-      await signup(firstName, email, password);
+      await signup(firstName, lastName, email, password);
       router.push("/dashboard");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Erreur lors de l'inscription");
@@ -57,17 +58,30 @@ export default function RegisterPage() {
           </p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-            <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-medium text-[#7A8FA8]">Prénom</label>
-              <input
-                type="text"
-                required
-                autoComplete="given-name"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="Ton prénom"
-                className="w-full rounded-lg border border-[#1E2D42] bg-[#06090F] px-3 py-2.5 text-sm text-[#DDD5C4] placeholder-[#3A4F65] outline-none focus:border-[#C8F000] transition-colors"
-              />
+            <div className="flex gap-3">
+              <div className="flex flex-col gap-1.5 flex-1">
+                <label className="text-xs font-medium text-[#7A8FA8]">Prénom</label>
+                <input
+                  type="text"
+                  required
+                  autoComplete="given-name"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="Prénom"
+                  className="w-full rounded-lg border border-[#1E2D42] bg-[#06090F] px-3 py-2.5 text-sm text-[#DDD5C4] placeholder-[#3A4F65] outline-none focus:border-[#C8F000] transition-colors"
+                />
+              </div>
+              <div className="flex flex-col gap-1.5 flex-1">
+                <label className="text-xs font-medium text-[#7A8FA8]">Nom</label>
+                <input
+                  type="text"
+                  autoComplete="family-name"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Nom"
+                  className="w-full rounded-lg border border-[#1E2D42] bg-[#06090F] px-3 py-2.5 text-sm text-[#DDD5C4] placeholder-[#3A4F65] outline-none focus:border-[#C8F000] transition-colors"
+                />
+              </div>
             </div>
 
             <div className="flex flex-col gap-1.5">

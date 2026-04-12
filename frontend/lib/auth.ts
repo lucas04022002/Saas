@@ -3,6 +3,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 export interface AuthUser {
   id: string;
   first_name: string;
+  last_name: string | null;
   email: string;
   role: string;
   subscription_plan: string;
@@ -40,6 +41,7 @@ export async function login(email: string, password: string): Promise<AuthUser> 
 
 export async function signup(
   first_name: string,
+  last_name: string,
   email: string,
   password: string
 ): Promise<AuthUser> {
@@ -51,7 +53,7 @@ export async function signup(
     res = await fetch(`${API_URL}/api/v1/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ first_name, email, password }),
+      body: JSON.stringify({ first_name, last_name, email, password }),
       signal: controller.signal,
     });
   } catch (e: unknown) {

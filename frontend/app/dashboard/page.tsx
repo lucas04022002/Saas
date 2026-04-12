@@ -32,8 +32,7 @@ export default async function DashboardPage() {
     matches = allData.items.filter(
       (m) => m.confidence_score !== null && new Date(m.kickoff_at) <= in7Days,
     );
-  } catch (err) {
-    console.error("[dashboard] fetch error:", err);
+  } catch {
     error = true;
   }
 
