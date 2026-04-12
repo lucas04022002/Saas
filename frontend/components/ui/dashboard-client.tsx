@@ -136,7 +136,7 @@ export default function DashboardClient({
               <span>Toutes les ligues</span>
               <span className="text-xs opacity-60">{matches.length}</span>
             </button>
-            {leagues.map(([league, count]) => (
+            {isPro ? leagues.map(([league, count]) => (
               <button
                 key={league}
                 onClick={() => setSelectedLeague(league)}
@@ -149,7 +149,9 @@ export default function DashboardClient({
                 <span className="truncate text-left">{league}</span>
                 <span className="text-xs opacity-60 shrink-0 ml-2">{count}</span>
               </button>
-            ))}
+            )) : (
+              <p className="text-xs text-slate-600 px-1">🔒 Filtrage par ligue réservé aux membres Pro</p>
+            )}
           </div>
 
           {/* AI Filter */}
