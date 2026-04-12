@@ -111,9 +111,10 @@ function ConfidenceBar({ value }: { value: number }) {
 export default async function SignalPage({
   params,
 }: {
-  params: { match_id: string };
+  params: Promise<{ match_id: string }>;
 }) {
-  const data = await fetchSignal(params.match_id);
+  const { match_id } = await params;
+  const data = await fetchSignal(match_id);
   if (!data) notFound();
 
   const { match, analysis, warning_points, home_form, away_form } = data;
