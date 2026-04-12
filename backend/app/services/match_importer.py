@@ -54,6 +54,49 @@ def _fetch_fixtures(api_key: str, league_id: int, season: int, next_days: int = 
     return data.get("response", [])
 
 
+def _fetch_last_fixtures(api_key: str, league_id: int, season: int, last: int = 10) -> list[dict[str, Any]]:
+    headers = {
+        "x-rapidapi-host": API_HOST,
+        "x-rapidapi-key": api_key,
+    }
+    params = {
+        "league": league_id,
+        "season": season,
+        "last": last,
+    }
+    resp = requests.get(f"{API_BASE}/fixtures", headers=headers, params=params, timeout=15)
+    resp.raise_for_status()
+    data = resp.json()
+    if data.get("errors"):
+        raise RuntimeError(f"API-Football error for league {league_id}: {data['errors']}")
+    return data.get("response", [])
+
+
+def import_finished_matches(db: Session, api_key: str, last: int = 10) -> dict[str, int]:
+    """
+    Fetch recently finished fixtures for all configured leagues and upsert into DB.
+    This updates match scores and status for completed games.
+    """
+    summary = {"created": 0, "updated": 0, "skipped": 0, "errors": 0}
+
+    for league_id, (league_name, country) in LEAGUES.items():
+        season = _current_season(league_id)
+        try:
+            fixtures = _fetch_last_fixtures(api_key, league_id, season, last)
+        except Exception:
+            summary["errors"] += 1
+            continue
+
+        for fixture in fixtures:
+            try:
+                _upsert_fixture(db, fixture, league_name, country, summary)
+            except Exception:
+                summary["errors"] += 1
+
+    db.commit()
+    return summary
+
+
 def import_upcoming_matches(db: Session, api_key: str, next_days: int = 7) -> dict[str, int]:
     """
     Fetch upcoming fixtures for all configured leagues and upsert into DB.

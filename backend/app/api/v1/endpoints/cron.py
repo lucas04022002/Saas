@@ -14,7 +14,7 @@ from app.models.analysis import Analysis
 from app.models.match import Match
 from app.services.analysis_runner import run_bulk_analyses
 from app.services.form_fetcher import populate_team_stats
-from app.services.match_importer import import_upcoming_matches
+from app.services.match_importer import import_finished_matches, import_upcoming_matches
 from app.services.odds_fetcher import fetch_odds_for_matches
 
 router = APIRouter(prefix="/cron", tags=["cron"])
@@ -99,3 +99,19 @@ def import_matches(
 
     summary = import_upcoming_matches(db, settings.api_football_key, next_days=next_days)
     return {"success": True, "message": "Match import completed", "data": summary}
+
+
+@router.post("/import-finished")
+def import_finished(
+    _: None = Depends(_verify_cron_key),
+    last: int = Query(default=10, ge=1, le=50),
+    db: Session = Depends(get_db),
+):
+    if not settings.api_football_key:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="API_FOOTBALL_KEY not configured on this server",
+        )
+
+    summary = import_finished_matches(db, settings.api_football_key, last=last)
+    return {"success": True, "message": "Finished matches import completed", "data": summary}
