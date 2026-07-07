@@ -1,0 +1,33 @@
+# Front & builds
+frontend/
+node_modules/
+.next/
+out/
+build/
+
+# Git & IDE
+.git/
+.github/
+.claude/
+docs/
+
+# Python caches
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.coverage
+.venv/
+venv/
+
+# Gros artefacts non nécessaires au runtime de l'API
+backtest_*.json
+fixture_stats_cache.json
+historical_odds.json
+predictions_log.json
+
+# Secrets locaux (ne jamais copier dans l'image)
+.env
+*.env
+backend/.env
