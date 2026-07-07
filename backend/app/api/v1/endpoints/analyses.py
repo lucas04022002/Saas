@@ -7,7 +7,8 @@ from slowapi.util import get_remote_address
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.api.deps import bearer_scheme, get_db
+from app.api.deps import bearer_scheme, get_current_user, get_current_user_optional, get_db
+from app.core.access import is_pro
 from app.core.config import settings
 from app.core.security import decode_access_token
 from app.models.analysis import Analysis
@@ -18,6 +19,9 @@ from app.services.analysis_runner import run_bulk_analyses, upsert_analysis_for_
 
 router = APIRouter(prefix="/analyses", tags=["analyses"])
 limiter = Limiter(key_func=get_remote_address)
+
+# Nombre de résultats d'historique visibles pour les non-abonnés.
+HISTORY_FREE_LIMIT = 5
 
 
 def _is_valid_cron_key(x_cron_key: str | None) -> bool:
@@ -30,15 +34,20 @@ def _is_valid_cron_key(x_cron_key: str | None) -> bool:
 def list_analyses(
     status_filter: str | None = Query(default=None, alias="status"),
     db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
 ):
     from app.models.enums import MatchStatus
-    query = select(Analysis, Match).join(Match, Match.id == Analysis.match_id)
+    query = select(Analysis, Match).join(Match, Match.id == Analysis.match_id).order_by(
+        Analysis.created_at.desc()
+    )
     if status_filter:
         try:
             query = query.where(Match.status == MatchStatus(status_filter))
         except ValueError:
             pass
     rows = db.execute(query).all()
+    if not is_pro(current_user):
+        rows = rows[:HISTORY_FREE_LIMIT]
     data = [
         {
             "match_id": str(analysis.match_id),
@@ -63,7 +72,14 @@ def list_analyses(
 
 
 @router.get("/{match_id}")
-def get_analysis(match_id: str, db: Session = Depends(get_db)):
+def get_analysis(
+    match_id: str,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    if not is_pro(current_user):
+        raise HTTPException(status_code=403, detail="Analyse réservée aux membres Pro")
+
     row = db.scalar(select(Analysis).where(Analysis.match_id == match_id))
     if row is None:
         raise HTTPException(status_code=404, detail="Analysis not found")

@@ -48,7 +48,7 @@ def daily_run(
         matches = db.scalars(query).all()
     except Exception as exc:
         log.error("Failed to fetch matches for cron: %s", exc)
-        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=f"Database error: {exc}")
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Database unavailable")
 
     if not matches:
         return {
@@ -68,7 +68,7 @@ def daily_run(
         summary = run_bulk_analyses(db, matches, odds_map=odds_map)
     except Exception as exc:
         log.error("Unhandled error in run_bulk_analyses: %s", exc)
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=f"Analysis runner error: {exc}")
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail="Analysis runner error")
 
     # Fetch team form for upcoming matches (today + tomorrow only) to limit API calls
     if settings.api_football_key:

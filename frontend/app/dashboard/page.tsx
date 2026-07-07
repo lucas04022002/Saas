@@ -39,7 +39,10 @@ export default async function DashboardPage() {
     const in7Days = new Date(now);
     in7Days.setDate(in7Days.getDate() + 7);
 
-    const allData = await fetchMatches({ limit: 100, sort_by: "kickoff_at", order: "asc", status: "SCHEDULED" });
+    const allData = await fetchMatches(
+      { limit: 100, sort_by: "kickoff_at", order: "asc", status: "SCHEDULED" },
+      token,
+    );
 
     const allFiltered = allData.items.filter((m) => m.confidence_score !== null);
 

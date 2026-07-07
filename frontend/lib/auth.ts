@@ -1,5 +1,17 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
 
+// Note sécurité : le token est aussi stocké dans localStorage (lisible en JS)
+// car le fetch client en a besoin. Un cookie HttpOnly complet nécessiterait un
+// proxy Next.js côté serveur (backend et frontend sont sur des domaines
+// différents) — voir docs/SECURITY_TODO.md. On force au moins `Secure` en prod.
+function setTokenCookie(token: string) {
+  const secure =
+    typeof window !== "undefined" && window.location.protocol === "https:"
+      ? "; Secure"
+      : "";
+  document.cookie = `rushplay_token=${token}; path=/; max-age=2592000; SameSite=Lax${secure}`;
+}
+
 export interface AuthUser {
   id: string;
   first_name: string;
@@ -36,7 +48,7 @@ export async function login(email: string, password: string): Promise<AuthUser> 
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
-  document.cookie = `rushplay_token=${json.data.access_token}; path=/; max-age=2592000; SameSite=Lax`;
+  setTokenCookie(json.data.access_token);
   return json.data.user;
 }
 
@@ -74,7 +86,7 @@ export async function signup(
   }
 
   localStorage.setItem("rushplay_token", json.data.access_token);
-  document.cookie = `rushplay_token=${json.data.access_token}; path=/; max-age=2592000; SameSite=Lax`;
+  setTokenCookie(json.data.access_token);
   return json.data.user;
 }
 

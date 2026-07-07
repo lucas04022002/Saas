@@ -94,7 +94,11 @@ def test_risk_level_valid_values(prediction_svc):
 
 
 def test_custom_bookmaker_odds(prediction_svc):
-    result = prediction_svc.get_prediction("Team A", "Team B", bookmaker_odds=2.10)
+    # L'API prend un dict par issue ; on fixe la même cote partout pour que
+    # l'issue recommandée l'utilise quelle qu'elle soit.
+    result = prediction_svc.get_prediction(
+        "Team A", "Team B", odds_by_outcome={"home": 2.10, "draw": 2.10, "away": 2.10}
+    )
     assert result["bookmaker_odds"] == 2.10
     implied = round((1 / 2.10) * 100, 2)
     assert result["value_percent"] == round(result["confidence_score"] - implied, 2)

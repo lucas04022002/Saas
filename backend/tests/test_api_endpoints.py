@@ -14,6 +14,7 @@ import os
 os.environ.setdefault("JWT_SECRET", "test-secret-key-for-pytest-only-32chars")
 os.environ.setdefault("CRON_SECRET", "test-cron-secret-key-for-pytest-32chars")
 os.environ.setdefault("PREDICTION_PROVIDER", "mock")
+os.environ["RUSHPLAY_SKIP_DB_INIT"] = "1"
 
 from app.main import app
 from app.api.deps import get_db
@@ -63,17 +64,18 @@ def _make_mock_analysis():
     a.ai_explanation = "Le modele donne 65% sur Victoire domicile."
     a.warning_points = []
     a.created_at = datetime(2026, 3, 21, 8, 0, tzinfo=timezone.utc)
+    a.updated_at = datetime(2026, 3, 21, 8, 0, tzinfo=timezone.utc)
     return a
 
 
-def _make_mock_user(role=UserRole.USER):
+def _make_mock_user(role=UserRole.USER, plan=SubscriptionPlan.STARTER):
     u = MagicMock()
     u.id = uuid.uuid4()
     u.first_name = "Lucas"
     u.email = "lucas@test.com"
     u.password_hash = hash_password("password123")
     u.role = role
-    u.subscription_plan = SubscriptionPlan.STARTER
+    u.subscription_plan = plan
     return u
 
 
@@ -100,6 +102,25 @@ def authed_client():
     """Client de test avec un utilisateur authentifié."""
     mock_db = _make_mock_db()
     mock_user = _make_mock_user()
+    token = create_access_token(str(mock_user.id))
+
+    def override_get_db():
+        yield mock_db
+
+    mock_db.get.return_value = mock_user
+    mock_db.scalar.return_value = mock_user
+
+    app.dependency_overrides[get_db] = override_get_db
+    with TestClient(app, raise_server_exceptions=False) as c:
+        yield c, mock_db, mock_user, token
+    app.dependency_overrides.clear()
+
+
+@pytest.fixture
+def authed_pro_client():
+    """Client authentifié avec un abonnement PRO (accès premium)."""
+    mock_db = _make_mock_db()
+    mock_user = _make_mock_user(plan=SubscriptionPlan.PRO)
     token = create_access_token(str(mock_user.id))
 
     def override_get_db():
@@ -248,19 +269,41 @@ def test_list_analyses_empty(client):
     assert resp.json()["data"] == []
 
 
-def test_get_analysis_not_found(client):
-    c, db = client
-    db.scalar.return_value = None
+def test_get_analysis_requires_auth(client):
+    c, _ = client
     resp = c.get(f"/api/v1/analyses/{uuid.uuid4()}")
+    assert resp.status_code == 401
+
+
+def test_get_analysis_forbidden_for_starter(authed_client):
+    c, db, _, token = authed_client
+    db.scalar.return_value = None
+    resp = c.get(
+        f"/api/v1/analyses/{uuid.uuid4()}",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status_code == 403
+
+
+def test_get_analysis_not_found(authed_pro_client):
+    c, db, _, token = authed_pro_client
+    db.scalar.return_value = None  # get_current_user utilise db.get, pas db.scalar
+    resp = c.get(
+        f"/api/v1/analyses/{uuid.uuid4()}",
+        headers={"Authorization": f"Bearer {token}"},
+    )
     assert resp.status_code == 404
 
 
-def test_get_analysis_found(client):
-    c, db = client
+def test_get_analysis_found(authed_pro_client):
+    c, db, _, token = authed_pro_client
     mock_analysis = _make_mock_analysis()
     db.scalar.return_value = mock_analysis
 
-    resp = c.get(f"/api/v1/analyses/{mock_analysis.match_id}")
+    resp = c.get(
+        f"/api/v1/analyses/{mock_analysis.match_id}",
+        headers={"Authorization": f"Bearer {token}"},
+    )
     assert resp.status_code == 200
     data = resp.json()["data"]
     assert data["confidence_score"] == 65.0
@@ -386,3 +429,80 @@ def test_cron_with_valid_key(client):
     data = resp.json()
     assert data["success"] is True
     assert data["data"]["processed"] == 0
+
+
+# ---------------------------------------------------------------------------
+# Paywall serveur — /api/v1/signal (réservé Pro/Elite)
+# ---------------------------------------------------------------------------
+
+def test_signal_requires_auth(client):
+    c, _ = client
+    resp = c.get(f"/api/v1/signal/{uuid.uuid4()}")
+    assert resp.status_code == 401
+
+
+def test_signal_forbidden_for_starter(authed_client):
+    c, _, _, token = authed_client
+    resp = c.get(
+        f"/api/v1/signal/{uuid.uuid4()}",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status_code == 403
+
+
+def test_signal_ok_for_pro(authed_pro_client):
+    c, db, _, token = authed_pro_client
+    match = _make_mock_match()
+    match.analysis = _make_mock_analysis()
+    db.scalar.return_value = match  # get_current_user utilise db.get
+
+    resp = c.get(
+        f"/api/v1/signal/{match.id}",
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status_code == 200
+    data = resp.json()["data"]
+    assert data["analysis"]["recommended_bet"] == "Victoire domicile"
+
+
+# ---------------------------------------------------------------------------
+# Paywall serveur — /api/v1/matches masque les champs premium
+# ---------------------------------------------------------------------------
+
+def test_matches_locked_for_anonymous(client):
+    c, db = client
+    matches = []
+    for conf in (70.0, 60.0, 50.0):
+        m = _make_mock_match()
+        a = _make_mock_analysis()
+        a.confidence_score = conf
+        m.analysis = a
+        matches.append(m)
+    db.scalar.return_value = 3
+    db.scalars.return_value.unique.return_value.all.return_value = matches
+
+    resp = c.get("/api/v1/matches")
+    assert resp.status_code == 200
+    items = resp.json()["data"]["items"]
+    assert len(items) == 3
+    locked = [it for it in items if it["locked"]]
+    unlocked = [it for it in items if not it["locked"]]
+    # FREE_SLOTS = 2 : deux signaux ouverts, le reste verrouillé
+    assert len(unlocked) == 2
+    assert len(locked) == 1
+    assert locked[0]["recommended_bet"] is None
+    assert locked[0]["value_percent"] is None
+
+
+# ---------------------------------------------------------------------------
+# Faille revenus — /api/v1/subscriptions/upgrade (admin uniquement)
+# ---------------------------------------------------------------------------
+
+def test_upgrade_forbidden_for_normal_user(authed_client):
+    c, _, _, token = authed_client
+    resp = c.post(
+        "/api/v1/subscriptions/upgrade",
+        json={"plan": "ELITE"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert resp.status_code == 403

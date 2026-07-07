@@ -31,10 +31,11 @@ interface SignalData {
   away_form: string | null;
 }
 
-async function fetchSignal(matchId: string): Promise<SignalData | null> {
+async function fetchSignal(matchId: string, token: string): Promise<SignalData | null> {
   try {
     const res = await fetch(`${API_URL}/api/v1/signal/${matchId}`, {
       cache: "no-store",
+      headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) return null;
     const json = await res.json();
@@ -116,24 +117,27 @@ export default async function SignalPage({
 }) {
   const { match_id } = await params;
 
-  // Check plan
+  // L'analyse détaillée est réservée aux abonnés : il faut un token, et le
+  // serveur renvoie 403 si le plan n'est pas Pro/Elite.
   const cookieStore = await cookies();
   const token = cookieStore.get("rushplay_token")?.value;
-  if (token) {
-    try {
-      const meRes = await fetch(`${API_URL}/api/v1/auth/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-        cache: "no-store",
-      });
-      const me = await meRes.json();
-      const plan = me?.data?.subscription_plan ?? "STARTER";
-      if (plan === "STARTER") redirect("/tarifs");
-    } catch {
-      // si erreur on laisse passer
-    }
-  }
+  if (!token) redirect("/login");
 
-  const data = await fetchSignal(match_id);
+  let plan = "STARTER";
+  try {
+    const meRes = await fetch(`${API_URL}/api/v1/auth/me`, {
+      headers: { Authorization: `Bearer ${token}` },
+      cache: "no-store",
+    });
+    const me = await meRes.json();
+    plan = me?.data?.subscription_plan ?? "STARTER";
+  } catch {
+    // en cas d'erreur réseau on tente quand même : le backend tranchera (403)
+  }
+  // redirect() lève une exception spéciale : le garder hors du try/catch.
+  if (plan === "STARTER") redirect("/tarifs");
+
+  const data = await fetchSignal(match_id, token);
   if (!data) notFound();
 
   const { match, analysis, warning_points, home_form, away_form } = data;

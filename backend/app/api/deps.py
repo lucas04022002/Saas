@@ -34,3 +34,21 @@ def get_current_user(
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="User not found")
 
     return user
+
+
+def get_current_user_optional(
+    credentials: HTTPAuthorizationCredentials | None = Depends(bearer_scheme),
+    db: Session = Depends(get_db),
+) -> User | None:
+    """Résout l'utilisateur si un token valide est fourni, sinon None.
+
+    Ne lève jamais 401 : sert à adapter la réponse (gating par plan) pour les
+    visiteurs anonymes comme pour les membres connectés.
+    """
+    if credentials is None:
+        return None
+    try:
+        user_id = decode_access_token(credentials.credentials)
+    except ValueError:
+        return None
+    return db.get(User, user_id)

@@ -4,17 +4,29 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
-from app.api.deps import get_db
+from app.api.deps import get_current_user, get_db
+from app.core.access import is_pro
 from app.models.analysis import Analysis
 from app.models.match import Match
 from app.models.team_stats import TeamStats
 from app.models.enums import TeamType
+from app.models.user import User
 
 router = APIRouter(prefix="/signal", tags=["signal"])
 
 
 @router.get("/{match_id}")
-def get_signal(match_id: UUID, db: Session = Depends(get_db)):
+def get_signal(
+    match_id: UUID,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    if not is_pro(current_user):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Analyse détaillée réservée aux membres Pro",
+        )
+
     match = db.scalar(
         select(Match)
         .options(

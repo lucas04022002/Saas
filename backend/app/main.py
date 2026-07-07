@@ -1,4 +1,6 @@
 import logging
+import os
+from contextlib import asynccontextmanager
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,8 +22,26 @@ from app import models  # noqa: F401
 setup_logging()
 log = logging.getLogger("rushplay")
 
+
+@asynccontextmanager
+async def lifespan(_: FastAPI):
+    # Permet aux tests (DB mockée) de sauter l'initialisation qui se connecte à
+    # Postgres. En production la variable n'est pas définie et l'init a lieu.
+    if os.getenv("RUSHPLAY_SKIP_DB_INIT") != "1":
+        try:
+            Base.metadata.create_all(bind=engine)
+        except Exception as exc:
+            log.warning("Database initialization skipped: %s", exc)
+        else:
+            try:
+                ensure_runtime_columns(engine)
+            except Exception as exc:
+                log.warning("Runtime column migration skipped: %s", exc)
+    yield
+
+
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI(title=settings.app_name, version="0.1.0")
+app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
 app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
@@ -43,19 +63,6 @@ async def http_exception_handler(_: Request, exc: HTTPException):
 async def generic_exception_handler(_: Request, exc: Exception):
     log.exception("Unhandled exception: %s", exc)
     return JSONResponse(status_code=500, content={"success": False, "message": "Internal server error"})
-
-
-@app.on_event("startup")
-def startup_event():
-    try:
-        Base.metadata.create_all(bind=engine)
-    except Exception as exc:
-        log.warning("Database initialization skipped: %s", exc)
-        return
-    try:
-        ensure_runtime_columns(engine)
-    except Exception as exc:
-        log.warning("Runtime column migration skipped: %s", exc)
 
 
 @app.get("/health")

@@ -31,7 +31,9 @@ export default async function HistoriquePage() {
   }
 
   try {
-    analyses = await fetchAnalyses("FINISHED");
+    analyses = await fetchAnalyses("FINISHED", token);
+    // Le serveur limite déjà les non-abonnés à 5 résultats ; ce slice reste
+    // une sécurité d'affichage côté client.
     if (!isPro) analyses = analyses.slice(0, 5);
   } catch {
     error = true;

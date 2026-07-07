@@ -14,6 +14,12 @@ export interface ApiMatch {
   bookmaker_odds: number | null;
   value_percent: number | null;
   risk_level: "LOW" | "MEDIUM" | "HIGH" | null;
+  // Renseigné par le serveur : true = signal verrouillé (non-abonné), champs premium à null.
+  locked?: boolean;
+}
+
+function authHeaders(token?: string | null): Record<string, string> {
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
 export interface ApiAnalysis {
@@ -34,14 +40,17 @@ export interface ApiAnalysis {
   created_at: string;
 }
 
-export async function fetchMatches(params?: {
-  page?: number;
-  limit?: number;
-  sort_by?: string;
-  order?: string;
-  date?: string;
-  status?: string;
-}): Promise<{ items: ApiMatch[]; pagination: { page: number; limit: number; total: number } }> {
+export async function fetchMatches(
+  params?: {
+    page?: number;
+    limit?: number;
+    sort_by?: string;
+    order?: string;
+    date?: string;
+    status?: string;
+  },
+  token?: string | null,
+): Promise<{ items: ApiMatch[]; pagination: { page: number; limit: number; total: number } }> {
   const query = new URLSearchParams();
   if (params?.page) query.set("page", String(params.page));
   if (params?.limit) query.set("limit", String(params.limit));
@@ -52,6 +61,7 @@ export async function fetchMatches(params?: {
 
   const res = await fetch(`${API_URL}/api/v1/matches?${query}`, {
     cache: "no-store",
+    headers: authHeaders(token),
   });
 
   if (!res.ok) throw new Error("Erreur lors de la récupération des matchs");
@@ -59,10 +69,11 @@ export async function fetchMatches(params?: {
   return json.data;
 }
 
-export async function fetchAnalyses(status?: string): Promise<ApiAnalysis[]> {
+export async function fetchAnalyses(status?: string, token?: string | null): Promise<ApiAnalysis[]> {
   const query = status ? `?status=${status}` : "";
   const res = await fetch(`${API_URL}/api/v1/analyses${query}`, {
     cache: "no-store",
+    headers: authHeaders(token),
   });
 
   if (!res.ok) throw new Error("Erreur lors de la récupération des analyses");

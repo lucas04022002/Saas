@@ -4,10 +4,12 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import asc, desc, func, select
 from sqlalchemy.orm import Session, joinedload
 
-from app.api.deps import get_db
+from app.api.deps import get_current_user_optional, get_db
+from app.core.access import gate_match_items, is_pro
 from app.models.analysis import Analysis
 from app.models.enums import MatchStatus
 from app.models.match import Match
+from app.models.user import User
 
 router = APIRouter(prefix="/matches", tags=["matches"])
 
@@ -25,6 +27,7 @@ def list_matches(
     sort_by: str = Query(default="kickoff_at", pattern="^(kickoff_at|confidence_score|value_percent)$"),
     order: str = Query(default="asc", pattern="^(asc|desc)$"),
     db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
 ):
     query = select(Match).outerjoin(Analysis).options(joinedload(Match.analysis))
 
@@ -76,6 +79,8 @@ def list_matches(
             }
         )
 
+    data = gate_match_items(data, current_user)
+
     return {
         "success": True,
         "message": "Matches fetched successfully",
@@ -84,7 +89,11 @@ def list_matches(
 
 
 @router.get("/{match_id}")
-def get_match_detail(match_id: str, db: Session = Depends(get_db)):
+def get_match_detail(
+    match_id: str,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+):
     row = db.scalar(
         select(Match)
         .where(Match.id == match_id)
@@ -97,7 +106,7 @@ def get_match_detail(match_id: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Match not found")
 
     analysis = None
-    if row.analysis:
+    if row.analysis and is_pro(current_user):
         analysis = {
             "confidence_score": row.analysis.confidence_score,
             "recommended_bet": row.analysis.recommended_bet,
@@ -120,6 +129,7 @@ def get_match_detail(match_id: str, db: Session = Depends(get_db)):
             "kickoff_at": row.kickoff_at,
             "status": row.status.value,
             "last_analyzed_at": row.last_analyzed_at,
+            "locked": not is_pro(current_user),
             "analysis": analysis,
             "team_stats": [
                 {

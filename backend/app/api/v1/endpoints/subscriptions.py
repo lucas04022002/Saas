@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user, get_db
-from app.models.enums import SubscriptionPlan, SubscriptionStatus
+from app.models.enums import SubscriptionPlan, SubscriptionStatus, UserRole
 from app.models.subscription import Subscription
 from app.models.user import User
 from app.schemas.subscription import UpgradeSubscriptionRequest
@@ -37,6 +37,16 @@ def upgrade_subscription(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
+    # Sécurité : un utilisateur ne peut PAS se sur-classer lui-même vers un plan
+    # payant sans passer par un paiement vérifié. En attendant l'intégration
+    # Stripe (webhook checkout.session.completed), seul un admin peut attribuer
+    # un plan manuellement. Voir docs/SECURITY_TODO.md.
+    if current_user.role != UserRole.ADMIN:
+        raise HTTPException(
+            status_code=403,
+            detail="Le passage à un plan payant se fait via le paiement. Contactez le support.",
+        )
+
     try:
         plan = SubscriptionPlan(payload.plan)
     except ValueError:
