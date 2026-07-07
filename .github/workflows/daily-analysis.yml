@@ -1,0 +1,27 @@
+# Lance l'analyse quotidienne des matchs (remplace le cron Render payant).
+# Nécessite les secrets repo BACKEND_URL et CRON_SECRET.
+name: Daily analysis
+
+on:
+  schedule:
+    # 06:00 UTC ≈ 7h-8h à Paris. Modifie l'heure ici si besoin.
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger daily-run
+        run: |
+          if [ -z "${{ secrets.BACKEND_URL }}" ] || [ -z "${{ secrets.CRON_SECRET }}" ]; then
+            echo "Secret BACKEND_URL ou CRON_SECRET manquant."
+            exit 1
+          fi
+          # 1er appel = réveille l'instance Render si endormie (peut échouer, on ignore)
+          curl -fsS --max-time 90 "${{ secrets.BACKEND_URL }}/health" || true
+          # Lance l'analyse (jusqu'à 5 min)
+          curl -fsS -X POST \
+            "${{ secrets.BACKEND_URL }}/api/v1/cron/daily-run?limit=50" \
+            -H "X-CRON-KEY: ${{ secrets.CRON_SECRET }}" \
+            --max-time 300

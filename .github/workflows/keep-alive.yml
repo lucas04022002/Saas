@@ -1,0 +1,21 @@
+# Réveille le backend Render (plan free) pour éviter la mise en veille.
+# Nécessite le secret repo BACKEND_URL (ex: https://rushplay-api.onrender.com).
+name: Keep backend awake
+
+on:
+  schedule:
+    # Toutes les ~10 min (GitHub peut retarder un peu, c'est normal).
+    - cron: "*/10 * * * *"
+  workflow_dispatch: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping /health
+        run: |
+          if [ -z "${{ secrets.BACKEND_URL }}" ]; then
+            echo "BACKEND_URL secret manquant — ajoute-le dans Settings > Secrets > Actions."
+            exit 0
+          fi
+          curl -fsS --max-time 90 "${{ secrets.BACKEND_URL }}/health" || true
