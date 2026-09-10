@@ -3,9 +3,11 @@ import { useEffect, useRef, useState } from "react";
 
 export function BigNumber({ value, suffix, className = "" }: { value: number; suffix?: string; className?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const canAnimate = typeof window !== "undefined" && "IntersectionObserver" in window && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  const [shown, setShown] = useState(canAnimate ? 0 : value);
+  // Le rendu initial (serveur et hydratation client) affiche toujours `value` : brancher sur
+  // `typeof window` ferait diverger le HTML serveur du premier rendu client (avertissement d'hydratation).
+  const [shown, setShown] = useState(value);
   useEffect(() => {
+    const canAnimate = "IntersectionObserver" in window && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
     if (!canAnimate || !ref.current) return;
     const el = ref.current;
     const io = new IntersectionObserver(([e]) => {
@@ -21,7 +23,7 @@ export function BigNumber({ value, suffix, className = "" }: { value: number; su
     }, { threshold: 0.4 });
     io.observe(el);
     return () => io.disconnect();
-  }, [canAnimate, value]);
+  }, [value]);
   return (
     <span ref={ref} className={className} aria-label={`${value}${suffix ?? ""}`}>
       <span>{shown}</span>{suffix ? <sup className="align-top text-[0.28em] font-bold tracking-[-0.02em] relative top-[0.3em] ml-[0.02em]">{suffix}</sup> : null}

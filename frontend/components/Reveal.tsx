@@ -1,14 +1,25 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 export function Reveal({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
-  const canAnimate = typeof window !== "undefined" && "IntersectionObserver" in window && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  const [on, setOn] = useState(!canAnimate);
+  // Le rendu initial (serveur et hydratation client) montre toujours le contenu : brancher sur `typeof
+  // window` ferait diverger le HTML serveur du premier rendu client (avertissement d'hydratation). L'état
+  // masqué-puis-révélé est appliqué directement au DOM depuis l'effet, jamais via setState synchrone dedans.
   useEffect(() => {
-    if (!canAnimate || !ref.current) return;
-    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setOn(true); io.disconnect(); } }, { threshold: 0.15 });
-    io.observe(ref.current);
+    const el = ref.current;
+    if (!el) return;
+    const canAnimate = "IntersectionObserver" in window && !window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!canAnimate) return;
+    el.classList.remove("opacity-100");
+    el.classList.add("opacity-0");
+    const io = new IntersectionObserver(([e]) => {
+      if (!e.isIntersecting) return;
+      el.classList.remove("opacity-0");
+      el.classList.add("opacity-100");
+      io.disconnect();
+    }, { threshold: 0.15 });
+    io.observe(el);
     return () => io.disconnect();
-  }, [canAnimate]);
-  return <div ref={ref} className={`${className} transition-opacity duration-700 ${on ? "opacity-100" : "opacity-0"}`}>{children}</div>;
+  }, []);
+  return <div ref={ref} className={`${className} opacity-100 transition-opacity duration-700`}>{children}</div>;
 }

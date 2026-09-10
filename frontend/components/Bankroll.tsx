@@ -40,7 +40,7 @@ export function Bankroll({ token, preselected }: { token: string; preselected?: 
       {actionError && <p role="alert" className="mt-6 text-[14px] font-medium">{actionError}</p>}
       {data.items.length === 0 ? <p className="hair mt-10 py-8 text-[19px]">Aucun pari noté. Le premier est en bas de page.</p> : (
         <table className="mt-12 w-full border-collapse text-[15px]">
-          <thead><tr>{["Match", "Pari", "Bookmaker", "Cote", "Mise", "Gain", "Statut", ""].map((h, i) => <th key={h + i} className={`border-b border-ink pb-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-muted ${i >= 3 ? "text-right" : "text-left"}`}>{h}</th>)}</tr></thead>
+          <thead><tr>{["Match", "Pari", "Bookmaker", "Cote", "Mise", "Gain", "Statut", ""].map((h, i) => <th key={h + i} scope="col" className={`border-b border-ink pb-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-muted ${i >= 3 ? "text-right" : "text-left"}`}>{h}</th>)}</tr></thead>
           <tbody>{data.items.map((b) => (
             <tr key={b.id}>
               <td className="border-b border-line py-4 font-semibold">{b.home_team} – {b.away_team}<span className="block text-[13px] font-normal text-muted">{formatDateFr(b.kickoff_at)}</span></td>
