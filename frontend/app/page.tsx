@@ -31,6 +31,7 @@ export default async function Home() {
         <Link href="/matchs" className="link mt-7 inline-block text-[17px]">Tous les matchs du jour ›</Link>
       </section>
       <section id="comment" className="relative bg-black text-paper">
+        {/* eslint-disable-next-line @next/next/no-img-element -- WebP local servi tel quel, pas de next/image (spec : <picture>/<img>) */}
         <img src="/photos/stade-jour.webp" alt="" className="absolute inset-0 h-full w-full object-cover opacity-[.14]" loading="lazy" />
         <Reveal className="site relative py-24 md:py-28">
           <h2 className="h-section text-[48px] md:text-[72px] max-w-[14ch]">On ne prédit rien.<br /><span className="text-muted">On lit le marché.</span></h2>
