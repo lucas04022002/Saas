@@ -95,6 +95,12 @@ def _h2h_sentence(ctx: MatchContext) -> str | None:
     return None
 
 
-def describe(ctx: MatchContext) -> str:
-    parts = [_favourite_sentence(ctx), _gap_sentence(ctx), _movement_sentence(ctx), _form_sentence(ctx), _h2h_sentence(ctx)]
+def describe(ctx: MatchContext, public: bool = False) -> str:
+    parts = [
+        _favourite_sentence(ctx),
+        None if public else _gap_sentence(ctx),
+        None if public else _movement_sentence(ctx),
+        _form_sentence(ctx),
+        _h2h_sentence(ctx),
+    ]
     return " ".join(p for p in parts if p)

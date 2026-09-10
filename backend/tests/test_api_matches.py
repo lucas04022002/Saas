@@ -63,6 +63,7 @@ def test_detail_pro_has_books_history_analysis(client, db, pro_user):
     assert d["reference_book"]["bookmaker"] == "pinnacle"
     assert len(d["history"]) == 2 and d["history"][0]["taken_at"] < d["history"][1]["taken_at"]
     assert d["analysis"].startswith("Arsenal est favori à")
+    assert "depuis le premier relevé" in d["analysis"]
     assert d["form"]["home"]["played"] == 0 and d["h2h"] == [] and d["result"] is None
 
 
@@ -71,6 +72,8 @@ def test_detail_anonymous_is_locked_but_keeps_favourite_and_analysis(client, db)
     d = client.get(f"/api/v1/matches/{m.id}").json()["data"]
     assert d["locked"] is True and d["books"] is None and d["history"] is None and d["movement"] is None
     assert d["favourite"]["outcome"] == "home" and d["analysis"]
+    assert "au-dessus de la référence" not in d["analysis"]
+    assert "depuis le premier relevé" not in d["analysis"]
 
 
 def test_detail_uses_finished_history_for_form_and_h2h(client, db, pro_user):

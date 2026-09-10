@@ -64,3 +64,10 @@ def test_form_zero_wins_away():
     from app.engine.context import Form
     t = describe(ctx(away_form=Form(5, 0, 1, 4, 1, 9, "DDDND")))
     assert "Lyon reste sur trois victoires lors des cinq derniers matchs ; Nice n'en compte aucune." in t
+
+
+def test_describe_public_hides_gap_and_movement():
+    t = describe(ctx(reading=reading(mov=(4.2, -1.5, -2.7))), public=True)
+    assert "au-dessus de la référence" not in t
+    assert "depuis le premier relevé" not in t
+    assert t.startswith("Lyon est favori à 58 %.")

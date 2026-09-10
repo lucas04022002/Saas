@@ -6,7 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from app.api.deps import get_current_user_optional, get_db
-from app.core.access import gate_detail, gate_list
+from app.core.access import gate_detail, gate_list, is_pro
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.user import User
@@ -49,4 +49,5 @@ def get_match(match_id: str, db: Session = Depends(get_db), current_user: User |
         row = None
     if row is None or row.status == MatchStatus.QUARANTINE:
         raise HTTPException(status_code=404, detail="Match not found")
-    return {"success": True, "message": "Match detail fetched", "data": gate_detail(match_detail(db, row), current_user)}
+    detail = match_detail(db, row, public=not is_pro(current_user))
+    return {"success": True, "message": "Match detail fetched", "data": gate_detail(detail, current_user)}

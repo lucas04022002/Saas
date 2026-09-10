@@ -68,7 +68,7 @@ def match_summary(db: Session, match: Match) -> dict:
     return out
 
 
-def match_detail(db: Session, match: Match) -> dict:
+def match_detail(db: Session, match: Match, public: bool = False) -> dict:
     out = match_summary(db, match)
     r = reading_for(match)
     hist = history_for(db, [match.home_team_id, match.away_team_id], before=match.kickoff_at)
@@ -96,5 +96,5 @@ def match_detail(db: Session, match: Match) -> dict:
     from app.engine.probabilities import reference
     kept = [q for q in quotes_for(match) if q.bookmaker in FRENCH_BOOKMAKERS or q.bookmaker == "pinnacle"]
     out["history"] = [{"taken_at": t, "reference": _probs(reference(books)[0])} for t, books in _by_time(kept).items()]
-    out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r)))
+    out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r)), public=public)
     return out
