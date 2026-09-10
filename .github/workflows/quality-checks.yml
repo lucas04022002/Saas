@@ -5,8 +5,15 @@ on:
   pull_request:
 
 jobs:
-  python-syntax:
+  backend-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    env:
+      JWT_SECRET: ci-secret-key-for-github-actions-32chars
+      CRON_SECRET: ci-cron-secret-key-for-github-actions-32
+      RUSHPLAY_SKIP_DB_INIT: "1"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -15,23 +22,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
+          cache-dependency-path: "backend/requirements.txt"
 
-      - name: Syntax check (py_compile)
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Tests (SQLite en mémoire)
+        run: python -m pytest -q
+
+      - name: Vocabulaire interdit
         run: |
-          python - <<'PY'
-          import py_compile
-          files = [
-              "prediction_engine.py",
-              "train_xgboost.py",
-              "backtesting.py",
-              "Algo plus APi.py",
-              "backend/app/services/prediction_service.py",
-              "backend/app/services/analysis_runner.py",
-          ]
-          for path in files:
-              py_compile.compile(path, doraise=True)
-          print("Python syntax check OK")
-          PY
+          if grep -rniE "value_bet|value_percent|confidence_score|recommended_bet|prediction" app/ tests/ ../README.md .env.example; then
+            echo "Vocabulaire interdit détecté" && exit 1
+          fi
+          echo "OK"
 
   frontend-lint:
     runs-on: ubuntu-latest
