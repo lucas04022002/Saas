@@ -10,6 +10,10 @@
   --color-line: rgba(0, 0, 0, 0.1);
   --color-line-dark: rgba(255, 255, 255, 0.14);
   --color-link: #2997ff;
+  --color-photo-text: #d1d1d6;
+  --color-track: #e5e5ea;
+  --color-track-dark: #3a3a3c;
+  --color-nav-muted: #c7c7cc;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-tight: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
   --container-site: 1180px;

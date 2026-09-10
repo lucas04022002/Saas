@@ -4,7 +4,7 @@ import { formatPctInt } from "@/lib/format";
 export function Bars({ probs, favourite, home, away, dark = false }: { probs: Probs; favourite: Outcome | null; home: string; away: string; dark?: boolean }) {
   const rows: [Outcome, string][] = [["home", home], ["draw", "Nul"], ["away", away]];
   const line = dark ? "border-line-dark" : "border-line";
-  const track = dark ? "bg-[#3a3a3c]" : "bg-[#e5e5ea]";
+  const track = dark ? "bg-track-dark" : "bg-track";
   return (
     <div className={`mt-6 border-b ${line}`}>
       {rows.map(([k, label]) => {
