@@ -66,7 +66,7 @@ def upgrade() -> None:
         )""")
     op.execute("CREATE INDEX IF NOT EXISTS ix_odds_snapshots_match_id ON odds_snapshots (match_id)")
     op.execute("CREATE INDEX IF NOT EXISTS ix_odds_snapshots_taken_at ON odds_snapshots (taken_at)")
-    op.execute("DO $$ BEGIN CREATE TYPE outcome AS ENUM ('home','draw','away'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
+    op.execute("DO $$ BEGIN CREATE TYPE outcome AS ENUM ('HOME','DRAW','AWAY'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
     op.execute("DO $$ BEGIN CREATE TYPE betstatus AS ENUM ('PENDING','WON','LOST','VOID'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
     op.execute("""
         CREATE TABLE IF NOT EXISTS bets (
