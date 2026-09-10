@@ -112,11 +112,20 @@ Les mêmes jetons portent aussi les tailles de titres (`h-section`,
 `btn-ghost`, `link`, `eyebrow`) : les réutiliser plutôt que dupliquer des
 classes Tailwind brutes pour une nouvelle page.
 
+**Exception documentée :** le voile en dégradé posé sur la photo du héros
+(`components/Hero.tsx`, classe `bg-[linear-gradient(180deg,rgba(0,0,0,.72)…)]`)
+utilise du noir translucide en dur plutôt qu'un jeton. Ce n'est pas une
+couleur au sens propre mais un assombrissement de photo à plusieurs arrêts
+(0 %, 45 %, 100 %) — un jeton `--color-*` ne peut pas porter de dégradé
+multi-arrêts avec des opacités différentes à chaque arrêt. Le grep ci-dessus
+ne le détecte pas (il ne matche que les couleurs hex), c'est volontaire.
+
 ## Photos
 
 `public/photos/` contient deux photos de stade (jour/nuit), chacune en
 pleine résolution et en variante `-900` (utilisée en `<picture>` sous 700 px
-de large). Voir `public/photos/CREDITS.md` : ce sont des photos Unsplash de
+de large). Voir `PHOTOS.md` (à la racine de `frontend/`, pas dans `public/`
+pour ne pas l'exposer sur le site) : ce sont des photos Unsplash de
 démonstration, **à remplacer avant mise en ligne** par des photos dont
 RushPlay détient les droits (achat, licence libre de droits ou production
 propre), avec crédit mis à jour dans le même fichier.

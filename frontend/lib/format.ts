@@ -1,13 +1,16 @@
 const nf1 = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const nf2 = new Intl.NumberFormat("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-export const formatPct = (p: number) => `${Math.round(p * 100)} %`;
+// Espace insécable : en typographie française, "%" et "€" ne doivent jamais se retrouver seuls en début
+// de ligne, séparés du nombre qu'ils qualifient par un retour à la ligne.
+const NBSP = " ";
+export const formatPct = (p: number) => `${Math.round(p * 100)}${NBSP}%`;
 export const formatPctInt = (p: number) => `${Math.round(p * 100)}`;
 export const formatOdds = (o: number) => nf2.format(o);
-export const formatMargin = (m: number) => `${nf1.format(m * 100)} %`;
-export const formatGap = (g: number) => `${g >= 0 ? "+" : "−"}${nf1.format(Math.abs(g) * 100)} %`;
+export const formatMargin = (m: number) => `${nf1.format(m * 100)}${NBSP}%`;
+export const formatGap = (g: number) => `${g >= 0 ? "+" : "−"}${nf1.format(Math.abs(g) * 100)}${NBSP}%`;
 export const formatSigned = (x: number, unit = "") => `${x >= 0 ? "+" : "−"}${nf1.format(Math.abs(x))}${unit}`;
 export const formatSignedInt = (x: number) => `${x >= 0 ? "+" : "−"}${Math.abs(Math.round(x))}`;
-export const formatEuro = (x: number) => `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(x)} €`;
+export const formatEuro = (x: number) => `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(x)}${NBSP}€`;
 export const formatDateFr = (iso: string) =>
   new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }).format(new Date(iso)).replace(" à ", ", ");
 export const formatTimeFr = (iso: string) => new Intl.DateTimeFormat("fr-FR", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }).format(new Date(iso));

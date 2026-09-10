@@ -18,6 +18,12 @@ describe("liste des matchs", () => {
     const headings = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
     expect(headings).toEqual(["Ligue 1", "Premier League"]);
   });
+  it("sous-titre : compte les matchs groupés, pas items.length (une compétition hors ORDER ne compte pas)", async () => {
+    server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [m("1", "E0", "Premier League", "Arsenal", "Chelsea"), m("2", "XX", "Ligue inconnue", "A", "B")], pagination: { page: 1, limit: 200, total: 2 } } })));
+    const Page = (await import("@/app/matchs/page")).default;
+    render(await Page({ searchParams: Promise.resolve({ date: "2026-09-13", competition: undefined }) }));
+    expect(screen.getByText(/1 match · relevé de/)).toBeInTheDocument();
+  });
   it("vide : phrase d'invitation", async () => {
     server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })));
     const Page = (await import("@/app/matchs/page")).default;

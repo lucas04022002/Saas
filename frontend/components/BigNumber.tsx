@@ -24,9 +24,12 @@ export function BigNumber({ value, suffix, className = "" }: { value: number; su
     io.observe(el);
     return () => io.disconnect();
   }, [value]);
+  // role="img" + aria-label expose la valeur finale comme un seul bloc de texte : sans ça, un lecteur
+  // d'écran énoncerait chaque étape de l'animation de comptage (le texte du <span> change en direct), et
+  // découperait "58" et "%" en deux fragments séparés par les deux éléments enfants.
   return (
-    <span ref={ref} className={className} aria-label={`${value}${suffix ?? ""}`}>
-      <span>{shown}</span>{suffix ? <sup className="align-top text-[0.28em] font-bold tracking-[-0.02em] relative top-[0.3em] ml-[0.02em]">{suffix}</sup> : null}
+    <span ref={ref} className={className} role="img" aria-label={`${value}${suffix ?? ""}`}>
+      <span aria-hidden="true">{shown}</span>{suffix ? <sup aria-hidden="true" className="align-top text-[0.28em] font-bold tracking-[-0.02em] relative top-[0.3em] ml-[0.02em]">{suffix}</sup> : null}
     </span>
   );
 }

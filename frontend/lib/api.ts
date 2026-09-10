@@ -27,7 +27,11 @@ async function call<T>(path: string, init: RequestInit & { token?: string; reval
   const { token, revalidate, ...rest } = init;
   const headers: Record<string, string> = { "Content-Type": "application/json", ...(rest.headers as Record<string, string>) };
   if (token) headers.Authorization = `Bearer ${token}`;
-  const res = await fetch(`${BASE}${path}`, { ...rest, headers, next: revalidate !== undefined ? { revalidate } : undefined } as RequestInit);
+  // Une réponse authentifiée (jeton présent) est personnalisée (abonnement, carnet...) : elle ne doit
+  // jamais rejoindre le cache de données partagé de Next.js, où elle pourrait fuiter vers un autre
+  // visiteur. `cache: "no-store"` prime alors sur tout `revalidate` demandé par l'appelant.
+  const cacheInit: RequestInit = token ? { cache: "no-store" } : revalidate !== undefined ? ({ next: { revalidate } } as RequestInit) : {};
+  const res = await fetch(`${BASE}${path}`, { ...rest, ...cacheInit, headers });
   return parseEnvelope<T>(res);
 }
 
@@ -44,9 +48,9 @@ export const api = {
   login: (email: string, password: string) => call<{ access_token: string; user: User }>("/api/v1/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
   signup: (p: { first_name: string; email: string; password: string; birth_date: string }) =>
     call<{ access_token: string; user: User }>("/api/v1/auth/signup", { method: "POST", body: JSON.stringify(p) }),
-  me: (token: string) => call<User>("/api/v1/auth/me", { token, cache: "no-store" }),
+  me: (token: string) => call<User>("/api/v1/auth/me", { token }),
   bankroll: {
-    list: (token: string) => call<{ items: Bet[]; summary: BankrollSummary }>("/api/v1/bankroll", { token, cache: "no-store" }),
+    list: (token: string) => call<{ items: Bet[]; summary: BankrollSummary }>("/api/v1/bankroll", { token }),
     create: (token: string, p: { match_id: string; outcome: string; bookmaker: string; odds: number; stake: number }) =>
       call<Bet>("/api/v1/bankroll", { method: "POST", token, body: JSON.stringify(p) }),
     remove: (token: string, id: string) => call<{ id: string }>(`/api/v1/bankroll/${id}`, { method: "DELETE", token }),

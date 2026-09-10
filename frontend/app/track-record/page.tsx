@@ -18,6 +18,7 @@ export default async function TrackRecord({ searchParams }: { searchParams: Prom
               <p className="mt-6 max-w-[40ch] text-[19px] leading-relaxed text-faint">des favoris ont gagné en {COMPETITIONS[sel.competition] ?? sel.competition} cette saison, sur {sel.played} matchs. {note} Le favori affiché est celui du dernier relevé avant le coup d&apos;envoi, jamais recalculé après coup.</p>
             </div>
             <table className="w-full border-collapse text-[16px]">
+              <caption className="sr-only">Track record par compétition</caption>
               <thead><tr>{["Compétition", "Matchs", "Favori gagnant", "Taux"].map((h, i) => <th key={h} scope="col" className={`border-b border-paper pb-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-faint ${i ? "text-right" : "text-left"}`}>{h}</th>)}</tr></thead>
               <tbody>{items.map((r) => (
                 <tr key={r.competition} className={r.competition === sel.competition ? "font-bold" : ""}>

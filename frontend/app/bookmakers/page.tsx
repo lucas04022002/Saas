@@ -17,6 +17,7 @@ export default async function Bookmakers() {
       <p className="mt-3 mb-10 max-w-[60ch] text-[19px] text-muted">Pour chaque bookmaker français, l&apos;écart le plus favorable par rapport à la référence Pinnacle sur les matchs à venir, et sa marge moyenne. Un écart positif veut dire qu&apos;il paie plus que ce que le marché implique.</p>
       {rows === null ? <Reserved /> : rows.length === 0 ? <p className="hair py-10 text-[19px]">Aucun relevé de cotes pour les prochains jours.</p> : (
         <table className="w-full border-collapse text-[16px]">
+          <caption className="sr-only">Comparatif des bookmakers</caption>
           <thead><tr>{th("Bookmaker")}{th("Meilleur écart")}{th("Écart", true)}{th("Écarts ≥ 3 %", true)}{th("Marge moyenne", true)}{th("Matchs", true)}</tr></thead>
           <tbody>{rows.map((r) => (
             <tr key={r.bookmaker}>

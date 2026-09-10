@@ -6,6 +6,7 @@ export function FormTable({ form, h2h, home, away }: { form: { home: Form; away:
   return (
     <>
       <table className="mt-4 w-full border-collapse text-[16px]">
+        <caption className="sr-only">Forme des équipes sur les cinq derniers matchs</caption>
         <thead><tr><th scope="col" className="border-b border-ink pb-3 text-left text-[12px] font-semibold uppercase tracking-[0.06em] text-muted">Équipe</th><th scope="col" className="border-b border-ink pb-3 text-left text-[12px] font-semibold uppercase tracking-[0.06em] text-muted">5 derniers</th><th scope="col" className="border-b border-ink pb-3 text-right text-[12px] font-semibold uppercase tracking-[0.06em] text-muted">Buts</th></tr></thead>
         <tbody>{row(home, form.home)}{row(away, form.away)}</tbody>
       </table>
