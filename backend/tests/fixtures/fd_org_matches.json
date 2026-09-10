@@ -1,0 +1,17 @@
+{
+  "competition": {"code": "PL", "name": "Premier League"},
+  "matches": [
+    {"id": 537001, "utcDate": "2026-09-12T14:00:00Z", "status": "TIMED",
+     "homeTeam": {"id": 57, "name": "Arsenal FC"}, "awayTeam": {"id": 61, "name": "Chelsea FC"},
+     "score": {"fullTime": {"home": null, "away": null}}},
+    {"id": 537002, "utcDate": "2026-09-06T15:00:00Z", "status": "FINISHED",
+     "homeTeam": {"id": 64, "name": "Liverpool FC"}, "awayTeam": {"id": 1044, "name": "AFC Bournemouth"},
+     "score": {"fullTime": {"home": 2, "away": 0}}},
+    {"id": 537003, "utcDate": "2026-09-13T15:00:00Z", "status": "POSTPONED",
+     "homeTeam": {"id": 66, "name": "Manchester United FC"}, "awayTeam": {"id": 73, "name": "Tottenham Hotspur FC"},
+     "score": {"fullTime": {"home": null, "away": null}}},
+    {"id": 537004, "utcDate": "2026-09-13T17:30:00Z", "status": "TIMED",
+     "homeTeam": {"id": 999, "name": "FC Nulle Part"}, "awayTeam": {"id": 62, "name": "Everton FC"},
+     "score": {"fullTime": {"home": null, "away": null}}}
+  ]
+}
