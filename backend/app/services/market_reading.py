@@ -49,8 +49,11 @@ def _probs(p) -> dict:
     return {"home": p[0], "draw": p[1], "away": p[2]}
 
 
-def match_summary(db: Session, match: Match) -> dict:
-    r = reading_for(match)
+_NOT_GIVEN = object()   # distingue « reading non fourni » (à calculer) de « reading=None » (match sans relevé exploitable)
+
+
+def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVEN) -> dict:
+    r = reading_for(match) if reading is _NOT_GIVEN else reading
     out = {
         "id": str(match.id), "competition": match.competition, "league": match.league,
         "home_team": match.home_team, "away_team": match.away_team, "kickoff_at": match.kickoff_at, "status": match.status.value,
@@ -69,8 +72,8 @@ def match_summary(db: Session, match: Match) -> dict:
 
 
 def match_detail(db: Session, match: Match, public: bool = False) -> dict:
-    out = match_summary(db, match)
     r = reading_for(match)
+    out = match_summary(db, match, reading=r)
     hist = history_for(db, [match.home_team_id, match.away_team_id], before=match.kickoff_at)
     hf, af = form(match.home_team, hist), form(match.away_team, hist)
     h2h = head_to_head(match.home_team, match.away_team, hist)
@@ -91,10 +94,7 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
     if "pinnacle" in r.latest_by_book:
         o = r.latest_by_book["pinnacle"]
         out["reference_book"] = {"bookmaker": "pinnacle", "label": "Pinnacle", "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book["pinnacle"]}
-    # un point d'historique par relevé : la référence recalculée sur les cotes de ce relevé
-    from app.engine.market import _by_time
-    from app.engine.probabilities import reference
-    kept = [q for q in quotes_for(match) if q.bookmaker in FRENCH_BOOKMAKERS or q.bookmaker == "pinnacle"]
-    out["history"] = [{"taken_at": t, "reference": _probs(reference(books)[0])} for t, books in _by_time(kept).items()]
+    # un point d'historique par relevé du jeu d'affichage (live si disponible, archive sinon) — même jeu que le mouvement
+    out["history"] = [{"taken_at": t, "reference": _probs(p)} for t, p in r.timeline]
     out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r)), public=public)
     return out

@@ -4,6 +4,7 @@ from app.collectors.aliases import seed_aliases
 from app.models.enums import MatchStatus
 from app.models.odds_snapshot import OddsSnapshot
 from app.models.team import Team
+from app.services.market_reading import reading_for
 from tests.conftest import auth_header, make_match
 
 NOW = datetime.now(timezone.utc)
@@ -86,7 +87,13 @@ def test_detail_uses_finished_history_for_form_and_h2h(client, db, pro_user):
     assert [x["score"] for x in d["h2h"]] == ["1-1", "2-0"]
 
 
-def test_detail_404_and_quarantine_hidden(client, db):
+def test_detail_history_matches_movement(client, db, pro_user):
+    m = seed_match_with_odds(db)
+    r = reading_for(m)
+    d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert len(d["history"]) == 2
+    assert datetime.fromisoformat(d["history"][0]["taken_at"]) == r.first_taken_at
+    assert d["odds_taken_at"] == d["history"][-1]["taken_at"]
     assert client.get("/api/v1/matches/00000000-0000-0000-0000-000000000000").status_code == 404
     seed_aliases(db)
     h, a = db.query(Team).filter_by(name="Lyon").one(), db.query(Team).filter_by(name="Nice").one()

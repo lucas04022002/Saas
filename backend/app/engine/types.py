@@ -25,3 +25,4 @@ class Reading:
     movement: tuple[float, float, float] | None = None                     # points de % de la référence, premier → dernier relevé
     first_taken_at: datetime | None = None
     last_taken_at: datetime | None = None
+    timeline: list[tuple[datetime, Probs]] = field(default_factory=list)   # un point par relevé, référence recalculée sur ce relevé

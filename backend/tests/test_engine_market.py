@@ -1,9 +1,9 @@
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
 from app.engine.market import favourite, gaps, movement, read
-from app.engine.probabilities import implied
+from app.engine.probabilities import implied, reference
 from app.engine.types import BookQuote
 
 FR = ("betclic_fr", "winamax_fr", "unibet_fr", "pmu_fr", "netbet_fr")
@@ -71,3 +71,28 @@ def test_read_empty_raises():
         read([], FR)
     with pytest.raises(ValueError):
         read([BookQuote("williamhill", T0, (2.0, 3.5, 4.0))], FR)
+
+
+def test_read_mixed_live_and_archive_uses_live_timeline():
+    kickoff = datetime(2026, 9, 20, 15, 0, tzinfo=timezone.utc)
+    t_archive_open = kickoff - timedelta(days=7)
+    t_archive_close = kickoff - timedelta(hours=1)
+    t_fr = kickoff - timedelta(hours=6)
+    t_live_pinnacle = kickoff - timedelta(hours=2)
+    quotes = [
+        BookQuote("fd_uk_pinnacle", t_archive_open, (2.10, 3.60, 3.80)),
+        BookQuote("fd_uk_pinnacle", t_archive_close, (2.00, 3.55, 3.90)),
+        BookQuote("betclic_fr", t_fr, (2.05, 3.50, 3.80)),
+        BookQuote("winamax_fr", t_fr, (2.02, 3.55, 3.85)),
+        BookQuote("pinnacle", t_live_pinnacle, (1.95, 3.70, 4.10)),
+    ]
+    r = read(quotes, FR)
+    assert r.reference_source == "pinnacle"
+    assert r.first_taken_at == t_fr
+    assert r.last_taken_at == t_live_pinnacle
+    assert len(r.timeline) == 2
+    assert set(r.gaps) == {"betclic_fr", "winamax_fr"}
+    fr_ref, _ = reference({"betclic_fr": (2.05, 3.50, 3.80), "winamax_fr": (2.02, 3.55, 3.85)})
+    pinnacle_ref, _ = reference({"pinnacle": (1.95, 3.70, 4.10)})
+    assert r.movement == pytest.approx(movement(fr_ref, pinnacle_ref), abs=1e-9)
+    assert [t for t, _ in r.timeline] == [t_fr, t_live_pinnacle]

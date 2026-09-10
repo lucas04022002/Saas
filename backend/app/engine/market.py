@@ -1,7 +1,7 @@
 """Lecture du marché : favori, écarts bookmakers FR vs référence, mouvement entre relevés."""
 from collections import defaultdict
 
-from app.engine.probabilities import REFERENCE_BOOKMAKER, implied, margin, reference
+from app.engine.probabilities import REFERENCE_BOOKMAKER, margin, reference
 from app.engine.types import OUTCOMES, BookQuote, Odds, Probs, Reading
 
 
@@ -42,16 +42,23 @@ def read(
     latest_odds = {b: q.odds for b, q in latest.items()}
     ref, src = reference(latest_odds, reference_books=reference_books)
     fav, fav_p = favourite(ref)
-    grouped = _by_time(kept)
+
+    # jeu d'affichage : relevés live (FR + Pinnacle live) ; à défaut (match couvert uniquement par l'archive fd_uk),
+    # on retombe sur tous les relevés conservés. Mouvement, chronologie et horodatages sont calculés dessus,
+    # jamais sur un mélange live/archive.
+    live = [q for q in kept if q.bookmaker in french_books or q.bookmaker == REFERENCE_BOOKMAKER]
+    display = live if live else kept
+    grouped = _by_time(display)
     times = list(grouped)
+    timeline = [(t, reference(books, reference_books=reference_books)[0]) for t, books in grouped.items()]
     mov = None
     if len(times) >= 2:
-        first_ref, _ = reference(grouped[times[0]], reference_books=reference_books)
-        mov = movement(first_ref, ref)
+        mov = movement(timeline[0][1], timeline[-1][1])
     return Reading(
         reference=ref, reference_source=src, favourite=fav, favourite_prob=fav_p,
         margin_by_book={b: margin(o) for b, o in latest_odds.items()},
         latest_by_book=latest_odds,
         gaps=gaps({b: o for b, o in latest_odds.items() if b in french_books}, ref),
         movement=mov, first_taken_at=times[0], last_taken_at=times[-1],
+        timeline=timeline,
     )
