@@ -84,9 +84,11 @@ def upgrade() -> None:
         )""")
     op.execute("CREATE INDEX IF NOT EXISTS ix_bets_user_id ON bets (user_id)")
     op.execute("CREATE INDEX IF NOT EXISTS ix_bets_match_id ON bets (match_id)")
+    op.execute("ALTER TABLE users ADD COLUMN IF NOT EXISTS birth_date DATE")
 
 
 def downgrade() -> None:
+    op.execute("ALTER TABLE users DROP COLUMN IF EXISTS birth_date")
     op.execute("DROP TABLE IF EXISTS bets")
     op.execute("DROP TABLE IF EXISTS odds_snapshots")
     op.execute("ALTER TABLE matches DROP CONSTRAINT IF EXISTS uq_match_natural")

@@ -1,6 +1,9 @@
+import json
 import logging
 import os
 from contextlib import asynccontextmanager
+from datetime import datetime, timedelta, timezone
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -19,6 +22,14 @@ from app import models  # noqa: F401
 
 setup_logging()
 log = logging.getLogger("rushplay")
+
+HEARTBEATS = Path(__file__).resolve().parents[1] / "heartbeats"
+STALE_AFTER = {"fd_uk": timedelta(days=8), "fd_org": timedelta(hours=36), "odds": timedelta(hours=36)}
+LEGAL_NOTICE = {
+    "warning": "Les paris sportifs comportent des risques : endettement, dépendance… Appelez le 09 74 75 13 13 (appel non surtaxé).",
+    "minimum_age": 18,
+    "positioning": "Nous ne prédisons pas. Nous vous montrons ce que le marché pense, et où il se contredit.",
+}
 
 
 @asynccontextmanager
@@ -58,9 +69,27 @@ async def generic_exception_handler(_: Request, exc: Exception):
     return JSONResponse(status_code=500, content={"success": False, "message": "Internal server error"})
 
 
+def _collectors_status() -> dict:
+    out = {}
+    now = datetime.now(timezone.utc)
+    for name, max_age in STALE_AFTER.items():
+        f = HEARTBEATS / f"{name}.json"
+        if not f.exists():
+            out[name] = {"at": None, "stale": True}
+            continue
+        at = datetime.fromisoformat(json.loads(f.read_text(encoding="utf-8"))["at"])
+        out[name] = {"at": at.isoformat(), "stale": now - at > max_age}
+    return out
+
+
 @app.get("/health")
 def health():
-    return {"success": True, "message": "API healthy", "data": {"env": settings.env}}
+    return {"success": True, "message": "API healthy", "data": {"env": settings.env, "collectors": _collectors_status()}}
+
+
+@app.get("/api/v1/legal")
+def legal():
+    return {"success": True, "message": "Legal notice", "data": LEGAL_NOTICE}
 
 
 app.include_router(api_router, prefix="/api/v1")
