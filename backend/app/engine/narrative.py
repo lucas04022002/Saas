@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from app.engine.context import Form, PastMatch
 from app.engine.types import Reading
 
-BOOK_LABELS = {"betclic_fr": "Betclic", "winamax_fr": "Winamax", "unibet_fr": "Unibet", "pmu_fr": "PMU", "netbet_fr": "NetBet", "pinnacle": "Pinnacle"}
+BOOK_LABELS = {"betclic_fr": "Betclic", "winamax_fr": "Winamax", "unibet_fr": "Unibet", "pmu_fr": "PMU", "netbet_fr": "NetBet", "pinnacle": "Pinnacle",
+               "fd_uk_pinnacle": "Pinnacle (archive)", "fd_uk_avg": "Marché (archive)"}
 NUMBERS = {1: "une seule", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq"}
 TIGHT_MAX = 0.45      # en dessous : match serré
 MOVE_MIN = 3.0        # points de % pour mentionner un mouvement

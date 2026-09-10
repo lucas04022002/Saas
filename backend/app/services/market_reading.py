@@ -91,9 +91,10 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
          "margin": r.margin_by_book[b], "gaps": _probs(r.gaps[b])}
         for b, o in r.latest_by_book.items() if b in FRENCH_BOOKMAKERS
     ]
-    if "pinnacle" in r.latest_by_book:
-        o = r.latest_by_book["pinnacle"]
-        out["reference_book"] = {"bookmaker": "pinnacle", "label": "Pinnacle", "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book["pinnacle"]}
+    if r.reference_source in r.latest_by_book:
+        b = r.reference_source
+        o = r.latest_by_book[b]
+        out["reference_book"] = {"bookmaker": b, "label": BOOK_LABELS.get(b, b), "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book[b]}
     # un point d'historique par relevé du jeu d'affichage (live si disponible, archive sinon) — même jeu que le mouvement
     out["history"] = [{"taken_at": t, "reference": _probs(p)} for t, p in r.timeline]
     out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r)), public=public)

@@ -62,7 +62,7 @@ def test_read_uses_latest_snapshot_per_book_even_if_books_differ_in_timing():
 def test_read_uses_fd_uk_pinnacle_as_reference():
     quotes = [BookQuote("fd_uk_pinnacle", T0, (2.10, 3.60, 3.80)), BookQuote("fd_uk_avg", T0, (2.05, 3.55, 3.70))]
     r = read(quotes, FR)
-    assert r.reference_source == "pinnacle" and r.reference == implied((2.10, 3.60, 3.80))
+    assert r.reference_source == "fd_uk_pinnacle" and r.reference == implied((2.10, 3.60, 3.80))
     assert r.gaps == {}
 
 

@@ -6,7 +6,7 @@ from pathlib import Path
 
 from sqlalchemy import Enum
 
-from app.models.enums import BetStatus, Outcome
+from app.models.enums import BetStatus, MatchStatus, Outcome
 
 MIGRATION = (Path(__file__).parent.parent / "alembic" / "versions" / "0005_market_reading.py").read_text(encoding="utf-8")
 
@@ -23,3 +23,9 @@ def test_outcome_enum_labels_match_sqlalchemy_names():
 
 def test_betstatus_enum_labels_match_sqlalchemy_names():
     assert _labels_in_create_type(MIGRATION, "betstatus") == list(Enum(BetStatus).enums)
+
+
+def test_matchstatus_added_values_are_known_members():
+    added = re.findall(r"ALTER TYPE matchstatus ADD VALUE IF NOT EXISTS '([^']+)'", MIGRATION)
+    assert added == ["POSTPONED", "QUARANTINE"]
+    assert set(added) <= set(MatchStatus.__members__)

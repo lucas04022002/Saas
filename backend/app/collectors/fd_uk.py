@@ -1,7 +1,9 @@
 """football-data.co.uk : résultats, tirs et cotes d'ouverture/clôture (CSV par saison et championnat).
 
 Convention horaire : l'heure locale UK de la colonne `Time` est étiquetée UTC telle quelle (écart réel d'au plus une heure, absorbé par la marge H−1 de la clôture) ; à défaut d'heure, le coup d'envoi retombe sur 15:00 UTC.
-Convention des cotes : l'instantané d'ouverture est daté J−7 12:00 UTC et celui de clôture `kickoff_at − 1h`, pour rester dans la fenêtre `taken_at <= kickoff_at` attendue en aval.
+Convention des cotes : l'instantané d'ouverture est daté J−7 12:00 UTC et celui de clôture sur le coup d'envoi
+dérivé de la ligne CSV (`_kickoff(r.date, r.time)`, jamais `match.kickoff_at`) moins 1h, pour rester dans la
+fenêtre `taken_at <= kickoff_at` attendue en aval même quand fd_org corrige ensuite l'horaire du match.
 """
 import csv
 import io
@@ -147,7 +149,7 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             match.status, match.home_score, match.away_score = MatchStatus.FINISHED, r.hg, r.ag
             match.home_shots, match.away_shots = r.hs, r.as_
             db.flush()
-            # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi − 1h (convention documentée dans le docstring du module)
+            # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi dérivé de la ligne CSV (pas match.kickoff_at) − 1h (convention documentée dans le docstring du module)
             opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
             closing_at = _kickoff(r.date, r.time) - timedelta(hours=1)
             snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)

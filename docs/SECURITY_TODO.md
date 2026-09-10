@@ -45,7 +45,7 @@ Trois mécanismes coexistent : `Base.metadata.create_all`, Alembic, et
 ### 5. Ménage du dépôt
 - Algo dupliqué : scripts Python à la racine vs `backend/app/providers/` — deux
   sources de vérité pour le modèle.
-- Gros artefacts committés (`fixture_stats_cache.json` ~2.4 Mo, `xgboost_model.json`,
-  30 `backtest_*.json`, `elo_ratings.json` en double) → sortir de Git (LFS / bucket).
+- Gros artefacts committés (`fixture_stats_cache.json` ~2.4 Mo, 30 `backtest_*.json`)
+  → sortir de Git (LFS / bucket).
 - `.env` local contient les vrais secrets : bien vérifier qu'il reste gitignoré
   (c'est le cas) et **faire tourner les secrets** s'ils ont déjà transité ailleurs.

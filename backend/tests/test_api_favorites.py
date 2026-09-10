@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 
 from app.collectors.aliases import seed_aliases
+from app.models.enums import MatchStatus
 from app.models.team import Team
 from tests.conftest import auth_header, make_match
 
@@ -40,6 +41,14 @@ def test_malformed_match_id_is_404(client, db, starter_user):
     headers = auth_header(starter_user)
     assert client.post("/api/v1/favorites/not-a-uuid", headers=headers).status_code == 404
     assert client.delete("/api/v1/favorites/not-a-uuid", headers=headers).status_code == 404
+
+
+def test_quarantine_match_cannot_be_favourited(client, db, starter_user):
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    q = make_match(db, h, a, status=MatchStatus.QUARANTINE)
+    headers = auth_header(starter_user)
+    assert client.post(f"/api/v1/favorites/{q.id}", headers=headers).status_code == 404
 
 
 def test_favorites_require_authentication(client, db):

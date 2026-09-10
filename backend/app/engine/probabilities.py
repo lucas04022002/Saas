@@ -16,12 +16,13 @@ def margin(odds: Odds) -> float:
 
 def reference(latest: dict[str, Odds], reference_books: tuple[str, ...] = (REFERENCE_BOOKMAKER,)) -> tuple[Probs, str]:
     """Le premier bookmaker de `reference_books` présent (Pinnacle live, ou son archive fd_uk_pinnacle à défaut),
-    sinon la moyenne des probabilités implicites des bookmakers disponibles."""
+    sinon la moyenne des probabilités implicites des bookmakers disponibles. `reference_source` retourné est la
+    clé du bookmaker effectivement utilisé ("pinnacle", "fd_uk_pinnacle", ...), ou "moyenne"."""
     if not latest:
         raise ValueError("aucune cote disponible")
     for book in reference_books:
         if book in latest:
-            return implied(latest[book]), "pinnacle"
+            return implied(latest[book]), book
     ps = [implied(o) for o in latest.values()]
     n = len(ps)
     mean = (sum(p[0] for p in ps) / n, sum(p[1] for p in ps) / n, sum(p[2] for p in ps) / n)

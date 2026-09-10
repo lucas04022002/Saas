@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_current_user, get_db
+from app.models.enums import MatchStatus
 from app.models.favorite import Favorite
 from app.models.match import Match
 from app.models.user import User
@@ -45,7 +46,7 @@ def add_favorite(match_id: str, current_user: User = Depends(get_current_user), 
     except ValueError:
         raise HTTPException(status_code=404, detail="Match not found")
     match = db.get(Match, match_uuid)
-    if match is None:
+    if match is None or match.status == MatchStatus.QUARANTINE:
         raise HTTPException(status_code=404, detail="Match not found")
 
     favorite = Favorite(user_id=current_user.id, match_id=match.id)
