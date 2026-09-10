@@ -2,11 +2,11 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app.collectors.aliases import seed_aliases
+from app.collectors.aliases import normalize, seed_aliases
 from app.collectors.fd_org import import_matches, parse_matches
 from app.models.enums import MatchStatus
 from app.models.match import Match
-from app.models.team import Team
+from app.models.team import Team, TeamAlias
 from tests.conftest import make_match
 
 PAYLOAD = json.loads((Path(__file__).parent / "fixtures" / "fd_org_matches.json").read_text(encoding="utf-8"))
@@ -48,3 +48,27 @@ def test_import_is_idempotent(db):
     import_matches(db, parse_matches(PAYLOAD))
     report = import_matches(db, parse_matches(PAYLOAD))
     assert report.created == 0 and db.query(Match).count() == 4
+
+
+def test_quarantine_recovers_canonical_team_after_alias_added(db):
+    seed_aliases(db)
+    item = next(i for i in parse_matches(PAYLOAD) if i.home == "FC Nulle Part")
+
+    report = import_matches(db, [item])
+    assert report.quarantined == 1
+    q = db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).one()
+    assert q.home_team_id is None
+
+    tottenham = db.query(Team).filter(Team.name == "Tottenham").one()
+    db.add(TeamAlias(source="fd_org", alias=normalize("FC Nulle Part"), team_id=tottenham.id))
+    db.commit()
+
+    report2 = import_matches(db, [item])
+
+    assert report2.quarantined == 0 and report2.updated == 1
+    assert db.query(Match).count() == 1
+    m = db.query(Match).one()
+    everton = db.query(Team).filter(Team.name == "Everton").one()
+    assert m.status == MatchStatus.SCHEDULED
+    assert m.home_team_id == tottenham.id and m.away_team_id == everton.id
+    assert m.home_team == "Tottenham" and m.away_team == "Everton"

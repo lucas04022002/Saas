@@ -82,6 +82,8 @@ def import_matches(db: Session, items: list[FdOrgMatch]) -> ImportReport:
         else:
             match.external_id = match.external_id or it.ext_id
             match.kickoff_at = it.utc_date
+            match.home_team_id, match.away_team_id = home.id, away.id
+            match.home_team, match.away_team = home.name, away.name
             report.updated += 1
         new_status = STATUS_MAP.get(it.status, MatchStatus.SCHEDULED)
         if match.status != MatchStatus.FINISHED or new_status == MatchStatus.FINISHED:

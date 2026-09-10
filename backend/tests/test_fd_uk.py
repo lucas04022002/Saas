@@ -1,12 +1,12 @@
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-from app.collectors.aliases import seed_aliases
+from app.collectors.aliases import normalize, seed_aliases
 from app.collectors.fd_uk import import_rows, parse_csv
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
-from app.models.team import Team
+from app.models.team import Team, TeamAlias
 from tests.conftest import make_match
 
 SAMPLE = (Path(__file__).parent / "fixtures" / "fd_uk_E0_sample.csv").read_text(encoding="utf-8-sig")
@@ -91,3 +91,29 @@ def test_missing_shots_and_closing_odds(db):
     assert m.home_shots is None
     assert report.snapshots == 2
     assert db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).count() == 2
+
+
+def test_quarantine_recovers_canonical_team_after_alias_added(db):
+    seed_aliases(db)
+    rows = parse_csv(SAMPLE)
+    row = next(r for r in rows if r.home == "FC Nulle Part")
+
+    report = import_rows(db, "E0", [row])
+    assert report.quarantined == 1
+    q = db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).one()
+    assert q.home_team_id is None
+
+    arsenal = db.query(Team).filter(Team.name == "Arsenal").one()
+    db.add(TeamAlias(source="fd_uk", alias=normalize("FC Nulle Part"), team_id=arsenal.id))
+    db.commit()
+
+    report2 = import_rows(db, "E0", [row])
+
+    assert report2.quarantined == 0 and report2.updated == 1
+    assert db.query(Match).count() == 1
+    m = db.query(Match).one()
+    bournemouth = db.query(Team).filter(Team.name == "Bournemouth").one()
+    assert m.status == MatchStatus.FINISHED
+    assert (m.home_score, m.away_score) == (4, 2)
+    assert m.home_team_id == arsenal.id and m.away_team_id == bournemouth.id
+    assert m.home_team == "Arsenal" and m.away_team == "Bournemouth"

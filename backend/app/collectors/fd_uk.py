@@ -131,6 +131,8 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             db.add(match); report.created += 1
         else:
             match.fd_uk_key = match.fd_uk_key or key
+            match.home_team_id, match.away_team_id = home.id, away.id
+            match.home_team, match.away_team = home.name, away.name
             report.updated += 1
         match.status, match.home_score, match.away_score = MatchStatus.FINISHED, r.hg, r.ag
         match.home_shots, match.away_shots = r.hs, r.as_
