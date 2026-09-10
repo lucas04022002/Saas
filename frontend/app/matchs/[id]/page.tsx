@@ -30,7 +30,7 @@ export default async function Match({ params }: { params: Promise<{ id: string }
   return (
     <section className="site py-14 md:py-20">
       <div className="text-[14px] text-muted"><Link href="/matchs">Matchs</Link> › {COMPETITIONS[m.competition] ?? m.league}</div>
-      <h1 className="mt-4 font-tight text-[44px] md:text-[96px] font-extrabold leading-[0.95] tracking-[-0.06em]"><span>{m.home_team} –</span> <span className="text-faint">{m.away_team}</span></h1>
+      <h1 className="mt-4 font-tight text-[44px] md:text-[96px] font-extrabold leading-[0.95] tracking-[-0.06em]">{m.home_team} <span className="text-faint">– {m.away_team}</span></h1>
       <p className="mt-3 text-[16px] text-muted">{formatDateFr(m.kickoff_at)} · {fav ? (fav.source === "moyenne" ? "moyenne des bookmakers, Pinnacle absent" : "référence Pinnacle") : "pas encore de relevé"}{m.odds_taken_at ? ` · relevé de ${formatDateFr(m.odds_taken_at).split(", ")[1]}` : ""}</p>
       {m.result && <p className="mt-2 text-[16px] font-semibold">Terminé : {m.home_team} {m.result.home} – {m.result.away} {m.away_team}</p>}
 

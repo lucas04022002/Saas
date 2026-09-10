@@ -18,7 +18,7 @@ describe("page match", () => {
     server.use(http.get(`${API}/api/v1/matches/m1`, () => HttpResponse.json({ success: true, message: "", data: detail(false) })));
     const Page = (await import("@/app/matchs/[id]/page")).default;
     render(await Page({ params: Promise.resolve({ id: "m1" }) }));
-    expect(screen.getByText("Lyon")).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Lyon – Marseille");
     expect(screen.getByText("Bookmakers")).toBeInTheDocument();
     expect(screen.getByText("Pinnacle")).toBeInTheDocument();
     expect(screen.getByText("+3,2 %")).toBeInTheDocument();
