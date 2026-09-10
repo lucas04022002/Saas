@@ -11,6 +11,7 @@ from app.api.deps import get_db
 from app.collectors import fd_org, fd_uk, odds_api
 from app.collectors.aliases import seed_aliases
 from app.core.logging import setup_logging
+from app.services.settlement import settle_bets
 
 HEARTBEATS = Path(__file__).resolve().parents[2] / "heartbeats"
 
@@ -34,6 +35,7 @@ def main(argv: list[str] | None = None) -> int:
             reports = fd_uk.run(db, args.seasons); summary = {k: vars(v) for k, v in reports.items()}
         elif args.collector == "fd_org":
             summary = vars(fd_org.run(db))
+            summary["bets_settled"] = settle_bets(db)
         else:
             summary = vars(odds_api.run(db))
         write_heartbeat(args.collector, summary)
