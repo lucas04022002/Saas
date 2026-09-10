@@ -10,7 +10,7 @@ const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tig
 export const metadata: Metadata = {
   title: "RushPlay — On ne prédit rien. On lit le marché.",
   description: "Le favori de chaque match, sa vraie probabilité, et là où les bookmakers se contredisent.",
-  icons: { icon: "/favicon.svg" },
+  icons: { icon: "/favicon.svg", apple: "/apple-touch-icon.png" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

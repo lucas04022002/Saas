@@ -1,4 +1,4 @@
-import { ApiError, parseEnvelope } from "./api";
+import { ApiError, parseEnvelope } from "./envelope";
 
 // Une session non posée (origine refusée, corps invalide, cookie rejeté...) doit se voir : sans ce
 // contrôle, `fetch` rendait la main sans erreur et l'utilisateur repartait sur une page qui le croit

@@ -35,7 +35,7 @@ export default async function Home() {
           <h2 className="h-section text-[48px] md:text-[72px] max-w-[14ch]">On ne prédit rien.<br /><span className="text-muted">On lit le marché.</span></h2>
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             {[["On relève.", "Les cotes 1N2 de Betclic, Winamax, Unibet, PMU, NetBet et Pinnacle, plusieurs fois par jour. Chaque relevé est conservé."],
-              ["On retire la marge.", "Un bookmaker vend toujours plus de 100 %. Ce qui reste une fois sa marge retirée, c'est la probabilité que le marché donne à chaque issue."],
+              ["On retire la marge.", "Un bookmaker vend toujours plus de 100 %. Ce qui reste une fois sa marge retirée, c'est la probabilité que le marché donne à chaque issue."],
               ["On te montre.", "Le favori, les écarts entre bookmakers, le mouvement depuis le premier relevé. Aucun bonus, aucune magie. Toi, tu décides."]].map(([t, p]) => (
               <div key={t} className="hair-dark pt-7"><b className="block font-tight text-[24px] font-bold tracking-[-0.03em]">{t}</b><p className="mt-2.5 text-[16px] leading-relaxed text-faint-dark">{p}</p></div>
             ))}

@@ -69,4 +69,14 @@ jobs:
         run: npm run build
 
       - name: Vocabulaire interdit
-        run: grep -rniE "prédiction|pronostic|value bet|confiance|prediction|confidence" app components lib && exit 1 || echo OK
+        run: |
+          # Les trois sorties de grep sont distinguées explicitement : 0 = vocabulaire trouvé (échec),
+          # 1 = rien trouvé (succès), 2 = grep lui-même en erreur (motif invalide, chemin absent...).
+          # Un simple `if grep ...` confondrait 1 et 2 et laisserait passer un grep cassé.
+          set +e
+          grep -rniE "prédiction|pronostic|value bet|confiance|prediction|confidence" app components lib
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then echo "Vocabulaire interdit détecté"; exit 1; fi
+          if [ "$code" -ne 1 ]; then echo "grep en erreur (code $code)"; exit "$code"; fi
+          echo "OK"

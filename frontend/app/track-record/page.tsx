@@ -25,7 +25,7 @@ export default async function TrackRecord({ searchParams }: { searchParams: Prom
                   <td className="border-b border-line-dark py-4"><Link href={`/track-record?competition=${r.competition}`} className="link-dark">{COMPETITIONS[r.competition] ?? r.competition}</Link></td>
                   <td className="border-b border-line-dark py-4 text-right tabular-nums">{r.played}</td>
                   <td className="border-b border-line-dark py-4 text-right tabular-nums">{r.favourite_won}</td>
-                  <td className="border-b border-line-dark py-4 text-right tabular-nums">{`${Math.round(r.favourite_rate * 100)} %`}</td>
+                  <td className="border-b border-line-dark py-4 text-right tabular-nums">{`${Math.round(r.favourite_rate * 100)} %`}</td>
                 </tr>
               ))}</tbody>
             </table>

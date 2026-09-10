@@ -1,4 +1,4 @@
-import { parseEnvelope } from "./api";
+import { parseEnvelope } from "./envelope";
 import type { BankrollSummary, Bet, MatchSummary, Pagination } from "./types";
 
 async function call<T>(path: string, init: RequestInit = {}): Promise<T> {

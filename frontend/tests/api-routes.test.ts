@@ -66,6 +66,54 @@ describe("app/api/bankroll — proxy authentifié", () => {
     const res = await POST(req);
     expect(res.status).toBe(403);
   });
+
+  it("POST same-origin avec cookie : 201 et le pari créé", async () => {
+    cookieStore.token = "tok";
+    const bet = { id: "b1", match_id: "m1", outcome: "home", bookmaker: "winamax_fr", odds: 1.78, stake: 10, status: "PENDING" };
+    server.use(http.post(`${API}/api/v1/bankroll`, () => HttpResponse.json({ success: true, message: "", data: bet }, { status: 201 })));
+    const { POST } = await import("@/app/api/bankroll/route");
+    const req = new Request("http://localhost:3000/api/bankroll", {
+      method: "POST",
+      headers: { "sec-fetch-site": "same-origin", "content-type": "application/json" },
+      body: JSON.stringify({ match_id: "m1", outcome: "home", bookmaker: "winamax_fr", odds: 1.78, stake: 10 }),
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(201);
+    expect(await res.json()).toEqual({ success: true, message: "", data: bet });
+  });
+
+  it("POST same-origin avec un corps qui n'est pas du JSON : 400, sans appeler le backend", async () => {
+    cookieStore.token = "tok";
+    const { POST } = await import("@/app/api/bankroll/route");
+    const req = new Request("http://localhost:3000/api/bankroll", {
+      method: "POST",
+      headers: { "sec-fetch-site": "same-origin", "content-type": "application/json" },
+      body: "pas du json",
+    });
+    const res = await POST(req);
+    expect(res.status).toBe(400);
+    expect(await res.json()).toEqual({ success: false, message: "Corps de requête invalide" });
+  });
+
+  it("DELETE /[id] : le statut du backend est propagé tel quel", async () => {
+    cookieStore.token = "tok";
+    server.use(http.delete(`${API}/api/v1/bankroll/b1`, () => HttpResponse.json({ success: false, message: "Bet not found" }, { status: 404 })));
+    const { DELETE } = await import("@/app/api/bankroll/[id]/route");
+    const req = new Request("http://localhost:3000/api/bankroll/b1", { method: "DELETE", headers: { "sec-fetch-site": "same-origin" } });
+    const res = await DELETE(req, { params: Promise.resolve({ id: "b1" }) });
+    expect(res.status).toBe(404);
+    expect(await res.json()).toEqual({ success: false, message: "Bet not found" });
+  });
+
+  it("POST /[id]/void : le statut du backend est propagé tel quel", async () => {
+    cookieStore.token = "tok";
+    server.use(http.post(`${API}/api/v1/bankroll/b1/void`, () => HttpResponse.json({ success: false, message: "Only pending bets on postponed matches can be voided" }, { status: 409 })));
+    const { POST: VOID } = await import("@/app/api/bankroll/[id]/void/route");
+    const req = new Request("http://localhost:3000/api/bankroll/b1/void", { method: "POST", headers: { "sec-fetch-site": "same-origin" } });
+    const res = await VOID(req, { params: Promise.resolve({ id: "b1" }) });
+    expect(res.status).toBe(409);
+    expect(await res.json()).toEqual({ success: false, message: "Only pending bets on postponed matches can be voided" });
+  });
 });
 
 describe("app/api/session — garde d'origine (CSRF)", () => {

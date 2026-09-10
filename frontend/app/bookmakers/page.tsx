@@ -18,12 +18,12 @@ export default async function Bookmakers() {
       {rows === null ? <Reserved /> : rows.length === 0 ? <p className="hair py-10 text-[19px]">Aucun relevé de cotes pour les prochains jours.</p> : (
         <table className="w-full border-collapse text-[16px]">
           <caption className="sr-only">Comparatif des bookmakers</caption>
-          <thead><tr>{th("Bookmaker")}{th("Meilleur écart")}{th("Écart", true)}{th("Écarts ≥ 3 %", true)}{th("Marge moyenne", true)}{th("Matchs", true)}</tr></thead>
+          <thead><tr>{th("Bookmaker")}{th("Meilleur écart")}{th("Écart", true)}{th("Écarts ≥ 3 %", true)}{th("Marge moyenne", true)}{th("Matchs", true)}</tr></thead>
           <tbody>{rows.map((r) => (
             <tr key={r.bookmaker}>
               <td className="border-b border-line py-5 font-tight text-[24px] font-bold tracking-[-0.03em]">{r.label}</td>
               <td className="border-b border-line py-5 text-[15px]">{r.best ? <><Link href={`/matchs/${r.best.match_id}`} className="block font-semibold">{r.best.home_team} – {r.best.away_team}</Link><span className="text-muted">{r.best.outcome === "home" ? r.best.home_team : r.best.outcome === "away" ? r.best.away_team : "Nul"}, {formatOdds(r.best.odds)} · {formatDateFr(r.best.kickoff_at)}</span></> : "—"}</td>
-              <td className="border-b border-line py-5 text-right font-tight text-[40px] font-extrabold tracking-[-0.05em] leading-none">{r.best ? formatGap(r.best.gap).replace(/\s?%$/, "") : "—"}<span className="font-sans text-[13px] font-medium text-muted"> %</span></td>
+              <td className="border-b border-line py-5 text-right font-tight text-[40px] font-extrabold tracking-[-0.05em] leading-none">{r.best ? formatGap(r.best.gap).replace(/\s?%$/, "") : "—"}<span className="font-sans text-[13px] font-medium text-muted"> %</span></td>
               <td className="border-b border-line py-5 text-right tabular-nums">{r.gaps_above_threshold}</td>
               <td className="border-b border-line py-5 text-right tabular-nums">{r.avg_margin === null ? "—" : formatMargin(r.avg_margin)}</td>
               <td className="border-b border-line py-5 text-right tabular-nums">{r.matches}</td>

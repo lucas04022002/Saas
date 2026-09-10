@@ -12,7 +12,9 @@ describe("track record", () => {
     expect(screen.getByText("54")).toBeInTheDocument();
     expect(screen.getByText(/des favoris ont gagné en Ligue 1/)).toBeInTheDocument();
     expect(screen.getByText("Premier League")).toBeInTheDocument();
-    expect(screen.getByText("51 %")).toBeInTheDocument();
+    // Testing Library normalise tout blanc en espace ASCII avant comparaison : `getByText` retrouve la
+    // cellule, mais seul le textContent brut prouve l'espace insécable exigé par la typographie française.
+    expect(screen.getByText("51 %").textContent).toBe("51 %");
   });
   it("vide : phrase d'attente", async () => {
     server.use(http.get(`${API}/api/v1/track-record`, () => HttpResponse.json({ success: true, message: "", data: { note: "n", items: [] } })));
