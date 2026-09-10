@@ -1,4 +1,8 @@
-"""football-data.co.uk : résultats, tirs et cotes d'ouverture/clôture (CSV par saison et championnat)."""
+"""football-data.co.uk : résultats, tirs et cotes d'ouverture/clôture (CSV par saison et championnat).
+
+Convention horaire : l'heure locale UK de la colonne `Time` est étiquetée UTC telle quelle (écart réel d'au plus une heure, absorbé par la marge H−1 de la clôture) ; à défaut d'heure, le coup d'envoi retombe sur 15:00 UTC.
+Convention des cotes : l'instantané d'ouverture est daté J−7 12:00 UTC et celui de clôture `kickoff_at − 1h`, pour rester dans la fenêtre `taken_at <= kickoff_at` attendue en aval.
+"""
 import csv
 import io
 import logging
@@ -26,6 +30,7 @@ class FdUkRow:
     away: str
     hg: int
     ag: int
+    time: time | None
     hs: int | None
     as_: int | None
     avg_open: tuple[float, float, float] | None
@@ -68,18 +73,23 @@ def parse_csv(text: str) -> list[FdUkRow]:
             continue
         d, m, y = r["Date"].split("/")
         year = int(y) if len(y) == 4 else 2000 + int(y)
+        t = None
+        time_str = (r.get("Time") or "").strip()
+        if time_str:
+            hh, mm = time_str.split(":")
+            t = time(int(hh), int(mm))
         rows.append(FdUkRow(
             date=date(year, int(m), int(d)), home=r["HomeTeam"].strip(), away=r["AwayTeam"].strip(),
-            hg=int(r["FTHG"]), ag=int(r["FTAG"]), hs=_i(r.get("HS")), as_=_i(r.get("AS")),
+            hg=int(r["FTHG"]), ag=int(r["FTAG"]), time=t, hs=_i(r.get("HS")), as_=_i(r.get("AS")),
             avg_open=_triple(r, "AvgH", "AvgD", "AvgA"), avg_close=_triple(r, "AvgCH", "AvgCD", "AvgCA"),
             ps_open=_triple(r, "PSH", "PSD", "PSA"), ps_close=_triple(r, "PSCH", "PSCD", "PSCA"),
         ))
     return rows
 
 
-def _kickoff(d: date) -> datetime:
-    """fd_uk ne donne pas d'heure fiable : on fixe 15:00 UTC ; l'heure exacte vient de fd_org quand elle existe."""
-    return datetime.combine(d, time(15, 0), tzinfo=timezone.utc)
+def _kickoff(d: date, t: time | None) -> datetime:
+    """Heure UK de la colonne `Time` étiquetée UTC (voir docstring du module) ; 15:00 UTC à défaut d'heure."""
+    return datetime.combine(d, t or time(15, 0), tzinfo=timezone.utc)
 
 
 def _add_snapshot(db: Session, match: Match, bookmaker: str, taken_at: datetime, odds: tuple[float, float, float] | None) -> int:
@@ -104,7 +114,7 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             log.warning("quarantaine fd_uk %s : %s", key, e)
             if match is None:
                 db.add(Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
-                             home_team=r.home, away_team=r.away, kickoff_at=_kickoff(r.date), status=MatchStatus.QUARANTINE))
+                             home_team=r.home, away_team=r.away, kickoff_at=_kickoff(r.date, r.time), status=MatchStatus.QUARANTINE))
                 db.commit()
             report.quarantined += 1
             continue
@@ -117,7 +127,7 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
         if match is None:
             match = Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
                           home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
-                          kickoff_at=_kickoff(r.date))
+                          kickoff_at=_kickoff(r.date, r.time))
             db.add(match); report.created += 1
         else:
             match.fd_uk_key = match.fd_uk_key or key
@@ -125,9 +135,9 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
         match.status, match.home_score, match.away_score = MatchStatus.FINISHED, r.hg, r.ag
         match.home_shots, match.away_shots = r.hs, r.as_
         db.flush()
-        # cotes : ouverture datée J−7 12:00 UTC, clôture datée à l'heure du coup d'envoi (convention documentée)
+        # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi − 1h (convention documentée dans le docstring du module)
         opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
-        closing_at = match.kickoff_at
+        closing_at = match.kickoff_at - timedelta(hours=1)
         report.snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)
         report.snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
         report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)
