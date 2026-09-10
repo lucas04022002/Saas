@@ -26,21 +26,27 @@ def _by_time(quotes: list[BookQuote]) -> dict:
     return dict(sorted(grouped.items()))
 
 
-def read(quotes: list[BookQuote], french_books: tuple[str, ...]) -> Reading:
-    kept = [q for q in quotes if q.bookmaker in french_books or q.bookmaker == REFERENCE_BOOKMAKER]
+def read(
+    quotes: list[BookQuote],
+    french_books: tuple[str, ...],
+    reference_books: tuple[str, ...] = (REFERENCE_BOOKMAKER, "fd_uk_pinnacle"),
+    fallback_books: tuple[str, ...] = ("fd_uk_avg",),
+) -> Reading:
+    keep = set(french_books) | set(reference_books) | set(fallback_books)
+    kept = [q for q in quotes if q.bookmaker in keep]
     if not kept:
         raise ValueError("aucun relevé exploitable")
     latest: dict[str, BookQuote] = {}
     for q in sorted(kept, key=lambda q: q.taken_at):
         latest[q.bookmaker] = q
     latest_odds = {b: q.odds for b, q in latest.items()}
-    ref, src = reference(latest_odds)
+    ref, src = reference(latest_odds, reference_books=reference_books)
     fav, fav_p = favourite(ref)
     grouped = _by_time(kept)
     times = list(grouped)
     mov = None
     if len(times) >= 2:
-        first_ref, _ = reference(grouped[times[0]])
+        first_ref, _ = reference(grouped[times[0]], reference_books=reference_books)
         mov = movement(first_ref, ref)
     return Reading(
         reference=ref, reference_source=src, favourite=fav, favourite_prob=fav_p,

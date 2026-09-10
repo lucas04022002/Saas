@@ -17,6 +17,18 @@ def finished(db, h, a, hg, ag, kick, pinnacle):
     db.commit(); return m
 
 
+def test_track_record_counts_fd_uk_only_matches(client, db):
+    """Un match qui n'a que l'archive football-data.co.uk (pas de relevé pinnacle live) doit compter."""
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    kick = NOW - timedelta(days=10)
+    m = make_match(db, h, a, kickoff=kick, status=MatchStatus.FINISHED, home_score=2, away_score=0)
+    db.add(OddsSnapshot(match_id=m.id, bookmaker="fd_uk_pinnacle", taken_at=kick - timedelta(hours=1), home=1.8, draw=3.6, away=4.2))
+    db.commit()
+    d = client.get("/api/v1/track-record").json()["data"]
+    assert d["items"] == [{"competition": "E0", "played": 1, "favourite_won": 1, "favourite_rate": 1.0}]
+
+
 def test_track_record_counts_favourite_wins_from_last_pre_kickoff_snapshot(client, db):
     seed_aliases(db)
     h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
