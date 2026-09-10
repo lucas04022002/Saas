@@ -19,7 +19,7 @@ uvicorn app.main:app --reload --port 8000
 
 | Variable | Description |
 |---|---|
-| `DATABASE_URL` | URL Postgres (`postgresql+psycopg://…`) |
+| `DATABASE_URL` | URL Postgres (`postgresql+psycopg://…`) ou SQLite (`sqlite:///./dev.db`) pour le développement local |
 | `JWT_SECRET` | secret de signature des jetons (≥ 16 caractères) |
 | `JWT_ALGORITHM` | algorithme JWT (défaut `HS256`) |
 | `JWT_EXPIRE_MINUTES` | durée de validité du jeton en minutes (défaut `60`) |
@@ -29,6 +29,16 @@ uvicorn app.main:app --reload --port 8000
 | `FOOTBALL_DATA_ORG_KEY` | clé football-data.org (calendrier, résultats) |
 | `FD_UK_BASE_URL` | base URL football-data.co.uk (défaut fourni) |
 | `ENV` | `development` ou `production` |
+
+### Développement local avec SQLite
+
+Pour le développement du frontend sans Postgres, utilisez SQLite avec une base de données locale vide :
+
+```bash
+DATABASE_URL=sqlite:///./dev.db python -m uvicorn app.main:app --port 8000
+```
+
+Les tables sont créées automatiquement au démarrage (n'omettez pas `RUSHPLAY_SKIP_DB_INIT` lors du premier lancement).
 
 ## Collecteurs
 
