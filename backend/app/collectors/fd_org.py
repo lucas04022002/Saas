@@ -82,24 +82,28 @@ def import_matches(db: Session, items: list[FdOrgMatch]) -> ImportReport:
             day_end = datetime.combine(day, time.max, tzinfo=timezone.utc)
             match = db.scalar(select(Match).where(Match.competition == comp.code, Match.home_team_id == home.id,
                                                   Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
-        if match is None:
-            match = Match(external_id=it.ext_id, competition=comp.code, league=comp.name, country=comp.country,
-                          home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
-                          kickoff_at=it.utc_date)
-            db.add(match); report.created += 1
-        else:
-            match.external_id = match.external_id or it.ext_id
-            match.kickoff_at = it.utc_date
-            match.home_team_id, match.away_team_id = home.id, away.id
-            match.home_team, match.away_team = home.name, away.name
-            report.updated += 1
-        new_status = STATUS_MAP.get(it.status, MatchStatus.SCHEDULED)
-        if match.status != MatchStatus.FINISHED or new_status == MatchStatus.FINISHED:
-            match.status = new_status
-        if new_status == MatchStatus.FINISHED and it.hg is not None:
-            match.home_score, match.away_score = it.hg, it.ag
+        created = updated = 0
         try:
+            if match is None:
+                match = Match(external_id=it.ext_id, competition=comp.code, league=comp.name, country=comp.country,
+                              home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
+                              kickoff_at=it.utc_date)
+                db.add(match); created = 1
+            else:
+                match.external_id = match.external_id or it.ext_id
+                match.kickoff_at = it.utc_date
+                match.home_team_id, match.away_team_id = home.id, away.id
+                match.home_team, match.away_team = home.name, away.name
+                updated = 1
+            new_status = STATUS_MAP.get(it.status, MatchStatus.SCHEDULED)
+            if match.status != MatchStatus.FINISHED or new_status == MatchStatus.FINISHED:
+                match.status = new_status
+            if new_status == MatchStatus.FINISHED and it.hg is not None:
+                match.home_score, match.away_score = it.hg, it.ag
+            db.flush()
             db.commit()
+            report.created += created
+            report.updated += updated
         except IntegrityError:
             db.rollback()
             log.warning("conflit d'unicité fd_org ignoré (%s)", it.ext_id)

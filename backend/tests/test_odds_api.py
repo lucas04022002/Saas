@@ -2,12 +2,15 @@ import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from app.collectors.aliases import seed_aliases
+from sqlalchemy.exc import IntegrityError
+
+import app.collectors.odds_api as odds_api
+from app.collectors.aliases import normalize, seed_aliases
 from app.collectors.odds_api import parse_events, store_events
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
-from app.models.team import Team
+from app.models.team import Team, TeamAlias
 from tests.conftest import make_match
 
 PAYLOAD = json.loads((Path(__file__).parent / "fixtures" / "odds_api_epl.json").read_text(encoding="utf-8"))
@@ -52,3 +55,28 @@ def test_second_reading_adds_new_snapshots(db):
     store_events(db, parse_events("soccer_epl", PAYLOAD)[:1], taken_at=T0)
     store_events(db, parse_events("soccer_epl", PAYLOAD)[:1], taken_at=datetime(2026, 9, 12, 12, 0, tzinfo=timezone.utc))
     assert db.query(OddsSnapshot).count() == 6
+
+
+def test_unique_conflict_skips_event_and_keeps_session_usable(db, monkeypatch):
+    seed_aliases(db)
+    # rend le second événement (équipe fictive du fixture) résoluble pour qu'il atteigne aussi _find_or_create_match
+    fcnp = Team(name="FC Nulle Part", country="Angleterre")
+    db.add(fcnp); db.flush()
+    db.add(TeamAlias(source="odds_api", alias=normalize("FC Nulle Part"), team_id=fcnp.id))
+    db.commit()
+
+    calls = {"n": 0}
+    original = odds_api._find_or_create_match
+
+    def flaky(db_, ev, home, away):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise IntegrityError("x", {}, Exception("dup"))
+        return original(db_, ev, home, away)
+
+    monkeypatch.setattr(odds_api, "_find_or_create_match", flaky)
+
+    report = store_events(db, parse_events("soccer_epl", PAYLOAD), taken_at=T0)
+
+    assert report.matched == 1
+    assert db.query(Match).count() == 1   # la session reste utilisable après le rollback du premier événement

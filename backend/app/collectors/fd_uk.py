@@ -132,28 +132,32 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             day_end = datetime.combine(r.date, time.max, tzinfo=timezone.utc)
             match = db.scalar(select(Match).where(Match.competition == competition_code, Match.home_team_id == home.id,
                                                   Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
-        if match is None:
-            match = Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
-                          home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
-                          kickoff_at=_kickoff(r.date, r.time))
-            db.add(match); report.created += 1
-        else:
-            match.fd_uk_key = match.fd_uk_key or key
-            match.home_team_id, match.away_team_id = home.id, away.id
-            match.home_team, match.away_team = home.name, away.name
-            report.updated += 1
-        match.status, match.home_score, match.away_score = MatchStatus.FINISHED, r.hg, r.ag
-        match.home_shots, match.away_shots = r.hs, r.as_
-        db.flush()
-        # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi − 1h (convention documentée dans le docstring du module)
-        opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
-        closing_at = _kickoff(r.date, r.time) - timedelta(hours=1)
-        report.snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)
-        report.snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
-        report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)
-        report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", closing_at, r.ps_close)
+        created = updated = snapshots = 0
         try:
+            if match is None:
+                match = Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
+                              home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
+                              kickoff_at=_kickoff(r.date, r.time))
+                db.add(match); created = 1
+            else:
+                match.fd_uk_key = match.fd_uk_key or key
+                match.home_team_id, match.away_team_id = home.id, away.id
+                match.home_team, match.away_team = home.name, away.name
+                updated = 1
+            match.status, match.home_score, match.away_score = MatchStatus.FINISHED, r.hg, r.ag
+            match.home_shots, match.away_shots = r.hs, r.as_
+            db.flush()
+            # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi − 1h (convention documentée dans le docstring du module)
+            opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
+            closing_at = _kickoff(r.date, r.time) - timedelta(hours=1)
+            snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)
+            snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
+            snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)
+            snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", closing_at, r.ps_close)
             db.commit()
+            report.created += created
+            report.updated += updated
+            report.snapshots += snapshots
         except IntegrityError:
             db.rollback()
             log.warning("conflit d'unicité fd_uk ignoré (%s)", key)

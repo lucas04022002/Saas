@@ -81,16 +81,18 @@ def store_events(db: Session, events: list[OddsEvent], taken_at: datetime) -> St
             log.warning("quarantaine odds_api %s v %s : %s", ev.home, ev.away, e)
             report.quarantined += 1
             continue
-        match = _find_or_create_match(db, ev, home, away)
-        report.matched += 1
-        for book, (h, d, a) in ev.books.items():
-            exists = db.scalar(select(OddsSnapshot.id).where(OddsSnapshot.match_id == match.id, OddsSnapshot.bookmaker == book, OddsSnapshot.taken_at == taken_at))
-            if exists:
-                continue
-            db.add(OddsSnapshot(match_id=match.id, bookmaker=book, taken_at=taken_at, home=h, draw=d, away=a))
-            report.snapshots += 1
+        snapshots = 0
         try:
+            match = _find_or_create_match(db, ev, home, away)
+            for book, (h, d, a) in ev.books.items():
+                exists = db.scalar(select(OddsSnapshot.id).where(OddsSnapshot.match_id == match.id, OddsSnapshot.bookmaker == book, OddsSnapshot.taken_at == taken_at))
+                if exists:
+                    continue
+                db.add(OddsSnapshot(match_id=match.id, bookmaker=book, taken_at=taken_at, home=h, draw=d, away=a))
+                snapshots += 1
             db.commit()
+            report.matched += 1
+            report.snapshots += snapshots
         except IntegrityError:
             db.rollback()
             log.warning("conflit d'unicité odds_api ignoré (%s v %s)", ev.home, ev.away)
