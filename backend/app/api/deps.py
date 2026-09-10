@@ -1,3 +1,5 @@
+import uuid
+
 from fastapi import Depends, HTTPException, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from sqlalchemy.orm import Session
@@ -25,7 +27,7 @@ def get_current_user(
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Missing access token")
 
     try:
-        user_id = decode_access_token(credentials.credentials)
+        user_id = uuid.UUID(decode_access_token(credentials.credentials))
     except ValueError:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid access token")
 
@@ -48,7 +50,7 @@ def get_current_user_optional(
     if credentials is None:
         return None
     try:
-        user_id = decode_access_token(credentials.credentials)
+        user_id = uuid.UUID(decode_access_token(credentials.credentials))
     except ValueError:
         return None
     return db.get(User, user_id)

@@ -1,4 +1,4 @@
-from pydantic import Field, field_validator
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 _INSECURE_DEFAULTS = {"change-me", "change-me-cron", ""}
@@ -24,10 +24,9 @@ class Settings(BaseSettings):
             )
         return v
     cors_origins: str = "http://localhost:3000"
-    prediction_provider: str = Field(default="local", pattern="^(mock|local)$")
-    prediction_model_root: str | None = None
-    api_football_key: str | None = None
     the_odds_api_key: str | None = None
+    football_data_org_key: str | None = None
+    fd_uk_base_url: str = "https://www.football-data.co.uk/mmz4281"
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

@@ -29,6 +29,7 @@ def signup(request: Request, payload: SignUpRequest, db: Session = Depends(get_d
         last_name=payload.last_name.strip() if payload.last_name else None,
         email=payload.email.lower(),
         password_hash=hash_password(payload.password),
+        birth_date=payload.birth_date,
     )
     db.add(user)
     db.flush()

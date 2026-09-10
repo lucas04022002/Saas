@@ -1,9 +1,14 @@
 services:
-  backend:
-    build: ./backend
-    container_name: rushplay-backend
+  api:
+    build: .
     restart: always
-    ports:
-      - "8000:8000"
-    env_file:
-      - ./backend/.env
+    ports: ["8000:8000"]
+    env_file: [./backend/.env]
+    volumes: ["heartbeats:/app/heartbeats"]
+    depends_on: [postgres]
+  postgres:
+    image: postgres:16
+    restart: always
+    environment: {POSTGRES_DB: rushplay, POSTGRES_USER: rushplay, POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"}
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+volumes: {pgdata: {}, heartbeats: {}}

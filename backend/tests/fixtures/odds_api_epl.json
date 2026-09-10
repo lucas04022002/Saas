@@ -1,0 +1,18 @@
+[
+  {"id": "abc1", "sport_key": "soccer_epl", "commence_time": "2026-09-12T14:00:00Z",
+   "home_team": "Arsenal", "away_team": "Chelsea",
+   "bookmakers": [
+     {"key": "betclic_fr", "title": "Betclic (FR)", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 1.95}, {"name": "Chelsea", "price": 3.9}, {"name": "Draw", "price": 3.6}]}]},
+     {"key": "winamax_fr", "title": "Winamax (FR)", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 2.0}, {"name": "Chelsea", "price": 3.8}, {"name": "Draw", "price": 3.5}]}]},
+     {"key": "pinnacle", "title": "Pinnacle", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 2.02}, {"name": "Chelsea", "price": 3.95}, {"name": "Draw", "price": 3.7}]}]},
+     {"key": "williamhill", "title": "William Hill", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "Arsenal", "price": 1.9}, {"name": "Chelsea", "price": 3.8}, {"name": "Draw", "price": 3.5}]}]}
+   ]},
+  {"id": "abc2", "sport_key": "soccer_epl", "commence_time": "2026-09-13T17:30:00Z",
+   "home_team": "FC Nulle Part", "away_team": "Everton",
+   "bookmakers": [{"key": "betclic_fr", "title": "Betclic (FR)", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "FC Nulle Part", "price": 2.5}, {"name": "Everton", "price": 2.8}, {"name": "Draw", "price": 3.2}]}]}]}
+]

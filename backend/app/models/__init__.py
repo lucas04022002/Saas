@@ -1,17 +1,7 @@
-from app.models.analysis import Analysis
-from app.models.favorite import Favorite
-from app.models.match import Match
-from app.models.subscription import Subscription
-from app.models.team_stats import TeamStats
-from app.models.user import User
-from app.models.warning_point import WarningPoint
-
-__all__ = [
-    "User",
-    "Match",
-    "Analysis",
-    "TeamStats",
-    "WarningPoint",
-    "Favorite",
-    "Subscription",
-]
+from app.models.user import User  # noqa: F401
+from app.models.subscription import Subscription  # noqa: F401
+from app.models.team import Team, TeamAlias  # noqa: F401
+from app.models.match import Match  # noqa: F401
+from app.models.favorite import Favorite  # noqa: F401
+from app.models.odds_snapshot import OddsSnapshot  # noqa: F401
+from app.models.bet import Bet  # noqa: F401

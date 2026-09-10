@@ -1,112 +1,73 @@
 # RushPlay Backend (FastAPI)
 
-## Setup
+Lecture du marché des paris sportifs : favori, probabilité de référence,
+écarts entre bookmakers, mouvements de cotes, carnet de bankroll. Pas de
+prédiction, pas de machine learning.
+
+## Lancement local
 
 ```bash
 cd backend
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env
-```
-
-## Database (Supabase)
-
-1. Create a Supabase project.
-2. Copy the pooled Postgres URL.
-3. Set `DATABASE_URL` in `.env`.
-
-## Run
-
-```bash
+cp .env.example .env   # renseigner les variables ci-dessous
 uvicorn app.main:app --reload --port 8000
 ```
 
-## Seed demo data
+## Variables d'environnement
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | URL Postgres (`postgresql+psycopg://…`) |
+| `JWT_SECRET` | secret de signature des jetons (≥ 16 caractères) |
+| `JWT_ALGORITHM` | algorithme JWT (défaut `HS256`) |
+| `JWT_EXPIRE_MINUTES` | durée de validité du jeton en minutes (défaut `60`) |
+| `CRON_SECRET` | secret des tâches planifiées (≥ 16 caractères) |
+| `CORS_ORIGINS` | origines autorisées, séparées par des virgules |
+| `THE_ODDS_API_KEY` | clé The Odds API (relevés de cotes) |
+| `FOOTBALL_DATA_ORG_KEY` | clé football-data.org (calendrier, résultats) |
+| `FD_UK_BASE_URL` | base URL football-data.co.uk (défaut fourni) |
+| `ENV` | `development` ou `production` |
+
+## Collecteurs
 
 ```bash
-python seed.py
+python -m app.collectors.run seed                          # alias équipes
+python -m app.collectors.run fd_uk --seasons 2324 2425 2526 # historique + cotes ouverture/clôture
+python -m app.collectors.run fd_org                         # calendrier, résultats, règlement des paris
+python -m app.collectors.run odds                           # relevé de cotes (The Odds API)
 ```
 
-## Main routes
+Chaque run réussi écrit un heartbeat dans `backend/heartbeats/<nom>.json`,
+lu par `/health`.
 
-- `GET /health`
-- `POST /api/v1/auth/signup`
-- `POST /api/v1/auth/login`
-- `GET /api/v1/auth/me`
-- `GET /api/v1/matches`
-- `GET /api/v1/opportunities`
-- `POST /api/v1/predictions/match`
-- `POST /api/v1/analyses/run-all`
-- `POST /api/v1/cron/daily-run` (requires header `X-CRON-KEY`)
-
-## Prediction provider
-
-- `PREDICTION_PROVIDER=local` => branch directly on local Python model (`prediction_engine.py`)
-- `PREDICTION_PROVIDER=mock` => mock response
-
-## Cron test example
+## Tests
 
 ```bash
-curl -X POST "http://127.0.0.1:8000/api/v1/cron/daily-run?limit=5" \
-  -H "X-CRON-KEY: change-me-cron"
+python -m pytest -q
 ```
 
-## Daily automation (macOS launchd)
+## Routes principales
 
-Installed agent label: `com.rushplay.dailyrun`
+| Route | Description |
+|---|---|
+| `GET /health` | santé de l'API + fraîcheur des collecteurs |
+| `GET /api/v1/legal` | mentions légales ANJ, âge minimum, positionnement |
+| `POST /api/v1/auth/signup` | inscription (18 ans ou plus obligatoire) |
+| `POST /api/v1/auth/login` | connexion |
+| `GET /api/v1/auth/me` | utilisateur courant |
+| `GET /api/v1/matches` | matchs à venir / du jour |
+| `GET /api/v1/matches/{id}` | détail d'un match (probabilités, écarts, mouvement) |
+| `GET /api/v1/books` | comparateur par bookmaker (abonnement Pro) |
+| `GET /api/v1/bankroll` | carnet de paris de l'utilisateur |
+| `POST /api/v1/bankroll` | enregistrer un pari |
+| `DELETE /api/v1/bankroll/{id}` | supprimer un pari |
+| `POST /api/v1/bankroll/{id}/void` | annuler un pari (remboursé, non réglé) |
+| `GET /api/v1/track-record` | historique public du favori vs résultat réel |
 
-- Runs every day at `08:00`
-- Calls `POST /api/v1/cron/daily-run?limit=50`
-- Uses `CRON_SECRET` from `.env` captured at install time
+## Déploiement
 
-Useful commands:
-
-```bash
-launchctl print "gui/$(id -u)/com.rushplay.dailyrun"
-launchctl kickstart -k "gui/$(id -u)/com.rushplay.dailyrun"
-```
-
-## Deploy 24/7 (Render + Supabase)
-
-The repo includes a Render blueprint: [`render.yaml`](../render.yaml).
-
-### 1. Push code to GitHub
-
-Push the full project (not only `backend/`) so model files are available:
-- `prediction_engine.py`
-- `xgboost_model.pkl`
-- `team_stats.json`
-
-### 2. Create services on Render
-
-In Render:
-- New + Blueprint
-- Select your repository
-- Render reads `render.yaml` and creates:
-  - `rushplay-api` (web service)
-  - `rushplay-daily-analysis` (cron job)
-
-### 3. Set required env vars on Render
-
-For both services:
-- `DATABASE_URL` (Supabase connection string)
-- `JWT_SECRET` (strong secret)
-- `CRON_SECRET` (strong secret)
-- `CORS_ORIGINS` (your frontend URL)
-
-Defaults already configured in blueprint:
-- `PREDICTION_PROVIDER=local`
-- `PREDICTION_MODEL_ROOT=/opt/render/project/src`
-
-### 4. Post-deploy checks
-
-- Open `https://<your-api-domain>/health`
-- Verify:
-  - `success=true`
-  - `prediction_provider.provider=local_python`
-
-### Notes
-
-- Render cron uses `scripts/daily_run.py` directly (does not require your local Mac).
-- Existing local `launchd` automation can be kept for local dev, but cloud cron is the 24/7 source.
+Voir [`deploy/coolify.md`](../deploy/coolify.md) (VPS Hetzner + Coolify) et
+[`deploy/crontab.txt`](../deploy/crontab.txt) pour la planification des
+collecteurs.
