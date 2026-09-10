@@ -33,14 +33,14 @@ def _bet_dict(b: Bet) -> dict:
 
 def _summary(bets: list[Bet]) -> dict:
     settled = [b for b in bets if b.status in (BetStatus.WON, BetStatus.LOST)]
-    stakes = sum(b.stake for b in bets); payouts = sum(b.payout or 0 for b in settled)
+    stakes = sum(b.stake for b in bets); settled_stakes = sum(b.stake for b in settled); payouts = sum(b.payout or 0 for b in settled)
     def bucket(key):
         acc: dict = defaultdict(lambda: {"stakes": 0.0, "payouts": 0.0, "profit": 0.0, "bets": 0})
         for b in settled:
             k = key(b); acc[k]["stakes"] += b.stake; acc[k]["payouts"] += b.payout or 0; acc[k]["bets"] += 1
             acc[k]["profit"] = round(acc[k]["payouts"] - acc[k]["stakes"], 2)
         return dict(acc)
-    return {"stakes": stakes, "payouts": payouts, "profit": round(payouts - stakes, 2), "roi": round((payouts - stakes) / stakes, 4) if stakes else None,
+    return {"stakes": stakes, "settled_stakes": settled_stakes, "payouts": payouts, "profit": round(payouts - settled_stakes, 2), "roi": round((payouts - settled_stakes) / settled_stakes, 4) if settled_stakes else None,
             "pending": sum(1 for b in bets if b.status == BetStatus.PENDING), "settled": len(settled),
             "by_bookmaker": bucket(lambda b: b.bookmaker), "by_competition": bucket(lambda b: b.match.competition)}
 

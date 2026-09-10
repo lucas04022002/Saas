@@ -56,3 +56,29 @@ def test_validation_and_isolation(client, db, starter_user, pro_user):
     client.post("/api/v1/bankroll", json={"match_id": str(m.id), "outcome": "home", "bookmaker": "betclic_fr", "odds": 1.9, "stake": 10}, headers=auth_header(starter_user))
     assert client.get("/api/v1/bankroll", headers=auth_header(pro_user)).json()["data"]["items"] == []
     assert client.get("/api/v1/bankroll").status_code == 401
+
+
+def test_pending_bet_has_no_profit_yet(client, db, starter_user):
+    h, a = teams(db)
+    m = make_match(db, h, a, kickoff=NOW + timedelta(days=1))
+    client.post("/api/v1/bankroll", json={"match_id": str(m.id), "outcome": "home", "bookmaker": "betclic_fr", "odds": 1.9, "stake": 10}, headers=auth_header(starter_user))
+    summary = client.get("/api/v1/bankroll", headers=auth_header(starter_user)).json()["data"]["summary"]
+    assert summary["stakes"] == 10
+    assert summary["settled_stakes"] == 0
+    assert summary["profit"] == 0.0
+    assert summary["roi"] is None
+    assert summary["pending"] == 1
+
+
+def test_void_bet_is_neutral(client, db, starter_user):
+    h, a = teams(db)
+    m = make_match(db, h, a, kickoff=NOW + timedelta(days=1))
+    bet_id = client.post("/api/v1/bankroll", json={"match_id": str(m.id), "outcome": "draw", "bookmaker": "winamax_fr", "odds": 3.5, "stake": 10}, headers=auth_header(starter_user)).json()["data"]["id"]
+    m.status = MatchStatus.POSTPONED
+    db.commit()
+    client.post(f"/api/v1/bankroll/{bet_id}/void", headers=auth_header(starter_user))
+    summary = client.get("/api/v1/bankroll", headers=auth_header(starter_user)).json()["data"]["summary"]
+    assert summary["profit"] == 0.0
+    assert summary["roi"] is None
+    assert summary["stakes"] == 10
+    assert summary["settled_stakes"] == 0
