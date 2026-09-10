@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getUser, isPro } from "@/lib/session";
 import { PRICE_MONTHLY, PLAN_NAMES } from "@/lib/pricing";
 export const dynamic = "force-dynamic";
-const li = (t: string, off = false) => <li key={t} className={`border-t border-line py-3 text-[16px] ${off ? "text-faint" : ""}`}>{t}</li>;
+const li = (t: string, off = false) => <li key={t} className={`border-t border-line py-3 text-[16px] ${off ? "text-faint-text" : ""}`}>{t}</li>;
 export default async function Tarifs() {
   const user = await getUser();
   return (

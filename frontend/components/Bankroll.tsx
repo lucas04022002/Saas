@@ -51,7 +51,7 @@ export function Bankroll({ preselected }: { preselected?: string }) {
               <td className="border-b border-line py-4 text-right tabular-nums">{formatOdds(b.odds)}</td>
               <td className="border-b border-line py-4 text-right tabular-nums">{formatEuro(b.stake)}</td>
               <td className="border-b border-line py-4 text-right tabular-nums">{b.payout === null ? "—" : formatEuro(b.payout)}</td>
-              <td className={`border-b border-line py-4 text-right text-[12px] font-semibold uppercase tracking-[0.04em] ${b.status === "PENDING" ? "text-link" : b.status === "WON" ? "text-ink" : "text-faint"}`}>{STATUS[b.status]}</td>
+              <td className={`border-b border-line py-4 text-right text-[12px] font-semibold uppercase tracking-[0.04em] ${b.status === "PENDING" ? "text-link" : b.status === "WON" ? "text-ink" : "text-faint-text"}`}>{STATUS[b.status]}</td>
               <td className="border-b border-line py-4 text-right">{b.status === "PENDING" && (b.match_status === "POSTPONED"
                 ? <button className="text-[13px] font-medium text-link underline underline-offset-4" onClick={() => runAction(() => clientApi.bankroll.void(b.id))}>Annuler</button>
                 : <button className="text-[13px] font-medium text-link underline underline-offset-4" onClick={() => runAction(() => clientApi.bankroll.remove(b.id))}>Supprimer</button>)}</td>
