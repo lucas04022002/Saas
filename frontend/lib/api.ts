@@ -1,111 +1,51 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+import type { BankrollSummary, Bet, BookRow, Legal, MatchDetail, MatchSummary, Pagination, TrackRow, User } from "./types";
 
-export interface ApiMatch {
-  id: string;
-  home_team: string;
-  away_team: string;
-  league: string;
-  country: string;
-  kickoff_at: string;
-  status: string;
-  last_analyzed_at: string | null;
-  confidence_score: number | null;
-  recommended_bet: string | null;
-  bookmaker_odds: number | null;
-  value_percent: number | null;
-  risk_level: "LOW" | "MEDIUM" | "HIGH" | null;
-  // Renseigné par le serveur : true = signal verrouillé (non-abonné), champs premium à null.
-  locked?: boolean;
+const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
+export class ApiError extends Error {
+  constructor(public status: number, message: string) { super(message); this.name = "ApiError"; }
 }
 
-function authHeaders(token?: string | null): Record<string, string> {
-  return token ? { Authorization: `Bearer ${token}` } : {};
+type Envelope<T> = { success: boolean; message: string; data: T };
+
+async function call<T>(path: string, init: RequestInit & { token?: string; revalidate?: number } = {}): Promise<T> {
+  const { token, revalidate, ...rest } = init;
+  const headers: Record<string, string> = { "Content-Type": "application/json", ...(rest.headers as Record<string, string>) };
+  if (token) headers.Authorization = `Bearer ${token}`;
+  const res = await fetch(`${BASE}${path}`, { ...rest, headers, next: revalidate !== undefined ? { revalidate } : undefined } as RequestInit);
+  let body: unknown = null;
+  try { body = await res.json(); } catch { body = null; }
+  if (!res.ok) {
+    const b = body as { message?: string; detail?: unknown };
+    let message = b?.message ?? res.statusText;
+    if (Array.isArray(b?.detail) && b.detail.length) {
+      const msg = String((b.detail[0] as { msg?: string }).msg ?? "");
+      message = msg.replace(/^Value error, /, "");
+    } else if (typeof b?.detail === "string") message = b.detail;
+    throw new ApiError(res.status, message);
+  }
+  return (body as Envelope<T>).data;
 }
 
-export interface ApiAnalysis {
-  match_id: string;
-  home_team: string;
-  away_team: string;
-  league?: string;
-  kickoff_at?: string;
-  match_status?: string;
-  home_score?: number | null;
-  away_score?: number | null;
-  confidence_score: number;
-  recommended_bet: string;
-  bookmaker_odds: number;
-  value_percent: number;
-  risk_level: "LOW" | "MEDIUM" | "HIGH";
-  ai_explanation: string;
-  created_at: string;
-}
+const qs = (p: Record<string, string | number | undefined>) =>
+  Object.entries(p).filter(([, v]) => v !== undefined && v !== "").map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`).join("&");
 
-export async function fetchMatches(
-  params?: {
-    page?: number;
-    limit?: number;
-    sort_by?: string;
-    order?: string;
-    date?: string;
-    status?: string;
+export const api = {
+  legal: () => call<Legal>("/api/v1/legal", { revalidate: 3600 }),
+  matches: (p: { date?: string; competition?: string; page?: number; limit?: number } = {}, token?: string) =>
+    call<{ items: MatchSummary[]; pagination: Pagination }>(`/api/v1/matches?${qs(p)}`, { token, revalidate: 60 }),
+  match: (id: string, token?: string) => call<MatchDetail>(`/api/v1/matches/${id}`, { token, revalidate: 60 }),
+  books: (token?: string) => call<{ items: BookRow[]; threshold: number }>("/api/v1/books", { token, revalidate: 60 }),
+  trackRecord: (competition?: string) => call<{ items: TrackRow[]; note: string }>(`/api/v1/track-record?${qs({ competition })}`, { revalidate: 300 }),
+  login: (email: string, password: string) => call<{ access_token: string; user: User }>("/api/v1/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
+  signup: (p: { first_name: string; email: string; password: string; birth_date: string }) =>
+    call<{ access_token: string; user: User }>("/api/v1/auth/signup", { method: "POST", body: JSON.stringify(p) }),
+  me: (token: string) => call<User>("/api/v1/auth/me", { token, cache: "no-store" }),
+  bankroll: {
+    list: (token: string) => call<{ items: Bet[]; summary: BankrollSummary }>("/api/v1/bankroll", { token, cache: "no-store" }),
+    create: (token: string, p: { match_id: string; outcome: string; bookmaker: string; odds: number; stake: number }) =>
+      call<Bet>("/api/v1/bankroll", { method: "POST", token, body: JSON.stringify(p) }),
+    remove: (token: string, id: string) => call<{ id: string }>(`/api/v1/bankroll/${id}`, { method: "DELETE", token }),
+    void: (token: string, id: string) => call<Bet>(`/api/v1/bankroll/${id}/void`, { method: "POST", token }),
   },
-  token?: string | null,
-): Promise<{ items: ApiMatch[]; pagination: { page: number; limit: number; total: number } }> {
-  const query = new URLSearchParams();
-  if (params?.page) query.set("page", String(params.page));
-  if (params?.limit) query.set("limit", String(params.limit));
-  if (params?.sort_by) query.set("sort_by", params.sort_by);
-  if (params?.order) query.set("order", params.order);
-  if (params?.date) query.set("date", params.date);
-  if (params?.status) query.set("status", params.status);
-
-  const res = await fetch(`${API_URL}/api/v1/matches?${query}`, {
-    cache: "no-store",
-    headers: authHeaders(token),
-  });
-
-  if (!res.ok) throw new Error("Erreur lors de la récupération des matchs");
-  const json = await res.json();
-  return json.data;
-}
-
-export async function fetchAnalyses(status?: string, token?: string | null): Promise<ApiAnalysis[]> {
-  const query = status ? `?status=${status}` : "";
-  const res = await fetch(`${API_URL}/api/v1/analyses${query}`, {
-    cache: "no-store",
-    headers: authHeaders(token),
-  });
-
-  if (!res.ok) throw new Error("Erreur lors de la récupération des analyses");
-  const json = await res.json();
-  return json.data;
-}
-
-export function riskLabel(level: "LOW" | "MEDIUM" | "HIGH" | null) {
-  const map = { LOW: "faible", MEDIUM: "modéré", HIGH: "élevé" } as const;
-  return level ? map[level] : "modéré";
-}
-
-export function riskColors(level: "LOW" | "MEDIUM" | "HIGH" | null) {
-  const map = {
-    LOW:    { border: "#4ade80", bg: "rgba(34,197,94,0.10)",   text: "#4ade80" },
-    MEDIUM: { border: "#eab308", bg: "rgba(234,179,8,0.10)",   text: "#eab308" },
-    HIGH:   { border: "#f87171", bg: "rgba(248,113,113,0.10)", text: "#f87171" },
-  };
-  return map[level ?? "MEDIUM"];
-}
-
-export function formatKickoff(iso: string) {
-  return new Date(iso).toLocaleTimeString("fr-FR", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
-
-export function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("fr-FR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-}
+};
