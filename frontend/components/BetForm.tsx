@@ -1,21 +1,22 @@
 "use client";
 import { useEffect, useState } from "react";
-import { api, ApiError } from "@/lib/api";
+import { ApiError } from "@/lib/api";
+import { clientApi } from "@/lib/client-api";
 import type { MatchSummary } from "@/lib/types";
 import { BOOK_LABELS } from "@/lib/types";
 import { formatDateFr } from "@/lib/format";
 const label = "block text-[12px] font-semibold uppercase tracking-[0.04em] text-muted";
 const field = "mt-2 w-full border-0 border-b border-ink bg-transparent py-2 text-[17px] font-medium outline-none";
-export function BetForm({ token, preselected, onSaved }: { token: string; preselected?: string; onSaved: () => void }) {
+export function BetForm({ preselected, onSaved }: { preselected?: string; onSaved: () => void }) {
   const [matches, setMatches] = useState<MatchSummary[]>([]);
   const [f, setF] = useState({ match_id: preselected ?? "", outcome: "home", bookmaker: "betclic_fr", odds: "", stake: "" });
   const [error, setError] = useState<string | null>(null);
-  useEffect(() => { api.matches({ limit: 200 }, token).then((r) => { setMatches(r.items); setF((s) => ({ ...s, match_id: s.match_id || r.items[0]?.id || "" })); }).catch(() => setMatches([])); }, [token]);
+  useEffect(() => { clientApi.matches().then((r) => { setMatches(r.items); setF((s) => ({ ...s, match_id: s.match_id || r.items[0]?.id || "" })); }).catch(() => setMatches([])); }, []);
   const m = matches.find((x) => x.id === f.match_id);
   async function submit(e: React.FormEvent) {
     e.preventDefault(); setError(null);
     try {
-      await api.bankroll.create(token, { match_id: f.match_id, outcome: f.outcome, bookmaker: f.bookmaker, odds: Number(f.odds), stake: Number(f.stake) });
+      await clientApi.bankroll.create({ match_id: f.match_id, outcome: f.outcome, bookmaker: f.bookmaker, odds: Number(f.odds), stake: Number(f.stake) });
       setF((s) => ({ ...s, odds: "", stake: "" })); onSaved();
     } catch (err) { setError(err instanceof ApiError ? err.message : "Impossible d'enregistrer. Réessaie."); }
   }

@@ -1,17 +1,18 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
-import { api, ApiError } from "@/lib/api";
+import { ApiError } from "@/lib/api";
+import { clientApi } from "@/lib/client-api";
 import type { BankrollSummary, Bet } from "@/lib/types";
 import { BOOK_LABELS } from "@/lib/types";
 import { formatDateFr, formatEuro, formatOdds, formatSigned, formatSignedInt } from "@/lib/format";
 import { Kpi } from "./Kpi";
 import { BetForm } from "./BetForm";
 const STATUS: Record<Bet["status"], string> = { PENDING: "En attente", WON: "Gagné", LOST: "Perdu", VOID: "Annulé" };
-export function Bankroll({ token, preselected }: { token: string; preselected?: string }) {
+export function Bankroll({ preselected }: { preselected?: string }) {
   const [data, setData] = useState<{ items: Bet[]; summary: BankrollSummary } | null>(null);
   const [error, setError] = useState(false);
   const [actionError, setActionError] = useState<string | null>(null);
-  const load = useCallback(() => api.bankroll.list(token).then((d) => { setData(d); setError(false); }).catch(() => setError(true)), [token]);
+  const load = useCallback(() => clientApi.bankroll.list().then((d) => { setData(d); setError(false); }).catch(() => setError(true)), []);
   useEffect(() => { load(); }, [load]);
   async function runAction(fn: () => Promise<unknown>) {
     try { await fn(); setActionError(null); await load(); }
@@ -51,13 +52,13 @@ export function Bankroll({ token, preselected }: { token: string; preselected?: 
               <td className="border-b border-line py-4 text-right tabular-nums">{b.payout === null ? "—" : formatEuro(b.payout)}</td>
               <td className={`border-b border-line py-4 text-right text-[12px] font-semibold uppercase tracking-[0.04em] ${b.status === "PENDING" ? "text-link" : b.status === "WON" ? "text-ink" : "text-faint"}`}>{STATUS[b.status]}</td>
               <td className="border-b border-line py-4 text-right">{b.status === "PENDING" && (b.match_status === "POSTPONED"
-                ? <button className="text-[13px] font-medium text-link" onClick={() => runAction(() => api.bankroll.void(token, b.id))}>Annuler</button>
-                : <button className="text-[13px] font-medium text-link" onClick={() => runAction(() => api.bankroll.remove(token, b.id))}>Supprimer</button>)}</td>
+                ? <button className="text-[13px] font-medium text-link" onClick={() => runAction(() => clientApi.bankroll.void(b.id))}>Annuler</button>
+                : <button className="text-[13px] font-medium text-link" onClick={() => runAction(() => clientApi.bankroll.remove(b.id))}>Supprimer</button>)}</td>
             </tr>
           ))}</tbody>
         </table>
       )}
-      <BetForm token={token} preselected={preselected} onSaved={load} />
+      <BetForm preselected={preselected} onSaved={load} />
     </>
   );
 }

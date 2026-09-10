@@ -8,11 +8,7 @@ export class ApiError extends Error {
 
 type Envelope<T> = { success: boolean; message: string; data: T };
 
-async function call<T>(path: string, init: RequestInit & { token?: string; revalidate?: number } = {}): Promise<T> {
-  const { token, revalidate, ...rest } = init;
-  const headers: Record<string, string> = { "Content-Type": "application/json", ...(rest.headers as Record<string, string>) };
-  if (token) headers.Authorization = `Bearer ${token}`;
-  const res = await fetch(`${BASE}${path}`, { ...rest, headers, next: revalidate !== undefined ? { revalidate } : undefined } as RequestInit);
+export async function parseEnvelope<T>(res: Response): Promise<T> {
   let body: unknown = null;
   try { body = await res.json(); } catch { body = null; }
   if (!res.ok) {
@@ -25,6 +21,14 @@ async function call<T>(path: string, init: RequestInit & { token?: string; reval
     throw new ApiError(res.status, message);
   }
   return (body as Envelope<T>).data;
+}
+
+async function call<T>(path: string, init: RequestInit & { token?: string; revalidate?: number } = {}): Promise<T> {
+  const { token, revalidate, ...rest } = init;
+  const headers: Record<string, string> = { "Content-Type": "application/json", ...(rest.headers as Record<string, string>) };
+  if (token) headers.Authorization = `Bearer ${token}`;
+  const res = await fetch(`${BASE}${path}`, { ...rest, headers, next: revalidate !== undefined ? { revalidate } : undefined } as RequestInit);
+  return parseEnvelope<T>(res);
 }
 
 const qs = (p: Record<string, string | number | undefined>) =>
