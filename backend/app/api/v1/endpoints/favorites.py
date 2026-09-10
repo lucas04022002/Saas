@@ -1,3 +1,5 @@
+import uuid
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
@@ -38,7 +40,11 @@ def list_favorites(current_user: User = Depends(get_current_user), db: Session =
 
 @router.post("/{match_id}")
 def add_favorite(match_id: str, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    match = db.get(Match, match_id)
+    try:
+        match_uuid = uuid.UUID(match_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Match not found")
+    match = db.get(Match, match_uuid)
     if match is None:
         raise HTTPException(status_code=404, detail="Match not found")
 
@@ -56,7 +62,11 @@ def add_favorite(match_id: str, current_user: User = Depends(get_current_user), 
 
 @router.delete("/{match_id}")
 def delete_favorite(match_id: str, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    favorite = db.scalar(select(Favorite).where(Favorite.user_id == current_user.id, Favorite.match_id == match_id))
+    try:
+        match_uuid = uuid.UUID(match_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Match not found")
+    favorite = db.scalar(select(Favorite).where(Favorite.user_id == current_user.id, Favorite.match_id == match_uuid))
     if favorite is None:
         raise HTTPException(status_code=404, detail="Favorite not found")
 
