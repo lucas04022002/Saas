@@ -27,7 +27,10 @@
   body { @apply bg-paper text-ink font-sans; }
   h1, h2, h3, .display { @apply font-tight; }
   a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--color-link); outline-offset: 3px; }
+  /* Anneau bicolore : le trait sombre porte sur fond clair, le halo clair le détache d'un fond sombre.
+     Sur les sections noires les deux couleurs s'inversent, sinon l'anneau disparaît dans le fond. */
+  :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; box-shadow: 0 0 0 5px var(--color-paper); }
+  .bg-black :focus-visible { outline-color: var(--color-paper); box-shadow: 0 0 0 5px var(--color-black); }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
