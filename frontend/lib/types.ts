@@ -31,7 +31,7 @@ export type TrackRow = { competition: string; played: number; favourite_won: num
 
 export type Bet = { id: string; match_id: string; home_team: string; away_team: string; competition: string; kickoff_at: string;
   outcome: Outcome; bookmaker: string; odds: number; stake: number; status: "PENDING" | "WON" | "LOST" | "VOID"; payout: number | null;
-  created_at: string; settled_at: string | null };
+  created_at: string; settled_at: string | null; match_status: "SCHEDULED" | "LIVE" | "FINISHED" | "POSTPONED" | "QUARANTINE" };
 export type BankrollSummary = { stakes: number; settled_stakes: number; payouts: number; profit: number; roi: number | null; pending: number; settled: number;
   by_bookmaker: Record<string, { stakes: number; payouts: number; profit: number; bets: number }>;
   by_competition: Record<string, { stakes: number; payouts: number; profit: number; bets: number }> };

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { http, HttpResponse } from "msw";
 import { server } from "./msw/server";
 import { API } from "./msw/handlers";
-const bet = { id: "b1", match_id: "m1", home_team: "Arsenal", away_team: "Chelsea", competition: "E0", kickoff_at: "2026-09-07T15:30:00Z", outcome: "home", bookmaker: "winamax_fr", odds: 2.05, stake: 40, status: "WON", payout: 82, created_at: "2026-09-06T10:00:00Z", settled_at: "2026-09-07T18:00:00Z" };
+const bet = { id: "b1", match_id: "m1", home_team: "Arsenal", away_team: "Chelsea", competition: "E0", kickoff_at: "2026-09-07T15:30:00Z", outcome: "home", bookmaker: "winamax_fr", odds: 2.05, stake: 40, status: "WON", payout: 82, created_at: "2026-09-06T10:00:00Z", settled_at: "2026-09-07T18:00:00Z", match_status: "SCHEDULED" };
 const summary = { stakes: 90, settled_stakes: 40, payouts: 82, profit: 42, roi: 1.05, pending: 1, settled: 1, by_bookmaker: {}, by_competition: {} };
 describe("carnet", () => {
   it("KPI, liste, statut, suppression d'un pari en attente", async () => {
@@ -37,5 +37,43 @@ describe("carnet", () => {
     fireEvent.change(screen.getByLabelText("Mise"), { target: { value: "50" } });
     fireEvent.click(screen.getByRole("button", { name: "Noter ce pari" }));
     await waitFor(() => expect(posted).toMatchObject({ match_id: "m1", outcome: "home", bookmaker: "betclic_fr", odds: 1.78, stake: 50 }));
+  });
+  it("annulation d'un pari en attente sur match reporté", async () => {
+    let voided = "";
+    server.use(
+      http.get(`${API}/api/v1/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ ...bet, id: "b2", status: "PENDING", payout: null, stake: 50, match_status: "POSTPONED" }], summary } })),
+      http.post(`${API}/api/v1/bankroll/b2/void`, () => { voided = "b2"; return HttpResponse.json({ success: true, message: "", data: { ...bet, id: "b2", status: "VOID" } }); }),
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+    );
+    const { Bankroll } = await import("@/components/Bankroll");
+    render(<Bankroll token="tok" />);
+    expect(await screen.findByText("Ton vrai bilan.")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Supprimer" })).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Annuler" }));
+    await waitFor(() => expect(voided).toBe("b2"));
+  });
+  it("liste : échec de chargement affiche une alerte et permet de réessayer", async () => {
+    server.use(
+      http.get(`${API}/api/v1/bankroll`, () => HttpResponse.json({ success: false, message: "boom" }, { status: 500 }), { once: true }),
+      http.get(`${API}/api/v1/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [], summary: { ...summary, stakes: 0, settled_stakes: 0, payouts: 0, profit: 0, roi: null, pending: 0, settled: 0 } } })),
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+    );
+    const { Bankroll } = await import("@/components/Bankroll");
+    render(<Bankroll token="tok" />);
+    expect(await screen.findByText("Impossible de charger ton carnet. Réessaie dans un instant.")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Réessayer" }));
+    expect(await screen.findByText("Aucun pari noté. Le premier est en bas de page.")).toBeInTheDocument();
+  });
+  it("suppression : échec affiche le message d'erreur", async () => {
+    server.use(
+      http.get(`${API}/api/v1/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ ...bet, id: "b2", status: "PENDING", payout: null, stake: 50 }], summary } })),
+      http.delete(`${API}/api/v1/bankroll/b2`, () => HttpResponse.json({ success: false, message: "Only pending bets can be deleted" }, { status: 409 })),
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+    );
+    const { Bankroll } = await import("@/components/Bankroll");
+    render(<Bankroll token="tok" />);
+    fireEvent.click(await screen.findByRole("button", { name: "Supprimer" }));
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("Only pending bets can be deleted");
   });
 });
