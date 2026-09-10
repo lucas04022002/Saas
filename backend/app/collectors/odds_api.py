@@ -32,7 +32,6 @@ class OddsEvent:
 class StoreReport:
     snapshots: int = 0
     matched: int = 0
-    unmatched: int = 0
     quarantined: int = 0
 
 
@@ -116,7 +115,7 @@ def run(db: Session) -> StoreReport:
                 break
             raise
         r = store_events(db, parse_events(comp.odds_api_key, payload), taken_at)
-        for k in ("snapshots", "matched", "unmatched", "quarantined"):
+        for k in ("snapshots", "matched", "quarantined"):
             setattr(total, k, getattr(total, k) + getattr(r, k))
     log.info("odds_api relevé %s : %s", taken_at.isoformat(), total)
     return total
