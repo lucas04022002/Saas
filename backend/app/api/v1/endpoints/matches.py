@@ -44,9 +44,9 @@ def list_matches(
 def get_match(match_id: str, db: Session = Depends(get_db), current_user: User | None = Depends(get_current_user_optional)):
     try:
         match_uuid = uuid.UUID(match_id)
-        row = db.scalar(select(Match).where(Match.id == match_uuid).options(selectinload(Match.snapshots)))
-    except Exception:
-        row = None
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Match not found")
+    row = db.scalar(select(Match).where(Match.id == match_uuid).options(selectinload(Match.snapshots)))
     if row is None or row.status == MatchStatus.QUARANTINE:
         raise HTTPException(status_code=404, detail="Match not found")
     detail = match_detail(db, row, public=not is_pro(current_user))

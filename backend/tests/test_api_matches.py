@@ -88,3 +88,7 @@ def test_detail_uses_finished_history_for_form_and_h2h(client, db, pro_user):
 
 def test_detail_404_and_quarantine_hidden(client, db):
     assert client.get("/api/v1/matches/00000000-0000-0000-0000-000000000000").status_code == 404
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Lyon").one(), db.query(Team).filter_by(name="Nice").one()
+    q = make_match(db, h, a, competition="F1", status=MatchStatus.QUARANTINE)
+    assert client.get(f"/api/v1/matches/{q.id}").status_code == 404

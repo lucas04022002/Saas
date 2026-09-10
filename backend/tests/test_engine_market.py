@@ -64,3 +64,10 @@ def test_read_uses_fd_uk_pinnacle_as_reference():
     r = read(quotes, FR)
     assert r.reference_source == "pinnacle" and r.reference == implied((2.10, 3.60, 3.80))
     assert r.gaps == {}
+
+
+def test_read_empty_raises():
+    with pytest.raises(ValueError):
+        read([], FR)
+    with pytest.raises(ValueError):
+        read([BookQuote("williamhill", T0, (2.0, 3.5, 4.0))], FR)

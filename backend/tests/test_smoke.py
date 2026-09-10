@@ -15,3 +15,14 @@ def test_signup_and_me(client):
 def test_signup_refuses_minors(client):
     r = client.post("/api/v1/auth/signup", json={"first_name": "Jeune", "email": "j@test.fr", "password": "motdepasse123", "birth_date": "2015-01-01"})
     assert r.status_code == 422 and "18 ans" in r.text
+
+
+def test_invalid_token_is_401(client):
+    from app.core.security import create_access_token
+
+    r = client.get("/api/v1/auth/me", headers={"Authorization": "Bearer not-a-token"})
+    assert r.status_code == 401
+
+    token = create_access_token("abc")   # sujet valide en JWT mais pas un UUID
+    r = client.get("/api/v1/auth/me", headers={"Authorization": f"Bearer {token}"})
+    assert r.status_code == 401
