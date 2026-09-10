@@ -24,8 +24,8 @@ export function Hero({ match }: { match: MatchSummary | null }) {
         )}
         <p className="mt-4 max-w-[44ch] text-[17px] md:text-[18px] leading-relaxed text-photo-text">RushPlay lit les cotes des bookmakers français, retire leur marge et te montre la probabilité que le marché donne vraiment à chaque issue.</p>
         <div className="mt-7 flex flex-wrap justify-center gap-7 text-[17px] font-medium">
-          <Link href="/matchs" className="text-link">Voir les matchs du jour ›</Link>
-          <a href="#comment" className="text-link">Comment ça marche ›</a>
+          <Link href="/matchs" className="link-dark">Voir les matchs du jour ›</Link>
+          <a href="#comment" className="link-dark">Comment ça marche ›</a>
         </div>
       </div>
     </section>

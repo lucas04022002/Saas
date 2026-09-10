@@ -22,7 +22,7 @@ export default async function TrackRecord({ searchParams }: { searchParams: Prom
               <thead><tr>{["Compétition", "Matchs", "Favori gagnant", "Taux"].map((h, i) => <th key={h} scope="col" className={`border-b border-paper pb-3 text-[12px] font-semibold uppercase tracking-[0.06em] text-faint ${i ? "text-right" : "text-left"}`}>{h}</th>)}</tr></thead>
               <tbody>{items.map((r) => (
                 <tr key={r.competition} className={r.competition === sel.competition ? "font-bold" : ""}>
-                  <td className="border-b border-line-dark py-4"><Link href={`/track-record?competition=${r.competition}`}>{COMPETITIONS[r.competition] ?? r.competition}</Link></td>
+                  <td className="border-b border-line-dark py-4"><Link href={`/track-record?competition=${r.competition}`} className="link-dark">{COMPETITIONS[r.competition] ?? r.competition}</Link></td>
                   <td className="border-b border-line-dark py-4 text-right tabular-nums">{r.played}</td>
                   <td className="border-b border-line-dark py-4 text-right tabular-nums">{r.favourite_won}</td>
                   <td className="border-b border-line-dark py-4 text-right tabular-nums">{`${Math.round(r.favourite_rate * 100)} %`}</td>
