@@ -16,6 +16,7 @@ export default async function Compte({ searchParams }: { searchParams: Promise<{
         {[["E-mail", user.email], ["Offre", PLAN_NAMES[user.subscription_plan]]].map(([k, v]) => <div key={k} className="grid grid-cols-[140px_1fr] gap-4 border-b border-line py-4"><dt className="text-muted">{k}</dt><dd className="font-medium">{v}</dd></div>)}
       </dl>
       {!isPro(user) && <Link href="/tarifs" className="link mt-6 inline-block text-[17px]">Passer à la lecture complète ›</Link>}
+      <p className="mt-6 max-w-[48ch] text-[14px] text-muted">Sans engagement. Pour résilier, écris-nous à contact@rushplay.fr, c&apos;est fait le jour même.</p>
       <div><LogoutButton /></div>
     </section>
   );

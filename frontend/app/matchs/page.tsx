@@ -6,7 +6,6 @@ import { DayPicker } from "@/components/DayPicker";
 import { CompetitionFilter } from "@/components/CompetitionFilter";
 import { MatchRow } from "@/components/MatchRow";
 
-export const revalidate = 60;
 const ORDER = ["F1", "E0", "SP1", "D1", "I1", "CL"];
 
 export default async function Matchs({ searchParams }: { searchParams: Promise<{ date?: string; competition?: string }> }) {

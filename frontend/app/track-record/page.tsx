@@ -2,7 +2,6 @@ import Link from "next/link";
 import { api } from "@/lib/api";
 import { COMPETITIONS } from "@/lib/types";
 import { BigNumber } from "@/components/BigNumber";
-export const revalidate = 300;
 export default async function TrackRecord({ searchParams }: { searchParams: Promise<{ competition?: string }> }) {
   const { competition } = await searchParams;
   const { items, note } = await api.trackRecord();

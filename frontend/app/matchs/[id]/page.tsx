@@ -11,8 +11,6 @@ import { BookTable } from "@/components/BookTable";
 import { MovementChart } from "@/components/MovementChart";
 import { FormTable } from "@/components/FormTable";
 
-export const revalidate = 60;
-
 function splitAnalysis(text: string): [string, string] {
   const idx = text.indexOf(". ");
   if (idx === -1) return [text, ""];

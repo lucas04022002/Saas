@@ -67,3 +67,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Vocabulaire interdit
+        run: grep -rniE "prédiction|pronostic|value bet|confiance|prediction|confidence" app components lib && exit 1 || echo OK

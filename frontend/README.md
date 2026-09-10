@@ -49,6 +49,22 @@ Les trois doivent être verts avant tout commit ou déploiement. Le build
 utilise la sortie `standalone` de Next.js (voir `next.config.mjs` et le
 `Dockerfile`, section Déploiement).
 
+Aucune page ne déclare plus `export const revalidate` : `Nav` (dans le
+layout racine) lit le cookie de session via `next/headers`, ce qui force
+Next.js à rendre dynamiquement toute la page — l'option de segment
+`revalidate`, qui ne s'applique qu'au rendu statique/ISR, n'y avait donc
+aucun effet. La mise en cache des données reste assurée par `revalidate`
+posé sur chaque `fetch` dans `lib/api.ts`.
+
+### Sécurité
+
+`next.config.mjs` pose `X-Content-Type-Options`, `X-Frame-Options`,
+`Referrer-Policy`, `Permissions-Policy` sur toutes les routes, et
+`Strict-Transport-Security` en production. Pas de `Content-Security-Policy`
+pour l'instant : une CSP correcte demanderait de générer un nonce par
+requête et de l'injecter dans les scripts/styles de Next.js — à faire en
+suivi.
+
 ## Structure des dossiers
 
 ```
