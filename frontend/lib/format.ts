@@ -6,6 +6,7 @@ export const formatOdds = (o: number) => nf2.format(o);
 export const formatMargin = (m: number) => `${nf1.format(m * 100)} %`;
 export const formatGap = (g: number) => `${g >= 0 ? "+" : "−"}${nf1.format(Math.abs(g) * 100)} %`;
 export const formatSigned = (x: number, unit = "") => `${x >= 0 ? "+" : "−"}${nf1.format(Math.abs(x))}${unit}`;
+export const formatSignedInt = (x: number) => `${x >= 0 ? "+" : "−"}${Math.abs(Math.round(x))}`;
 export const formatEuro = (x: number) => `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(x)} €`;
 export const formatDateFr = (iso: string) =>
   new Intl.DateTimeFormat("fr-FR", { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Paris" }).format(new Date(iso)).replace(" à ", ", ");
