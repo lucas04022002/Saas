@@ -38,7 +38,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </>}
       {error && <p role="alert" className="mt-5 text-[14px] font-medium">{error}</p>}
       <button type="submit" disabled={busy || (signup && !f.adult)} className="btn mt-8 disabled:opacity-40">{signup ? "Créer mon compte" : "Se connecter"}</button>
-      <p className="mt-6 text-[14px] text-muted">{signup ? <>Déjà un compte ? <Link href="/connexion" className="text-link">Se connecter</Link></> : <>Pas encore de compte ? <Link href="/inscription" className="text-link">Créer un compte</Link></>}</p>
+      <p className="mt-6 text-[14px] text-muted">{signup ? <>Déjà un compte ? <Link href="/connexion" className="text-link underline underline-offset-4">Se connecter</Link></> : <>Pas encore de compte ? <Link href="/inscription" className="text-link underline underline-offset-4">Créer un compte</Link></>}</p>
     </form>
   );
 }
