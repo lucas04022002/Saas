@@ -28,3 +28,15 @@ describe("bookmakers", () => {
     expect(screen.getAllByText(/Réservé aux abonnés/).length).toBeGreaterThan(0);
   });
 });
+
+describe("tarifs", () => {
+  it("tarifs : un abonné ne voit « Ton offre actuelle » qu'une fois", async () => {
+    server.use(
+      http.get(`${API}/api/v1/auth/me`, () => HttpResponse.json({ success: true, message: "", data: { id: "u", first_name: "L", email: "l@t.fr", role: "USER", subscription_plan: "PRO" } })),
+    );
+    const Page = (await import("@/app/tarifs/page")).default;
+    render(await Page());
+    expect(screen.getAllByText("Ton offre actuelle")).toHaveLength(1);
+    expect(screen.getByText("Inclus dans ton offre.")).toBeInTheDocument();
+  });
+});
