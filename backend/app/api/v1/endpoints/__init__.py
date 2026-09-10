@@ -1,13 +1,9 @@
-from app.api.v1.endpoints import analyses, auth, cron, favorites, matches, opportunities, predictions, subscriptions, users
+from app.api.v1.endpoints import auth, favorites, matches, subscriptions, users
 
 __all__ = [
     "auth",
     "users",
     "matches",
-    "analyses",
-    "opportunities",
     "favorites",
     "subscriptions",
-    "predictions",
-    "cron",
 ]

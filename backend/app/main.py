@@ -13,8 +13,6 @@ from app.api.v1.router import api_router
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.core.logging import setup_logging
-from app.core.runtime_migrations import ensure_runtime_columns
-from app.services.prediction_service import prediction_service
 
 # Ensure ORM models are imported before create_all
 from app import models  # noqa: F401
@@ -32,11 +30,6 @@ async def lifespan(_: FastAPI):
             Base.metadata.create_all(bind=engine)
         except Exception as exc:
             log.warning("Database initialization skipped: %s", exc)
-        else:
-            try:
-                ensure_runtime_columns(engine)
-            except Exception as exc:
-                log.warning("Runtime column migration skipped: %s", exc)
     yield
 
 
@@ -67,11 +60,7 @@ async def generic_exception_handler(_: Request, exc: Exception):
 
 @app.get("/health")
 def health():
-    return {
-        "success": True,
-        "message": "API healthy",
-        "data": {"env": settings.env, "prediction_provider": prediction_service.health()},
-    }
+    return {"success": True, "message": "API healthy", "data": {"env": settings.env}}
 
 
 app.include_router(api_router, prefix="/api/v1")
