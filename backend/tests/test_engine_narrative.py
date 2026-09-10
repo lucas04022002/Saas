@@ -52,3 +52,15 @@ def test_draw_favourite_and_h2h():
 
 def test_describe_is_deterministic():
     assert describe(ctx()) == describe(ctx())
+
+
+def test_form_zero_wins_home():
+    from app.engine.context import Form
+    t = describe(ctx(home_form=Form(5, 0, 2, 3, 2, 7, "DDNDN")))
+    assert "Lyon reste sur aucune victoire lors des cinq derniers matchs ; Nice sur une seule." in t
+
+
+def test_form_zero_wins_away():
+    from app.engine.context import Form
+    t = describe(ctx(away_form=Form(5, 0, 1, 4, 1, 9, "DDDND")))
+    assert "Lyon reste sur trois victoires lors des cinq derniers matchs ; Nice n'en compte aucune." in t

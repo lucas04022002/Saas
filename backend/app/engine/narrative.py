@@ -70,10 +70,13 @@ def _form_sentence(ctx: MatchContext) -> str | None:
         return None
 
     def wins(f: Form) -> str:
+        if f.wins == 0:
+            return "aucune victoire"
         return NUMBERS.get(f.wins, str(f.wins)) + (" victoire" if f.wins == 1 else " victoires")
 
     if hf.played and af.played:
-        return f"{ctx.home} reste sur {wins(hf)} lors des {NUMBERS[hf.played]} derniers matchs ; {ctx.away} sur {NUMBERS.get(af.wins, str(af.wins))}."
+        away_wins_text = "n'en compte aucune" if af.wins == 0 else f"sur {NUMBERS.get(af.wins, str(af.wins))}"
+        return f"{ctx.home} reste sur {wins(hf)} lors des {NUMBERS[hf.played]} derniers matchs ; {ctx.away} {away_wins_text}."
     f, name = (hf, ctx.home) if hf.played else (af, ctx.away)
     return f"{name} reste sur {wins(f)} lors des {NUMBERS[f.played]} derniers matchs."
 
