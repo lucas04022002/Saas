@@ -139,7 +139,7 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
         db.flush()
         # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi − 1h (convention documentée dans le docstring du module)
         opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
-        closing_at = match.kickoff_at - timedelta(hours=1)
+        closing_at = _kickoff(r.date, r.time) - timedelta(hours=1)
         report.snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)
         report.snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
         report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)

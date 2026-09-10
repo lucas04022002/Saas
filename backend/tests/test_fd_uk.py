@@ -1,4 +1,4 @@
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 from app.collectors.aliases import normalize, seed_aliases
@@ -117,3 +117,35 @@ def test_quarantine_recovers_canonical_team_after_alias_added(db):
     assert (m.home_score, m.away_score) == (4, 2)
     assert m.home_team_id == arsenal.id and m.away_team_id == bournemouth.id
     assert m.home_team == "Arsenal" and m.away_team == "Bournemouth"
+
+
+def test_missing_time_falls_back_to_15h_utc_kickoff_and_14h_closing(db):
+    seed_aliases(db)
+    rows = parse_csv(SAMPLE)
+    row = next(r for r in rows if r.home == "Fulham" and r.away == "Everton")
+    assert row.time is None
+
+    import_rows(db, "E0", [row])
+
+    m = db.query(Match).filter(Match.home_team == "Fulham", Match.away_team == "Everton").one()
+    assert m.kickoff_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 31, 15, 0, tzinfo=timezone.utc)
+    closing = [s for s in db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id)
+               if s.taken_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 31, 14, 0, tzinfo=timezone.utc)]
+    assert len(closing) == 2   # avg + pinnacle, clôture = coup d'envoi (15:00) − 1h
+
+
+def test_closing_snapshot_not_duplicated_after_kickoff_correction_by_fd_org(db):
+    """fd_org peut réécrire match.kickoff_at (heure exacte) ; la clôture fd_uk doit rester datée depuis la ligne CSV,
+    pas depuis match.kickoff_at, sinon un second import archive la même clôture à un nouvel horodatage."""
+    seed_aliases(db)
+    import_rows(db, "E0", parse_csv(SAMPLE)[:1])
+    m = db.query(Match).filter(Match.home_team == "Liverpool").one()
+    before = db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).count()
+
+    m.kickoff_at = m.kickoff_at - timedelta(hours=1)   # simulate fd_org correction
+    db.commit()
+
+    import_rows(db, "E0", parse_csv(SAMPLE)[:1])
+
+    after = db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).count()
+    assert after == before
