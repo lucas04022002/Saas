@@ -3,12 +3,19 @@ import { http, HttpResponse } from "msw";
 import { server } from "./msw/server";
 import { API } from "./msw/handlers";
 
-// Les Route Handlers lisent le cookie httpOnly via next/headers : on simule cookies() avec un jeton
-// mutable, ajusté par chaque test avant d'appeler le handler (pas de rechargement de module nécessaire,
-// cookies() est appelée à chaque requête, pas à l'import).
-const cookieStore = vi.hoisted(() => ({ token: undefined as string | undefined }));
+// Les Route Handlers lisent/écrivent le cookie httpOnly via next/headers : on simule cookies() avec un
+// jeton mutable et des journaux de set/delete, ajustés par chaque test avant d'appeler le handler (pas de
+// rechargement de module nécessaire, cookies() est appelée à chaque requête, pas à l'import). Un appel
+// direct au handler (hors du cycle de requête réel de Next.js) ne matérialise pas d'en-tête Set-Cookie sur
+// la réponse : on vérifie donc que cookies().set()/.delete() ont bien été invoqués, ce qui est le
+// comportement observable équivalent pour cette couche.
+const cookieStore = vi.hoisted(() => ({ token: undefined as string | undefined, sets: [] as { name: string; value: string }[], deletes: [] as string[] }));
 vi.mock("next/headers", () => ({
-  cookies: async () => ({ get: (name: string) => (name === "rp_token" && cookieStore.token !== undefined ? { value: cookieStore.token } : undefined) }),
+  cookies: async () => ({
+    get: (name: string) => (name === "rp_token" && cookieStore.token !== undefined ? { value: cookieStore.token } : undefined),
+    set: (name: string, value: string) => { cookieStore.sets.push({ name, value }); },
+    delete: (name: string) => { cookieStore.deletes.push(name); },
+  }),
 }));
 
 describe("app/api/bankroll — proxy authentifié", () => {
@@ -50,5 +57,48 @@ describe("app/api/bankroll — proxy authentifié", () => {
     const res = await GET();
     expect(res.status).toBe(500);
     expect(await res.json()).toEqual({ success: false, message: "boom" });
+  });
+
+  it("POST : une requête d'origine étrangère est aussi refusée (403)", async () => {
+    cookieStore.token = "tok";
+    const { POST } = await import("@/app/api/bankroll/route");
+    const req = new Request("http://localhost:3000/api/bankroll", { method: "POST", headers: { origin: "https://evil.example" }, body: "{}" });
+    const res = await POST(req);
+    expect(res.status).toBe(403);
+  });
+});
+
+describe("app/api/session — garde d'origine (CSRF)", () => {
+  it("POST sans sec-fetch-site, origine étrangère : 403", async () => {
+    const { POST } = await import("@/app/api/session/route");
+    const req = new Request("http://localhost:3000/api/session", { method: "POST", headers: { origin: "https://evil.example", "content-type": "application/json" }, body: JSON.stringify({ token: "x" }) });
+    const res = await POST(req);
+    expect(res.status).toBe(403);
+    expect(await res.json()).toEqual({ success: false, message: "Origine refusée" });
+  });
+
+  it("POST avec sec-fetch-site: same-origin : 200 et le cookie est posé", async () => {
+    cookieStore.sets = [];
+    const { POST } = await import("@/app/api/session/route");
+    const req = new Request("http://localhost:3000/api/session", { method: "POST", headers: { "sec-fetch-site": "same-origin", "content-type": "application/json" }, body: JSON.stringify({ token: "x" }) });
+    const res = await POST(req);
+    expect(res.status).toBe(200);
+    expect(cookieStore.sets).toContainEqual(expect.objectContaining({ name: "rp_token", value: "x" }));
+  });
+
+  it("DELETE sans sec-fetch-site ni origin same-site : 403", async () => {
+    const { DELETE } = await import("@/app/api/session/route");
+    const req = new Request("http://localhost:3000/api/session", { method: "DELETE", headers: { origin: "https://evil.example" } });
+    const res = await DELETE(req);
+    expect(res.status).toBe(403);
+  });
+
+  it("DELETE avec sec-fetch-site: same-origin : 200 et le cookie est retiré", async () => {
+    cookieStore.deletes = [];
+    const { DELETE } = await import("@/app/api/session/route");
+    const req = new Request("http://localhost:3000/api/session", { method: "DELETE", headers: { "sec-fetch-site": "same-origin" } });
+    const res = await DELETE(req);
+    expect(res.status).toBe(200);
+    expect(cookieStore.deletes).toContain("rp_token");
   });
 });

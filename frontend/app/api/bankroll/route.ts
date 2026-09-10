@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { api } from "@/lib/api";
-import { errorEnvelope, requireToken } from "@/lib/route-utils";
+import { errorEnvelope, originGuard, requireToken } from "@/lib/route-utils";
 
 export async function GET() {
   const token = await requireToken();
@@ -14,6 +14,8 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
+  const guard = originGuard(req);
+  if (guard) return guard;
   const token = await requireToken();
   if (token instanceof NextResponse) return token;
   const body = await req.json();
