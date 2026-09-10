@@ -77,8 +77,15 @@ def _collectors_status() -> dict:
         if not f.exists():
             out[name] = {"at": None, "stale": True}
             continue
-        at = datetime.fromisoformat(json.loads(f.read_text(encoding="utf-8"))["at"])
-        out[name] = {"at": at.isoformat(), "stale": now - at > max_age}
+        try:
+            at = datetime.fromisoformat(json.loads(f.read_text(encoding="utf-8"))["at"])
+            # Handle naive datetime by treating as UTC
+            if at.tzinfo is None:
+                at = at.replace(tzinfo=timezone.utc)
+            out[name] = {"at": at.isoformat(), "stale": now - at > max_age}
+        except (OSError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
+            log.warning("heartbeat illisible pour %s : %s", name, exc)
+            out[name] = {"at": None, "stale": True}
     return out
 
 
