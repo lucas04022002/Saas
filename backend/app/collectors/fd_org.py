@@ -5,6 +5,7 @@ from datetime import date, datetime, time, timedelta, timezone
 
 import requests
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
@@ -43,13 +44,16 @@ def parse_matches(payload: dict) -> list[FdOrgMatch]:
         return []
     out = []
     for m in payload.get("matches", []):
-        ft = (m.get("score") or {}).get("fullTime") or {}
-        out.append(FdOrgMatch(
-            ext_id=f"fdo:{m['id']}", competition_code=comp.code,
-            utc_date=datetime.fromisoformat(m["utcDate"].replace("Z", "+00:00")),
-            home=m["homeTeam"]["name"], away=m["awayTeam"]["name"], status=m["status"],
-            hg=ft.get("home"), ag=ft.get("away"),
-        ))
+        try:
+            ft = (m.get("score") or {}).get("fullTime") or {}
+            out.append(FdOrgMatch(
+                ext_id=f"fdo:{m['id']}", competition_code=comp.code,
+                utc_date=datetime.fromisoformat(m["utcDate"].replace("Z", "+00:00")),
+                home=m["homeTeam"]["name"], away=m["awayTeam"]["name"], status=m["status"],
+                hg=ft.get("home"), ag=ft.get("away"),
+            ))
+        except (ValueError, KeyError, TypeError) as e:
+            log.warning("match fd_org ignoré (id=%s) : %s", m.get("id"), e)
     return out
 
 
@@ -65,7 +69,11 @@ def import_matches(db: Session, items: list[FdOrgMatch]) -> ImportReport:
             if match is None:
                 db.add(Match(external_id=it.ext_id, competition=comp.code, league=comp.name, country=comp.country,
                              home_team=it.home, away_team=it.away, kickoff_at=it.utc_date, status=MatchStatus.QUARANTINE))
-                db.commit()
+                try:
+                    db.commit()
+                except IntegrityError:
+                    db.rollback()
+                    log.warning("conflit d'unicité fd_org ignoré (quarantaine %s)", it.ext_id)
             report.quarantined += 1
             continue
         if match is None:
@@ -90,7 +98,11 @@ def import_matches(db: Session, items: list[FdOrgMatch]) -> ImportReport:
             match.status = new_status
         if new_status == MatchStatus.FINISHED and it.hg is not None:
             match.home_score, match.away_score = it.hg, it.ag
-        db.commit()
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            log.warning("conflit d'unicité fd_org ignoré (%s)", it.ext_id)
     return report
 
 

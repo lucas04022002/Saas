@@ -149,3 +149,20 @@ def test_closing_snapshot_not_duplicated_after_kickoff_correction_by_fd_org(db):
 
     after = db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).count()
     assert after == before
+
+
+def test_malformed_row_is_skipped_others_still_imported(db, caplog):
+    seed_aliases(db)
+    csv_text = (
+        "Date,Time,HomeTeam,AwayTeam,FTHG,FTAG,FTR\n"
+        "garbage,20:00,Liverpool,Bournemouth,4,2,H\n"
+        "17/08/2025,16:30,Man United,Arsenal,abc,1,A\n"
+        "15/08/2025,20:00,Chelsea,Fulham,0,1,A\n"
+    )
+    rows = parse_csv(csv_text)
+    assert len(rows) == 1 and rows[0].home == "Chelsea"
+    assert sum(1 for rec in caplog.records if rec.levelname == "WARNING") == 2
+
+    report = import_rows(db, "E0", rows)
+    assert report.created == 1
+    assert db.query(Match).count() == 1

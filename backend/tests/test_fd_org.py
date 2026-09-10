@@ -72,3 +72,25 @@ def test_quarantine_recovers_canonical_team_after_alias_added(db):
     assert m.status == MatchStatus.SCHEDULED
     assert m.home_team_id == tottenham.id and m.away_team_id == everton.id
     assert m.home_team == "Tottenham" and m.away_team == "Everton"
+
+
+def test_malformed_match_is_skipped_others_still_imported(db, caplog):
+    seed_aliases(db)
+    payload = {
+        "competition": {"code": "PL"},
+        "matches": [
+            {"id": 9001, "utcDate": "nope", "status": "TIMED",
+             "homeTeam": {"name": "Arsenal FC"}, "awayTeam": {"name": "Chelsea FC"},
+             "score": {"fullTime": {"home": None, "away": None}}},
+            {"id": 9002, "utcDate": "2026-09-12T14:00:00Z", "status": "TIMED",
+             "homeTeam": {"name": "Liverpool FC"}, "awayTeam": {"name": "AFC Bournemouth"},
+             "score": {"fullTime": {"home": None, "away": None}}},
+        ],
+    }
+    items = parse_matches(payload)
+    assert len(items) == 1 and items[0].ext_id == "fdo:9002"
+    assert any(rec.levelname == "WARNING" for rec in caplog.records)
+
+    report = import_matches(db, items)
+    assert report.created == 1
+    assert db.query(Match).count() == 1

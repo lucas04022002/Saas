@@ -5,6 +5,7 @@ from datetime import datetime, time, timedelta, timezone
 
 import requests
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
@@ -88,7 +89,11 @@ def store_events(db: Session, events: list[OddsEvent], taken_at: datetime) -> St
                 continue
             db.add(OddsSnapshot(match_id=match.id, bookmaker=book, taken_at=taken_at, home=h, draw=d, away=a))
             report.snapshots += 1
-        db.commit()
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            log.warning("conflit d'unicité odds_api ignoré (%s v %s)", ev.home, ev.away)
     return report
 
 

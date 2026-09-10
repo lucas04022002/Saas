@@ -11,6 +11,7 @@ from datetime import date, datetime, time, timedelta, timezone
 
 import requests
 from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
@@ -71,19 +72,22 @@ def parse_csv(text: str) -> list[FdUkRow]:
     for r in csv.DictReader(io.StringIO(text.lstrip("﻿"))):
         if not r.get("Date") or not r.get("FTR"):
             continue
-        d, m, y = r["Date"].split("/")
-        year = int(y) if len(y) == 4 else 2000 + int(y)
-        t = None
-        time_str = (r.get("Time") or "").strip()
-        if time_str:
-            hh, mm = time_str.split(":")
-            t = time(int(hh), int(mm))
-        rows.append(FdUkRow(
-            date=date(year, int(m), int(d)), home=r["HomeTeam"].strip(), away=r["AwayTeam"].strip(),
-            hg=int(r["FTHG"]), ag=int(r["FTAG"]), time=t, hs=_i(r.get("HS")), as_=_i(r.get("AS")),
-            avg_open=_triple(r, "AvgH", "AvgD", "AvgA"), avg_close=_triple(r, "AvgCH", "AvgCD", "AvgCA"),
-            ps_open=_triple(r, "PSH", "PSD", "PSA"), ps_close=_triple(r, "PSCH", "PSCD", "PSCA"),
-        ))
+        try:
+            d, m, y = r["Date"].split("/")
+            year = int(y) if len(y) == 4 else 2000 + int(y)
+            t = None
+            time_str = (r.get("Time") or "").strip()
+            if time_str:
+                hh, mm = time_str.split(":")
+                t = time(int(hh), int(mm))
+            rows.append(FdUkRow(
+                date=date(year, int(m), int(d)), home=r["HomeTeam"].strip(), away=r["AwayTeam"].strip(),
+                hg=int(r["FTHG"]), ag=int(r["FTAG"]), time=t, hs=_i(r.get("HS")), as_=_i(r.get("AS")),
+                avg_open=_triple(r, "AvgH", "AvgD", "AvgA"), avg_close=_triple(r, "AvgCH", "AvgCD", "AvgCA"),
+                ps_open=_triple(r, "PSH", "PSD", "PSA"), ps_close=_triple(r, "PSCH", "PSCD", "PSCA"),
+            ))
+        except (ValueError, KeyError, TypeError) as e:
+            log.warning("ligne fd_uk ignorée (%s vs %s, Date=%r) : %s", r.get("HomeTeam"), r.get("AwayTeam"), r.get("Date"), e)
     return rows
 
 
@@ -115,7 +119,11 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             if match is None:
                 db.add(Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
                              home_team=r.home, away_team=r.away, kickoff_at=_kickoff(r.date, r.time), status=MatchStatus.QUARANTINE))
-                db.commit()
+                try:
+                    db.commit()
+                except IntegrityError:
+                    db.rollback()
+                    log.warning("conflit d'unicité fd_uk ignoré (quarantaine %s)", key)
             report.quarantined += 1
             continue
         if match is None:
@@ -144,7 +152,11 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
         report.snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
         report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)
         report.snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", closing_at, r.ps_close)
-        db.commit()
+        try:
+            db.commit()
+        except IntegrityError:
+            db.rollback()
+            log.warning("conflit d'unicité fd_uk ignoré (%s)", key)
     return report
 
 
