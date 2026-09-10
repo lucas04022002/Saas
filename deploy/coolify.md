@@ -24,9 +24,11 @@ l'interface Coolify.
    `CORS_ORIGINS`, `THE_ODDS_API_KEY`, `FOOTBALL_DATA_ORG_KEY`,
    `ENV=production`.
 
-5. **Premier déploiement** : au démarrage du conteneur, `alembic upgrade head`
-   s'exécute avant `uvicorn` (voir `Dockerfile`) — le schéma est mis à jour
-   automatiquement.
+5. **Premier déploiement** : contexte de build = racine du dépôt, avec le
+   `Dockerfile` à la racine (unique Dockerfile du projet ; il copie
+   `backend/requirements.txt` puis `backend/`). Au démarrage du conteneur,
+   `alembic upgrade head` s'exécute avant `uvicorn` (voir ce `Dockerfile`) —
+   le schéma est mis à jour automatiquement.
 
 6. **Amorçage des collecteurs** : depuis le terminal Coolify du service,
    lancer à la main dans l'ordre `python -m app.collectors.run seed`, puis
