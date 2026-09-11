@@ -1,4 +1,4 @@
-"""CLI des collecteurs : python -m app.collectors.run {seed,fd_uk,fd_org,odds,fixtures,quarantine} [--seasons 2425 2526]
+"""CLI des collecteurs : python -m app.collectors.run {seed,fd_uk,fd_org,odds,fixtures,dedup,quarantine} [--seasons 2425 2526]
 Écrit un heartbeat JSON dans backend/heartbeats/<nom>.json après chaque run réussi (lu par /health)."""
 import argparse
 import json
@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_db
 from app.collectors import fd_org, fd_uk, odds_api
 from app.collectors.aliases import seed_aliases
+from app.collectors.dedup import dedup_matches
 from app.core.logging import setup_logging
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -59,7 +60,7 @@ def print_quarantine_report(db: Session) -> None:
 def main(argv: list[str] | None = None) -> int:
     setup_logging()
     p = argparse.ArgumentParser()
-    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "fixtures", "quarantine"])
+    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "fixtures", "dedup", "quarantine"])
     p.add_argument("--seasons", nargs="*", default=["2526"])
     args = p.parse_args(argv)
     db = next(get_db())
@@ -76,6 +77,10 @@ def main(argv: list[str] | None = None) -> int:
             summary["bets_settled"] = settle_bets(db)
         elif args.collector == "fixtures":
             summary = vars(fd_uk.run_fixtures(db))
+        elif args.collector == "dedup":
+            report = dedup_matches(db)
+            summary = vars(report)
+            print(report)
         else:
             summary = vars(odds_api.run(db))
         write_heartbeat(args.collector, summary)

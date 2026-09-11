@@ -1,12 +1,14 @@
 import json
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
+from datetime import time as fd_time
 from pathlib import Path
 
 from app.collectors import fd_org
 from app.collectors.aliases import normalize, seed_aliases
 from app.collectors.competitions import COMPETITIONS
-from app.collectors.fd_org import import_matches, parse_matches
+from app.collectors.fd_org import FdOrgMatch, import_matches, parse_matches
+from app.collectors.fd_uk import FixtureRow, import_fixtures
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.team import Team, TeamAlias
@@ -46,6 +48,28 @@ def test_import_updates_kickoff_of_match_created_by_fd_uk(db):
     assert db.query(Match).count() == 1
 
 
+def test_import_reuses_match_created_by_fd_uk_fixtures_no_duplicate(db):
+    """Chemin (a) du dédoublonnage : une ligne fixtures fd_uk existe déjà (fd_uk_key posé) ; fd_org importe le
+    même match 1h plus tôt -> pas de nouvelle ligne, external_id attaché, kickoff pris depuis fd_org (autorité)."""
+    seed_aliases(db)
+    fixture_row = FixtureRow(div="E0", date=date(2026, 9, 13), time=fd_time(17, 0), home="Arsenal", away="Chelsea", avg=(1.9, 3.5, 4.0), max_=None)
+    import_fixtures(db, [fixture_row], datetime(2026, 9, 10, 10, 0, tzinfo=timezone.utc))
+    existing = db.query(Match).filter(Match.home_team == "Arsenal").one()
+    assert existing.fd_uk_key is not None and existing.external_id is None
+    kickoff_fd_uk = existing.kickoff_at.replace(tzinfo=timezone.utc)
+
+    item = FdOrgMatch(ext_id="fdo:900", competition_code="E0", utc_date=kickoff_fd_uk - timedelta(hours=1),
+                       home="Arsenal FC", away="Chelsea FC", status="TIMED", hg=None, ag=None)
+    report = import_matches(db, [item])
+
+    assert report.created == 0 and report.updated == 1
+    assert db.query(Match).count() == 1
+    db.refresh(existing)
+    assert existing.external_id == "fdo:900"
+    assert existing.kickoff_at.replace(tzinfo=timezone.utc) == kickoff_fd_uk - timedelta(hours=1)
+    assert existing.fd_uk_key is not None   # les deux identifiants cohabitent sur la même ligne
+
+
 def test_import_is_idempotent(db):
     seed_aliases(db)
     import_matches(db, parse_matches(PAYLOAD))
@@ -75,6 +99,34 @@ def test_quarantine_recovers_canonical_team_after_alias_added(db):
     assert m.status == MatchStatus.SCHEDULED
     assert m.home_team_id == tottenham.id and m.away_team_id == everton.id
     assert m.home_team == "Tottenham" and m.away_team == "Everton"
+
+
+def test_quarantine_recovery_merges_into_match_already_resolved_by_another_source(db):
+    """Reproduit le bug réel observé en prod : la quarantaine fd_org ne peut pas être résolue par simple update
+    quand un match a déjà été créé pour les mêmes équipes/le même jour par une autre source (odds_api, fd_uk) —
+    l'update entrerait en conflit avec la contrainte d'unicité (compétition, kickoff, équipes). Il faut fusionner."""
+    seed_aliases(db)
+    tottenham = db.query(Team).filter_by(name="Tottenham").one()
+    everton = db.query(Team).filter_by(name="Everton").one()
+    resolved = make_match(db, tottenham, everton, competition="E0", kickoff=datetime(2026, 9, 13, 17, 30, tzinfo=timezone.utc))
+
+    item = next(i for i in parse_matches(PAYLOAD) if i.home == "FC Nulle Part")   # id 537004, Everton en extérieur
+    report = import_matches(db, [item])
+    assert report.quarantined == 1
+    assert db.query(Match).count() == 2   # la quarantaine + le match déjà résolu ailleurs
+
+    db.add(TeamAlias(source="fd_org", alias=normalize("FC Nulle Part"), team_id=tottenham.id))
+    db.commit()
+
+    report2 = import_matches(db, [item])
+
+    assert report2.quarantined == 0 and report2.updated == 1
+    assert db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).count() == 0
+    assert db.query(Match).count() == 1
+    survivor = db.query(Match).one()
+    assert survivor.id == resolved.id
+    assert survivor.external_id == "fdo:537004"
+    assert survivor.status == MatchStatus.SCHEDULED
 
 
 def test_malformed_match_is_skipped_others_still_imported(db, caplog):

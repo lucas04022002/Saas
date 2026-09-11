@@ -163,6 +163,36 @@ def test_quarantine_recovers_canonical_team_after_alias_added(db):
     assert m.home_team == "Arsenal" and m.away_team == "Bournemouth"
 
 
+def test_quarantine_recovery_merges_into_match_already_resolved_by_another_source(db):
+    """Même bug que côté fd_org : la ligne quarantaine fd_uk ne peut pas être résolue par simple update quand un
+    match existe déjà pour les mêmes équipes/même jour (créé par fd_org ou odds_api) -> fusion, pas de conflit d'unicité."""
+    seed_aliases(db)
+    rows = parse_csv(SAMPLE)
+    row = next(r for r in rows if r.home == "FC Nulle Part")   # 15/08/2025 20:00 UK -> 19:00 UTC
+
+    arsenal = db.query(Team).filter(Team.name == "Arsenal").one()
+    bournemouth = db.query(Team).filter(Team.name == "Bournemouth").one()
+    resolved = make_match(db, arsenal, bournemouth, competition="E0", kickoff=datetime(2025, 8, 15, 19, 0, tzinfo=timezone.utc))
+
+    report = import_rows(db, "E0", [row])
+    assert report.quarantined == 1
+    assert db.query(Match).count() == 2   # la quarantaine + le match déjà résolu ailleurs
+
+    db.add(TeamAlias(source="fd_uk", alias=normalize("FC Nulle Part"), team_id=arsenal.id))
+    db.commit()
+
+    report2 = import_rows(db, "E0", [row])
+
+    assert report2.quarantined == 0 and report2.updated == 1
+    assert db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).count() == 0
+    assert db.query(Match).count() == 1
+    survivor = db.query(Match).one()
+    assert survivor.id == resolved.id
+    assert survivor.status == MatchStatus.FINISHED
+    assert (survivor.home_score, survivor.away_score) == (4, 2)
+    assert survivor.fd_uk_key == "E0:2025-08-15:FC Nulle Part:Bournemouth"
+
+
 def test_missing_time_falls_back_to_15h_utc_kickoff_and_14h_closing(db):
     seed_aliases(db)
     rows = parse_csv(SAMPLE)

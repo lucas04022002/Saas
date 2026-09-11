@@ -1,7 +1,7 @@
 """football-data.org (plan gratuit) : calendrier, heures exactes, résultats, reports, Ligue des Champions."""
 import logging
 from dataclasses import dataclass
-from datetime import date, datetime, time, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 
 import requests
 from sqlalchemy import select
@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
 from app.collectors.competitions import COMPETITIONS, by_fd_org_code
+from app.collectors.dedup import find_existing, merge_matches
 from app.collectors.fd_uk import ImportReport
 from app.core.config import settings
 from app.models.enums import MatchStatus
@@ -76,12 +77,18 @@ def import_matches(db: Session, items: list[FdOrgMatch]) -> ImportReport:
                     log.warning("conflit d'unicité fd_org ignoré (quarantaine %s)", it.ext_id)
             report.quarantined += 1
             continue
-        if match is None:
-            day = it.utc_date.date()
-            day_start = datetime.combine(day, time.min, tzinfo=timezone.utc)
-            day_end = datetime.combine(day, time.max, tzinfo=timezone.utc)
-            match = db.scalar(select(Match).where(Match.competition == comp.code, Match.home_team_id == home.id,
-                                                  Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
+
+        # un match désignant les mêmes équipes/compétition, à coup d'envoi proche, a pu être créé par une autre
+        # source (fd_uk, odds_api) avant que fd_org ne rapproche son external_id
+        other = find_existing(db, comp.code, home.id, away.id, it.utc_date)
+        if match is not None and match.status == MatchStatus.QUARANTINE and other is not None:
+            # la quarantaine se résout sur un match déjà résolu ailleurs : une mise à jour en place entrerait en
+            # conflit avec la contrainte d'unicité (compétition, kickoff, équipes) de `other` -> fusion à la place
+            merge_matches(db, other, match)
+            match = other
+        elif match is None:
+            match = other   # match déjà posé par une autre source, pas encore rapproché par external_id
+
         created = updated = 0
         try:
             if match is None:

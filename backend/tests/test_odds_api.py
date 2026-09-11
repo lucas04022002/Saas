@@ -1,11 +1,13 @@
 import json
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
+from datetime import time as fd_time
 from pathlib import Path
 
 from sqlalchemy.exc import IntegrityError
 
 import app.collectors.odds_api as odds_api
 from app.collectors.aliases import normalize, seed_aliases
+from app.collectors.fd_uk import FixtureRow, import_fixtures
 from app.collectors.odds_api import parse_events, store_events
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -41,6 +43,27 @@ def test_store_creates_match_when_calendar_missing(db):
     assert report.matched == 1
     m = db.query(Match).filter(Match.status == MatchStatus.SCHEDULED).one()
     assert (m.home_team, m.away_team, m.competition) == ("Arsenal", "Chelsea", "E0")
+
+
+def test_store_reuses_match_already_present_via_fd_uk_no_duplicate(db):
+    """Chemin (c) du dédoublonnage : une ligne fixtures fd_uk existe déjà pour Arsenal-Chelsea ; l'événement
+    odds_api pour le même match (même jour, quelques heures d'écart) ne doit pas créer de second match."""
+    seed_aliases(db)
+    fixture_row = FixtureRow(div="E0", date=date(2026, 9, 12), time=fd_time(15, 0), home="Arsenal", away="Chelsea", avg=(1.9, 3.5, 4.0), max_=None)
+    import_fixtures(db, [fixture_row], datetime(2026, 9, 10, 10, 0, tzinfo=timezone.utc))
+    existing = db.query(Match).filter(Match.home_team == "Arsenal").one()
+    assert existing.fd_uk_key is not None
+    kickoff_before = existing.kickoff_at
+
+    report = store_events(db, parse_events("soccer_epl", PAYLOAD)[:1], taken_at=T0)   # commence_time 2026-09-12T14:00:00Z
+
+    assert report.matched == 1
+    assert db.query(Match).count() == 1
+    db.refresh(existing)
+    assert existing.fd_uk_key is not None   # toujours présent, jamais écrasé par odds_api
+    assert existing.kickoff_at == kickoff_before   # odds_api ne réécrit jamais le coup d'envoi (seul fd_org le fait)
+    snaps = db.query(OddsSnapshot).filter_by(match_id=existing.id).all()
+    assert {s.bookmaker for s in snaps} == {"fd_uk_avg", "betclic_fr", "winamax_fr", "pinnacle"}
 
 
 def test_store_is_idempotent_for_same_taken_at(db):

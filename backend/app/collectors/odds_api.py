@@ -1,7 +1,7 @@
 """The Odds API : relevés 1N2 des bookmakers français + Pinnacle, archivés tels quels (jamais écrasés)."""
 import logging
 from dataclasses import dataclass, field
-from datetime import datetime, time, timedelta, timezone
+from datetime import datetime, timezone
 
 import requests
 from sqlalchemy import select
@@ -10,6 +10,7 @@ from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
 from app.collectors.competitions import COMPETITIONS, FRENCH_BOOKMAKERS, REFERENCE_BOOKMAKER, by_odds_api_key
+from app.collectors.dedup import find_existing
 from app.core.config import settings
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -60,11 +61,9 @@ def parse_events(sport_key: str, payload: list) -> list[OddsEvent]:
 
 def _find_or_create_match(db: Session, ev: OddsEvent, home, away) -> Match:
     comp = COMPETITIONS[ev.competition_code]
-    day = ev.commence.date()
-    window = (datetime.combine(day - timedelta(days=1), time.min, tzinfo=timezone.utc),
-              datetime.combine(day + timedelta(days=1), time.max, tzinfo=timezone.utc))
-    match = db.scalar(select(Match).where(Match.competition == comp.code, Match.home_team_id == home.id, Match.away_team_id == away.id,
-                                          Match.kickoff_at >= window[0], Match.kickoff_at <= window[1]))
+    # un match posé par fd_uk ou fd_org pour ces équipes/cette compétition, à coup d'envoi proche, peut déjà
+    # exister sans que l'odds_api ait de moyen de le rapprocher par identifiant (il n'en a pas)
+    match = find_existing(db, comp.code, home.id, away.id, ev.commence)
     if match is None:
         match = Match(competition=comp.code, league=comp.name, country=comp.country, home_team_id=home.id, away_team_id=away.id,
                       home_team=home.name, away_team=away.name, kickoff_at=ev.commence, status=MatchStatus.SCHEDULED)

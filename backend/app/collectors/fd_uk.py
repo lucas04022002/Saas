@@ -21,6 +21,7 @@ from sqlalchemy.orm import Session
 
 from app.collectors.aliases import TeamAliasError, resolve_team
 from app.collectors.competitions import COMPETITIONS
+from app.collectors.dedup import find_existing, merge_matches
 from app.core.config import settings
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -177,18 +178,24 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
                     log.warning("conflit d'unicité fd_uk ignoré (quarantaine %s)", key)
             report.quarantined += 1
             continue
-        if match is None:
-            # un match créé par fd_org (calendrier) existe peut-être déjà : même compétition, mêmes équipes, même jour
-            day_start = datetime.combine(r.date, time.min, tzinfo=timezone.utc)
-            day_end = datetime.combine(r.date, time.max, tzinfo=timezone.utc)
-            match = db.scalar(select(Match).where(Match.competition == competition_code, Match.home_team_id == home.id,
-                                                  Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
+        kickoff = _kickoff(r.date, r.time)
+        # un match désignant les mêmes équipes/compétition, à coup d'envoi proche, a pu être créé par une autre
+        # source (fd_org, odds_api) avant que ce fd_uk_key ne soit posé
+        other = find_existing(db, competition_code, home.id, away.id, kickoff)
+        if match is not None and match.status == MatchStatus.QUARANTINE and other is not None:
+            # la quarantaine se résout sur un match déjà résolu ailleurs : une mise à jour en place entrerait en
+            # conflit avec la contrainte d'unicité (compétition, kickoff, équipes) de `other` -> fusion à la place
+            merge_matches(db, other, match)
+            match = other
+        elif match is None:
+            match = other   # match déjà posé par une autre source, pas encore rapproché par fd_uk_key
+
         created = updated = snapshots = 0
         try:
             if match is None:
                 match = Match(fd_uk_key=key, competition=competition_code, league=comp.name, country=comp.country,
                               home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
-                              kickoff_at=_kickoff(r.date, r.time))
+                              kickoff_at=kickoff)
                 db.add(match); created = 1
             else:
                 match.fd_uk_key = match.fd_uk_key or key
@@ -200,7 +207,7 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
             db.flush()
             # cotes : ouverture datée J−7 12:00 UTC, clôture datée coup d'envoi dérivé de la ligne CSV (pas match.kickoff_at) − 1h (convention documentée dans le docstring du module)
             opening_at = datetime.combine(r.date - timedelta(days=7), time(12, 0), tzinfo=timezone.utc)
-            closing_at = _kickoff(r.date, r.time) - timedelta(hours=1)
+            closing_at = kickoff - timedelta(hours=1)
             snapshots += _add_snapshot(db, match, "fd_uk_avg", opening_at, r.avg_open)
             snapshots += _add_snapshot(db, match, "fd_uk_avg", closing_at, r.avg_close)
             snapshots += _add_snapshot(db, match, "fd_uk_pinnacle", opening_at, r.ps_open)
@@ -240,19 +247,21 @@ def import_fixtures(db: Session, rows: list[FixtureRow], taken_at: datetime) -> 
                     log.warning("conflit d'unicité fixtures fd_uk ignoré (quarantaine %s)", key)
             report.quarantined += 1
             continue
-        if match is None:
-            # un match déjà créé par fd_org (calendrier) ou par un import fixtures précédent sans fd_uk_key :
-            # même compétition, mêmes équipes, même jour
-            day_start = datetime.combine(r.date, time.min, tzinfo=timezone.utc)
-            day_end = datetime.combine(r.date, time.max, tzinfo=timezone.utc)
-            match = db.scalar(select(Match).where(Match.competition == r.div, Match.home_team_id == home.id,
-                                                  Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
+        kickoff = _kickoff(r.date, r.time)
+        # un match déjà créé par fd_org (calendrier) ou par odds_api, pour les mêmes équipes à coup d'envoi proche
+        other = find_existing(db, r.div, home.id, away.id, kickoff)
+        if match is not None and match.status == MatchStatus.QUARANTINE and other is not None:
+            merge_matches(db, other, match)
+            match = other
+        elif match is None:
+            match = other
+
         created = updated = snapshots = 0
         try:
             if match is None:
                 match = Match(fd_uk_key=key, competition=r.div, league=comp.name, country=comp.country,
                               home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
-                              kickoff_at=_kickoff(r.date, r.time), status=MatchStatus.SCHEDULED)
+                              kickoff_at=kickoff, status=MatchStatus.SCHEDULED)
                 db.add(match); created = 1
             else:
                 match.fd_uk_key = match.fd_uk_key or key
