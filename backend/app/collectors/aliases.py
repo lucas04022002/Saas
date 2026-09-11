@@ -140,6 +140,7 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("AC Monza", "Italie", {"fd_uk": ["Monza"], "odds_api": ["Monza"]}),
     ("Racing Santander", "Espagne", {"fd_uk": ["Santander"], "fd_org": ["Real Racing Club de Santander"]}),
     ("Málaga CF", "Espagne", {"fd_uk": ["Malaga"], "odds_api": ["Malaga"]}),
+    ("Deportivo La Corogne", "Espagne", {"fd_uk": ["La Coruna"], "odds_api": ["Deportivo La Coruña", "Deportivo La Coruna"], "fd_org": ["RC Deportivo de La Coruña"]}),
     # ---- Ligue des Champions 2026/27, clubs hors des cinq championnats domestiques (pas de calendrier fd_uk)
     ("PSV Eindhoven", "Pays-Bas", {"fd_org": ["PSV"]}),
     ("Feyenoord", "Pays-Bas", {"fd_org": ["Feyenoord Rotterdam"]}),

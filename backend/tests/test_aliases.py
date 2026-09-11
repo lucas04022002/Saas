@@ -4,10 +4,10 @@ from app.collectors.aliases import KNOWN_TEAMS, TeamAliasError, resolve_team, se
 from app.models.team import Team
 
 
-def test_seed_creates_133_teams(db):
+def test_seed_creates_134_teams(db):
     created = seed_aliases(db)
-    assert db.query(Team).count() == 133
-    assert created > 133            # chaque équipe a au moins un alias par source
+    assert db.query(Team).count() == 134
+    assert created > 134            # chaque équipe a au moins un alias par source
 
 
 def test_seed_is_idempotent(db):
@@ -49,4 +49,4 @@ def test_known_teams_cover_five_leagues():
     countries = {country for _, country, _ in KNOWN_TEAMS}
     assert {"Angleterre", "France", "Espagne", "Allemagne", "Italie"} <= countries
     # 98 (saison 2025/26 + 2 relégués 2024/25) + 12 promus 2026/27 + 14 clubs LdC + 9 clubs LE hors des cinq championnats
-    assert len(KNOWN_TEAMS) == 133
+    assert len(KNOWN_TEAMS) == 134
