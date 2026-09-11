@@ -22,4 +22,13 @@ describe("getUser — API injoignable", () => {
     await expect(getUser()).resolves.toBeNull();
     spy.mockRestore();
   });
+
+  it("401 (jeton expiré) : résout null sans rien journaliser", async () => {
+    const spy = vi.spyOn(console, "error").mockImplementation(() => {});
+    server.use(http.get(`${API}/api/v1/auth/me`, () => HttpResponse.json({ detail: "Invalid access token" }, { status: 401 })));
+    const { getUser } = await import("@/lib/session");
+    await expect(getUser()).resolves.toBeNull();
+    expect(spy).not.toHaveBeenCalled();
+    spy.mockRestore();
+  });
 });

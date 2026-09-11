@@ -14,7 +14,7 @@ export async function getUser(): Promise<User | null> {
   } catch (e) {
     // 401 = jeton expiré ou révoqué : c'est un visiteur anonyme, pas une erreur à journaliser.
     if (e instanceof ApiError && e.status === 401) return null;
-    console.warn("getUser: session non vérifiable", e instanceof Error ? e.message : e);
+    console.error("getUser: session non vérifiable", e instanceof Error ? e.message : e);
     return null;
   }
 }
