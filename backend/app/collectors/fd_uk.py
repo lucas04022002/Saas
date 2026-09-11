@@ -43,11 +43,25 @@ class FdUkRow:
 
 
 @dataclass
+class FixtureRow:
+    div: str
+    date: date
+    time: time | None
+    home: str
+    away: str
+    avg: tuple[float, float, float] | None
+    max_: tuple[float, float, float] | None
+
+
+@dataclass
 class ImportReport:
     created: int = 0
     updated: int = 0
     quarantined: int = 0
     snapshots: int = 0
+
+
+FIXTURE_DIVS = {c.fd_uk_code for c in COMPETITIONS.values() if c.fd_uk_code}   # {"E0", "F1", "SP1", "D1", "I1"}
 
 
 def _f(v: str | None) -> float | None:
@@ -90,6 +104,34 @@ def parse_csv(text: str) -> list[FdUkRow]:
             ))
         except (ValueError, KeyError, TypeError) as e:
             log.warning("ligne fd_uk ignorée (%s vs %s, Date=%r) : %s", r.get("HomeTeam"), r.get("AwayTeam"), r.get("Date"), e)
+    return rows
+
+
+def parse_fixtures_csv(text: str) -> list[FixtureRow]:
+    """fixtures.csv : matchs à venir toutes compétitions confondues, sans score. On ne garde que les 5 championnats
+    fd_uk connus (COMPETITIONS[*].fd_uk_code) ; les autres divisions (E1, SC0, ...) sont ignorées."""
+    rows = []
+    for r in csv.DictReader(io.StringIO(text.lstrip("﻿"))):
+        div = (r.get("Div") or "").strip()
+        if div not in FIXTURE_DIVS:
+            continue
+        if not r.get("Date") or not r.get("HomeTeam") or not r.get("AwayTeam"):
+            continue
+        try:
+            d, m, y = r["Date"].split("/")
+            year = int(y) if len(y) == 4 else 2000 + int(y)
+            t = None
+            time_str = (r.get("Time") or "").strip()
+            if time_str:
+                hh, mm = time_str.split(":")
+                t = time(int(hh), int(mm))
+            rows.append(FixtureRow(
+                div=div, date=date(year, int(m), int(d)), time=t,
+                home=r["HomeTeam"].strip(), away=r["AwayTeam"].strip(),
+                avg=_triple(r, "AvgH", "AvgD", "AvgA"), max_=_triple(r, "MaxH", "MaxD", "MaxA"),
+            ))
+        except (ValueError, KeyError, TypeError) as e:
+            log.warning("ligne fixtures fd_uk ignorée (%s vs %s, Date=%r) : %s", r.get("HomeTeam"), r.get("AwayTeam"), r.get("Date"), e)
     return rows
 
 
@@ -163,6 +205,77 @@ def import_rows(db: Session, competition_code: str, rows: list[FdUkRow]) -> Impo
         except IntegrityError:
             db.rollback()
             log.warning("conflit d'unicité fd_uk ignoré (%s)", key)
+    return report
+
+
+def import_fixtures(db: Session, rows: list[FixtureRow], taken_at: datetime) -> ImportReport:
+    """Importe les matchs à venir de fixtures.csv : crée/retrouve le match (SCHEDULED, jamais de score) et une
+    seule cote fd_uk_avg par match, à `taken_at` arrondi à l'heure (idempotent sur match/bookmaker/taken_at)."""
+    taken_at = taken_at.replace(minute=0, second=0, microsecond=0)
+    report = ImportReport()
+    for r in rows:
+        comp = COMPETITIONS.get(r.div)
+        if comp is None:
+            continue
+        key = f"{r.div}:{r.date.isoformat()}:{r.home}:{r.away}"
+        match = db.scalar(select(Match).where(Match.fd_uk_key == key))
+        try:
+            home, away = resolve_team(db, "fd_uk", r.home), resolve_team(db, "fd_uk", r.away)
+        except TeamAliasError as e:
+            log.warning("quarantaine fixtures fd_uk %s : %s", key, e)
+            if match is None:
+                db.add(Match(fd_uk_key=key, competition=r.div, league=comp.name, country=comp.country,
+                             home_team=r.home, away_team=r.away, kickoff_at=_kickoff(r.date, r.time), status=MatchStatus.QUARANTINE))
+                try:
+                    db.commit()
+                except IntegrityError:
+                    db.rollback()
+                    log.warning("conflit d'unicité fixtures fd_uk ignoré (quarantaine %s)", key)
+            report.quarantined += 1
+            continue
+        if match is None:
+            # un match déjà créé par fd_org (calendrier) ou par un import fixtures précédent sans fd_uk_key :
+            # même compétition, mêmes équipes, même jour
+            day_start = datetime.combine(r.date, time.min, tzinfo=timezone.utc)
+            day_end = datetime.combine(r.date, time.max, tzinfo=timezone.utc)
+            match = db.scalar(select(Match).where(Match.competition == r.div, Match.home_team_id == home.id,
+                                                  Match.away_team_id == away.id, Match.kickoff_at >= day_start, Match.kickoff_at <= day_end))
+        created = updated = snapshots = 0
+        try:
+            if match is None:
+                match = Match(fd_uk_key=key, competition=r.div, league=comp.name, country=comp.country,
+                              home_team_id=home.id, away_team_id=away.id, home_team=home.name, away_team=away.name,
+                              kickoff_at=_kickoff(r.date, r.time), status=MatchStatus.SCHEDULED)
+                db.add(match); created = 1
+            else:
+                match.fd_uk_key = match.fd_uk_key or key
+                match.home_team_id, match.away_team_id = home.id, away.id
+                match.home_team, match.away_team = home.name, away.name
+                if match.status != MatchStatus.FINISHED:   # jamais de rétrogradation d'un match déjà joué
+                    match.status = MatchStatus.SCHEDULED
+                updated = 1
+            db.flush()
+            snapshots += _add_snapshot(db, match, "fd_uk_avg", taken_at, r.avg)
+            db.commit()
+            report.created += created
+            report.updated += updated
+            report.snapshots += snapshots
+        except IntegrityError:
+            db.rollback()
+            log.warning("conflit d'unicité fixtures fd_uk ignoré (%s)", key)
+    return report
+
+
+def fetch_fixtures() -> str:
+    resp = requests.get("https://www.football-data.co.uk/fixtures.csv", timeout=30)
+    resp.raise_for_status()
+    return resp.text
+
+
+def run_fixtures(db: Session) -> ImportReport:
+    """Importe les matchs de la semaine (toutes compétitions) avec leurs cotes moyennes depuis fixtures.csv."""
+    report = import_fixtures(db, parse_fixtures_csv(fetch_fixtures()), datetime.now(timezone.utc))
+    log.info("fd_uk fixtures : %s", report)
     return report
 
 

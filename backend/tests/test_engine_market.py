@@ -66,6 +66,16 @@ def test_read_uses_fd_uk_pinnacle_as_reference():
     assert r.gaps == {}
 
 
+def test_read_falls_back_to_fd_uk_avg_alone_as_moyenne_reference():
+    """Un match couvert uniquement par l'archive fixtures fd_uk (pas de Pinnacle, pas de FR) doit rester lisible :
+    fallback_books suffit, la référence retombe sur la moyenne (ici l'unique bookmaker disponible)."""
+    r = read([BookQuote("fd_uk_avg", T0, (2.0, 3.2, 3.5))], FR)
+    assert r.reference_source == "moyenne"
+    assert r.reference == implied((2.0, 3.2, 3.5))
+    assert r.favourite == "home"
+    assert r.latest_by_book == {"fd_uk_avg": (2.0, 3.2, 3.5)}
+
+
 def test_read_empty_raises():
     with pytest.raises(ValueError):
         read([], FR)

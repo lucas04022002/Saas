@@ -24,7 +24,7 @@ def write_heartbeat(name: str, summary: dict) -> None:
 def main(argv: list[str] | None = None) -> int:
     setup_logging()
     p = argparse.ArgumentParser()
-    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds"])
+    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "fixtures"])
     p.add_argument("--seasons", nargs="*", default=["2526"])
     args = p.parse_args(argv)
     db = next(get_db())
@@ -36,6 +36,8 @@ def main(argv: list[str] | None = None) -> int:
         elif args.collector == "fd_org":
             summary = vars(fd_org.run(db))
             summary["bets_settled"] = settle_bets(db)
+        elif args.collector == "fixtures":
+            summary = vars(fd_uk.run_fixtures(db))
         else:
             summary = vars(odds_api.run(db))
         write_heartbeat(args.collector, summary)

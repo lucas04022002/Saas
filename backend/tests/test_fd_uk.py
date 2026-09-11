@@ -1,8 +1,8 @@
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
 from app.collectors.aliases import normalize, seed_aliases
-from app.collectors.fd_uk import import_rows, parse_csv
+from app.collectors.fd_uk import import_fixtures, import_rows, parse_csv, parse_fixtures_csv
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
@@ -10,6 +10,7 @@ from app.models.team import Team, TeamAlias
 from tests.conftest import make_match
 
 SAMPLE = (Path(__file__).parent / "fixtures" / "fd_uk_E0_sample.csv").read_text(encoding="utf-8-sig")
+SAMPLE_FIXTURES = (Path(__file__).parent / "fixtures" / "fd_uk_fixtures_sample.csv").read_text(encoding="utf-8-sig")
 
 
 def test_parse_csv_reads_scores_shots_and_odds():
@@ -166,3 +167,75 @@ def test_malformed_row_is_skipped_others_still_imported(db, caplog):
     report = import_rows(db, "E0", rows)
     assert report.created == 1
     assert db.query(Match).count() == 1
+
+
+# ---- fixtures.csv (matchs à venir avec cotes, sans score) ----
+
+def test_parse_fixtures_csv_keeps_only_the_five_leagues():
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    assert [r.div for r in rows] == ["E0", "F1"]   # la ligne E1 est ignorée
+    e0 = rows[0]
+    assert (e0.date, e0.time, e0.home, e0.away) == (date(2026, 9, 12), time(15, 0), "Aston Villa", "Nott'm Forest")
+    assert e0.avg == (2.22, 3.39, 3.17)
+    assert e0.max_ == (2.3, 3.5, 3.25)
+
+
+def test_import_fixtures_creates_scheduled_match_with_one_avg_snapshot(db):
+    seed_aliases(db)
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    taken_at = datetime(2026, 9, 11, 10, 30, tzinfo=timezone.utc)
+
+    report = import_fixtures(db, rows, taken_at)
+
+    assert report.created == 1 and report.quarantined == 1
+    m = db.query(Match).filter(Match.home_team == "Aston Villa").one()
+    assert m.status == MatchStatus.SCHEDULED
+    assert m.home_score is None and m.away_score is None
+    assert m.competition == "E0" and m.fd_uk_key == "E0:2026-09-12:Aston Villa:Nott'm Forest"
+    snaps = db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).all()
+    assert len(snaps) == 1
+    assert snaps[0].bookmaker == "fd_uk_avg"
+    assert snaps[0].taken_at.replace(tzinfo=timezone.utc) == datetime(2026, 9, 11, 10, 0, tzinfo=timezone.utc)  # arrondi à l'heure
+    assert (snaps[0].home, snaps[0].draw, snaps[0].away) == (2.22, 3.39, 3.17)
+
+
+def test_import_fixtures_quarantines_unknown_team(db):
+    seed_aliases(db)
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    report = import_fixtures(db, rows, datetime(2026, 9, 11, 10, 30, tzinfo=timezone.utc))
+
+    assert report.quarantined == 1
+    q = db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).one()
+    assert q.home_team == "FC Nulle Part" and q.home_team_id is None
+    assert db.query(OddsSnapshot).filter(OddsSnapshot.match_id == q.id).count() == 0
+
+
+def test_import_fixtures_is_idempotent(db):
+    seed_aliases(db)
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    taken_at = datetime(2026, 9, 11, 10, 30, tzinfo=timezone.utc)
+    import_fixtures(db, rows, taken_at)
+
+    report = import_fixtures(db, rows, taken_at)
+
+    assert (report.created, report.snapshots) == (0, 0)
+    assert db.query(Match).filter(Match.status == MatchStatus.SCHEDULED).count() == 1
+    assert db.query(OddsSnapshot).count() == 1
+
+
+def test_import_fixtures_never_downgrades_a_finished_match(db):
+    seed_aliases(db)
+    villa = db.query(Team).filter(Team.name == "Aston Villa").one()
+    forest = db.query(Team).filter(Team.name == "Nottingham Forest").one()
+    existing = make_match(
+        db, villa, forest, competition="E0",
+        kickoff=datetime(2026, 9, 12, 15, 0, tzinfo=timezone.utc),
+        status=MatchStatus.FINISHED, home_score=2, away_score=1,
+    )
+
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    import_fixtures(db, rows, datetime(2026, 9, 11, 10, 30, tzinfo=timezone.utc))
+
+    db.refresh(existing)
+    assert existing.status == MatchStatus.FINISHED
+    assert (existing.home_score, existing.away_score) == (2, 1)
