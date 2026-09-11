@@ -41,6 +41,27 @@ def test_track_record_counts_favourite_wins_from_last_pre_kickoff_snapshot(clien
     assert client.get("/api/v1/track-record?competition=F1").json()["data"]["items"] == []
 
 
+def test_track_record_exact_score_rate_over_finished_matches(client, db):
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    # favori domicile net (1.50/4.20/6.50) -> score en tête attendu 1-0 (voir test_engine_score) : match réel 1-0, touché
+    finished(db, h, a, 1, 0, NOW - timedelta(days=10), (1.50, 4.20, 6.50))
+    # même lecture marché, résultat réel différent (2-1) : pas exact, mais bon vainqueur (domicile)
+    finished(db, h, a, 2, 1, NOW - timedelta(days=5), (1.50, 4.20, 6.50))
+    d = client.get("/api/v1/track-record").json()["data"]
+    assert d["n_scored"] == 2
+    assert d["exact_score_rate"] == 0.5
+    assert d["winner_rate_from_score"] == 1.0
+    assert "score_note" in d and "score exact" in d["score_note"]
+
+
+def test_track_record_score_fields_null_without_finished_matches(client, db):
+    d = client.get("/api/v1/track-record").json()["data"]
+    assert d["n_scored"] == 0
+    assert d["exact_score_rate"] is None
+    assert d["winner_rate_from_score"] is None
+
+
 def test_track_record_accepts_el_competition_filter(client, db):
     """EL (Ligue Europa) doit être une valeur acceptée par le filtre, même sans match résultat."""
     r = client.get("/api/v1/track-record?competition=EL")

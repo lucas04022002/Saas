@@ -8,7 +8,8 @@ from app.collectors.competitions import FRENCH_BOOKMAKERS
 from app.engine.context import Form, PastMatch, form, head_to_head
 from app.engine.market import read
 from app.engine.narrative import BOOK_LABELS, MatchContext, describe, label
-from app.engine.types import OUTCOMES, BookQuote, Reading
+from app.engine.score import DEFAULT_GOALS, LEAGUE_GOALS, most_probable_score
+from app.engine.types import OUTCOMES, BookQuote, Reading, ScoreDistribution
 from app.models.enums import MatchStatus
 from app.models.match import Match
 
@@ -25,6 +26,12 @@ def reading_for(match: Match) -> Reading | None:
         return read(q, FRENCH_BOOKMAKERS)
     except ValueError:
         return None
+
+
+def score_for(competition: str, reading: Reading) -> ScoreDistribution | None:
+    total_goals = LEAGUE_GOALS.get(competition, DEFAULT_GOALS)
+    r = reading.reference
+    return most_probable_score(r[0], r[1], r[2], total_goals, reading.favourite)
 
 
 def best_gap(reading: Reading) -> tuple[str, str, float] | None:
@@ -58,6 +65,7 @@ def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVE
         "id": str(match.id), "competition": match.competition, "league": match.league,
         "home_team": match.home_team, "away_team": match.away_team, "kickoff_at": match.kickoff_at, "status": match.status.value,
         "favourite": None, "reference": None, "best_gap": None, "movement": None, "odds_taken_at": None, "locked": False,
+        "top_score": None,
     }
     if r is None:
         return out
@@ -68,6 +76,9 @@ def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVE
         out["best_gap"] = {"bookmaker": bg[0], "outcome": bg[1], "gap": bg[2], "odds": r.latest_by_book[bg[0]][OUTCOMES.index(bg[1])]}
     out["movement"] = _probs(r.movement) if r.movement else None
     out["odds_taken_at"] = r.last_taken_at
+    d = score_for(match.competition, r)
+    if d:
+        out["top_score"] = {"score": d.top, "probability": d.top_probability}
     return out
 
 
@@ -81,7 +92,7 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
         "books": None, "reference_book": None, "history": None,
         "form": {"home": vars(hf), "away": vars(af)},
         "h2h": [{"kickoff_at": m.kickoff_at, "home": m.home, "away": m.away, "score": f"{m.hg}-{m.ag}"} for m in h2h],
-        "analysis": None,
+        "analysis": None, "score_distribution": None,
         "result": {"home": match.home_score, "away": match.away_score} if match.status == MatchStatus.FINISHED else None,
     })
     if r is None:
@@ -97,5 +108,8 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
         out["reference_book"] = {"bookmaker": b, "label": BOOK_LABELS.get(b, b), "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book[b]}
     # un point d'historique par relevé du jeu d'affichage (live si disponible, archive sinon) — même jeu que le mouvement
     out["history"] = [{"taken_at": t, "reference": _probs(p)} for t, p in r.timeline]
-    out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r)), public=public)
+    d = score_for(match.competition, r)
+    if d:
+        out["score_distribution"] = [{"score": sp.score, "probability": sp.probability} for sp in d.distribution]
+    out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r), score=d), public=public)
     return out

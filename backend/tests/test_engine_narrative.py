@@ -2,6 +2,7 @@ from datetime import datetime, timezone
 
 from app.engine.context import Form, PastMatch
 from app.engine.narrative import MatchContext, describe, label
+from app.engine.score import DEFAULT_GOALS, most_probable_score
 from app.engine.types import Reading
 
 T0 = datetime(2026, 9, 10, 8, 0, tzinfo=timezone.utc)
@@ -64,6 +65,29 @@ def test_form_zero_wins_away():
     from app.engine.context import Form
     t = describe(ctx(away_form=Form(5, 0, 1, 4, 1, 9, "DDDND")))
     assert "Lyon reste sur trois victoires lors des cinq derniers matchs ; Nice n'en compte aucune." in t
+
+
+def test_score_sentence_home_favourite():
+    score = most_probable_score(0.58, 0.24, 0.18, DEFAULT_GOALS, "home")
+    t = describe(ctx(score=score))
+    assert f"Le marché voit Lyon l'emporter, {score.top} en tête." in t
+    assert "Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas" in t
+
+
+def test_score_sentence_draw_favourite():
+    score = most_probable_score(0.33, 0.36, 0.31, DEFAULT_GOALS, "draw")
+    t = describe(ctx(reading=reading(ref=(0.33, 0.36, 0.31), fav="draw"), score=score))
+    assert f"Le marché penche pour le nul, {score.top} en tête." in t
+
+
+def test_score_sentence_absent_when_no_score():
+    assert "en tête" not in describe(ctx(score=None))
+
+
+def test_score_sentence_present_in_public_mode_too():
+    score = most_probable_score(0.58, 0.24, 0.18, DEFAULT_GOALS, "home")
+    t = describe(ctx(score=score), public=True)
+    assert "en tête" in t
 
 
 def test_describe_public_hides_gap_and_movement():

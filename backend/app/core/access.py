@@ -4,7 +4,7 @@ from app.models.user import User
 
 PAID_PLANS = {SubscriptionPlan.PRO, SubscriptionPlan.ELITE}
 PREMIUM_LIST_FIELDS = ("best_gap", "movement")
-PREMIUM_DETAIL_FIELDS = ("best_gap", "movement", "books", "reference_book", "history")
+PREMIUM_DETAIL_FIELDS = ("best_gap", "movement", "books", "reference_book", "history", "score_distribution")
 
 
 def is_pro(user: User | None) -> bool:

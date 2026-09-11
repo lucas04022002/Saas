@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 
 from app.engine.context import Form, PastMatch
-from app.engine.types import Reading
+from app.engine.types import Reading, ScoreDistribution
 
 BOOK_LABELS = {"betclic_fr": "Betclic", "winamax_fr": "Winamax", "unibet_fr": "Unibet", "pmu_fr": "PMU", "netbet_fr": "NetBet", "pinnacle": "Pinnacle",
                "fd_uk_pinnacle": "Pinnacle (archive)", "fd_uk_avg": "Marché (archive)"}
@@ -21,6 +21,7 @@ class MatchContext:
     away_form: Form
     h2h: list[PastMatch]
     best_gap: tuple[str, str, float] | None   # (bookmaker, issue, écart)
+    score: ScoreDistribution | None = None
 
 
 def label(outcome: str, home: str, away: str) -> str:
@@ -43,6 +44,18 @@ def _favourite_sentence(ctx: MatchContext) -> str:
     if r.favourite_prob < TIGHT_MAX:
         return f"Match serré : {who} favori de peu à {_pct(r.favourite_prob)}."
     return f"{who} est favori à {_pct(r.favourite_prob)}."
+
+
+def _score_sentence(ctx: MatchContext) -> str | None:
+    d = ctx.score
+    if d is None:
+        return None
+    r = ctx.reading
+    if r.favourite == "draw":
+        lead = f"Le marché penche pour le nul, {d.top} en tête."
+    else:
+        lead = f"Le marché voit {label(r.favourite, ctx.home, ctx.away)} l'emporter, {d.top} en tête."
+    return f"{lead} Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas {_pct(d.top_probability)}."
 
 
 def _gap_sentence(ctx: MatchContext) -> str | None:
@@ -99,6 +112,7 @@ def _h2h_sentence(ctx: MatchContext) -> str | None:
 def describe(ctx: MatchContext, public: bool = False) -> str:
     parts = [
         _favourite_sentence(ctx),
+        _score_sentence(ctx),
         None if public else _gap_sentence(ctx),
         None if public else _movement_sentence(ctx),
         _form_sentence(ctx),

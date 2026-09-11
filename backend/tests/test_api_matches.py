@@ -31,6 +31,11 @@ def test_list_upcoming_shows_favourite_and_locks_premium_for_anonymous(client, d
     it = items[0]
     assert it["favourite"]["outcome"] == "home" and it["favourite"]["label"] == "Arsenal" and it["favourite"]["source"] == "pinnacle"
     assert it["locked"] is True and it["best_gap"] is None and it["movement"] is None
+    # score le plus probable : public, non verrouillé même pour l'anonyme
+    assert it["top_score"]["score"].count("-") == 1
+    i, j = (int(x) for x in it["top_score"]["score"].split("-"))
+    assert i > j    # favori domicile -> score de victoire domicile
+    assert 0 < it["top_score"]["probability"] < 1
 
 
 def test_list_shows_gap_and_movement_for_pro(client, db, pro_user):
@@ -72,7 +77,15 @@ def test_detail_pro_has_books_history_analysis(client, db, pro_user):
     assert len(d["history"]) == 2 and d["history"][0]["taken_at"] < d["history"][1]["taken_at"]
     assert d["analysis"].startswith("Arsenal est favori à")
     assert "depuis le premier relevé" in d["analysis"]
+    assert "en tête" in d["analysis"]
     assert d["form"]["home"]["played"] == 0 and d["h2h"] == [] and d["result"] is None
+    # score le plus probable (cohérent avec le favori) et distribution des 5 scores les plus probables (non
+    # contrainte par le favori, donc peut différer du score en tête) : la distribution est réservée au pro
+    i, j = (int(x) for x in d["top_score"]["score"].split("-"))
+    assert i > j    # favori domicile
+    assert len(d["score_distribution"]) == 5
+    probs = [s["probability"] for s in d["score_distribution"]]
+    assert probs == sorted(probs, reverse=True)
 
 
 def test_detail_anonymous_is_locked_but_keeps_favourite_and_analysis(client, db):
@@ -82,6 +95,9 @@ def test_detail_anonymous_is_locked_but_keeps_favourite_and_analysis(client, db)
     assert d["favourite"]["outcome"] == "home" and d["analysis"]
     assert "au-dessus de la référence" not in d["analysis"]
     assert "depuis le premier relevé" not in d["analysis"]
+    # top_score public même verrouillé, score_distribution réservé au pro
+    assert d["top_score"] is not None
+    assert d["score_distribution"] is None
 
 
 def test_detail_uses_finished_history_for_form_and_h2h(client, db, pro_user):

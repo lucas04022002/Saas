@@ -13,6 +13,21 @@ class BookQuote:
     odds: Odds
 
 
+@dataclass(frozen=True)
+class ScoreProbability:
+    score: str            # "2-1"
+    probability: float
+
+
+@dataclass(frozen=True)
+class ScoreDistribution:
+    top: str                                        # score le plus probable, cohérent avec le favori ("2-1")
+    top_probability: float
+    distribution: tuple[ScoreProbability, ...]       # les 5 scores les plus probables, sans contrainte de favori
+    lambda_home: float
+    lambda_away: float
+
+
 @dataclass
 class Reading:
     reference: Probs
