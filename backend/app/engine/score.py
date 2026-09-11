@@ -54,6 +54,44 @@ def _sign(i: int, j: int) -> int:
     return (i > j) - (i < j)
 
 
+def total_goals_from_market(over_odds: float | None, under_odds: float | None, line: float | None) -> float | None:
+    """λ (total de buts) tel que P(Poisson(λ) > line) égale la probabilité implicite normalisée de l'over,
+    par bissection — méthode `total_from_over` de backend/scripts/mesure_totals.py, mesurée dans
+    docs/mesures/2026-09-11-score-le-plus-probable.md (complément du 11/09/2026). None si les cotes manquent,
+    sont invalides (<=1), ou si la ligne n'est pas un multiple de 0,5 (une ligne entière laisse une masse de
+    buts exactement sur la ligne, non gérée par cette formule ; ex. 2.0, 2.25, 2.75)."""
+    if over_odds is None or under_odds is None or line is None:
+        return None
+    if over_odds <= 1 or under_odds <= 1:
+        return None
+    if abs((line % 1) - 0.5) > 1e-9:
+        return None
+    p_over_raw, p_under_raw = 1 / over_odds, 1 / under_odds
+    p_over = p_over_raw / (p_over_raw + p_under_raw)
+    k = math.floor(line)
+    lo, hi = 0.2, 8.0
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        p = 1 - sum(_pois(mid, i) for i in range(k + 1))
+        if p < p_over:
+            lo = mid
+        else:
+            hi = mid
+    return (lo + hi) / 2
+
+
+def expected_total(competition: str, totals_snapshot) -> tuple[float, str]:
+    """Total de buts attendu pour le match : marché (dernier relevé over/under Pinnacle) si exploitable,
+    repli sur la constante de ligue sinon. `totals_snapshot` est un objet portant `.over`, `.under`, `.line`
+    (typiquement `app.models.totals_snapshot.TotalsSnapshot`), ou None si aucun relevé n'est disponible.
+    Retourne (total, source) avec source "marché" ou "ligue"."""
+    if totals_snapshot is not None:
+        total = total_goals_from_market(totals_snapshot.over, totals_snapshot.under, totals_snapshot.line)
+        if total is not None:
+            return total, "marché"
+    return LEAGUE_GOALS.get(competition, DEFAULT_GOALS), "ligue"
+
+
 def most_probable_score(
     p_home: float | None, p_draw: float | None, p_away: float | None,
     total_goals: float, favourite: str,

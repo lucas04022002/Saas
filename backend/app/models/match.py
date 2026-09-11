@@ -40,4 +40,5 @@ class Match(Base):
     away = relationship("Team", foreign_keys=[away_team_id])
     favorites = relationship("Favorite", back_populates="match", cascade="all, delete-orphan")
     snapshots = relationship("OddsSnapshot", back_populates="match", cascade="all, delete-orphan", order_by="OddsSnapshot.taken_at")
+    totals = relationship("TotalsSnapshot", back_populates="match", cascade="all, delete-orphan", order_by="TotalsSnapshot.taken_at")
     bets = relationship("Bet", back_populates="match")

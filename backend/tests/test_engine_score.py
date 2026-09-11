@@ -1,8 +1,10 @@
+import math
+
 import pytest
 
 from app.engine import score as score_mod
 from app.engine.probabilities import implied
-from app.engine.score import DEFAULT_GOALS, LEAGUE_GOALS, most_probable_score
+from app.engine.score import DEFAULT_GOALS, LEAGUE_GOALS, expected_total, most_probable_score, total_goals_from_market
 
 
 def test_full_grid_sums_to_one():
@@ -67,3 +69,50 @@ def test_golden_real_2025_26_matches(competition, odds, expected_top, expected_p
     d = most_probable_score(p_home, p_draw, p_away, LEAGUE_GOALS[competition], fav)
     assert d.top == expected_top
     assert d.top_probability == pytest.approx(expected_prob, abs=1e-3)
+
+
+# --- total de buts déduit du marché over/under (complément du 11/09/2026 à la mesure) ---
+
+def test_total_goals_from_market_matches_implied_over_probability():
+    over, under, line = 1.85, 2.05, 2.5
+    lam = total_goals_from_market(over, under, line)
+    assert 2.7 <= lam <= 2.9
+    p_over_implied = (1 / over) / (1 / over + 1 / under)
+    p_over_recomputed = 1 - sum(score_mod._pois(lam, i) for i in range(math.floor(line) + 1))
+    assert p_over_recomputed == pytest.approx(p_over_implied, abs=0.005)
+
+
+def test_total_goals_from_market_none_for_non_half_line():
+    assert total_goals_from_market(1.85, 2.05, 2.75) is None
+    assert total_goals_from_market(1.85, 2.05, 2.25) is None
+    assert total_goals_from_market(1.85, 2.05, 2.0) is None
+
+
+def test_total_goals_from_market_none_when_odds_missing_or_invalid():
+    assert total_goals_from_market(None, 2.05, 2.5) is None
+    assert total_goals_from_market(1.85, None, 2.5) is None
+    assert total_goals_from_market(1.85, 2.05, None) is None
+    assert total_goals_from_market(0.9, 2.05, 2.5) is None
+
+
+class _FakeTotalsSnapshot:
+    def __init__(self, over, under, line):
+        self.over, self.under, self.line = over, under, line
+
+
+def test_expected_total_uses_market_when_line_is_usable():
+    total, source = expected_total("I1", _FakeTotalsSnapshot(1.85, 2.05, 2.5))
+    assert source == "marché"
+    assert 2.7 <= total <= 2.9
+
+
+def test_expected_total_falls_back_to_league_without_snapshot():
+    assert expected_total("I1", None) == (LEAGUE_GOALS["I1"], "ligue")
+
+
+def test_expected_total_falls_back_to_league_when_line_unusable():
+    assert expected_total("I1", _FakeTotalsSnapshot(1.85, 2.05, 2.75)) == (LEAGUE_GOALS["I1"], "ligue")
+
+
+def test_expected_total_falls_back_to_default_for_unknown_competition():
+    assert expected_total("XX", None) == (DEFAULT_GOALS, "ligue")
