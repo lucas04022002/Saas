@@ -239,3 +239,17 @@ def test_import_fixtures_never_downgrades_a_finished_match(db):
     db.refresh(existing)
     assert existing.status == MatchStatus.FINISHED
     assert (existing.home_score, existing.away_score) == (2, 1)
+
+
+def test_decode_csv_strips_utf8_bom_even_when_requests_guesses_latin1():
+    """Le serveur n'annonce pas de charset : sans ce décodage, la 1re colonne devient « ï»¿Div »."""
+    from app.collectors.fd_uk import _decode_csv, parse_fixtures_csv
+
+    class FakeResp:
+        content = "﻿Div,Date,Time,HomeTeam,AwayTeam,AvgH,AvgD,AvgA\nE0,12/09/2026,16:00,Arsenal,Chelsea,1.9,3.5,4.0\n".encode("utf-8")
+        encoding = "ISO-8859-1"
+
+    text = _decode_csv(FakeResp())
+    assert text.startswith("Div,")
+    rows = parse_fixtures_csv(text)
+    assert len(rows) == 1 and rows[0].home == "Arsenal"

@@ -266,10 +266,17 @@ def import_fixtures(db: Session, rows: list[FixtureRow], taken_at: datetime) -> 
     return report
 
 
+def _decode_csv(resp: requests.Response) -> str:
+    """football-data.co.uk n'annonce pas de charset : requests décode en ISO-8859-1 et le BOM UTF-8
+    devient « ï»¿ » devant la première colonne (Div), ce qui fait ignorer toutes les lignes.
+    On décode donc les octets en utf-8-sig, qui retire le BOM."""
+    return resp.content.decode("utf-8-sig", errors="replace")
+
+
 def fetch_fixtures() -> str:
     resp = requests.get("https://www.football-data.co.uk/fixtures.csv", timeout=30)
     resp.raise_for_status()
-    return resp.text
+    return _decode_csv(resp)
 
 
 def run_fixtures(db: Session) -> ImportReport:
@@ -283,7 +290,7 @@ def fetch_season(code: str, season: str) -> str:
     url = f"{settings.fd_uk_base_url}/{season}/{code}.csv"
     resp = requests.get(url, timeout=30)
     resp.raise_for_status()
-    return resp.text
+    return _decode_csv(resp)
 
 
 def run(db: Session, seasons: list[str]) -> dict[str, ImportReport]:
