@@ -18,10 +18,10 @@ describe("DayPicker", () => {
 });
 
 describe("CompetitionFilter", () => {
-  it("« Tous » + 6 compétitions, date préservée dans les liens, aria-current sur la compétition sélectionnée", () => {
+  it("« Tous » + 7 compétitions, date préservée dans les liens, aria-current sur la compétition sélectionnée", () => {
     render(<CompetitionFilter date="2026-09-13" selected="F1" />);
     const links = screen.getAllByRole("link");
-    expect(links).toHaveLength(7);
+    expect(links).toHaveLength(8);
     expect(screen.getByText("Tous")).toBeInTheDocument();
     links.forEach((l) => expect(l).toHaveAttribute("href", expect.stringContaining("date=2026-09-13")));
     const selected = screen.getByText("Ligue 1").closest("a");

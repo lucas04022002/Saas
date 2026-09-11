@@ -1,8 +1,11 @@
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
+from app.collectors import fd_org
 from app.collectors.aliases import normalize, seed_aliases
+from app.collectors.competitions import COMPETITIONS
 from app.collectors.fd_org import import_matches, parse_matches
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -94,3 +97,20 @@ def test_malformed_match_is_skipped_others_still_imported(db, caplog):
     report = import_matches(db, items)
     assert report.created == 1
     assert db.query(Match).count() == 1
+
+
+def test_run_skips_competitions_without_a_free_fd_org_calendar(db, monkeypatch):
+    """EL (fd_org_free=False, plan payant chez football-data.org) ne doit jamais être appelée par fd_org.run."""
+    calls = []
+
+    def fake_fetch(code, date_from, date_to):
+        calls.append(code)
+        return {"competition": {"code": COMPETITIONS[code].fd_org_code}, "matches": []}
+
+    monkeypatch.setattr(fd_org, "fetch", fake_fetch)
+    monkeypatch.setattr(time, "sleep", lambda *_: None)
+
+    fd_org.run(db)
+
+    assert "EL" not in calls
+    assert set(calls) == {c for c, comp in COMPETITIONS.items() if comp.fd_org_free}

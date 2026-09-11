@@ -39,3 +39,10 @@ def test_track_record_counts_favourite_wins_from_last_pre_kickoff_snapshot(clien
     assert d["items"] == [{"competition": "E0", "played": 2, "favourite_won": 1, "favourite_rate": 0.5}]
     assert "c'est le marché" in d["note"]
     assert client.get("/api/v1/track-record?competition=F1").json()["data"]["items"] == []
+
+
+def test_track_record_accepts_el_competition_filter(client, db):
+    """EL (Ligue Europa) doit être une valeur acceptée par le filtre, même sans match résultat."""
+    r = client.get("/api/v1/track-record?competition=EL")
+    assert r.status_code == 200
+    assert r.json()["data"]["items"] == []

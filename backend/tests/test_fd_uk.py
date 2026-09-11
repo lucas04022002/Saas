@@ -210,6 +210,36 @@ def test_import_fixtures_quarantines_unknown_team(db):
     assert db.query(OddsSnapshot).filter(OddsSnapshot.match_id == q.id).count() == 0
 
 
+def test_import_fixtures_quarantine_recovers_canonical_team_after_alias_added(db):
+    """Même comportement de récupération que import_rows (via fd_uk_key) : une fois l'alias ajouté et
+    seed/l'import relancés, la ligne quarantaine existante est réutilisée et assignée, pas dupliquée."""
+    seed_aliases(db)
+    rows = parse_fixtures_csv(SAMPLE_FIXTURES)
+    row = next(r for r in rows if r.home == "FC Nulle Part")
+    taken_at = datetime(2026, 9, 11, 10, 30, tzinfo=timezone.utc)
+
+    report = import_fixtures(db, [row], taken_at)
+    assert report.quarantined == 1
+    q = db.query(Match).filter(Match.status == MatchStatus.QUARANTINE).one()
+    assert q.home_team_id is None
+
+    monaco = db.query(Team).filter(Team.name == "Monaco").one()
+    arsenal = db.query(Team).filter(Team.name == "Arsenal").one()
+    db.add(TeamAlias(source="fd_uk", alias=normalize("FC Nulle Part"), team_id=arsenal.id))
+    db.commit()
+
+    report2 = import_fixtures(db, [row], taken_at)
+
+    assert report2.quarantined == 0 and report2.updated == 1
+    assert db.query(Match).count() == 1
+    m = db.query(Match).one()
+    assert m.status == MatchStatus.SCHEDULED
+    assert m.home_team_id == arsenal.id and m.away_team_id == monaco.id
+    assert m.home_team == "Arsenal" and m.away_team == "Monaco"
+    snaps = db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id).all()
+    assert len(snaps) == 1   # la cote est bien archivée une fois le match sorti de la quarantaine
+
+
 def test_import_fixtures_is_idempotent(db):
     seed_aliases(db)
     rows = parse_fixtures_csv(SAMPLE_FIXTURES)

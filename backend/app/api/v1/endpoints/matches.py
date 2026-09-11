@@ -6,6 +6,7 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session, selectinload
 
 from app.api.deps import get_current_user_optional, get_db
+from app.collectors.competitions import COMPETITION_PATTERN
 from app.core.access import gate_detail, gate_list, is_pro
 from app.models.enums import MatchStatus
 from app.models.match import Match
@@ -19,7 +20,7 @@ VISIBLE = (MatchStatus.SCHEDULED, MatchStatus.LIVE, MatchStatus.FINISHED, MatchS
 @router.get("")
 def list_matches(
     match_date: date | None = Query(default=None, alias="date"),
-    competition: str | None = Query(default=None, pattern="^(E0|F1|SP1|D1|I1|CL)$"),
+    competition: str | None = Query(default=None, pattern=COMPETITION_PATTERN),
     page: int = Query(default=1, ge=1),
     limit: int = Query(default=50, ge=1, le=200),
     db: Session = Depends(get_db),

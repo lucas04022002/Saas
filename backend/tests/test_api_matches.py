@@ -48,6 +48,13 @@ def test_list_filters_by_date_and_competition(client, db):
     assert client.get(f"/api/v1/matches?date={day}&competition=F1").json()["data"]["items"] == []
 
 
+def test_list_accepts_el_competition_filter(client, db):
+    """EL (Ligue Europa, calendrier payant chez fd_org) doit être une valeur acceptée par le filtre, même sans match."""
+    r = client.get("/api/v1/matches?competition=EL")
+    assert r.status_code == 200
+    assert r.json()["data"]["items"] == []
+
+
 def test_list_never_returns_quarantine_or_matches_without_odds(client, db):
     seed_aliases(db)
     h, a = db.query(Team).filter_by(name="Lyon").one(), db.query(Team).filter_by(name="Nice").one()

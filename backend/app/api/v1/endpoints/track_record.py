@@ -5,7 +5,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.api.deps import get_db
-from app.collectors.competitions import FRENCH_BOOKMAKERS
+from app.collectors.competitions import COMPETITION_PATTERN, FRENCH_BOOKMAKERS
 from app.engine.market import read
 from app.engine.types import BookQuote
 from app.models.enums import MatchStatus
@@ -20,7 +20,7 @@ def _actual(m: Match) -> str:
 
 
 @router.get("")
-def track_record(competition: str | None = Query(default=None, pattern="^(E0|F1|SP1|D1|I1|CL)$"), db: Session = Depends(get_db)):
+def track_record(competition: str | None = Query(default=None, pattern=COMPETITION_PATTERN), db: Session = Depends(get_db)):
     q = select(Match).where(Match.status == MatchStatus.FINISHED, Match.home_score.is_not(None)).options(selectinload(Match.snapshots))
     if competition:
         q = q.where(Match.competition == competition)

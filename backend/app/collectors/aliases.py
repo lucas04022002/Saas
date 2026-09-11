@@ -127,6 +127,45 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     # ---- relégués 2024/25 présents dans l'historique fd_uk (utile à la forme et aux face-à-face)
     ("Leicester", "Angleterre", {"fd_org": ["Leicester City FC"], "odds_api": ["Leicester City"]}),
     ("Ipswich", "Angleterre", {"fd_org": ["Ipswich Town FC"], "odds_api": ["Ipswich Town"]}),
+    # ---- promus 2026/27 dans les cinq championnats domestiques (orthographes observées dans fixtures.csv)
+    ("Schalke 04", "Allemagne", {"fd_org": ["FC Schalke 04"]}),
+    ("SC Paderborn 07", "Allemagne", {"fd_uk": ["Paderborn"]}),
+    ("SV Elversberg", "Allemagne", {"fd_uk": ["Elversberg"]}),
+    ("Hull City", "Angleterre", {"fd_uk": ["Hull"], "fd_org": ["Hull City AFC"]}),
+    ("Coventry City", "Angleterre", {"fd_uk": ["Coventry"], "fd_org": ["Coventry City FC"]}),
+    ("ESTAC Troyes", "France", {"fd_uk": ["Troyes"], "odds_api": ["Troyes"]}),
+    ("Le Mans FC", "France", {"fd_uk": ["Le Mans"], "odds_api": ["Le Mans"]}),
+    ("Venezia FC", "Italie", {"fd_uk": ["Venezia"], "odds_api": ["Venezia"]}),
+    ("Frosinone Calcio", "Italie", {"fd_uk": ["Frosinone"], "odds_api": ["Frosinone"]}),
+    ("AC Monza", "Italie", {"fd_uk": ["Monza"], "odds_api": ["Monza"]}),
+    ("Racing Santander", "Espagne", {"fd_uk": ["Santander"], "fd_org": ["Real Racing Club de Santander"]}),
+    ("Málaga CF", "Espagne", {"fd_uk": ["Malaga"], "odds_api": ["Malaga"]}),
+    # ---- Ligue des Champions 2026/27, clubs hors des cinq championnats domestiques (pas de calendrier fd_uk)
+    ("PSV Eindhoven", "Pays-Bas", {"fd_org": ["PSV"]}),
+    ("Feyenoord", "Pays-Bas", {"fd_org": ["Feyenoord Rotterdam"]}),
+    ("NEC Nijmegen", "Pays-Bas", {"fd_org": ["NEC"]}),
+    ("Porto", "Portugal", {"fd_org": ["FC Porto"], "odds_api": ["FC Porto"]}),
+    ("Sporting CP", "Portugal", {"fd_org": ["Sporting Clube de Portugal"], "odds_api": ["Sporting Lisbon"]}),
+    ("Club Brugge", "Belgique", {"fd_org": ["Club Brugge KV"]}),
+    ("Union Saint-Gilloise", "Belgique", {"fd_org": ["Royale Union Saint-Gilloise"], "odds_api": ["Union Saint Gilloise", "Union St. Gilloise"]}),
+    ("Slavia Prague", "Tchéquie", {"fd_org": ["SK Slavia Praha"], "odds_api": ["Slavia Praha"]}),
+    ("Galatasaray", "Turquie", {"fd_org": ["Galatasaray SK"]}),
+    ("Shakhtar Donetsk", "Ukraine", {"fd_org": ["FC Shakhtar Donetsk"]}),
+    ("Viking", "Norvège", {"fd_org": ["Viking FK"], "odds_api": ["Viking FK"]}),
+    ("AEK Athens", "Grèce", {"fd_org": ["AEK Athens FC"]}),
+    ("LASK", "Autriche", {"fd_org": ["LASK Linz"], "odds_api": ["LASK Linz"]}),
+    ("Celtic", "Écosse", {"fd_org": ["Celtic FC"]}),
+    # ---- Ligue Europa 2026/27, clubs hors des cinq championnats domestiques (liste partielle, à compléter via
+    # l'outil quarantine quand des orthographes inconnues apparaissent)
+    ("AZ Alkmaar", "Pays-Bas", {"fd_org": ["AZ"]}),
+    ("Torreense", "Portugal", {"fd_org": ["CD Torreense"]}),
+    ("Hapoel Be'er Sheva", "Israël", {"fd_org": ["Hapoel Be'er Sheva FC"], "odds_api": ["Hapoel Beer Sheva"]}),
+    ("Dinamo Zagreb", "Croatie", {"fd_org": ["GNK Dinamo Zagreb"]}),
+    ("Celje", "Slovénie", {"fd_org": ["NK Celje"]}),
+    ("Levski Sofia", "Bulgarie", {"fd_org": ["PFC Levski Sofia"]}),
+    ("Sparta Prague", "Tchéquie", {"fd_org": ["AC Sparta Praha"], "odds_api": ["Sparta Praha"]}),
+    ("Olympiacos", "Grèce", {"fd_org": ["Olympiacos FC"], "odds_api": ["Olympiakos"]}),
+    ("Sturm Graz", "Autriche", {"fd_org": ["SK Sturm Graz"]}),
 ]
 
 

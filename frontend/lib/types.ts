@@ -41,7 +41,7 @@ export type Legal = { warning: string; minimum_age: number; positioning: string 
 export type Pagination = { page: number; limit: number; total: number };
 
 export const COMPETITIONS: Record<string, string> = {
-  E0: "Premier League", F1: "Ligue 1", SP1: "Liga", D1: "Bundesliga", I1: "Serie A", CL: "Ligue des Champions",
+  E0: "Premier League", F1: "Ligue 1", SP1: "Liga", D1: "Bundesliga", I1: "Serie A", CL: "Ligue des Champions", EL: "Ligue Europa",
 };
 export const BOOK_LABELS: Record<string, string> = {
   betclic_fr: "Betclic", winamax_fr: "Winamax", unibet_fr: "Unibet", pmu_fr: "PMU", netbet_fr: "NetBet", pinnacle: "Pinnacle",

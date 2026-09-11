@@ -4,10 +4,10 @@ from app.collectors.aliases import KNOWN_TEAMS, TeamAliasError, resolve_team, se
 from app.models.team import Team
 
 
-def test_seed_creates_98_domestic_teams(db):
+def test_seed_creates_133_teams(db):
     created = seed_aliases(db)
-    assert db.query(Team).count() == 98
-    assert created > 98            # chaque équipe a au moins un alias par source
+    assert db.query(Team).count() == 133
+    assert created > 133            # chaque équipe a au moins un alias par source
 
 
 def test_seed_is_idempotent(db):
@@ -27,6 +27,12 @@ def test_resolve_known_alias_from_each_source(db):
     assert resolve_team(db, "fd_uk", "M'gladbach").name == "Borussia Mönchengladbach"
 
 
+def test_resolve_promoted_and_european_clubs_2026_27(db):
+    seed_aliases(db)
+    assert resolve_team(db, "fd_uk", "Schalke 04").name == "Schalke 04"
+    assert resolve_team(db, "odds_api", "PSV Eindhoven").name == "PSV Eindhoven"
+
+
 def test_resolve_is_accent_and_case_insensitive(db):
     seed_aliases(db)
     assert resolve_team(db, "odds_api", "  bayern MUNICH ").name == "Bayern Munich"
@@ -41,5 +47,6 @@ def test_unknown_alias_raises(db):
 
 def test_known_teams_cover_five_leagues():
     countries = {country for _, country, _ in KNOWN_TEAMS}
-    assert countries == {"Angleterre", "France", "Espagne", "Allemagne", "Italie"}
-    assert len(KNOWN_TEAMS) == 98   # 20 + 18 + 20 + 18 + 20 (saison 2025/26) + 2 relégués 2024/25 utiles à l'historique
+    assert {"Angleterre", "France", "Espagne", "Allemagne", "Italie"} <= countries
+    # 98 (saison 2025/26 + 2 relégués 2024/25) + 12 promus 2026/27 + 14 clubs LdC + 9 clubs LE hors des cinq championnats
+    assert len(KNOWN_TEAMS) == 133

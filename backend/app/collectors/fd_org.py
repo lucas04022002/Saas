@@ -120,11 +120,14 @@ def fetch(competition_code: str, date_from: date, date_to: date) -> dict:
 
 
 def run(db: Session, days_ahead: int = 10, days_back: int = 3) -> ImportReport:
-    """Un appel par compétition (6 appels, plan gratuit = 10/min : dormir 7 s entre deux)."""
+    """Un appel par compétition dont le calendrier est dans le plan gratuit (fd_org_free=True) ;
+    la Ligue Europa (EL) n'y est pas et est sautée. Plan gratuit = 10/min : dormir 7 s entre deux appels."""
     import time as _time
     total = ImportReport()
     today = datetime.now(timezone.utc).date()
-    for code in COMPETITIONS:
+    for code, comp in COMPETITIONS.items():
+        if not comp.fd_org_free:
+            continue
         payload = fetch(code, today - timedelta(days=days_back), today + timedelta(days=days_ahead))
         r = import_matches(db, parse_matches(payload))
         total.created += r.created; total.updated += r.updated; total.quarantined += r.quarantined
