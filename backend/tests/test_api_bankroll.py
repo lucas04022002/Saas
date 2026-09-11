@@ -42,10 +42,14 @@ def test_void_only_when_postponed(client, db, starter_user):
     h, a = teams(db)
     m = make_match(db, h, a, kickoff=NOW + timedelta(days=1))
     bet_id = client.post("/api/v1/bankroll", json={"match_id": str(m.id), "outcome": "draw", "bookmaker": "winamax_fr", "odds": 3.5, "stake": 10}, headers=auth_header(starter_user)).json()["data"]["id"]
+    before = client.get("/api/v1/bankroll", headers=auth_header(starter_user)).json()["data"]["items"][0]
+    assert before["match_status"] == "SCHEDULED"
     assert client.post(f"/api/v1/bankroll/{bet_id}/void", headers=auth_header(starter_user)).status_code == 409
     m.status = MatchStatus.POSTPONED; db.commit()
     r = client.post(f"/api/v1/bankroll/{bet_id}/void", headers=auth_header(starter_user))
     assert r.status_code == 200 and r.json()["data"]["status"] == "VOID" and r.json()["data"]["payout"] == 10
+    after = client.get("/api/v1/bankroll", headers=auth_header(starter_user)).json()["data"]["items"][0]
+    assert after["match_status"] == "POSTPONED"
 
 
 def test_validation_and_isolation(client, db, starter_user, pro_user):

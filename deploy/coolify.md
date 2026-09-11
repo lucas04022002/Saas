@@ -42,3 +42,10 @@ l'interface Coolify.
 
 8. **Domaine et HTTPS** : à configurer dans Coolify une fois le nom de
    domaine choisi (certificat Let's Encrypt automatique).
+
+9. **Frontend** : créer un second service Coolify de type Docker, à côté de
+   `api`, pointant sur le même dépôt GitHub mais avec le contexte de build
+   `frontend/` et son `Dockerfile` (`frontend/Dockerfile`, build standalone
+   Next.js). Renseigner l'argument de build
+   `NEXT_PUBLIC_API_URL=https://<domaine de l'API>` (saisi dans Coolify, pas
+   dans le chat) puis pointer le domaine du site sur ce service `front`.

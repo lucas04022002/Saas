@@ -1,70 +1,25 @@
-import "@/app/globals.css";
-
 import type { Metadata } from "next";
+import { Inter, Inter_Tight } from "next/font/google";
+import "./globals.css";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
-import { ThemeProvider } from "@/components/contexts/theme-provider";
-import { jetbrainsMono, plusJakartaSans, spaceGrotesk } from "@/lib/fonts";
-
-import { siteConfig } from "../config/site";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const interTight = Inter_Tight({ subsets: ["latin"], variable: "--font-inter-tight", display: "swap", weight: ["500", "600", "700", "800", "900"] });
 
 export const metadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,
-  },
-  metadataBase: new URL(siteConfig.url),
-  description: siteConfig.description,
-  keywords: [
-    "paris sportifs",
-    "football analytics",
-    "algorithme prédiction",
-    "value bet",
-    "cotes bookmakers",
-    "Ligue 1",
-    "Premier League",
-  ],
-  authors: [{ name: "RushPlay" }],
-  creator: "rushplay",
-  openGraph: {
-    type: "website",
-    locale: "fr_FR",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-    creator: "@rushplay",
-  },
-  icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-touch-icon.png",
-  },
+  title: "RushPlay — On ne prédit rien. On lit le marché.",
+  description: "Le favori de chaque match, sa vraie probabilité, et là où les bookmakers se contredisent.",
+  icons: { icon: "/favicon.svg", apple: "/apple-touch-icon.png" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" style={{ colorScheme: "dark" }} className="dark">
-      <body
-        className={`${plusJakartaSans.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-[family-name:var(--font-body)] bg-background antialiased`}
-      >
-        <ThemeProvider>{children}</ThemeProvider>
+    <html lang="fr" className={`${inter.variable} ${interTight.variable}`}>
+      <body className="min-h-screen flex flex-col">
+        <Nav />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

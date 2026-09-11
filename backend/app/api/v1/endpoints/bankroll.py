@@ -28,7 +28,8 @@ class BetIn(BaseModel):
 def _bet_dict(b: Bet) -> dict:
     return {"id": str(b.id), "match_id": str(b.match_id), "home_team": b.match.home_team, "away_team": b.match.away_team,
             "competition": b.match.competition, "kickoff_at": b.match.kickoff_at, "outcome": b.outcome.value, "bookmaker": b.bookmaker,
-            "odds": b.odds, "stake": b.stake, "status": b.status.value, "payout": b.payout, "created_at": b.created_at, "settled_at": b.settled_at}
+            "odds": b.odds, "stake": b.stake, "status": b.status.value, "payout": b.payout, "created_at": b.created_at, "settled_at": b.settled_at,
+            "match_status": b.match.status.value}
 
 
 def _summary(bets: list[Bet]) -> dict:
