@@ -49,7 +49,7 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Auxerre", "France", {"fd_org": ["AJ Auxerre"]}),
     ("Brest", "France", {"fd_org": ["Stade Brestois 29"], "odds_api": ["Stade Brestois 29"]}),
     ("Le Havre", "France", {"fd_org": ["Le Havre AC"]}),
-    ("Lens", "France", {"fd_org": ["RC Lens"]}),
+    ("Lens", "France", {'fd_org': ['RC Lens', 'Racing Club de Lens'], 'odds_api': ['RC Lens']}),
     ("Lille", "France", {"fd_org": ["Lille OSC"]}),
     ("Lorient", "France", {"fd_org": ["FC Lorient"]}),
     ("Lyon", "France", {"fd_org": ["Olympique Lyonnais"], "odds_api": ["Olympique Lyonnais"]}),
@@ -69,13 +69,13 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Atlético Madrid", "Espagne", {"fd_uk": ["Ath Madrid"], "fd_org": ["Club Atlético de Madrid"], "odds_api": ["Atletico Madrid", "Atlético Madrid"]}),
     ("Barcelona", "Espagne", {"fd_org": ["FC Barcelona"]}),
     ("Celta Vigo", "Espagne", {"fd_uk": ["Celta"], "fd_org": ["RC Celta de Vigo"]}),
-    ("Elche", "Espagne", {"fd_org": ["Elche CF"]}),
+    ("Elche", "Espagne", {'fd_org': ['Elche CF'], 'odds_api': ['Elche CF']}),
     ("Espanyol", "Espagne", {"fd_uk": ["Espanol"], "fd_org": ["RCD Espanyol de Barcelona"]}),
     ("Getafe", "Espagne", {"fd_org": ["Getafe CF"]}),
     ("Girona", "Espagne", {"fd_org": ["Girona FC"]}),
     ("Levante", "Espagne", {"fd_org": ["Levante UD"]}),
     ("Mallorca", "Espagne", {"fd_org": ["RCD Mallorca"]}),
-    ("Osasuna", "Espagne", {"fd_org": ["CA Osasuna"]}),
+    ("Osasuna", "Espagne", {'fd_org': ['CA Osasuna'], 'odds_api': ['CA Osasuna']}),
     ("Real Oviedo", "Espagne", {"fd_uk": ["Oviedo"], "fd_org": ["Real Oviedo"], "odds_api": ["Oviedo"]}),
     ("Rayo Vallecano", "Espagne", {"fd_uk": ["Vallecano"], "fd_org": ["Rayo Vallecano de Madrid"]}),
     ("Real Betis", "Espagne", {"fd_uk": ["Betis"], "fd_org": ["Real Betis Balompié"]}),
@@ -96,7 +96,7 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Heidenheim", "Allemagne", {"fd_org": ["1. FC Heidenheim 1846"], "odds_api": ["1. FC Heidenheim"]}),
     ("Hoffenheim", "Allemagne", {"fd_org": ["TSG 1899 Hoffenheim"], "odds_api": ["TSG Hoffenheim"]}),
     ("Köln", "Allemagne", {"fd_uk": ["FC Koln"], "fd_org": ["1. FC Köln"], "odds_api": ["FC Cologne", "1. FC Köln"]}),
-    ("Mainz", "Allemagne", {"fd_org": ["1. FSV Mainz 05"], "odds_api": ["1. FSV Mainz 05"]}),
+    ("Mainz", "Allemagne", {'fd_org': ['1. FSV Mainz 05'], 'odds_api': ['1. FSV Mainz 05', 'FSV Mainz 05']}),
     ("RB Leipzig", "Allemagne", {"fd_org": ["RB Leipzig"]}),
     ("St. Pauli", "Allemagne", {"fd_uk": ["St Pauli"], "fd_org": ["FC St. Pauli 1910"], "odds_api": ["FC St. Pauli"]}),
     ("Stuttgart", "Allemagne", {"fd_org": ["VfB Stuttgart"], "odds_api": ["VfB Stuttgart"]}),
@@ -104,7 +104,7 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Werder Bremen", "Allemagne", {"fd_org": ["SV Werder Bremen"]}),
     ("Wolfsburg", "Allemagne", {"fd_org": ["VfL Wolfsburg"], "odds_api": ["VfL Wolfsburg"]}),
     # ---- Italie (Serie A 2025/26)
-    ("Atalanta", "Italie", {"fd_org": ["Atalanta BC"]}),
+    ("Atalanta", "Italie", {'fd_org': ['Atalanta BC'], 'odds_api': ['Atalanta BC']}),
     ("Bologna", "Italie", {"fd_org": ["Bologna FC 1909"]}),
     ("Cagliari", "Italie", {"fd_org": ["Cagliari Calcio"]}),
     ("Como", "Italie", {"fd_org": ["Como 1907"]}),
@@ -128,19 +128,19 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Leicester", "Angleterre", {"fd_org": ["Leicester City FC"], "odds_api": ["Leicester City"]}),
     ("Ipswich", "Angleterre", {"fd_org": ["Ipswich Town FC"], "odds_api": ["Ipswich Town"]}),
     # ---- promus 2026/27 dans les cinq championnats domestiques (orthographes observées dans fixtures.csv)
-    ("Schalke 04", "Allemagne", {"fd_org": ["FC Schalke 04"]}),
-    ("SC Paderborn 07", "Allemagne", {"fd_uk": ["Paderborn"]}),
-    ("SV Elversberg", "Allemagne", {"fd_uk": ["Elversberg"]}),
+    ("Schalke 04", "Allemagne", {'fd_org': ['FC Schalke 04'], 'odds_api': ['FC Schalke 04']}),
+    ("SC Paderborn 07", "Allemagne", {'fd_uk': ['Paderborn'], 'odds_api': ['SC Paderborn']}),
+    ("SV Elversberg", "Allemagne", {'fd_uk': ['Elversberg'], 'fd_org': ['SV 07 Elversberg'], 'odds_api': ['Elversberg']}),
     ("Hull City", "Angleterre", {"fd_uk": ["Hull"], "fd_org": ["Hull City AFC"]}),
     ("Coventry City", "Angleterre", {"fd_uk": ["Coventry"], "fd_org": ["Coventry City FC"]}),
-    ("ESTAC Troyes", "France", {"fd_uk": ["Troyes"], "odds_api": ["Troyes"]}),
+    ("ESTAC Troyes", "France", {'fd_uk': ['Troyes'], 'odds_api': ['Troyes'], 'fd_org': ['ES Troyes AC']}),
     ("Le Mans FC", "France", {"fd_uk": ["Le Mans"], "odds_api": ["Le Mans"]}),
     ("Venezia FC", "Italie", {"fd_uk": ["Venezia"], "odds_api": ["Venezia"]}),
     ("Frosinone Calcio", "Italie", {"fd_uk": ["Frosinone"], "odds_api": ["Frosinone"]}),
     ("AC Monza", "Italie", {"fd_uk": ["Monza"], "odds_api": ["Monza"]}),
-    ("Racing Santander", "Espagne", {"fd_uk": ["Santander"], "fd_org": ["Real Racing Club de Santander"]}),
+    ("Racing Santander", "Espagne", {'fd_uk': ['Santander'], 'fd_org': ['Real Racing Club de Santander'], 'odds_api': ['Real Racing Club de Santander']}),
     ("Málaga CF", "Espagne", {"fd_uk": ["Malaga"], "odds_api": ["Malaga"]}),
-    ("Deportivo La Corogne", "Espagne", {"fd_uk": ["La Coruna"], "odds_api": ["Deportivo La Coruña", "Deportivo La Coruna"], "fd_org": ["RC Deportivo de La Coruña"]}),
+    ("Deportivo La Corogne", "Espagne", {'fd_uk': ['La Coruna'], 'odds_api': ['Deportivo La Coruña', 'Deportivo La Coruna'], 'fd_org': ['RC Deportivo de La Coruña', 'RC Deportivo La Coruña']}),
     # ---- Ligue des Champions 2026/27, clubs hors des cinq championnats domestiques (pas de calendrier fd_uk)
     ("PSV Eindhoven", "Pays-Bas", {"fd_org": ["PSV"]}),
     ("Feyenoord", "Pays-Bas", {"fd_org": ["Feyenoord Rotterdam"]}),
@@ -151,9 +151,9 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Union Saint-Gilloise", "Belgique", {"fd_org": ["Royale Union Saint-Gilloise"], "odds_api": ["Union Saint Gilloise", "Union St. Gilloise"]}),
     ("Slavia Prague", "Tchéquie", {"fd_org": ["SK Slavia Praha"], "odds_api": ["Slavia Praha"]}),
     ("Galatasaray", "Turquie", {"fd_org": ["Galatasaray SK"]}),
-    ("Shakhtar Donetsk", "Ukraine", {"fd_org": ["FC Shakhtar Donetsk"]}),
+    ("Shakhtar Donetsk", "Ukraine", {'fd_org': ['FC Shakhtar Donetsk', 'FK Shakhtar Donetsk']}),
     ("Viking", "Norvège", {"fd_org": ["Viking FK"], "odds_api": ["Viking FK"]}),
-    ("AEK Athens", "Grèce", {"fd_org": ["AEK Athens FC"]}),
+    ("AEK Athens", "Grèce", {'fd_org': ['AEK Athens FC', 'PAE AEK']}),
     ("LASK", "Autriche", {"fd_org": ["LASK Linz"], "odds_api": ["LASK Linz"]}),
     ("Celtic", "Écosse", {"fd_org": ["Celtic FC"]}),
     # ---- Ligue Europa 2026/27, clubs hors des cinq championnats domestiques (liste partielle, à compléter via
@@ -162,11 +162,28 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     ("Torreense", "Portugal", {"fd_org": ["CD Torreense"]}),
     ("Hapoel Be'er Sheva", "Israël", {"fd_org": ["Hapoel Be'er Sheva FC"], "odds_api": ["Hapoel Beer Sheva"]}),
     ("Dinamo Zagreb", "Croatie", {"fd_org": ["GNK Dinamo Zagreb"]}),
-    ("Celje", "Slovénie", {"fd_org": ["NK Celje"]}),
-    ("Levski Sofia", "Bulgarie", {"fd_org": ["PFC Levski Sofia"]}),
+    ("Celje", "Slovénie", {'fd_org': ['NK Celje'], 'odds_api': ['NK Celje']}),
+    ("Levski Sofia", "Bulgarie", {'fd_org': ['PFC Levski Sofia'], 'odds_api': ['PFC Levski Sofia']}),
     ("Sparta Prague", "Tchéquie", {"fd_org": ["AC Sparta Praha"], "odds_api": ["Sparta Praha"]}),
-    ("Olympiacos", "Grèce", {"fd_org": ["Olympiacos FC"], "odds_api": ["Olympiakos"]}),
-    ("Sturm Graz", "Autriche", {"fd_org": ["SK Sturm Graz"]}),
+    ("Olympiacos", "Grèce", {'fd_org': ['Olympiacos FC'], 'odds_api': ['Olympiakos', 'Olympiakos Piraeus']}),
+    ("Sturm Graz", "Autriche", {'fd_org': ['SK Sturm Graz'], 'odds_api': ['SK Sturm Graz']}),
+    # ---- Coupes d'Europe 2026/27, clubs vus dans les calendriers/cotes réels du 11/09/2026
+    ("Slovan Bratislava", "Slovaquie", {"fd_org": ["ŠK Slovan Bratislava"], "odds_api": ["ŠK Slovan Bratislava"]}),
+    ("Fenerbahçe", "Turquie", {"fd_org": ["Fenerbahçe SK"], "odds_api": ["Fenerbahce"]}),
+    ("Bodø/Glimt", "Norvège", {"fd_org": ["FK Bodø/Glimt"], "odds_api": ["Bodo/Glimt"]}),
+    ("Sabah FK", "Azerbaïdjan", {}),
+    ("Omonoia Nicosie", "Chypre", {"odds_api": ["Omonoia FC"]}),
+    ("Ararat-Armenia", "Arménie", {"odds_api": ["FC Ararat-Armenia"]}),
+    ("Benfica", "Portugal", {"fd_org": ["SL Benfica"]}),
+    ("Anderlecht", "Belgique", {"fd_org": ["RSC Anderlecht"]}),
+    ("OFI Crète", "Grèce", {"odds_api": ["OFI Crete"]}),
+    ("RB Salzburg", "Autriche", {"odds_api": ["Salzburg"], "fd_org": ["FC Red Bull Salzburg"]}),
+    ("Beşiktaş", "Turquie", {"odds_api": ["Besiktas JK"], "fd_org": ["Beşiktaş JK"]}),
+    ("Ferencváros", "Hongrie", {"odds_api": ["Ferencváros TC"]}),
+    ("Lech Poznań", "Pologne", {}),
+    ("Lillestrøm", "Norvège", {"odds_api": ["Lillestrom"]}),
+    ("Viktoria Plzeň", "Tchéquie", {"odds_api": ["Viktoria Plzen"], "fd_org": ["FC Viktoria Plzeň"]}),
+    ("Jagiellonia Białystok", "Pologne", {}),
 ]
 
 
@@ -195,7 +212,15 @@ def seed_aliases(db: Session) -> int:
 def resolve_team(db: Session, source: str, alias: str) -> Team:
     if source not in SOURCES:
         raise ValueError(f"source inconnue : {source}")
-    row = db.scalar(select(TeamAlias).where(TeamAlias.source == source, TeamAlias.alias == normalize(alias)))
+    key = normalize(alias)
+    row = db.scalar(select(TeamAlias).where(TeamAlias.source == source, TeamAlias.alias == key))
     if row is None:
-        raise TeamAliasError(source, alias)
+        # Repli : le même nom connu pour une autre source (ex. « CA Osasuna » écrit par fd_org et par odds_api).
+        # On l'accepte seulement s'il désigne une seule équipe, et on mémorise l'alias pour cette source.
+        others = db.scalars(select(TeamAlias).where(TeamAlias.alias == key)).all()
+        teams = {a.team_id: a.team for a in others}
+        if len(teams) != 1:
+            raise TeamAliasError(source, alias)
+        row = TeamAlias(source=source, alias=key, team_id=next(iter(teams)))
+        db.add(row); db.flush()
     return row.team
