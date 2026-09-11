@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
 import { getToken } from "@/lib/session";
-import { formatDateFr, formatPct, formatPctInt, formatSigned } from "@/lib/format";
+import { formatDateFr, formatGoals, formatPct, formatPctInt, formatSigned } from "@/lib/format";
 import { COMPETITIONS } from "@/lib/types";
 import { BigNumber } from "@/components/BigNumber";
 import { Bars, outcomeRows } from "@/components/Bars";
@@ -56,6 +56,11 @@ export default async function Match({ params }: { params: Promise<{ id: string }
             <>
               <div className="num-page mt-6"><BigNumber value={m.top_score.score} /></div>
               <p className="mt-3 max-w-[40ch] text-[15px] text-muted">Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas {formatPct(m.top_score.probability)}.</p>
+              {m.expected_goals && (
+                <p className="mt-1 text-[13px] text-muted">
+                  {m.expected_goals.source === "marché" ? "Total attendu par le marché" : "Total moyen de la ligue"} : {formatGoals(m.expected_goals.total)} buts
+                </p>
+              )}
             </>
           ) : <p className="mt-6 text-[19px] text-muted">Pas encore assez de cotes pour estimer un score.</p>}
         </div>

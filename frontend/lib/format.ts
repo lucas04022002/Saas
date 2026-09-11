@@ -6,6 +6,7 @@ const NBSP = " ";
 export const formatPct = (p: number) => `${Math.round(p * 100)}${NBSP}%`;
 export const formatPctInt = (p: number) => `${Math.round(p * 100)}`;
 export const formatOdds = (o: number) => nf2.format(o);
+export const formatGoals = (g: number) => nf1.format(g);
 export const formatMargin = (m: number) => `${nf1.format(m * 100)}${NBSP}%`;
 export const formatGap = (g: number) => `${g >= 0 ? "+" : "−"}${nf1.format(Math.abs(g) * 100)}${NBSP}%`;
 export const formatSigned = (x: number, unit = "") => `${x >= 0 ? "+" : "−"}${nf1.format(Math.abs(x))}${unit}`;

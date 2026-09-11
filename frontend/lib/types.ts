@@ -21,6 +21,10 @@ export type Book = { bookmaker: string; label: string; home: number; draw: numbe
 export type Form = { played: number; wins: number; draws: number; losses: number; goals_for: number; goals_against: number; sequence: string };
 export type H2H = { kickoff_at: string; home: string; away: string; score: string };
 
+// Total de buts attendu utilisé pour calculer le score le plus probable : "marché" (over/under Pinnacle,
+// cf. docs/mesures/2026-09-11-score-le-plus-probable.md, complément du 11/09/2026) ou repli "ligue" (moyenne).
+export type ExpectedGoals = { total: number; source: "marché" | "ligue" };
+
 export type MatchDetail = MatchSummary & {
   books: Book[] | null;
   reference_book: { bookmaker: string; label: string; home: number; draw: number; away: number; margin: number } | null;
@@ -28,6 +32,7 @@ export type MatchDetail = MatchSummary & {
   form: { home: Form; away: Form }; h2h: H2H[]; analysis: string | null;
   result: { home: number; away: number } | null;
   score_distribution: ScoreProbability[] | null;   // les 5 scores les plus probables, réservé au pro
+  expected_goals: ExpectedGoals | null;             // public, même verrouillé
 };
 
 export type BookRow = { bookmaker: string; label: string; matches: number; avg_margin: number | null; gaps_above_threshold: number;
