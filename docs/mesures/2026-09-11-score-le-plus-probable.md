@@ -28,3 +28,5 @@ Mesuré sur les 901 matchs 2025/26 ayant les cotes O/U 2,5 de clôture (Pinnacle
 | F. moyenne des deux | 11,2 % | 11,5 % | 53,7 % | 2,865 | 1,623 |
 
 Décision : **E**, avec repli sur la moyenne de la ligue quand le marché manque. Gain réel mais modeste (−0,017 de log-loss, −0,03 but d'erreur). Coût : 1 crédit The Odds API de plus par compétition et par relevé (marché `totals`, région `eu` = Pinnacle seul), soit 21 crédits par relevé au lieu de 14 → ~23 relevés par mois sur le plan gratuit.
+
+Un premier relevé réel (131 matchs) montre que Pinnacle ne poste la ligne 2,5 que dans 19 cas sur 131 (36 à 2,75, 26 à 3,0, 14 à 2,25, 14 à 3,25, 12 à 3,5, 10 ailleurs) : la formule ci-dessus, limitée aux lignes demies, retombait donc sur le repli de ligue dans ~85 % des cas. Généralisée (11/09/2026) à tout multiple de 0,25 en décomposant une ligne quart en deux demi-mises sur l'entière et la demie voisines (convention Asian handicap), et en résolvant λ par annulation de l'espérance du pari Over à la cote équitable du marché plutôt que par égalité de probabilité — les deux méthodes coïncident sur une ligne demie.

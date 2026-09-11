@@ -15,24 +15,22 @@ from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.totals_snapshot import TotalsSnapshot
 
-TOTALS_REFERENCE_LINE = 2.5
-
-
 def quotes_for(match: Match) -> list[BookQuote]:
     return [BookQuote(s.bookmaker, s.taken_at, (s.home, s.draw, s.away)) for s in match.snapshots]
 
 
 def latest_totals_snapshot(totals: list[TotalsSnapshot], before: datetime | None = None) -> TotalsSnapshot | None:
-    """Dernier relevé over/under Pinnacle exploitable pour le total de buts attendu : la ligne 2,5 du relevé le
-    plus récent, ou à défaut la ligne la plus proche de 2,5 dans ce même relevé. `before` restreint aux relevés
-    antérieurs à cette date (cotes de clôture d'un match terminé, comme pour la lecture 1N2)."""
+    """Dernier relevé over/under Pinnacle exploitable pour le total de buts attendu : parmi les lignes du
+    relevé le plus récent, celle dont les cotes over/under sont les plus proches l'une de l'autre — c'est la
+    ligne principale (celle où le bookmaker place l'équilibre), et Pinnacle n'en poste souvent qu'une seule par
+    relevé de toute façon. `before` restreint aux relevés antérieurs à cette date (cotes de clôture d'un match
+    terminé, comme pour la lecture 1N2)."""
     candidates = [t for t in totals if t.bookmaker == REFERENCE_BOOKMAKER and (before is None or t.taken_at <= before)]
     if not candidates:
         return None
     last_taken_at = max(t.taken_at for t in candidates)
     same_relevé = [t for t in candidates if t.taken_at == last_taken_at]
-    exact = next((t for t in same_relevé if t.line == TOTALS_REFERENCE_LINE), None)
-    return exact or min(same_relevé, key=lambda t: abs(t.line - TOTALS_REFERENCE_LINE))
+    return min(same_relevé, key=lambda t: abs(t.over - t.under))
 
 
 def reading_for(match: Match) -> Reading | None:

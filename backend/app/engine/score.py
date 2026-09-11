@@ -54,26 +54,63 @@ def _sign(i: int, j: int) -> int:
     return (i > j) - (i < j)
 
 
+_TOTALS_MAX_GOALS = 15   # borne pratique de la bissection du total de buts (0..15) ; masse au-delà négligeable
+
+
+def _line_components(line: float) -> list[tuple[float, float]] | None:
+    """Décompose une ligne over/under en composantes (L_c, poids). Une ligne demie (x.5) ou entière (x.0) est
+    une seule composante de poids 1 (l'entière est un push : X == L_c ne compte ni pour l'over ni pour
+    l'under). Une ligne quart (x.25 / x.75) est réputée être deux paris de poids 0,5 chacun, sur l'entière et
+    la demie qui l'encadrent (x.25 -> x.0 et x.5 ; x.75 -> x.5 et x.0 supérieur) — convention Asian handicap
+    standard. None si la ligne n'est pas un multiple de 0,25."""
+    quarters = line * 4
+    if abs(quarters - round(quarters)) > 1e-9:
+        return None
+    frac4 = round(quarters) % 4
+    if frac4 in (0, 2):   # entière ou demie
+        return [(line, 1.0)]
+    return [(line - 0.25, 0.5), (line + 0.25, 0.5)]   # quart : encadrée par l'entière et la demie voisines
+
+
+def _over_under_probs(lam: float, c: float) -> tuple[float, float]:
+    """P(X>c), P(X<c) pour X ~ Poisson(lam) sur 0..15 buts. c entier (push possible sur X==c, exclu des deux
+    par la stricte inégalité) ou demi-entier (pas de push)."""
+    lo, hi = math.floor(c), math.ceil(c)
+    p_under = sum(_pois(lam, i) for i in range(0, hi))                          # i < c
+    p_over = sum(_pois(lam, i) for i in range(lo + 1, _TOTALS_MAX_GOALS + 1))    # i > c
+    return p_over, p_under
+
+
 def total_goals_from_market(over_odds: float | None, under_odds: float | None, line: float | None) -> float | None:
-    """λ (total de buts) tel que P(Poisson(λ) > line) égale la probabilité implicite normalisée de l'over,
-    par bissection — méthode `total_from_over` de backend/scripts/mesure_totals.py, mesurée dans
-    docs/mesures/2026-09-11-score-le-plus-probable.md (complément du 11/09/2026). None si les cotes manquent,
-    sont invalides (<=1), ou si la ligne n'est pas un multiple de 0,5 (une ligne entière laisse une masse de
-    buts exactement sur la ligne, non gérée par cette formule ; ex. 2.0, 2.25, 2.75)."""
+    """λ (total de buts) tel que l'espérance de gain du pari Over, à la cote décimale équitable (sans marge)
+    o = 1/p_over déduite du marché, soit nulle — par bissection (f croissante en λ). Une ligne quart (x.25,
+    x.75) se décompose en deux demi-mises sur l'entière et la demie voisines (cf. `_line_components`), pour
+    coller aux lignes réellement postées par Pinnacle (rarement x.5 : mesuré sur un relevé de 131 matchs,
+    19 lignes à 2,5 contre 112 sur d'autres lignes). Mesuré dans docs/mesures/2026-09-11-score-le-plus-probable.md
+    (complément du 11/09/2026). None si les cotes manquent, sont invalides (<=1), ou si la ligne n'est pas un
+    multiple de 0,25."""
     if over_odds is None or under_odds is None or line is None:
         return None
     if over_odds <= 1 or under_odds <= 1:
         return None
-    if abs((line % 1) - 0.5) > 1e-9:
+    components = _line_components(line)
+    if components is None:
         return None
     p_over_raw, p_under_raw = 1 / over_odds, 1 / under_odds
     p_over = p_over_raw / (p_over_raw + p_under_raw)
-    k = math.floor(line)
+    fair_odds = 1 / p_over
+
+    def f(lam: float) -> float:
+        total = 0.0
+        for c, w in components:
+            p_o, p_u = _over_under_probs(lam, c)
+            total += w * (p_o * (fair_odds - 1) - p_u)
+        return total
+
     lo, hi = 0.2, 8.0
     for _ in range(60):
         mid = (lo + hi) / 2
-        p = 1 - sum(_pois(mid, i) for i in range(k + 1))
-        if p < p_over:
+        if f(mid) < 0:
             lo = mid
         else:
             hi = mid

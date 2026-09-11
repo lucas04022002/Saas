@@ -1,6 +1,8 @@
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
+import pytest
+
 from app.collectors.aliases import seed_aliases
 from app.engine.score import LEAGUE_GOALS
 from app.models.enums import MatchStatus
@@ -181,3 +183,18 @@ def test_detail_expected_goals_and_top_score_use_market_totals_snapshot(client, 
     assert with_market["expected_goals"]["total"] > LEAGUE_GOALS["E0"]
     assert with_market["top_score"]["score"] == "2-1"
     assert with_market["top_score"]["score"] != without["top_score"]["score"]
+
+
+def test_detail_expected_goals_picks_the_line_with_closest_over_under_odds_not_2_5(client, db, pro_user):
+    """Pinnacle poste rarement la ligne 2,5 (mesuré : 19 relevés sur 131) — la ligne principale du relevé est
+    celle où over et under sont les plus proches l'une de l'autre, pas forcément 2,5."""
+    m = seed_match_with_odds(db)
+    same_relevé = NOW - timedelta(hours=3)
+    # 2,5 est très inclinée (pas la ligne principale) ; 2,75 est quasi équilibrée (la ligne principale)
+    db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=same_relevé, line=2.5, over=1.30, under=3.55))
+    db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=same_relevé, line=2.75, over=1.92, under=1.92))
+    db.commit()
+
+    d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert d["expected_goals"]["source"] == "marché"
+    assert d["expected_goals"]["total"] == pytest.approx(2.908, abs=1e-3)   # ligne 2,75, pas 2,5 (3,805)

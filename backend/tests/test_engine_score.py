@@ -71,9 +71,13 @@ def test_golden_real_2025_26_matches(competition, odds, expected_top, expected_p
     assert d.top_probability == pytest.approx(expected_prob, abs=1e-3)
 
 
-# --- total de buts déduit du marché over/under (complément du 11/09/2026 à la mesure) ---
+# --- total de buts déduit du marché over/under (complément du 11/09/2026 à la mesure ; généralisé aux lignes
+# quart de but le 11/09/2026 — un premier relevé Pinnacle réel montre que 2,5 n'est la ligne principale que
+# dans 19 cas sur 131, contre 36 à 2,75, 26 à 3,0, 14 à 2,25, 14 à 3,25... : la formule doit couvrir tout
+# multiple de 0,25, pas seulement les lignes demies) ---
 
-def test_total_goals_from_market_matches_implied_over_probability():
+def test_total_goals_from_market_matches_implied_over_probability_on_half_line():
+    """Ligne demie (2,5) : régression — doit retomber sur l'ancienne formule P(Poisson(λ)>ligne) = p_over."""
     over, under, line = 1.85, 2.05, 2.5
     lam = total_goals_from_market(over, under, line)
     assert 2.7 <= lam <= 2.9
@@ -81,11 +85,42 @@ def test_total_goals_from_market_matches_implied_over_probability():
     p_over_recomputed = 1 - sum(score_mod._pois(lam, i) for i in range(math.floor(line) + 1))
     assert p_over_recomputed == pytest.approx(p_over_implied, abs=0.005)
 
+    # même résultat que l'ancienne formule de bissection directe sur P(Poisson(λ)>ligne) = p_over, à 1e-6 près
+    k = math.floor(line)
+    lo, hi = 0.2, 8.0
+    for _ in range(60):
+        mid = (lo + hi) / 2
+        p = 1 - sum(score_mod._pois(mid, i) for i in range(k + 1))
+        lo, hi = (mid, hi) if p < p_over_implied else (lo, mid)
+    lam_old_formula = (lo + hi) / 2
+    assert lam == pytest.approx(lam_old_formula, abs=1e-6)
 
-def test_total_goals_from_market_none_for_non_half_line():
-    assert total_goals_from_market(1.85, 2.05, 2.75) is None
-    assert total_goals_from_market(1.85, 2.05, 2.25) is None
-    assert total_goals_from_market(1.85, 2.05, 2.0) is None
+
+def test_total_goals_from_market_whole_line_with_symmetric_odds():
+    """Ligne entière (3,0), cotes symétriques (over == under, marché à 50/50) : λ doit équilibrer
+    P(X>3) et P(X<3), avec un résidu d'espérance quasi nul."""
+    lam = total_goals_from_market(1.95, 1.95, 3.0)
+    assert 2.6 <= lam <= 3.4
+    fair_odds = 2.0   # cotes symétriques -> p_over = 0,5 -> cote équitable 1/0,5 = 2,0
+    p_over, p_under = score_mod._over_under_probs(lam, 3.0)
+    residual = p_over * (fair_odds - 1) - p_under
+    assert abs(residual) < 1e-6
+
+
+def test_total_goals_from_market_quarter_line_strictly_between_its_neighbours():
+    """Une ligne quart (2,75) doit donner, pour les mêmes cotes, un λ strictement entre celui de la ligne
+    entière du dessous (2,5 — non, 2,5 est une demie) et celui de la ligne entière du dessus (3,0) : cf. la
+    décomposition en deux demi-mises 2,5/3,0."""
+    over, under = 1.85, 2.05
+    lam_25 = total_goals_from_market(over, under, 2.5)
+    lam_30 = total_goals_from_market(over, under, 3.0)
+    lam_275 = total_goals_from_market(over, under, 2.75)
+    assert lam_25 < lam_275 < lam_30
+
+
+def test_total_goals_from_market_none_for_line_not_multiple_of_quarter():
+    assert total_goals_from_market(1.85, 2.05, 2.6) is None
+    assert total_goals_from_market(1.85, 2.05, 2.1) is None
 
 
 def test_total_goals_from_market_none_when_odds_missing_or_invalid():
@@ -106,12 +141,19 @@ def test_expected_total_uses_market_when_line_is_usable():
     assert 2.7 <= total <= 2.9
 
 
+def test_expected_total_uses_market_for_a_quarter_line_too():
+    """Une ligne 2,75 (majoritaire chez Pinnacle) ne doit plus retomber sur le repli de ligue."""
+    total, source = expected_total("I1", _FakeTotalsSnapshot(1.85, 2.05, 2.75))
+    assert source == "marché"
+    assert total != LEAGUE_GOALS["I1"]
+
+
 def test_expected_total_falls_back_to_league_without_snapshot():
     assert expected_total("I1", None) == (LEAGUE_GOALS["I1"], "ligue")
 
 
 def test_expected_total_falls_back_to_league_when_line_unusable():
-    assert expected_total("I1", _FakeTotalsSnapshot(1.85, 2.05, 2.75)) == (LEAGUE_GOALS["I1"], "ligue")
+    assert expected_total("I1", _FakeTotalsSnapshot(1.85, 2.05, 2.6)) == (LEAGUE_GOALS["I1"], "ligue")
 
 
 def test_expected_total_falls_back_to_default_for_unknown_competition():
