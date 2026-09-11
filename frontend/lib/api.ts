@@ -29,7 +29,10 @@ export const api = {
     call<{ items: MatchSummary[]; pagination: Pagination }>(`/api/v1/matches?${qs(p)}`, { token, revalidate: 60 }),
   match: (id: string, token?: string) => call<MatchDetail>(`/api/v1/matches/${id}`, { token, revalidate: 60 }),
   books: (token?: string) => call<{ items: BookRow[]; threshold: number }>("/api/v1/books", { token, revalidate: 60 }),
-  trackRecord: (competition?: string) => call<{ items: TrackRow[]; note: string }>(`/api/v1/track-record?${qs({ competition })}`, { revalidate: 300 }),
+  trackRecord: (competition?: string) =>
+    call<{ items: TrackRow[]; note: string; n_scored: number; exact_score_rate: number | null; winner_rate_from_score: number | null; score_note: string }>(
+      `/api/v1/track-record?${qs({ competition })}`, { revalidate: 300 },
+    ),
   login: (email: string, password: string) => call<{ access_token: string; user: User }>("/api/v1/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
   signup: (p: { first_name: string; email: string; password: string; birth_date: string }) =>
     call<{ access_token: string; user: User }>("/api/v1/auth/signup", { method: "POST", body: JSON.stringify(p) }),

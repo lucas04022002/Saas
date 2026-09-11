@@ -7,7 +7,8 @@ import { API } from "./msw/handlers";
 vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
 
 const match = { id: "m1", competition: "F1", league: "Ligue 1", home_team: "Lyon", away_team: "Marseille", kickoff_at: "2026-09-13T15:15:00Z", status: "SCHEDULED",
-  favourite: { outcome: "home", label: "Lyon", prob: 0.58, source: "pinnacle" }, reference: { home: 0.58, draw: 0.24, away: 0.18 }, best_gap: null, movement: null, odds_taken_at: "2026-09-13T10:00:00Z", locked: true };
+  favourite: { outcome: "home", label: "Lyon", prob: 0.58, source: "pinnacle" }, reference: { home: 0.58, draw: 0.24, away: 0.18 }, best_gap: null, movement: null, odds_taken_at: "2026-09-13T10:00:00Z", locked: true,
+  top_score: { score: "2-1", probability: 0.12 } };
 
 describe("accueil", () => {
   it("héros avec le match phare et quatre lignes", async () => {

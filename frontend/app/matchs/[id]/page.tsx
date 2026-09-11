@@ -2,10 +2,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { api, ApiError } from "@/lib/api";
 import { getToken } from "@/lib/session";
-import { formatDateFr, formatPctInt, formatSigned } from "@/lib/format";
+import { formatDateFr, formatPct, formatPctInt, formatSigned } from "@/lib/format";
 import { COMPETITIONS } from "@/lib/types";
 import { BigNumber } from "@/components/BigNumber";
-import { Bars } from "@/components/Bars";
+import { Bars, outcomeRows } from "@/components/Bars";
 import { Reserved } from "@/components/Reserved";
 import { BookTable } from "@/components/BookTable";
 import { MovementChart } from "@/components/MovementChart";
@@ -38,7 +38,7 @@ export default async function Match({ params }: { params: Promise<{ id: string }
             <>
               <div className="num-page"><BigNumber value={Number(formatPctInt(fav.prob))} suffix="%" /></div>
               <div className="mt-4 text-[20px] font-semibold">{fav.label} favori {mv !== null && <span className="text-muted font-medium">· {mv >= 0 ? "▲" : "▼"} {formatSigned(mv, " pts").slice(1)} depuis le premier relevé</span>}</div>
-              <Bars probs={m.reference} favourite={fav.outcome} home={m.home_team} away={m.away_team} />
+              <Bars rows={outcomeRows(m.reference, fav.outcome, m.home_team, m.away_team)} />
             </>
           ) : <p className="text-[19px] text-muted">Pas encore de relevé de cotes pour ce match.</p>}
         </div>
@@ -46,6 +46,23 @@ export default async function Match({ params }: { params: Promise<{ id: string }
           {firstSentence && <p className="text-[20px] md:text-[22px] leading-snug tracking-[-0.01em]">{firstSentence}</p>}
           {rest && <p className="mt-4 text-[20px] md:text-[22px] leading-snug tracking-[-0.01em] text-muted">{rest}</p>}
           <Link href={`/carnet?match=${m.id}`} className="btn mt-9">Noter ce pari</Link>
+        </div>
+      </div>
+
+      <div className="mt-20 grid gap-12 md:grid-cols-2 md:gap-16">
+        <div>
+          <h3 className="h-sub">Score le plus probable selon le marché</h3>
+          {m.top_score ? (
+            <>
+              <div className="num-page mt-6"><BigNumber value={m.top_score.score} /></div>
+              <p className="mt-3 max-w-[40ch] text-[15px] text-muted">Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas {formatPct(m.top_score.probability)}.</p>
+            </>
+          ) : <p className="mt-6 text-[19px] text-muted">Pas encore assez de cotes pour estimer un score.</p>}
+        </div>
+        <div>
+          <h3 className="h-sub">Les 5 scores les plus probables</h3>
+          {m.locked || !m.score_distribution ? <div className="mt-6"><Reserved what="aux abonnés, la distribution complète des scores" /></div> :
+            <Bars rows={m.score_distribution.map((s) => ({ key: s.score, label: s.score, value: s.probability, highlight: s.score === m.top_score?.score }))} />}
         </div>
       </div>
 

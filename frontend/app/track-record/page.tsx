@@ -2,9 +2,10 @@ import Link from "next/link";
 import { api } from "@/lib/api";
 import { COMPETITIONS } from "@/lib/types";
 import { BigNumber } from "@/components/BigNumber";
+import { Kpi } from "@/components/Kpi";
 export default async function TrackRecord({ searchParams }: { searchParams: Promise<{ competition?: string }> }) {
   const { competition } = await searchParams;
-  const { items, note } = await api.trackRecord();
+  const { items, note, n_scored, exact_score_rate, winner_rate_from_score, score_note } = await api.trackRecord();
   const sel = items.find((r) => r.competition === (competition ?? "F1")) ?? items[0] ?? null;
   return (
     <section className="bg-black text-paper">
@@ -29,6 +30,15 @@ export default async function TrackRecord({ searchParams }: { searchParams: Prom
                 </tr>
               ))}</tbody>
             </table>
+          </div>
+        )}
+        {typeof exact_score_rate === "number" && typeof winner_rate_from_score === "number" && (
+          <div className="mt-16">
+            <div className="grid border-t border-paper md:grid-cols-2">
+              <Kpi dark label="Scores exacts touchés" value={String(Math.round(exact_score_rate * 100))} unit="%" />
+              <Kpi dark label="Bons vainqueurs (score affiché)" value={String(Math.round(winner_rate_from_score * 100))} unit="%" />
+            </div>
+            <p className="mt-6 max-w-[40ch] text-[15px] text-faint-dark">{score_note} Mesuré sur {n_scored} matchs terminés.</p>
           </div>
         )}
       </div>

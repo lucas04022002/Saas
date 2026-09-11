@@ -12,7 +12,10 @@ const detail = (locked: boolean) => ({ id: "m1", competition: "F1", league: "Lig
   history: locked ? null : [{ taken_at: "2026-09-08T08:00:00Z", reference: { home: 0.55, draw: 0.25, away: 0.2 } }, { taken_at: "2026-09-13T10:00:00Z", reference: { home: 0.58, draw: 0.24, away: 0.18 } }],
   form: { home: { played: 5, wins: 3, draws: 1, losses: 1, goals_for: 7, goals_against: 4, sequence: "VVNDV" }, away: { played: 5, wins: 1, draws: 2, losses: 2, goals_for: 4, goals_against: 6, sequence: "DNVDN" } },
   h2h: [{ kickoff_at: "2026-03-01T20:00:00Z", home: "Lyon", away: "Marseille", score: "1-1" }],
-  analysis: locked ? "Lyon est favori à 58 %. Lyon reste sur trois victoires lors des cinq derniers matchs ; Marseille sur une seule." : "Lyon est favori à 58 %. Betclic paie 1,78 sur Lyon, soit 3,2 % au-dessus de la référence.", result: null });
+  top_score: { score: "2-1", probability: 0.121 },
+  // volontairement distinct du top_score (cohérent avec le favori) : la distribution n'est pas contrainte par le favori
+  score_distribution: locked ? null : [{ score: "1-1", probability: 0.13 }, { score: "1-0", probability: 0.109 }, { score: "0-0", probability: 0.098 }, { score: "2-0", probability: 0.081 }, { score: "0-1", probability: 0.062 }],
+  analysis: locked ? "Lyon est favori à 58 %. Le marché voit Lyon l'emporter, 2-1 en tête. Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas 12 %. Lyon reste sur trois victoires lors des cinq derniers matchs ; Marseille sur une seule." : "Lyon est favori à 58 %. Le marché voit Lyon l'emporter, 2-1 en tête. Un score exact reste le pari le plus dur : même le plus probable ne dépasse pas 12 %. Betclic paie 1,78 sur Lyon, soit 3,2 % au-dessus de la référence.", result: null });
 describe("page match", () => {
   it("abonné : tableau, courbe, analyse complète", async () => {
     server.use(http.get(`${API}/api/v1/matches/m1`, () => HttpResponse.json({ success: true, message: "", data: detail(false) })));
@@ -25,6 +28,10 @@ describe("page match", () => {
     expect(screen.getByText("Mouvement")).toBeInTheDocument();
     expect(screen.getByText(/Betclic paie 1,78/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Noter ce pari" })).toBeInTheDocument();
+    expect(screen.getByText("Score le plus probable selon le marché")).toBeInTheDocument();
+    expect(screen.getByText("2-1")).toBeInTheDocument();
+    expect(screen.getByText("Les 5 scores les plus probables")).toBeInTheDocument();
+    expect(screen.getByText("1-1")).toBeInTheDocument();   // distribution non contrainte par le favori
   });
   it("anonyme : bloc réservé, pas de tableau, analyse publique", async () => {
     server.use(http.get(`${API}/api/v1/matches/m1`, () => HttpResponse.json({ success: true, message: "", data: detail(true) })));
@@ -33,6 +40,10 @@ describe("page match", () => {
     expect(screen.getAllByText(/Réservé aux abonnés/).length).toBeGreaterThan(0);
     expect(screen.queryByText("Pinnacle")).not.toBeInTheDocument();
     expect(screen.getByText(/trois victoires/)).toBeInTheDocument();
+    // le score en tête reste public, la distribution des 5 scores est réservée
+    expect(screen.getByText("Score le plus probable selon le marché")).toBeInTheDocument();
+    expect(screen.getByText("2-1")).toBeInTheDocument();
+    expect(screen.queryByText("1-1")).not.toBeInTheDocument();
   });
   it("introuvable : notFound", async () => {
     server.use(http.get(`${API}/api/v1/matches/zz`, () => HttpResponse.json({ success: false, message: "Match not found" }, { status: 404 })));

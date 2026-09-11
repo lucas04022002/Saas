@@ -4,12 +4,17 @@ export type Plan = "STARTER" | "PRO" | "ELITE";
 
 export type Favourite = { outcome: Outcome; label: string; prob: number; source: string };
 export type BestGap = { bookmaker: string; outcome: Outcome; gap: number; odds: number };
+// Score le plus probable déduit du marché (Poisson calibré, cf. docs/mesures/2026-09-11-score-le-plus-probable.md) :
+// "score" est de la forme "2-1", "probability" sa probabilité (0-1).
+export type ScoreProbability = { score: string; probability: number };
+export type TopScore = ScoreProbability;
 
 export type MatchSummary = {
   id: string; competition: string; league: string; home_team: string; away_team: string;
   kickoff_at: string; status: "SCHEDULED" | "LIVE" | "FINISHED" | "POSTPONED";
   favourite: Favourite | null; reference: Probs | null; best_gap: BestGap | null;
   movement: Probs | null; odds_taken_at: string | null; locked: boolean;
+  top_score: TopScore | null;
 };
 
 export type Book = { bookmaker: string; label: string; home: number; draw: number; away: number; margin: number; gaps: Probs };
@@ -22,6 +27,7 @@ export type MatchDetail = MatchSummary & {
   history: { taken_at: string; reference: Probs }[] | null;
   form: { home: Form; away: Form }; h2h: H2H[]; analysis: string | null;
   result: { home: number; away: number } | null;
+  score_distribution: ScoreProbability[] | null;   // les 5 scores les plus probables, réservé au pro
 };
 
 export type BookRow = { bookmaker: string; label: string; matches: number; avg_margin: number | null; gaps_above_threshold: number;

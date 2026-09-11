@@ -5,7 +5,8 @@ import { server } from "./msw/server";
 import { API } from "./msw/handlers";
 vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
 const m = (id: string, competition: string, league: string, home: string, away: string) => ({ id, competition, league, home_team: home, away_team: away, kickoff_at: "2026-09-13T15:15:00Z", status: "SCHEDULED",
-  favourite: { outcome: "home", label: home, prob: 0.55, source: "pinnacle" }, reference: { home: 0.55, draw: 0.25, away: 0.2 }, best_gap: null, movement: null, odds_taken_at: "2026-09-13T10:00:00Z", locked: true });
+  favourite: { outcome: "home", label: home, prob: 0.55, source: "pinnacle" }, reference: { home: 0.55, draw: 0.25, away: 0.2 }, best_gap: null, movement: null, odds_taken_at: "2026-09-13T10:00:00Z", locked: true,
+  top_score: { score: "1-0", probability: 0.13 } });
 describe("liste des matchs", () => {
   it("groupe par compétition et affiche le sous-titre", async () => {
     let query = "";

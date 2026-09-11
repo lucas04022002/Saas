@@ -10,7 +10,7 @@ export function MatchRow({ match }: { match: MatchSummary }) {
   const stale = match.odds_taken_at ? sinceHours(match.odds_taken_at) : null;
   const refLabel = fav ? (fav.source === "moyenne" ? "moyenne, Pinnacle absent" : "référence Pinnacle") : "pas encore de relevé";
   return (
-    <Link href={`/matchs/${match.id}`} className="grid grid-cols-[1fr_auto] md:grid-cols-[1.6fr_1fr_1fr_auto] items-center gap-3 md:gap-6 border-t border-line py-5 md:py-6 hover:bg-grey/60 transition-colors">
+    <Link href={`/matchs/${match.id}`} className="grid grid-cols-[1fr_auto] md:grid-cols-[1.6fr_1fr_1fr_1fr_auto] items-center gap-3 md:gap-6 border-t border-line py-5 md:py-6 hover:bg-grey/60 transition-colors">
       <div>
         <div className="h-teams">{match.home_team} – {match.away_team}</div>
         <div className="mt-1.5 text-[13.5px] text-muted">{match.league} · {formatTimeFr(match.kickoff_at)} · {refLabel}{stale !== null && stale >= 6 ? ` · relevé il y a ${stale} h` : ""}</div>
@@ -23,6 +23,10 @@ export function MatchRow({ match }: { match: MatchSummary }) {
       <div className="hidden md:block text-[14px] text-muted">
         {mv === null ? <><b className="block text-[15px] font-semibold text-ink">—</b>stable</> :
           <><b className="block text-[15px] font-semibold text-ink">{mv >= 0 ? "▲" : "▼"} {Math.round(Math.abs(mv))} pts</b>depuis le premier relevé</>}
+      </div>
+      <div className="hidden md:block text-[14px] text-muted">
+        {match.top_score ? <><b className="block text-[15px] font-semibold text-ink">{match.top_score.score}</b>score le plus probable</> :
+          <><b className="block text-[15px] font-semibold text-ink">—</b>score le plus probable</>}
       </div>
       <div className={`num-row text-right min-w-[110px] md:min-w-[150px] ${tight || !fav ? "text-faint" : "text-ink"}`}>
         {fav ? formatPctInt(fav.prob) : "—"}
