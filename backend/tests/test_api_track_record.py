@@ -4,6 +4,7 @@ from app.collectors.aliases import seed_aliases
 from app.models.enums import MatchStatus
 from app.models.odds_snapshot import OddsSnapshot
 from app.models.team import Team
+from app.models.totals_snapshot import TotalsSnapshot
 from tests.conftest import make_match
 
 NOW = datetime.now(timezone.utc)
@@ -60,6 +61,27 @@ def test_track_record_score_fields_null_without_finished_matches(client, db):
     assert d["n_scored"] == 0
     assert d["exact_score_rate"] is None
     assert d["winner_rate_from_score"] is None
+
+
+def test_track_record_score_uses_closing_totals_snapshot_before_kickoff(client, db):
+    """Le score recalculé pour le track record doit utiliser le total de buts du marché (relevé de clôture,
+    avant coup d'envoi) quand il est disponible, comme la lecture 1N2 ci-dessus — jamais un relevé posté après."""
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    kick = NOW - timedelta(days=10)
+    m = finished(db, h, a, 1, 0, kick, (1.50, 4.20, 6.50))
+    baseline = client.get("/api/v1/track-record").json()["data"]
+    assert baseline["exact_score_rate"] == 1.0   # score réel 1-0 = score en tête (repli sur la ligue)
+
+    # relevé de clôture très incliné vers l'over : fait basculer le score en tête vers 2-1
+    db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=kick - timedelta(hours=2), line=2.5, over=1.30, under=3.55))
+    # un relevé APRÈS le coup d'envoi ne doit jamais servir
+    db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=kick + timedelta(hours=1), line=2.5, over=1.01, under=50.0))
+    db.commit()
+
+    d = client.get("/api/v1/track-record").json()["data"]
+    assert d["exact_score_rate"] == 0.0          # score en tête devenu 2-1, ne touche plus le résultat réel 1-0
+    assert d["winner_rate_from_score"] == 1.0    # toujours favori domicile (2-1)
 
 
 def test_track_record_accepts_el_competition_filter(client, db):

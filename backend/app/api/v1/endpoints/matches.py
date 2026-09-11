@@ -36,7 +36,7 @@ def list_matches(
     db: Session = Depends(get_db),
     current_user: User | None = Depends(get_current_user_optional),
 ):
-    q = select(Match).where(Match.status.in_(VISIBLE)).options(selectinload(Match.snapshots))
+    q = select(Match).where(Match.status.in_(VISIBLE)).options(selectinload(Match.snapshots), selectinload(Match.totals))
     if match_date:
         day_start, day_end = _paris_day_utc_bounds(match_date)
         q = q.where(Match.kickoff_at >= day_start, Match.kickoff_at <= day_end)
@@ -57,7 +57,7 @@ def get_match(match_id: str, db: Session = Depends(get_db), current_user: User |
         match_uuid = uuid.UUID(match_id)
     except ValueError:
         raise HTTPException(status_code=404, detail="Match not found")
-    row = db.scalar(select(Match).where(Match.id == match_uuid).options(selectinload(Match.snapshots)))
+    row = db.scalar(select(Match).where(Match.id == match_uuid).options(selectinload(Match.snapshots), selectinload(Match.totals)))
     if row is None or row.status == MatchStatus.QUARANTINE:
         raise HTTPException(status_code=404, detail="Match not found")
     detail = match_detail(db, row, public=not is_pro(current_user))

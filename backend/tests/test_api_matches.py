@@ -2,9 +2,11 @@ from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo
 
 from app.collectors.aliases import seed_aliases
+from app.engine.score import LEAGUE_GOALS
 from app.models.enums import MatchStatus
 from app.models.odds_snapshot import OddsSnapshot
 from app.models.team import Team
+from app.models.totals_snapshot import TotalsSnapshot
 from app.services.market_reading import reading_for
 from tests.conftest import auth_header, make_match
 
@@ -155,3 +157,27 @@ def test_detail_history_matches_movement(client, db, pro_user):
     h, a = db.query(Team).filter_by(name="Lyon").one(), db.query(Team).filter_by(name="Nice").one()
     q = make_match(db, h, a, competition="F1", status=MatchStatus.QUARANTINE)
     assert client.get(f"/api/v1/matches/{q.id}").status_code == 404
+
+
+def test_detail_expected_goals_falls_back_to_league_without_totals_snapshot(client, db, pro_user):
+    m = seed_match_with_odds(db)
+    d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert d["expected_goals"] == {"total": LEAGUE_GOALS["E0"], "source": "ligue"}
+
+
+def test_detail_expected_goals_and_top_score_use_market_totals_snapshot(client, db, pro_user):
+    """Une ligne over/under 2,5 fortement inclinée vers l'over doit faire basculer le score en tête (plus de
+    buts que le repli de ligue), et la source affichée doit passer de « ligue » à « marché »."""
+    m = seed_match_with_odds(db)
+    without = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert without["expected_goals"]["source"] == "ligue"
+    assert without["top_score"]["score"] == "1-0"
+
+    db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=NOW - timedelta(hours=3), line=2.5, over=1.30, under=3.55))
+    db.commit()
+
+    with_market = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert with_market["expected_goals"]["source"] == "marché"
+    assert with_market["expected_goals"]["total"] > LEAGUE_GOALS["E0"]
+    assert with_market["top_score"]["score"] == "2-1"
+    assert with_market["top_score"]["score"] != without["top_score"]["score"]

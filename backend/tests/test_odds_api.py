@@ -8,14 +8,16 @@ from sqlalchemy.exc import IntegrityError
 import app.collectors.odds_api as odds_api
 from app.collectors.aliases import normalize, seed_aliases
 from app.collectors.fd_uk import FixtureRow, import_fixtures
-from app.collectors.odds_api import parse_events, store_events
+from app.collectors.odds_api import parse_events, parse_totals, store_events, store_totals
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
 from app.models.team import Team, TeamAlias
+from app.models.totals_snapshot import TotalsSnapshot
 from tests.conftest import make_match
 
 PAYLOAD = json.loads((Path(__file__).parent / "fixtures" / "odds_api_epl.json").read_text(encoding="utf-8"))
+TOTALS_PAYLOAD = json.loads((Path(__file__).parent / "fixtures" / "odds_api_totals_epl.json").read_text(encoding="utf-8"))
 T0 = datetime(2026, 9, 11, 8, 0, tzinfo=timezone.utc)
 
 
@@ -103,3 +105,58 @@ def test_unique_conflict_skips_event_and_keeps_session_usable(db, monkeypatch):
 
     assert report.matched == 1
     assert db.query(Match).count() == 1   # la session reste utilisable après le rollback du premier événement
+
+
+# --- totals (over/under) : total de buts attendu du marché, cf. app.engine.score.expected_total ---
+
+def test_parse_totals_keeps_pinnacle_only_and_all_lines():
+    ev = parse_totals("soccer_epl", TOTALS_PAYLOAD)[0]
+    assert (ev.home, ev.away) == ("Arsenal", "Chelsea")
+    assert set(ev.lines) == {2.5, 3.5}          # betclic_fr écarté, seul pinnacle est gardé
+    assert ev.lines[2.5] == (1.85, 2.05)
+    assert ev.lines[3.5] == (1.70, 2.25)
+
+
+def test_parse_totals_tolerates_missing_totals_market():
+    """Le second événement du fixture n'a qu'un marché h2h chez pinnacle, pas de marché totals : ignoré sans erreur."""
+    events = parse_totals("soccer_epl", TOTALS_PAYLOAD)
+    assert len(events) == 1   # seul Arsenal-Chelsea a un marché totals
+
+
+def test_store_totals_reuses_match_resolved_by_h2h_pass(db):
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    m = make_match(db, h, a, kickoff=datetime(2026, 9, 12, 14, 0, tzinfo=timezone.utc))
+    h2h_report = store_events(db, parse_events("soccer_epl", PAYLOAD), taken_at=T0)
+
+    report = store_totals(db, parse_totals("soccer_epl", TOTALS_PAYLOAD), taken_at=T0, event_matches=h2h_report.event_matches)
+
+    assert report.matched == 1 and report.totals == 2
+    snaps = db.query(TotalsSnapshot).filter_by(match_id=m.id).all()
+    assert {(s.line, s.over, s.under) for s in snaps} == {(2.5, 1.85, 2.05), (3.5, 1.70, 2.25)}
+    assert all(s.bookmaker == "pinnacle" for s in snaps)
+
+
+def test_store_totals_resolves_match_itself_when_no_h2h_pass(db):
+    """Sans dict `event_matches` (ou l'événement absent du relevé h2h), store_totals résout le match lui-même,
+    comme store_events."""
+    seed_aliases(db)
+    report = store_totals(db, parse_totals("soccer_epl", TOTALS_PAYLOAD), taken_at=T0)
+    assert report.matched == 1 and report.totals == 2
+    m = db.query(Match).filter(Match.home_team == "Arsenal", Match.away_team == "Chelsea").one()
+    assert db.query(TotalsSnapshot).filter_by(match_id=m.id).count() == 2
+
+
+def test_store_totals_is_idempotent_for_same_taken_at(db):
+    seed_aliases(db)
+    events = parse_totals("soccer_epl", TOTALS_PAYLOAD)
+    store_totals(db, events, taken_at=T0)
+    report = store_totals(db, events, taken_at=T0)
+    assert report.totals == 0 and db.query(TotalsSnapshot).count() == 2
+
+
+def test_store_totals_reports_zero_when_market_missing(db):
+    """Événement sans marché totals (parse_totals ne le renvoie pas) : store_totals sur une liste vide ne crashe pas."""
+    seed_aliases(db)
+    report = store_totals(db, [], taken_at=T0)
+    assert (report.matched, report.totals, report.quarantined) == (0, 0, 0)

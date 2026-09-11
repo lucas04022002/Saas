@@ -4,19 +4,35 @@ from datetime import datetime
 from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
-from app.collectors.competitions import FRENCH_BOOKMAKERS
+from app.collectors.competitions import FRENCH_BOOKMAKERS, REFERENCE_BOOKMAKER
 from app.core.time import to_utc_iso
 from app.engine.context import Form, PastMatch, form, head_to_head
 from app.engine.market import read
 from app.engine.narrative import BOOK_LABELS, MatchContext, describe, label
-from app.engine.score import DEFAULT_GOALS, LEAGUE_GOALS, most_probable_score
+from app.engine.score import expected_total, most_probable_score
 from app.engine.types import OUTCOMES, BookQuote, Reading, ScoreDistribution
 from app.models.enums import MatchStatus
 from app.models.match import Match
+from app.models.totals_snapshot import TotalsSnapshot
+
+TOTALS_REFERENCE_LINE = 2.5
 
 
 def quotes_for(match: Match) -> list[BookQuote]:
     return [BookQuote(s.bookmaker, s.taken_at, (s.home, s.draw, s.away)) for s in match.snapshots]
+
+
+def latest_totals_snapshot(totals: list[TotalsSnapshot], before: datetime | None = None) -> TotalsSnapshot | None:
+    """Dernier relevé over/under Pinnacle exploitable pour le total de buts attendu : la ligne 2,5 du relevé le
+    plus récent, ou à défaut la ligne la plus proche de 2,5 dans ce même relevé. `before` restreint aux relevés
+    antérieurs à cette date (cotes de clôture d'un match terminé, comme pour la lecture 1N2)."""
+    candidates = [t for t in totals if t.bookmaker == REFERENCE_BOOKMAKER and (before is None or t.taken_at <= before)]
+    if not candidates:
+        return None
+    last_taken_at = max(t.taken_at for t in candidates)
+    same_relevé = [t for t in candidates if t.taken_at == last_taken_at]
+    exact = next((t for t in same_relevé if t.line == TOTALS_REFERENCE_LINE), None)
+    return exact or min(same_relevé, key=lambda t: abs(t.line - TOTALS_REFERENCE_LINE))
 
 
 def reading_for(match: Match) -> Reading | None:
@@ -29,8 +45,8 @@ def reading_for(match: Match) -> Reading | None:
         return None
 
 
-def score_for(competition: str, reading: Reading) -> ScoreDistribution | None:
-    total_goals = LEAGUE_GOALS.get(competition, DEFAULT_GOALS)
+def score_for(competition: str, reading: Reading, totals_snapshot: TotalsSnapshot | None = None) -> ScoreDistribution | None:
+    total_goals, _source = expected_total(competition, totals_snapshot)
     r = reading.reference
     return most_probable_score(r[0], r[1], r[2], total_goals, reading.favourite)
 
@@ -77,7 +93,8 @@ def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVE
         out["best_gap"] = {"bookmaker": bg[0], "outcome": bg[1], "gap": bg[2], "odds": r.latest_by_book[bg[0]][OUTCOMES.index(bg[1])]}
     out["movement"] = _probs(r.movement) if r.movement else None
     out["odds_taken_at"] = to_utc_iso(r.last_taken_at)
-    d = score_for(match.competition, r)
+    totals_snapshot = latest_totals_snapshot(match.totals)
+    d = score_for(match.competition, r, totals_snapshot)
     if d:
         out["top_score"] = {"score": d.top, "probability": d.top_probability}
     return out
@@ -93,7 +110,7 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
         "books": None, "reference_book": None, "history": None,
         "form": {"home": vars(hf), "away": vars(af)},
         "h2h": [{"kickoff_at": to_utc_iso(m.kickoff_at), "home": m.home, "away": m.away, "score": f"{m.hg}-{m.ag}"} for m in h2h],
-        "analysis": None, "score_distribution": None,
+        "analysis": None, "score_distribution": None, "expected_goals": None,
         "result": {"home": match.home_score, "away": match.away_score} if match.status == MatchStatus.FINISHED else None,
     })
     if r is None:
@@ -109,7 +126,10 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
         out["reference_book"] = {"bookmaker": b, "label": BOOK_LABELS.get(b, b), "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book[b]}
     # un point d'historique par relevé du jeu d'affichage (live si disponible, archive sinon) — même jeu que le mouvement
     out["history"] = [{"taken_at": to_utc_iso(t), "reference": _probs(p)} for t, p in r.timeline]
-    d = score_for(match.competition, r)
+    totals_snapshot = latest_totals_snapshot(match.totals)
+    total_goals, total_source = expected_total(match.competition, totals_snapshot)
+    out["expected_goals"] = {"total": total_goals, "source": total_source}
+    d = score_for(match.competition, r, totals_snapshot)
     if d:
         out["score_distribution"] = [{"score": sp.score, "probability": sp.probability} for sp in d.distribution]
     out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r), score=d), public=public)

@@ -10,7 +10,7 @@ from app.engine.market import read
 from app.engine.types import BookQuote
 from app.models.enums import MatchStatus
 from app.models.match import Match
-from app.services.market_reading import score_for
+from app.services.market_reading import latest_totals_snapshot, score_for
 
 router = APIRouter(prefix="/track-record", tags=["track-record"])
 NOTE = "Le favori gagne environ une fois sur deux : c'est le marché, pas nous."
@@ -27,7 +27,8 @@ def _outcome(i: int, j: int) -> str:
 
 @router.get("")
 def track_record(competition: str | None = Query(default=None, pattern=COMPETITION_PATTERN), db: Session = Depends(get_db)):
-    q = select(Match).where(Match.status == MatchStatus.FINISHED, Match.home_score.is_not(None)).options(selectinload(Match.snapshots))
+    q = select(Match).where(Match.status == MatchStatus.FINISHED, Match.home_score.is_not(None)).options(
+        selectinload(Match.snapshots), selectinload(Match.totals))
     if competition:
         q = q.where(Match.competition == competition)
     acc: dict = defaultdict(lambda: {"played": 0, "favourite_won": 0})
@@ -42,7 +43,9 @@ def track_record(competition: str | None = Query(default=None, pattern=COMPETITI
             continue
         acc[m.competition]["played"] += 1
         acc[m.competition]["favourite_won"] += int(r.favourite == _actual(m))
-        d = score_for(m.competition, r)
+        # relevé de clôture (avant coup d'envoi), comme pour la lecture 1N2 ci-dessus
+        totals_snapshot = latest_totals_snapshot(m.totals, before=m.kickoff_at)
+        d = score_for(m.competition, r, totals_snapshot)
         if d is None:
             continue
         i, j = (int(x) for x in d.top.split("-"))

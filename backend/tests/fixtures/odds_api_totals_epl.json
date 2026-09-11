@@ -1,0 +1,19 @@
+[
+  {"id": "abc1", "sport_key": "soccer_epl", "commence_time": "2026-09-12T14:00:00Z",
+   "home_team": "Arsenal", "away_team": "Chelsea",
+   "bookmakers": [
+     {"key": "pinnacle", "title": "Pinnacle", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "totals", "outcomes": [
+        {"name": "Over", "price": 1.85, "point": 2.5}, {"name": "Under", "price": 2.05, "point": 2.5},
+        {"name": "Over", "price": 1.70, "point": 3.5}, {"name": "Under", "price": 2.25, "point": 3.5}
+      ]}]},
+     {"key": "betclic_fr", "title": "Betclic (FR)", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "totals", "outcomes": [
+        {"name": "Over", "price": 1.80, "point": 2.5}, {"name": "Under", "price": 2.10, "point": 2.5}
+      ]}]}
+   ]},
+  {"id": "abc2", "sport_key": "soccer_epl", "commence_time": "2026-09-13T17:30:00Z",
+   "home_team": "FC Nulle Part", "away_team": "Everton",
+   "bookmakers": [{"key": "pinnacle", "title": "Pinnacle", "last_update": "2026-09-11T08:00:00Z",
+      "markets": [{"key": "h2h", "outcomes": [{"name": "FC Nulle Part", "price": 2.5}, {"name": "Everton", "price": 2.8}, {"name": "Draw", "price": 3.2}]}]}]}
+]

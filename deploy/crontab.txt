@@ -1,6 +1,7 @@
-# relevé de cotes : 08:00 UTC tous les jours + 12:00 UTC les samedi/dimanche (≈ 40 relevés/mois, 12 crédits chacun)
-0 8 * * *   cd /app && python -m app.collectors.run odds
-0 12 * * 6,0 cd /app && python -m app.collectors.run odds
+# relevé de cotes : 08:00 UTC, 5 jours sur 7 (sauf mardi/jeudi) — 7 compétitions x 3 crédits (2 h2h + 1 totals
+# over/under, pour le total de buts attendu du score le plus probable) = 21 crédits par relevé, ≈ 22 relevés/mois
+# ≈ 462 crédits/mois, sous le plafond du plan gratuit (≈ 500/mois)
+0 8 * * 0,1,3,5,6   cd /app && python -m app.collectors.run odds
 # calendrier, heures, résultats, reports, règlement des paris : tous les jours 06:30 UTC
 30 6 * * *  cd /app && python -m app.collectors.run fd_org
 # historique et cotes ouverture/clôture : lundi 07:00 UTC, saison en cours
