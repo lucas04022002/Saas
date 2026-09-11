@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from app.collectors.aliases import seed_aliases
 from app.models.enums import MatchStatus
@@ -8,6 +9,13 @@ from app.services.market_reading import reading_for
 from tests.conftest import auth_header, make_match
 
 NOW = datetime.now(timezone.utc)
+PARIS = ZoneInfo("Europe/Paris")
+
+
+def paris_day(dt: datetime) -> str:
+    """Date (YYYY-MM-DD) du jour Paris correspondant à un kickoff UTC — utilisé pour interroger ?date=,
+    qui est désormais interprété par le backend comme un jour Paris (00:00-24:00 Paris converti en bornes UTC)."""
+    return dt.astimezone(PARIS).date().isoformat()
 
 
 def seed_match_with_odds(db, kickoff=None):
@@ -48,9 +56,34 @@ def test_list_shows_gap_and_movement_for_pro(client, db, pro_user):
 
 def test_list_filters_by_date_and_competition(client, db):
     m = seed_match_with_odds(db)
-    day = m.kickoff_at.date().isoformat()
+    day = paris_day(m.kickoff_at)
     assert len(client.get(f"/api/v1/matches?date={day}").json()["data"]["items"]) == 1
     assert client.get(f"/api/v1/matches?date={day}&competition=F1").json()["data"]["items"] == []
+
+
+def test_list_date_filter_uses_paris_day_not_utc_day(client, db):
+    """22:30 UTC le 11/09 = 00:30 CEST le 12/09 (Paris, UTC+2 l'été) : le match doit apparaître sous date=2026-09-12,
+    pas sous date=2026-09-11, même si son kickoff_at UTC porte le 11."""
+    seed_aliases(db)
+    h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()
+    kickoff = datetime(2026, 9, 11, 22, 30, tzinfo=timezone.utc)
+    m = make_match(db, h, a, kickoff=kickoff)
+    db.add(OddsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=kickoff - timedelta(hours=3), home=2.0, draw=3.5, away=3.8))
+    db.commit()
+    assert client.get("/api/v1/matches?date=2026-09-12").json()["data"]["items"] != []
+    assert client.get("/api/v1/matches?date=2026-09-11").json()["data"]["items"] == []
+
+
+def test_matches_and_match_detail_timestamps_are_utc_aware_iso(client, db, pro_user):
+    m = seed_match_with_odds(db)
+    items = client.get("/api/v1/matches", headers=auth_header(pro_user)).json()["data"]["items"]
+    it = items[0]
+    assert it["kickoff_at"].endswith("Z") or "+00:00" in it["kickoff_at"]
+    assert it["odds_taken_at"].endswith("Z") or "+00:00" in it["odds_taken_at"]
+    detail = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert detail["kickoff_at"].endswith("Z") or "+00:00" in detail["kickoff_at"]
+    for h in detail["history"]:
+        assert h["taken_at"].endswith("Z") or "+00:00" in h["taken_at"]
 
 
 def test_list_accepts_el_competition_filter(client, db):
@@ -115,7 +148,7 @@ def test_detail_history_matches_movement(client, db, pro_user):
     r = reading_for(m)
     d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
     assert len(d["history"]) == 2
-    assert datetime.fromisoformat(d["history"][0]["taken_at"]) == r.first_taken_at
+    assert datetime.fromisoformat(d["history"][0]["taken_at"]) == r.first_taken_at.replace(tzinfo=timezone.utc)
     assert d["odds_taken_at"] == d["history"][-1]["taken_at"]
     assert client.get("/api/v1/matches/00000000-0000-0000-0000-000000000000").status_code == 404
     seed_aliases(db)

@@ -1,6 +1,8 @@
 """football-data.co.uk : résultats, tirs et cotes d'ouverture/clôture (CSV par saison et championnat).
 
-Convention horaire : l'heure locale UK de la colonne `Time` est étiquetée UTC telle quelle (écart réel d'au plus une heure, absorbé par la marge H−1 de la clôture) ; à défaut d'heure, le coup d'envoi retombe sur 15:00 UTC.
+Convention horaire : l'heure de la colonne `Time` est l'heure locale UK (Europe/London, donc BST l'été = UTC+1,
+GMT l'hiver = UTC+0) ; elle est convertie en UTC via zoneinfo avant stockage. À défaut d'heure, le coup d'envoi
+retombe directement sur 15:00 UTC (aucune conversion de fuseau appliquée dans ce cas — comportement inchangé).
 Convention des cotes : l'instantané d'ouverture est daté J−7 12:00 UTC et celui de clôture sur le coup d'envoi
 dérivé de la ligne CSV (`_kickoff(r.date, r.time)`, jamais `match.kickoff_at`) moins 1h, pour rester dans la
 fenêtre `taken_at <= kickoff_at` attendue en aval même quand fd_org corrige ensuite l'horaire du match.
@@ -10,6 +12,7 @@ import io
 import logging
 from dataclasses import dataclass
 from datetime import date, datetime, time, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 import requests
 from sqlalchemy import select
@@ -24,6 +27,7 @@ from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
 
 log = logging.getLogger("rushplay.collectors.fd_uk")
+UK_TZ = ZoneInfo("Europe/London")
 
 
 @dataclass
@@ -136,8 +140,11 @@ def parse_fixtures_csv(text: str) -> list[FixtureRow]:
 
 
 def _kickoff(d: date, t: time | None) -> datetime:
-    """Heure UK de la colonne `Time` étiquetée UTC (voir docstring du module) ; 15:00 UTC à défaut d'heure."""
-    return datetime.combine(d, t or time(15, 0), tzinfo=timezone.utc)
+    """Heure UK locale de la colonne `Time` (Europe/London) convertie en UTC ; à défaut d'heure, 15:00 UTC
+    directement, sans conversion de fuseau (voir docstring du module)."""
+    if t is None:
+        return datetime.combine(d, time(15, 0), tzinfo=timezone.utc)
+    return datetime.combine(d, t, tzinfo=UK_TZ).astimezone(timezone.utc)
 
 
 def _add_snapshot(db: Session, match: Match, bookmaker: str, taken_at: datetime, odds: tuple[float, float, float] | None) -> int:

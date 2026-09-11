@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_current_user, get_db
+from app.core.time import to_utc_iso
 from app.models.enums import MatchStatus
 from app.models.favorite import Favorite
 from app.models.match import Match
@@ -30,8 +31,8 @@ def list_favorites(current_user: User = Depends(get_current_user), db: Session =
             "home_team": item.match.home_team,
             "away_team": item.match.away_team,
             "league": item.match.league,
-            "kickoff_at": item.match.kickoff_at,
-            "created_at": item.created_at,
+            "kickoff_at": to_utc_iso(item.match.kickoff_at),
+            "created_at": to_utc_iso(item.created_at),
         }
         for item in rows
     ]

@@ -1,5 +1,6 @@
 import uuid
 from datetime import date, datetime, time, timedelta, timezone
+from zoneinfo import ZoneInfo
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import func, select
@@ -15,6 +16,15 @@ from app.services.market_reading import match_detail, match_summary
 
 router = APIRouter(prefix="/matches", tags=["matches"])
 VISIBLE = (MatchStatus.SCHEDULED, MatchStatus.LIVE, MatchStatus.FINISHED, MatchStatus.POSTPONED)
+PARIS = ZoneInfo("Europe/Paris")
+
+
+def _paris_day_utc_bounds(d: date) -> tuple[datetime, datetime]:
+    """Bornes UTC [début, fin] du jour `d` compté en heure de Paris (00:00-24:00 Paris), pas en UTC — un match
+    à 22:30 UTC le 11 (00:30 CEST le 12) doit apparaître sous date=12, pas sous date=11."""
+    start = datetime.combine(d, time.min, tzinfo=PARIS).astimezone(timezone.utc)
+    end = datetime.combine(d + timedelta(days=1), time.min, tzinfo=PARIS).astimezone(timezone.utc) - timedelta(microseconds=1)
+    return start, end
 
 
 @router.get("")
@@ -28,8 +38,8 @@ def list_matches(
 ):
     q = select(Match).where(Match.status.in_(VISIBLE)).options(selectinload(Match.snapshots))
     if match_date:
-        q = q.where(Match.kickoff_at >= datetime.combine(match_date, time.min, tzinfo=timezone.utc),
-                    Match.kickoff_at <= datetime.combine(match_date, time.max, tzinfo=timezone.utc))
+        day_start, day_end = _paris_day_utc_bounds(match_date)
+        q = q.where(Match.kickoff_at >= day_start, Match.kickoff_at <= day_end)
     else:
         now = datetime.now(timezone.utc)
         q = q.where(Match.status == MatchStatus.SCHEDULED, Match.kickoff_at >= now - timedelta(hours=3), Match.kickoff_at <= now + timedelta(days=7))

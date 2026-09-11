@@ -28,6 +28,18 @@ def test_create_list_and_settle(client, db, starter_user):
     assert lst["summary"]["profit"] == 9.0 and lst["summary"]["roi"] == 0.9 and lst["summary"]["by_bookmaker"]["betclic_fr"]["profit"] == 9.0
 
 
+def test_bankroll_timestamps_are_utc_aware_iso(client, db, starter_user):
+    h, a = teams(db)
+    m = make_match(db, h, a, kickoff=NOW + timedelta(days=1))
+    r = client.post("/api/v1/bankroll", json={"match_id": str(m.id), "outcome": "home", "bookmaker": "betclic_fr", "odds": 1.9, "stake": 10}, headers=auth_header(starter_user))
+    it = r.json()["data"]
+    assert it["kickoff_at"].endswith("Z") or "+00:00" in it["kickoff_at"]
+    assert it["created_at"].endswith("Z") or "+00:00" in it["created_at"]
+    m.status = MatchStatus.POSTPONED; db.commit()
+    voided = client.post(f"/api/v1/bankroll/{it['id']}/void", headers=auth_header(starter_user)).json()["data"]
+    assert voided["settled_at"].endswith("Z") or "+00:00" in voided["settled_at"]
+
+
 def test_lost_bet_and_delete_only_pending(client, db, starter_user):
     h, a = teams(db)
     m = make_match(db, h, a, kickoff=NOW + timedelta(days=1))

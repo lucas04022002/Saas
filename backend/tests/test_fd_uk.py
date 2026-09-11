@@ -2,7 +2,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from pathlib import Path
 
 from app.collectors.aliases import normalize, seed_aliases
-from app.collectors.fd_uk import import_fixtures, import_rows, parse_csv, parse_fixtures_csv
+from app.collectors.fd_uk import _kickoff, import_fixtures, import_rows, parse_csv, parse_fixtures_csv
 from app.models.enums import MatchStatus
 from app.models.match import Match
 from app.models.odds_snapshot import OddsSnapshot
@@ -11,6 +11,48 @@ from tests.conftest import make_match
 
 SAMPLE = (Path(__file__).parent / "fixtures" / "fd_uk_E0_sample.csv").read_text(encoding="utf-8-sig")
 SAMPLE_FIXTURES = (Path(__file__).parent / "fixtures" / "fd_uk_fixtures_sample.csv").read_text(encoding="utf-8-sig")
+
+
+# ---- fuseau UK (Europe/London) de la colonne Time : BST l'été (UTC+1), GMT l'hiver (UTC+0) ----
+
+def test_kickoff_converts_bst_uk_local_time_to_utc():
+    # 13/09/2026 14:00 heure UK (BST, UTC+1) -> 13:00 UTC
+    assert _kickoff(date(2026, 9, 13), time(14, 0)) == datetime(2026, 9, 13, 13, 0, tzinfo=timezone.utc)
+
+
+def test_kickoff_january_date_unchanged_no_bst_offset():
+    # en janvier le Royaume-Uni est sur GMT (UTC+0) : pas de décalage
+    assert _kickoff(date(2026, 1, 10), time(15, 0)) == datetime(2026, 1, 10, 15, 0, tzinfo=timezone.utc)
+
+
+def test_kickoff_missing_time_keeps_15h_utc_fallback_untouched_by_timezone():
+    assert _kickoff(date(2026, 9, 13), None) == datetime(2026, 9, 13, 15, 0, tzinfo=timezone.utc)
+
+
+def test_import_rows_converts_bst_kickoff_to_utc(db):
+    """Chemin résultats (parse_csv/import_rows) : une ligne d'août (BST) doit être stockée décalée d'une heure en UTC."""
+    seed_aliases(db)
+    csv_text = (
+        "Date,Time,HomeTeam,AwayTeam,FTHG,FTAG,FTR\n"
+        "13/09/2026,14:00,Arsenal,Chelsea,2,1,H\n"
+    )
+    rows = parse_csv(csv_text)
+    import_rows(db, "E0", rows)
+    m = db.query(Match).filter(Match.home_team == "Arsenal").one()
+    assert m.kickoff_at.replace(tzinfo=timezone.utc) == datetime(2026, 9, 13, 13, 0, tzinfo=timezone.utc)
+
+
+def test_import_fixtures_converts_bst_kickoff_to_utc(db):
+    """Chemin fixtures (parse_fixtures_csv/import_fixtures) : même conversion UK -> UTC que les résultats."""
+    seed_aliases(db)
+    csv_text = (
+        "Div,Date,Time,HomeTeam,AwayTeam,AvgH,AvgD,AvgA\n"
+        "E0,13/09/2026,14:00,Arsenal,Chelsea,1.9,3.5,4.0\n"
+    )
+    rows = parse_fixtures_csv(csv_text)
+    import_fixtures(db, rows, datetime(2026, 9, 10, 10, 0, tzinfo=timezone.utc))
+    m = db.query(Match).filter(Match.home_team == "Arsenal").one()
+    assert m.kickoff_at.replace(tzinfo=timezone.utc) == datetime(2026, 9, 13, 13, 0, tzinfo=timezone.utc)
 
 
 def test_parse_csv_reads_scores_shots_and_odds():
@@ -29,13 +71,14 @@ def test_import_creates_finished_matches_and_two_snapshots(db):
     m = db.query(Match).filter(Match.home_team == "Liverpool").one()
     assert m.status == MatchStatus.FINISHED and (m.home_score, m.away_score) == (4, 2)
     assert m.competition == "E0" and m.home_team_id is not None
-    assert m.kickoff_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 15, 20, 0, tzinfo=timezone.utc)
+    # 15/08/2025 20:00 heure UK (BST, UTC+1) -> 19:00 UTC
+    assert m.kickoff_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 15, 19, 0, tzinfo=timezone.utc)
     books = sorted(s.bookmaker for s in db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id))
     assert books == ["fd_uk_avg", "fd_uk_avg", "fd_uk_pinnacle", "fd_uk_pinnacle"]   # ouverture + clôture × 2 bookmakers
     assert report.snapshots == 8
     closing_snapshots = [
         s for s in db.query(OddsSnapshot).filter(OddsSnapshot.match_id == m.id)
-        if s.taken_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 15, 19, 0, tzinfo=timezone.utc)
+        if s.taken_at.replace(tzinfo=timezone.utc) == datetime(2025, 8, 15, 18, 0, tzinfo=timezone.utc)
     ]
     assert len(closing_snapshots) == 2   # avg + pinnacle, clôture = coup d'envoi − 1h
 
@@ -63,7 +106,7 @@ def test_import_reuses_match_created_by_another_source(db):
     bournemouth = db.query(Team).filter(Team.name == "Bournemouth").one()
     existing = make_match(
         db, liverpool, bournemouth, competition="E0",
-        kickoff=datetime(2025, 8, 15, 19, 0, tzinfo=timezone.utc),   # même jour, heure différente ; fd_uk_key = None
+        kickoff=datetime(2025, 8, 15, 21, 0, tzinfo=timezone.utc),   # heure différente (2h), dans la fenêtre de rapprochement ; fd_uk_key = None
     )
     assert existing.fd_uk_key is None
 

@@ -8,6 +8,7 @@ from sqlalchemy.orm import Session, selectinload
 from app.api.deps import get_current_user_optional, get_db
 from app.collectors.competitions import FRENCH_BOOKMAKERS
 from app.core.access import is_pro
+from app.core.time import to_utc_iso
 from app.engine.narrative import BOOK_LABELS
 from app.engine.types import OUTCOMES
 from app.models.enums import MatchStatus
@@ -39,7 +40,7 @@ def compare_books(db: Session = Depends(get_db), current_user: User | None = Dep
             if gap >= GAP_THRESHOLD:
                 a["gaps_above_threshold"] += 1
             if a["best"] is None or gap > a["best"]["gap"]:
-                a["best"] = {"match_id": str(m.id), "home_team": m.home_team, "away_team": m.away_team, "kickoff_at": m.kickoff_at,
+                a["best"] = {"match_id": str(m.id), "home_team": m.home_team, "away_team": m.away_team, "kickoff_at": to_utc_iso(m.kickoff_at),
                              "outcome": OUTCOMES[k], "gap": gap, "odds": r.latest_by_book[book][k]}
     items = [{"bookmaker": b, "label": BOOK_LABELS.get(b, b), "matches": a["matches"],
               "avg_margin": sum(a["margins"]) / len(a["margins"]) if a["margins"] else None,

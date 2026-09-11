@@ -8,6 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, joinedload
 
 from app.api.deps import get_current_user, get_db
+from app.core.time import to_utc_iso
 from app.models.bet import Bet
 from app.models.enums import BetStatus, MatchStatus, Outcome
 from app.models.match import Match
@@ -27,8 +28,8 @@ class BetIn(BaseModel):
 
 def _bet_dict(b: Bet) -> dict:
     return {"id": str(b.id), "match_id": str(b.match_id), "home_team": b.match.home_team, "away_team": b.match.away_team,
-            "competition": b.match.competition, "kickoff_at": b.match.kickoff_at, "outcome": b.outcome.value, "bookmaker": b.bookmaker,
-            "odds": b.odds, "stake": b.stake, "status": b.status.value, "payout": b.payout, "created_at": b.created_at, "settled_at": b.settled_at,
+            "competition": b.match.competition, "kickoff_at": to_utc_iso(b.match.kickoff_at), "outcome": b.outcome.value, "bookmaker": b.bookmaker,
+            "odds": b.odds, "stake": b.stake, "status": b.status.value, "payout": b.payout, "created_at": to_utc_iso(b.created_at), "settled_at": to_utc_iso(b.settled_at),
             "match_status": b.match.status.value}
 
 

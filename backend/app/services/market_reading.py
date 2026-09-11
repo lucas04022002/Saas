@@ -5,6 +5,7 @@ from sqlalchemy import or_, select
 from sqlalchemy.orm import Session
 
 from app.collectors.competitions import FRENCH_BOOKMAKERS
+from app.core.time import to_utc_iso
 from app.engine.context import Form, PastMatch, form, head_to_head
 from app.engine.market import read
 from app.engine.narrative import BOOK_LABELS, MatchContext, describe, label
@@ -63,7 +64,7 @@ def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVE
     r = reading_for(match) if reading is _NOT_GIVEN else reading
     out = {
         "id": str(match.id), "competition": match.competition, "league": match.league,
-        "home_team": match.home_team, "away_team": match.away_team, "kickoff_at": match.kickoff_at, "status": match.status.value,
+        "home_team": match.home_team, "away_team": match.away_team, "kickoff_at": to_utc_iso(match.kickoff_at), "status": match.status.value,
         "favourite": None, "reference": None, "best_gap": None, "movement": None, "odds_taken_at": None, "locked": False,
         "top_score": None,
     }
@@ -75,7 +76,7 @@ def match_summary(db: Session, match: Match, reading: Reading | None = _NOT_GIVE
     if bg:
         out["best_gap"] = {"bookmaker": bg[0], "outcome": bg[1], "gap": bg[2], "odds": r.latest_by_book[bg[0]][OUTCOMES.index(bg[1])]}
     out["movement"] = _probs(r.movement) if r.movement else None
-    out["odds_taken_at"] = r.last_taken_at
+    out["odds_taken_at"] = to_utc_iso(r.last_taken_at)
     d = score_for(match.competition, r)
     if d:
         out["top_score"] = {"score": d.top, "probability": d.top_probability}
@@ -91,7 +92,7 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
     out.update({
         "books": None, "reference_book": None, "history": None,
         "form": {"home": vars(hf), "away": vars(af)},
-        "h2h": [{"kickoff_at": m.kickoff_at, "home": m.home, "away": m.away, "score": f"{m.hg}-{m.ag}"} for m in h2h],
+        "h2h": [{"kickoff_at": to_utc_iso(m.kickoff_at), "home": m.home, "away": m.away, "score": f"{m.hg}-{m.ag}"} for m in h2h],
         "analysis": None, "score_distribution": None,
         "result": {"home": match.home_score, "away": match.away_score} if match.status == MatchStatus.FINISHED else None,
     })
@@ -107,7 +108,7 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
         o = r.latest_by_book[b]
         out["reference_book"] = {"bookmaker": b, "label": BOOK_LABELS.get(b, b), "home": o[0], "draw": o[1], "away": o[2], "margin": r.margin_by_book[b]}
     # un point d'historique par relevé du jeu d'affichage (live si disponible, archive sinon) — même jeu que le mouvement
-    out["history"] = [{"taken_at": t, "reference": _probs(p)} for t, p in r.timeline]
+    out["history"] = [{"taken_at": to_utc_iso(t), "reference": _probs(p)} for t, p in r.timeline]
     d = score_for(match.competition, r)
     if d:
         out["score_distribution"] = [{"score": sp.score, "probability": sp.probability} for sp in d.distribution]
