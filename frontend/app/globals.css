@@ -1,22 +1,71 @@
 @import "tailwindcss";
 
+/* Les jetons de couleur portent chacun leurs deux valeurs : light-dark() choisit selon le
+   `color-scheme` de la page, fixé juste en dessous. Les classes utilitaires (bg-paper,
+   text-ink, hair, btn…) ne changent pas de nom : seul le SENS des jetons change, donc
+   aucun des appels dans les composants n'est réécrit. */
+:root { color-scheme: light; }
+/* Par défaut on suit le système ; un choix explicite « Clair » reprend la main. */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { color-scheme: dark; } }
+/* Choix explicite « Sombre », quel que soit le réglage du système. */
+:root[data-theme="dark"] { color-scheme: dark; }
+
+/* palette:début */
+:root {
+  --rp-ink: light-dark(#1d1d1f, #f5f5f7);
+  --rp-paper: light-dark(#ffffff, #000000);
+  --rp-grey: light-dark(#f5f5f7, #1c1c1e);
+  --rp-black: light-dark(#000000, #1c1c1e);
+  --rp-muted: light-dark(#6e6e73, #a1a1a6);
+  --rp-faint: light-dark(#8a8a8f, #8a8a8f);
+  --rp-faint-text: light-dark(#6b6b70, #a1a1a6);
+  --rp-faint-dark: light-dark(#a1a1a6, #a1a1a6);
+  --rp-link: light-dark(#0057b8, #5ac8fa);
+  --rp-photo-text: light-dark(#d1d1d6, #d1d1d6);
+  --rp-track: light-dark(#e5e5ea, #3a3a3c);
+  --rp-track-dark: light-dark(#3a3a3c, #3a3a3c);
+  --rp-nav-muted: light-dark(#c7c7cc, #c7c7cc);
+  --rp-segment: light-dark(#e8e8ed, #2c2c2e);
+  --rp-segment-on: light-dark(#ffffff, #48484a);
+  --rp-line: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.14));
+  --rp-line-dark: rgba(255, 255, 255, 0.14);
+}
+/* palette:fin */
+
+/* Une bande pleine largeur `bg-black` reste une île claire-sur-sombre dans les deux thèmes :
+   à l'intérieur, « paper » redevient la couleur claire et « ink » la couleur sombre. Sans ça,
+   en sombre, text-paper virerait au noir sur la bande. En clair la règle est un no-op (mêmes
+   valeurs qu'au :root), donc le thème clair reste pixel pour pixel identique. */
+/* îlot:début */
+.bg-black {
+  --rp-paper: light-dark(#ffffff, #f5f5f7);
+  --rp-ink: light-dark(#1d1d1f, #1c1c1e);
+}
+/* îlot:fin */
+
+/* `inline` : les utilitaires écrivent var(--rp-…) plutôt que var(--color-…). C'est ce qui
+   permet à l'îlot .bg-black de redéfinir un jeton pour ses descendants. */
+@theme inline {
+  --color-ink: var(--rp-ink);
+  --color-paper: var(--rp-paper);
+  --color-grey: var(--rp-grey);
+  --color-black: var(--rp-black);
+  --color-muted: var(--rp-muted);
+  --color-faint: var(--rp-faint);
+  --color-faint-text: var(--rp-faint-text);
+  --color-faint-dark: var(--rp-faint-dark);
+  --color-line: var(--rp-line);
+  --color-line-dark: var(--rp-line-dark);
+  --color-link: var(--rp-link);
+  --color-photo-text: var(--rp-photo-text);
+  --color-track: var(--rp-track);
+  --color-track-dark: var(--rp-track-dark);
+  --color-nav-muted: var(--rp-nav-muted);
+  --color-segment: var(--rp-segment);
+  --color-segment-on: var(--rp-segment-on);
+}
+
 @theme {
-  --color-ink: #1d1d1f;
-  --color-paper: #ffffff;
-  --color-grey: #f5f5f7;
-  --color-black: #000000;
-  --color-muted: #6e6e73;
-  --color-faint: #8a8a8f;
-  --color-faint-text: #6b6b70;
-  --color-faint-dark: #a1a1a6;
-  --color-line: rgba(0, 0, 0, 0.1);
-  --color-line-dark: rgba(255, 255, 255, 0.14);
-  --color-link: #0057b8;
-  --color-photo-text: #d1d1d6;
-  --color-track: #e5e5ea;
-  --color-track-dark: #3a3a3c;
-  --color-nav-muted: #c7c7cc;
-  --color-segment: #e8e8ed;
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-tight: var(--font-inter-tight), var(--font-inter), system-ui, sans-serif;
   --container-site: 1180px;
@@ -28,17 +77,18 @@
   h1, h2, h3, .display { @apply font-tight; }
   a { color: inherit; }
   /* Anneau bicolore : le trait sombre porte sur fond clair, le halo clair le détache d'un fond sombre.
-     Sur les sections noires les deux couleurs s'inversent, sinon l'anneau disparaît dans le fond. */
-  :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; box-shadow: 0 0 0 5px var(--color-paper); }
-  .bg-black :focus-visible { outline-color: var(--color-paper); box-shadow: 0 0 0 5px var(--color-black); }
+     Sur les sections noires les deux couleurs s'inversent, sinon l'anneau disparaît dans le fond.
+     En sombre l'îlot .bg-black réinverse paper/ink, donc les deux règles restent justes. */
+  :focus-visible { outline: 2px solid var(--rp-ink); outline-offset: 2px; box-shadow: 0 0 0 5px var(--rp-paper); }
+  .bg-black :focus-visible { outline-color: var(--rp-paper); box-shadow: 0 0 0 5px var(--rp-black); }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 }
 
 @utility site { @apply mx-auto w-full max-w-site px-5 md:px-12; }
-@utility hair { border-top: 1px solid var(--color-line); }
-@utility hair-dark { border-top: 1px solid var(--color-line-dark); }
+@utility hair { border-top: 1px solid var(--rp-line); }
+@utility hair-dark { border-top: 1px solid var(--rp-line-dark); }
 @utility num-hero { @apply font-tight font-extrabold leading-[0.86] tracking-[-0.075em] text-[140px] md:text-[236px]; }
 @utility num-page { @apply font-tight font-extrabold leading-[0.85] tracking-[-0.075em] text-[120px] md:text-[180px]; }
 @utility num-row { @apply font-tight font-extrabold leading-[0.9] tracking-[-0.06em] text-[44px] md:text-[64px]; }
