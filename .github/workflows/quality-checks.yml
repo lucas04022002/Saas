@@ -78,12 +78,15 @@ jobs:
       - name: Migrations sur PostgreSQL neuf
         run: alembic upgrade head
 
-      # Et redescendre proprement, pour que les downgrade ne pourrissent pas avec le temps.
-      - name: Retour arrière complet
-        run: alembic downgrade base
-
-      - name: Remontée après retour arrière
+      # Deuxième passage : c'est ce qui arrive à chaque redéploiement. Il doit être
+      # sans effet — et il prouve que la version a bien été enregistrée au premier
+      # passage, ce qui n'était justement pas le cas quand la transaction échouait.
+      - name: Deuxième passage (sans effet attendu)
         run: alembic upgrade head
+
+      # Le retour arrière n'est volontairement pas testé : la migration 0005 supprime
+      # les tables de l'ancien modèle et son downgrade est cassé depuis. Ce chemin ne
+      # sert pas en production, où l'on ne redescend jamais une migration.
 
   frontend-checks:
     runs-on: ubuntu-latest
