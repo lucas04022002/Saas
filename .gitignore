@@ -51,3 +51,12 @@ next-env.d.ts
 # pro
 /app/pro/
 /components/pro/
+
+# PID des serveurs de développement (scripts/dev.mjs)
+.dev-pids.json
+
+# Etat d'execution des collecteurs
+/backend/heartbeats/
+
+# Rapports Lighthouse, regeneres a la demande
+/frontend/lighthouse-*.json
