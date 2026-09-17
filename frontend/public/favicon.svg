@@ -1,9 +1,35 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!--
+  Favicon : l'emblème du logo, sans le mot.
+
+  Fond sombre plein plutôt que transparent : dans un onglet, un trait clair sur
+  fond transparent disparaît sur les navigateurs à barre claire. Le carré arrondi
+  reprend la forme de l'ancien favicon, pour que le changement se voie sans que
+  la silhouette bouge dans la barre d'onglets.
+
+  L'emblème garde les transformations du fichier source, ramené dans un carré de
+  32 : `scale(0.179)` porte les 134 unités du dessin à 24 px, et les 4 px de
+  marge de chaque côté l'empêchent de toucher les bords arrondis.
+-->
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <path
     d="M0 4C0 1.79086 1.79086 0 4 0H28C30.2091 0 32 1.79086 32 4V28C32 30.2091 30.2091 32 28 32H4C1.79086 32 0 30.2091 0 28V4Z"
     fill="#09090B" />
-  <path d="M14 17H4L8 13H12L21 4H27L14 17Z" fill="#D9D9D9" />
-  <path d="M15 20V18L28 5V7L15 20Z" fill="#D9D9D9" />
-  <path d="M15 24V22L28 9V11L15 24Z" fill="#D9D9D9" />
-  <path d="M15 28V26L20 21V23L15 28Z" fill="#D9D9D9" />
+  <g transform="translate(4 4) scale(0.179)" fill="#F5F5F7">
+    <g transform="translate(0 117)">
+      <g transform="translate(-5.83 22.83) scale(1.4565)">
+        <clipPath id="fav">
+          <circle cx="50" cy="-50" r="46" />
+        </clipPath>
+        <g clip-path="url(#fav)">
+          <path d="M50.00 -65.64 L64.87 -54.83 L59.19 -37.35 L40.81 -37.35 L35.13 -54.83 Z" />
+          <path d="M65.95 -71.96 L61.44 -85.84 L73.25 -94.42 L85.06 -85.84 L80.55 -71.96 Z" />
+          <path d="M75.81 -41.61 L87.62 -50.20 L99.44 -41.61 L94.92 -27.73 L80.32 -27.73 Z" />
+          <path d="M50.00 -22.86 L61.81 -14.28 L57.30 -0.39 L42.70 -0.39 L38.19 -14.28 Z" />
+          <path d="M24.19 -41.61 L19.68 -27.73 L5.08 -27.73 L0.56 -41.61 L12.38 -50.20 Z" />
+          <path d="M34.05 -71.96 L19.45 -71.96 L14.94 -85.84 L26.75 -94.42 L38.56 -85.84 Z" />
+        </g>
+        <circle cx="50" cy="-50" r="42.5" fill="none" stroke="#F5F5F7" stroke-width="7" />
+      </g>
+    </g>
+  </g>
 </svg>
