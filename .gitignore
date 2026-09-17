@@ -60,3 +60,4 @@ next-env.d.ts
 
 # Rapports Lighthouse, regeneres a la demande
 /frontend/lighthouse-*.json
+lance.txt
