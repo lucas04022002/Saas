@@ -1,4 +1,4 @@
-import { LEGAL } from "@/lib/legal";
+import { LEGAL, isRegistered } from "@/lib/legal";
 
 export const metadata = { robots: { index: false } };
 
@@ -17,9 +17,23 @@ export default function MentionsLegales() {
         <div className="hair mt-8 pt-8 pb-6">
           <h2 className="font-tight text-[24px] font-bold tracking-[-0.03em]">Éditeur du site</h2>
           <p className={p}>
-            Le site RushPlay est édité par {LEGAL.editorName}, {LEGAL.editorStatus}, dont le siège
-            de l&apos;activité est situé {LEGAL.editorAddress}, immatriculé sous le numéro SIREN{" "}
-            {LEGAL.editorSiren}.
+            {/* La phrase suit le statut : citer un siège social et un SIREN pour
+                une personne physique qui n'en a pas serait faux, et l'omettre le
+                deviendrait le jour de l'immatriculation. */}
+            {isRegistered() ? (
+              <>
+                Le site RushPlay est édité par {LEGAL.editorName}, {LEGAL.editorStatus}, dont le
+                siège de l&apos;activité est situé {LEGAL.editorAddress}, immatriculé sous le
+                numéro SIREN {LEGAL.editorSiren}.
+              </>
+            ) : (
+              <>
+                Le site RushPlay est édité par {LEGAL.editorName}, {LEGAL.editorStatus}, établi
+                en {LEGAL.editorAddress}. L&apos;abonnement payant n&apos;étant pas ouvert au
+                paiement à ce jour, l&apos;éditeur n&apos;exerce aucune activité commerciale et
+                n&apos;est pas immatriculé. Il le sera avant toute ouverture du paiement en ligne.
+              </>
+            )}
           </p>
           <p className={p}>Adresse e-mail de contact : {LEGAL.editorEmail}.</p>
         </div>

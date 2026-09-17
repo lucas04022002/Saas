@@ -1,0 +1,16 @@
+Lancer RushPlay en local — une seule commande, une seule console :
+
+cd "C:\Users\lucas\OneDrive\Desktop\Saas--main - Copie" && npm run dev
+
+Ça démarre l'API (FastAPI sur la base de démo dev.db) et le front (Next.js) ensemble.
+Chaque ligne est préfixée [api] ou [web] pour savoir qui parle.
+
+Puis ouvre http://127.0.0.1:3000 (pas localhost — chez toi ça coûte 2,4 s par requête).
+
+Ctrl+C dans la console arrête les deux.
+
+Si un port est déjà pris, le script te donne le numéro du processus et la commande
+pour le fermer. Pour changer de port : PORT_WEB=3001 npm run dev
+
+Le fichier frontend/.env.local pointe sur l'ancienne adresse Render (qui ne répond
+plus) ; ce lancement l'ignore et parle toujours à l'API locale.
