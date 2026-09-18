@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoLockup } from "@/components/Logo";
+import { LogoutButton } from "@/components/LogoutButton";
 import { getUser } from "@/lib/session";
 export async function Nav() {
   const user = await getUser();
@@ -14,7 +15,14 @@ export async function Nav() {
         </Link>
         <nav className="flex min-w-0 items-center gap-4 overflow-x-auto text-[12.5px] font-medium whitespace-nowrap text-nav-muted [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:gap-8">
           {links.map(([href, label]) => <Link key={href} href={href} className="shrink-0 hover:text-paper">{label}</Link>)}
-          {user ? <Link href={user.subscription_plan === "STARTER" ? "/compte" : "/carnet"} className="shrink-0 text-paper">{user.first_name}</Link> : <Link href="/connexion" className="shrink-0 text-paper">Se connecter</Link>}
+          {user ? (
+            <>
+              <Link href={user.subscription_plan === "STARTER" ? "/compte" : "/carnet"} className="shrink-0 text-paper">{user.first_name}</Link>
+              {/* Se déconnecter depuis n'importe quelle page : le prénom mène au
+                  compte, ce bouton ferme la session sans avoir à y passer. */}
+              <LogoutButton variant="nav" />
+            </>
+          ) : <Link href="/connexion" className="shrink-0 text-paper">Se connecter</Link>}
         </nav>
       </div>
     </header>
