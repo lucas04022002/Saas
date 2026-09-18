@@ -223,3 +223,83 @@ def test_deja_abonne_le_paiement_est_refuse(client, db, starter_user, stripe_con
 
     r = client.post("/api/v1/billing/checkout", headers=auth_header(starter_user))
     assert r.status_code == 409
+
+
+# --- Les deux formes de l'objet Stripe ---------------------------------------
+
+
+def test_fin_de_periode_lit_l_ancienne_forme():
+    """`stripe.Subscription.retrieve` rend la forme épinglée par le SDK."""
+    fin = billing.fin_de_periode({"current_period_end": PERIODE})
+    assert int(fin.timestamp()) == PERIODE
+
+
+def test_fin_de_periode_lit_la_forme_des_versions_recentes():
+    """Le webhook livre la version configurée sur le point de terminaison.
+
+    À partir de « basil », `current_period_end` vit sur les lignes d'articles.
+    Ne lire que l'ancienne forme daterait la fin de période à l'instant présent :
+    l'abonné verrait son abonnement expirer le jour de son paiement.
+    """
+    fin = billing.fin_de_periode(
+        {"id": "sub_1", "items": {"data": [{"id": "si_1", "current_period_end": PERIODE}]}}
+    )
+    assert int(fin.timestamp()) == PERIODE
+
+
+def test_fin_de_periode_prend_la_plus_lointaine_echeance():
+    plus_tard = PERIODE + 86_400
+    fin = billing.fin_de_periode(
+        {
+            "items": {
+                "data": [
+                    {"current_period_end": PERIODE},
+                    {"current_period_end": plus_tard},
+                ]
+            }
+        }
+    )
+    assert int(fin.timestamp()) == plus_tard
+
+
+def test_un_paiement_en_version_recente_date_correctement_la_periode(
+    client, db, starter_user, stripe_configure
+):
+    """Le cas réel : webhook en version récente, abonnement daté au mois prochain."""
+    event = _evenement(
+        "customer.subscription.updated",
+        {
+            "id": "sub_1",
+            "customer": "cus_1",
+            "status": "active",
+            "cancel_at_period_end": False,
+            # Pas de `current_period_end` à la racine : c'est la forme récente.
+            "items": {"data": [{"current_period_end": PERIODE}]},
+        },
+    )
+    db.add(
+        Subscription(
+            user_id=starter_user.id,
+            plan=SubscriptionPlan.STARTER,
+            status=SubscriptionStatus.ACTIVE,
+            current_period_end=datetime.now(timezone.utc),
+            stripe_customer_id="cus_1",
+            stripe_subscription_id="sub_1",
+        )
+    )
+    db.commit()
+
+    with patch.object(billing, "verifier_signature", return_value=event):
+        client.post("/api/v1/billing/webhook", content=b"{}", headers={"stripe-signature": "t=1,v1=x"})
+
+    sub = db.query(Subscription).filter_by(user_id=starter_user.id).one()
+
+    # SQLite rend la date sans fuseau : on le repose avant de comparer, sinon
+    # `.timestamp()` la relit comme une heure locale et décale de deux heures.
+    fin = sub.current_period_end
+    if fin.tzinfo is None:
+        fin = fin.replace(tzinfo=timezone.utc)
+
+    assert int(fin.timestamp()) == PERIODE
+    # Le vrai enjeu : la période ne se termine PAS le jour du paiement.
+    assert fin > datetime.now(timezone.utc) + timedelta(days=29)

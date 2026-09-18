@@ -120,8 +120,34 @@ def verifier_signature(charge_utile: bytes, entete_signature: str | None) -> str
 
 
 def fin_de_periode(abonnement: dict) -> datetime:
-    """La date jusqu'à laquelle l'accès est dû, telle que Stripe la donne."""
+    """La date jusqu'à laquelle l'accès est dû, telle que Stripe la donne.
+
+    Deux formes coexistent, et les deux arrivent dans cette application :
+
+    - jusqu'aux versions « acacia », `current_period_end` est porté par
+      l'abonnement lui-même. C'est ce que rend `stripe.Subscription.retrieve`,
+      puisque le SDK épingle sa propre version d'API ;
+    - à partir de « basil », Stripe l'a déplacé sur les lignes d'articles
+      (`items.data[].current_period_end`). C'est ce que livre le webhook, dont
+      la version est celle configurée sur le point de terminaison.
+
+    Ne lire que la première forme donnerait `None` sur les événements du
+    webhook, et daterait la fin de période à l'instant présent : l'abonné
+    verrait son abonnement expirer le jour même de son paiement.
+    """
     horodatage = abonnement.get("current_period_end")
+
+    if horodatage is None:
+        lignes = (abonnement.get("items") or {}).get("data") or []
+        echeances = [
+            ligne.get("current_period_end")
+            for ligne in lignes
+            if ligne.get("current_period_end")
+        ]
+        # La plus lointaine : un abonnement à plusieurs lignes court jusqu'à la
+        # dernière échéance payée.
+        horodatage = max(echeances) if echeances else None
+
     if horodatage is None:
         return datetime.now(timezone.utc)
     return datetime.fromtimestamp(horodatage, tz=timezone.utc)
