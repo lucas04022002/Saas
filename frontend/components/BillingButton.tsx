@@ -33,12 +33,17 @@ export function BillingButton({
       const body = (await res.json()) as { data?: { url?: string }; message?: string };
 
       if (!res.ok || !body.data?.url) {
+        // Le serveur nomme la cause quand il la connaît (Stripe refuse, tarif
+        // introuvable, compte non activé...). L'écraser par « réessayez dans un
+        // instant » invite à recommencer un geste qui ne peut pas aboutir, et
+        // laisse le problème invisible des deux côtés de l'écran.
         setErreur(
           res.status === 503
             ? "Le paiement en ligne n'est pas encore ouvert."
             : res.status === 409
               ? "Vous êtes déjà abonné."
-              : "Impossible d'ouvrir la page de paiement. Réessayez dans un instant.",
+              : body.message ||
+                "Impossible d'ouvrir la page de paiement. Réessayez dans un instant.",
         );
         return;
       }
