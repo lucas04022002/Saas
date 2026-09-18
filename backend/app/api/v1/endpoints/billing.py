@@ -70,9 +70,20 @@ def ouvrir_paiement(
             user_id=str(current_user.id),
             customer_id=sub.stripe_customer_id,
         )
-    except stripe.error.StripeError:
-        logger.exception("Ouverture de la session de paiement impossible")
-        raise HTTPException(status_code=502, detail="Le paiement est momentanément indisponible.")
+    except stripe.error.StripeError as erreur:
+        # Le code et le message de Stripe disent POURQUOI : compte non activé,
+        # tarif d'un autre mode, devise refusée... Sans eux, la panne se résume
+        # à « réessayez », alors qu'aucun de ces cas ne se répare en réessayant.
+        logger.error(
+            "STRIPE checkout refusé : code=%s type=%s message=%s",
+            getattr(erreur, "code", None),
+            type(erreur).__name__,
+            getattr(erreur, "user_message", None) or str(erreur),
+        )
+        raise HTTPException(
+            status_code=502,
+            detail=f"Stripe a refusé la création du paiement ({getattr(erreur, 'code', None) or type(erreur).__name__}).",
+        )
 
     db.commit()
     return {"success": True, "message": "", "data": session}

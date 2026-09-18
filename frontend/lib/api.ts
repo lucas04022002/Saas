@@ -35,7 +35,7 @@ export const api = {
     call<Quota>(`/api/v1/matches/${id}/unlock`, { method: "POST", token }),
   billing: {
     /** Le tarif réel, lu chez Stripe : la page affiche ce qui sera prélevé. */
-    plan: () => call<{ amount_cents: number; currency: string; interval: string; interval_count: number } | null>("/api/v1/billing/plan", { revalidate: 300 }),
+    plan: () => call<{ amount_cents: number; currency: string; interval: string; interval_count: number; livemode: boolean } | null>("/api/v1/billing/plan", { revalidate: 300 }),
     checkout: (token: string) => call<{ url: string; id: string }>("/api/v1/billing/checkout", { method: "POST", token }),
     portal: (token: string) => call<{ url: string }>("/api/v1/billing/portal", { method: "POST", token }),
   },

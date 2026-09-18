@@ -303,3 +303,44 @@ def test_un_paiement_en_version_recente_date_correctement_la_periode(
     assert int(fin.timestamp()) == PERIODE
     # Le vrai enjeu : la période ne se termine PAS le jour du paiement.
     assert fin > datetime.now(timezone.utc) + timedelta(days=29)
+
+
+# --- Savoir sur quoi le site est branché ------------------------------------
+
+
+def test_le_tarif_dit_s_il_est_en_mode_reel(stripe_configure):
+    """Test ou réel : rien d'autre ne le distingue vu de l'extérieur.
+
+    Un site branché sur des clés de test affiche un prix, ouvre une page de
+    paiement, accepte une carte — et n'encaisse jamais rien. La panne ne se
+    voit qu'au premier relevé bancaire qui ne vient pas.
+    """
+    base = {"unit_amount": 900, "currency": "eur", "recurring": {"interval": "month", "interval_count": 1}}
+
+    with patch.object(stripe.Price, "retrieve", return_value={**base, "livemode": False}):
+        assert billing.lire_tarif()["livemode"] is False
+
+    with patch.object(stripe.Price, "retrieve", return_value={**base, "livemode": True}):
+        assert billing.lire_tarif()["livemode"] is True
+
+
+def test_un_refus_de_stripe_nomme_son_motif(client, starter_user, stripe_configure):
+    """« Réessayez » est un mensonge quand la cause est structurelle.
+
+    Un compte non activé, un tarif appartenant à l'autre mode, une devise
+    refusée : aucun de ces cas ne se répare en réessayant. Le motif de Stripe
+    doit remonter, sinon la panne est indiscernable d'un incident passager.
+    """
+    refus = stripe.error.InvalidRequestError(
+        "You cannot create a live Checkout Session until you activate your account.",
+        param=None,
+        code="account_invalid",
+    )
+
+    with patch.object(billing, "ouvrir_paiement", side_effect=refus):
+        r = client.post("/api/v1/billing/checkout", headers=auth_header(starter_user))
+
+    assert r.status_code == 502
+    # L'application enveloppe ses erreurs : le `detail` de HTTPException ressort
+    # en `message`. C'est cette enveloppe-là que lit le client.
+    assert "account_invalid" in r.json()["message"]

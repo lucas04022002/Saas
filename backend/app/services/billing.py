@@ -56,6 +56,12 @@ def lire_tarif() -> dict:
         "currency": (price.get("currency") or "eur").upper(),
         "interval": recurrence.get("interval"),
         "interval_count": recurrence.get("interval_count", 1),
+        # Test ou reel ? Stripe porte l'information sur chaque objet. Sans elle,
+        # rien ne distingue de l'exterieur un site branche sur des cles de test
+        # — qui affiche un prix, propose de payer, et n'encaissera jamais — d'un
+        # site en production. C'est exactement le genre de panne qui ne se voit
+        # qu'au premier client perdu.
+        "livemode": bool(price.get("livemode")),
     }
 
 
