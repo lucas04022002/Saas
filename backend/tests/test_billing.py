@@ -343,4 +343,8 @@ def test_un_refus_de_stripe_nomme_son_motif(client, starter_user, stripe_configu
     assert r.status_code == 502
     # L'application enveloppe ses erreurs : le `detail` de HTTPException ressort
     # en `message`. C'est cette enveloppe-là que lit le client.
-    assert "account_invalid" in r.json()["message"]
+    #
+    # C'est le TEXTE de Stripe qui doit remonter, pas le nom de sa classe
+    # d'exception : « InvalidRequestError » couvre une URL de retour mal formée
+    # comme un tarif d'un autre mode, et ne dit donc rien de la panne.
+    assert "activate your account" in r.json()["message"]

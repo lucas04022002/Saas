@@ -80,10 +80,13 @@ def ouvrir_paiement(
             type(erreur).__name__,
             getattr(erreur, "user_message", None) or str(erreur),
         )
-        raise HTTPException(
-            status_code=502,
-            detail=f"Stripe a refusé la création du paiement ({getattr(erreur, 'code', None) or type(erreur).__name__}).",
-        )
+        # Le nom de la classe ne dit rien : « InvalidRequestError » couvre aussi
+        # bien une URL de retour mal formée qu'un tarif d'un autre mode. C'est
+        # le message de Stripe qui nomme le paramètre fautif, et sans lui il
+        # faut aller fouiller les journaux du serveur pour une panne qui, elle,
+        # est déjà visible à l'écran.
+        motif = getattr(erreur, "user_message", None) or str(erreur) or type(erreur).__name__
+        raise HTTPException(status_code=502, detail=f"Stripe a refusé la création du paiement : {motif[:300]}")
 
     db.commit()
     return {"success": True, "message": "", "data": session}
