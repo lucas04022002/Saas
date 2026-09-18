@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { LogoLockup } from "@/components/Logo";
 import { LogoutButton } from "@/components/LogoutButton";
-import { getUser } from "@/lib/session";
+import { getUser, isPro } from "@/lib/session";
 export async function Nav() {
   const user = await getUser();
-  const links = [["/matchs", "Matchs"], ["/bookmakers", "Bookmakers"], ["/track-record", "Track record"], ["/tarifs", "Tarifs"]];
+  const links: string[][] = [["/matchs", "Matchs"], ["/bookmakers", "Bookmakers"], ["/track-record", "Track record"], ["/tarifs", "Tarifs"]];
+  // Le carnet devient un lien à part entière pour les abonnés. Il était
+  // jusqu'ici caché derrière le prénom, qui est le chemin vers le compte.
+  if (isPro(user)) links.push(["/carnet", "Carnet"]);
   return (
     <header className="bg-black text-paper sticky top-0 z-20">
       <div className="site flex h-[52px] items-center justify-between gap-3 border-b border-line-dark">
@@ -17,7 +20,11 @@ export async function Nav() {
           {links.map(([href, label]) => <Link key={href} href={href} className="shrink-0 hover:text-paper">{label}</Link>)}
           {user ? (
             <>
-              <Link href={user.subscription_plan === "STARTER" ? "/compte" : "/carnet"} className="shrink-0 text-paper">{user.first_name}</Link>
+              {/* Le prénom mène TOUJOURS au compte. Il menait au carnet pour les
+                  abonnés, ce qui laissait /compte sans aucun point d'entrée :
+                  la page où l'on résilie devenait inatteignable au moment précis
+                  où l'on commençait à payer. */}
+              <Link href="/compte" className="shrink-0 text-paper">{user.first_name}</Link>
               {/* Se déconnecter depuis n'importe quelle page : le prénom mène au
                   compte, ce bouton ferme la session sans avoir à y passer. */}
               <LogoutButton variant="nav" />

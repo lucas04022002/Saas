@@ -23,7 +23,13 @@ export default async function Tarifs() {
           <div className="mt-4 font-tight text-[72px] font-extrabold leading-none tracking-[-0.06em]">{PRICE_MONTHLY}<span className="ml-1 text-[20px] font-medium tracking-normal text-muted">€ / mois</span></div>
           <ul className="mt-7 list-none p-0">{["Tous les matchs, sans quota", "Le favori, sa probabilité et le score exact", "Les écarts entre bookmakers, match par match", "Le mouvement des cotes, relevé par relevé", "Le comparateur des bookmakers français", "Le carnet, réglé automatiquement", "Sans engagement, résiliable en un clic"].map((t) => li(t))}</ul>
           {isPro(user) ? (
-            <span className="btn mt-7 opacity-60">Ton offre actuelle</span>
+            // Un badge inerte était un cul-de-sac : la page Tarifs est l'endroit
+            // où l'on vient revoir ce qu'on paie, donc celui où l'on vient aussi
+            // pour arrêter de payer.
+            <div className="mt-7">
+              <span className="block text-[14px] text-muted">Ton offre actuelle.</span>
+              <Link href="/compte" className="btn-ghost mt-3">Résilier ou gérer mon abonnement</Link>
+            </div>
           ) : user ? (
             <div className="mt-7"><BillingButton action="checkout" label="S'abonner" /></div>
           ) : (

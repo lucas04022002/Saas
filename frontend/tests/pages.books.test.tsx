@@ -36,7 +36,10 @@ describe("tarifs", () => {
     );
     const Page = (await import("@/app/tarifs/page")).default;
     render(await Page());
-    expect(screen.getAllByText("Ton offre actuelle")).toHaveLength(1);
+    expect(screen.getAllByText(/Ton offre actuelle/)).toHaveLength(1);
     expect(screen.getByText("Inclus dans ton offre.")).toBeInTheDocument();
+    // Le badge était un cul-de-sac : un abonné venu revoir ce qu'il paie
+    // n'avait, depuis cette page, aucun chemin vers l'endroit où l'on résilie.
+    expect(screen.getByRole("link", { name: /Résilier/ }).getAttribute("href")).toBe("/compte");
   });
 });
