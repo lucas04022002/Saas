@@ -23,6 +23,21 @@ from app.core.config import settings
 #: Les statuts Stripe qui ouvrent l'accès payant.
 STATUTS_OUVRANTS = {"active", "trialing"}
 
+#: La version d'API que cette application parle à Stripe.
+#:
+#: Le SDK Python épingle la sienne (2024-12-18.acacia pour stripe 11.x), et
+#: cette version-là ignore Managed Payments : le compte de RushPlay l'utilise,
+#: et Stripe refusait donc toute création de session de paiement — en laissant
+#: passer les lectures, ce qui rendait la panne invisible jusqu'au premier clic
+#: sur « S'abonner ».
+#:
+#: La valeur choisie est celle du point de terminaison des webhooks. Les objets
+#: que Stripe nous ENVOIE et ceux que nous LUI DEMANDONS ont ainsi exactement la
+#: même forme ; c'est cette divergence qui déplace `current_period_end` sur les
+#: lignes d'articles (voir `fin_de_periode`). Si la version du webhook change
+#: dans le tableau de bord Stripe, celle-ci doit suivre.
+VERSION_API = "2026-08-26.dahlia"
+
 
 class BillingNotConfigured(RuntimeError):
     """Stripe n'est pas configuré : aucune commande ne peut aboutir."""
@@ -34,12 +49,14 @@ def est_configure() -> bool:
     )
 
 
-def _client() -> None:
+def configurer() -> None:
+    """Arme le SDK : la clé, et la version d'API que nous parlons."""
     if not est_configure():
         raise BillingNotConfigured(
             "STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET et STRIPE_PRICE_ID sont requis."
         )
     stripe.api_key = settings.stripe_secret_key
+    stripe.api_version = VERSION_API
 
 
 def lire_tarif() -> dict:
@@ -48,7 +65,7 @@ def lire_tarif() -> dict:
     Renvoyé au client pour que la page Tarifs affiche ce qui sera prélevé, et
     non un nombre recopié à la main.
     """
-    _client()
+    configurer()
     price = stripe.Price.retrieve(settings.stripe_price_id)
     recurrence = price.get("recurring") or {}
     return {
@@ -72,7 +89,7 @@ def ouvrir_paiement(*, user_email: str, user_id: str, customer_id: str | None) -
     au webhook de rattacher le paiement, même si l'adresse e-mail saisie chez
     Stripe diffère de celle du compte.
     """
-    _client()
+    configurer()
     base = settings.public_site_url.rstrip("/")
     session = stripe.checkout.Session.create(
         mode="subscription",
@@ -100,7 +117,7 @@ def ouvrir_portail(customer_id: str) -> str:
     Le portail de Stripe la fournit, et il gère aussi le RIB, les factures et
     les relances — que nous n'aurions aucune raison de réimplémenter.
     """
-    _client()
+    configurer()
     base = settings.public_site_url.rstrip("/")
     session = stripe.billing_portal.Session.create(
         customer=customer_id, return_url=f"{base}/compte"
@@ -115,7 +132,7 @@ def verifier_signature(charge_utile: bytes, entete_signature: str | None) -> str
     s'offrir un abonnement. C'est la seule chose qui distingue un paiement
     d'une requête HTTP quelconque.
     """
-    _client()
+    configurer()
     if not entete_signature:
         raise stripe.error.SignatureVerificationError("Signature absente", None)
     return stripe.Webhook.construct_event(
@@ -131,8 +148,10 @@ def fin_de_periode(abonnement: dict) -> datetime:
     Deux formes coexistent, et les deux arrivent dans cette application :
 
     - jusqu'aux versions « acacia », `current_period_end` est porté par
-      l'abonnement lui-même. C'est ce que rend `stripe.Subscription.retrieve`,
-      puisque le SDK épingle sa propre version d'API ;
+      l'abonnement lui-même. Depuis que `VERSION_API` est imposée, nous ne
+      recevons plus cette forme — mais elle reste lue, parce qu'un retour en
+      arrière sur la version la ramènerait sans autre signe qu'une date de fin
+      de période silencieusement fixée à l'instant présent ;
     - à partir de « basil », Stripe l'a déplacé sur les lignes d'articles
       (`items.data[].current_period_end`). C'est ce que livre le webhook, dont
       la version est celle configurée sur le point de terminaison.

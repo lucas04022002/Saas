@@ -182,7 +182,11 @@ async def webhook(request: Request, db: Session = Depends(get_db)):
 
         abonnement_id = objet.get("subscription")
         if abonnement_id:
-            stripe.api_key = billing.settings.stripe_secret_key
+            # Passer par `configurer` et non poser la clé à la main : c'est là
+            # qu'est aussi choisie la version d'API. Une clé posée seule
+            # relit l'abonnement dans la version épinglée par le SDK, dont
+            # la forme diffère de celle de l'événement qu'on vient de recevoir.
+            billing.configurer()
             _appliquer(db, sub, dict(stripe.Subscription.retrieve(abonnement_id)))
         else:
             sub.plan = SubscriptionPlan.PRO

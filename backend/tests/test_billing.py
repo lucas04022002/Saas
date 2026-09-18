@@ -348,3 +348,56 @@ def test_un_refus_de_stripe_nomme_son_motif(client, starter_user, stripe_configu
     # d'exception : « InvalidRequestError » couvre une URL de retour mal formée
     # comme un tarif d'un autre mode, et ne dit donc rien de la panne.
     assert "activate your account" in r.json()["message"]
+
+
+# --- La version d'API parlée à Stripe ---------------------------------------
+
+
+def test_le_sdk_parle_la_version_configuree(stripe_configure):
+    """Managed Payments exige basil ou mieux ; le SDK épingle acacia.
+
+    Sans cette bascule, Stripe laisse passer les LECTURES et refuse toute
+    CRÉATION de paiement : le tarif s'affiche, la page Tarifs a l'air saine, et
+    la panne n'apparaît qu'au premier clic sur « S'abonner ».
+    """
+    stripe.api_version = "2024-12-18.acacia"
+    billing.configurer()
+    assert stripe.api_version == billing.VERSION_API
+
+
+def test_la_version_part_bien_sur_le_reseau(stripe_configure):
+    """Poser l'attribut ne suffit pas : c'est l'en-tête envoyé qui compte."""
+    from stripe._http_client import HTTPClient
+
+    vu = {}
+
+    def faux(self, method, url, headers, post_data=None, *a, **k):
+        vu["version"] = dict(headers).get("Stripe-Version")
+        return '{"id":"price_x","object":"price","unit_amount":900,"currency":"eur"}', 200, {}
+
+    with patch.object(HTTPClient, "request_with_retries", faux):
+        billing.lire_tarif()
+
+    assert vu["version"] == billing.VERSION_API
+
+
+def test_le_webhook_relit_l_abonnement_dans_la_meme_version(client, db, starter_user, stripe_configure):
+    """Le webhook armait le SDK à la main, sans passer par `configurer`.
+
+    Une clé posée seule laisse la version du SDK : l'abonnement relu revient
+    dans une autre forme que l'événement reçu, et `current_period_end` se
+    retrouve introuvable là où on le cherche.
+    """
+    stripe.api_version = "2024-12-18.acacia"
+    event = _evenement(
+        "checkout.session.completed",
+        {"id": "cs_1", "customer": "cus_1", "subscription": "sub_1", "client_reference_id": str(starter_user.id)},
+    )
+
+    with patch.object(billing, "verifier_signature", return_value=event), patch.object(
+        stripe.Subscription, "retrieve", return_value=_abonnement_stripe()
+    ):
+        r = client.post("/api/v1/billing/webhook", content=b"{}", headers={"stripe-signature": "t=1,v1=x"})
+
+    assert r.status_code == 200
+    assert stripe.api_version == billing.VERSION_API
