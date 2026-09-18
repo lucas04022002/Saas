@@ -23,6 +23,8 @@ export type PlanStripe = {
   interval: string | null;
   interval_count: number;
   livemode: boolean;
+  /** « inclusive » | « exclusive » | « unspecified » | null. */
+  tax_behavior?: string | null;
 };
 
 export type Tarif = {
@@ -38,6 +40,15 @@ export type Tarif = {
   periodeLongue: string;
   /** Faux quand le tarif vient du repli et non de Stripe. */
   reel: boolean;
+  /**
+   * Vrai quand le montant est bien celui qui sera prélevé.
+   *
+   * Faux si Stripe ajoute la taxe par-dessus (`tax_behavior: "exclusive"`) :
+   * le site ne peut alors PAS afficher un prix TTC unique, puisque le taux
+   * dépend du pays de l'acheteur. Écrire « TTC » dans ce cas revient à
+   * annoncer un montant et en facturer un autre.
+   */
+  ttc: boolean;
 };
 
 const SYMBOLES: Record<string, string> = { EUR: "€", USD: "$", GBP: "£" };
@@ -74,6 +85,7 @@ export function formatTarif(plan: PlanStripe | null | undefined): Tarif {
       phrase: `${PRICE_MONTHLY_FALLBACK} € par mois`,
       periodeLongue: "par mois",
       reel: false,
+      ttc: true,
     };
   }
 
@@ -88,5 +100,8 @@ export function formatTarif(plan: PlanStripe | null | undefined): Tarif {
   const periodeLongue = multiple ? `tous les ${plan.interval_count} ${unite.court}` : unite.long;
   const phrase = `${montant} ${devise} ${periodeLongue}`;
 
-  return { montant, devise, periode, phrase, periodeLongue, reel: true };
+  // « unspecified » = aucune taxe paramétrée : le montant est bien celui payé.
+  const ttc = plan.tax_behavior !== "exclusive";
+
+  return { montant, devise, periode, phrase, periodeLongue, reel: true, ttc };
 }

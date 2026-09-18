@@ -53,3 +53,21 @@ describe("le tarif affiché vient de Stripe", () => {
     }
   });
 });
+
+describe("taxe : le site ne peut pas annoncer TTC un montant qui ne l'est pas", () => {
+  it("taxe incluse : le montant est bien celui prélevé", () => {
+    expect(formatTarif(stripe({ tax_behavior: "inclusive" })).ttc).toBe(true);
+  });
+
+  it("aucune taxe paramétrée : le montant est bien celui prélevé", () => {
+    expect(formatTarif(stripe({ tax_behavior: "unspecified" })).ttc).toBe(true);
+    expect(formatTarif(stripe({ tax_behavior: null })).ttc).toBe(true);
+  });
+
+  it("taxe en sus : le site doit le dire", () => {
+    // Le cas rencontré en production : 9 € affichés, 10,80 € prélevés. Le site
+    // ne peut pas calculer un TTC unique — le taux dépend du pays de l'acheteur
+    // — donc il annonce le montant hors taxes et le signale, au lieu de mentir.
+    expect(formatTarif(stripe({ tax_behavior: "exclusive" })).ttc).toBe(false);
+  });
+});

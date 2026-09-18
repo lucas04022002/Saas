@@ -23,7 +23,7 @@ export default async function Tarifs() {
         </div>
         <div className="py-10 md:pl-10">
           <div className="font-tight text-[34px] font-extrabold tracking-[-0.04em]">{PLAN_NAMES.PRO}</div>
-          <div className="mt-4 font-tight text-[72px] font-extrabold leading-none tracking-[-0.06em]">{tarif.montant}<span className="ml-1 text-[20px] font-medium tracking-normal text-muted">{tarif.devise} {tarif.periode}</span></div>
+          <div className="mt-4 font-tight text-[72px] font-extrabold leading-none tracking-[-0.06em]">{tarif.montant}<span className="ml-1 text-[20px] font-medium tracking-normal text-muted">{tarif.devise} {tarif.periode}</span>{!tarif.ttc && <span className="ml-2 text-[14px] font-medium tracking-normal text-muted">+ TVA</span>}</div>
           <ul className="mt-7 list-none p-0">{["Tous les matchs, sans quota", "Le favori, sa probabilité et le score exact", "Les écarts entre bookmakers, match par match", "Le mouvement des cotes, relevé par relevé", "Le comparateur des bookmakers français", "Le carnet, réglé automatiquement", "Sans engagement, résiliable en un clic"].map((t) => li(t))}</ul>
           {isPro(user) ? (
             // Un badge inerte était un cul-de-sac : la page Tarifs est l'endroit

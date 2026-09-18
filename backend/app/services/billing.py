@@ -79,6 +79,12 @@ def lire_tarif() -> dict:
         # site en production. C'est exactement le genre de panne qui ne se voit
         # qu'au premier client perdu.
         "livemode": bool(price.get("livemode")),
+        # « inclusive » : le montant EST le prix payé. « exclusive » : la taxe
+        # s'ajoute par-dessus, et le prix affiché n'est pas celui qui sera
+        # prélevé. En France, un prix montré à un consommateur s'affiche TTC :
+        # sans cette information, le site annonce un montant et en facture un
+        # autre, y compris dans les CGU.
+        "tax_behavior": price.get("tax_behavior"),
     }
 
 

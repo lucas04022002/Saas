@@ -53,7 +53,7 @@ export default async function Cgu() {
             matchs par semaine calendaire, avec le favori, sa probabilité et le score exact le
             plus probable. Un match ouvert le reste définitivement pour le compte qui l&apos;a
             ouvert ; le quota se recharge chaque lundi. Sans compte, aucune de ces données
-            n&apos;est accessible. L&apos;offre « Lecture complète », à {tarif.montant} {tarif.devise} TTC {tarif.periodeLongue},
+            n&apos;est accessible. L&apos;offre « Lecture complète », à {tarif.montant} {tarif.devise} {tarif.ttc ? "TTC" : "hors taxes, TVA en sus"} {tarif.periodeLongue},
             ouvre tous les matchs sans quota, ainsi que les écarts entre bookmakers, le
             mouvement des cotes et le carnet automatisé.
             L&apos;offre payante est sans engagement et résiliable à tout moment depuis la page
