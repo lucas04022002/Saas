@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime
 
-from sqlalchemy import DateTime, Enum, ForeignKey, func
+from sqlalchemy import Boolean, DateTime, Enum, ForeignKey, String, func
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -17,6 +17,16 @@ class Subscription(Base):
     plan: Mapped[SubscriptionPlan] = mapped_column(Enum(SubscriptionPlan), nullable=False, default=SubscriptionPlan.STARTER)
     status: Mapped[SubscriptionStatus] = mapped_column(Enum(SubscriptionStatus), nullable=False, default=SubscriptionStatus.ACTIVE)
     current_period_end: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+
+    # --- Stripe ---
+    #
+    # Le client est conservé au-delà d'un abonnement résilié : un utilisateur
+    # qui revient doit retrouver son historique de facturation, et non un
+    # second client pour la même personne.
+    stripe_customer_id: Mapped[str | None] = mapped_column(String(64), unique=True, nullable=True)
+    stripe_subscription_id: Mapped[str | None] = mapped_column(String(64), unique=True, nullable=True)
+    #: Résiliation demandée : l'accès court jusqu'à `current_period_end`.
+    cancel_at_period_end: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False

@@ -33,6 +33,12 @@ export const api = {
   // bord de la lecture : le préchargement de Next.js viderait sinon le quota.
   unlockMatch: (id: string, token?: string) =>
     call<Quota>(`/api/v1/matches/${id}/unlock`, { method: "POST", token }),
+  billing: {
+    /** Le tarif réel, lu chez Stripe : la page affiche ce qui sera prélevé. */
+    plan: () => call<{ amount_cents: number; currency: string; interval: string; interval_count: number } | null>("/api/v1/billing/plan", { revalidate: 300 }),
+    checkout: (token: string) => call<{ url: string; id: string }>("/api/v1/billing/checkout", { method: "POST", token }),
+    portal: (token: string) => call<{ url: string }>("/api/v1/billing/portal", { method: "POST", token }),
+  },
   books: (token?: string) => call<{ items: BookRow[]; threshold: number }>("/api/v1/books", { token, revalidate: 60 }),
   trackRecord: (competition?: string) =>
     call<{ items: TrackRow[]; note: string; n_scored: number; exact_score_rate: number | null; winner_rate_from_score: number | null; score_note: string }>(

@@ -24,6 +24,16 @@ class Settings(BaseSettings):
             )
         return v
     cors_origins: str = "http://localhost:3000"
+
+    # Stripe. Tant que ces trois valeurs sont absentes, l'abonnement n'est pas
+    # ouvert au paiement : les routes repondent 503 plutot que d'accepter une
+    # commande qui n'aboutira jamais.
+    stripe_secret_key: str | None = None
+    stripe_webhook_secret: str | None = None
+    stripe_price_id: str | None = None
+    #: Ou Stripe renvoie l'utilisateur apres la page de paiement.
+    public_site_url: str = "http://localhost:3000"
+
     the_odds_api_key: str | None = None
     football_data_org_key: str | None = None
     fd_uk_base_url: str = "https://www.football-data.co.uk/mmz4281"
