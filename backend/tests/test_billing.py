@@ -401,3 +401,44 @@ def test_le_webhook_relit_l_abonnement_dans_la_meme_version(client, db, starter_
 
     assert r.status_code == 200
     assert stripe.api_version == billing.VERSION_API
+
+
+# --- Voir que la résiliation a été prise en compte ---------------------------
+
+
+def test_sans_abonnement_stripe_l_etat_est_vide(client, starter_user):
+    rep = client.get("/api/v1/billing/abonnement", headers=auth_header(starter_user))
+    assert rep.status_code == 200
+    assert rep.json()["data"] is None
+
+
+def test_une_resiliation_est_visible_avec_sa_date(client, db, starter_user):
+    """Le point dur : après résiliation, le plan reste PRO.
+
+    Si la page ne lit que le plan, elle affiche « Lecture complète » comme
+    avant et l'utilisateur ne sait pas si sa demande a abouti. C'est
+    `cancel_at_period_end` qui porte l'information, pas le plan.
+    """
+    fin = datetime.now(timezone.utc) + timedelta(days=12)
+    db.add(
+        Subscription(
+            user_id=starter_user.id,
+            plan=SubscriptionPlan.PRO,
+            status=SubscriptionStatus.ACTIVE,
+            current_period_end=fin,
+            stripe_customer_id="cus_1",
+            stripe_subscription_id="sub_1",
+            cancel_at_period_end=True,
+        )
+    )
+    db.commit()
+
+    data = client.get("/api/v1/billing/abonnement", headers=auth_header(starter_user)).json()["data"]
+
+    assert data["plan"] == "PRO"
+    assert data["cancel_at_period_end"] is True
+    assert data["current_period_end"] is not None
+
+
+def test_l_etat_de_l_abonnement_exige_d_etre_connecte(client):
+    assert client.get("/api/v1/billing/abonnement").status_code in (401, 403)

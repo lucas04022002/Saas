@@ -1,4 +1,4 @@
-import type { BankrollSummary, Bet, BookRow, Legal, MatchDetail, MatchSummary, Pagination, Quota, TrackRow, User } from "./types";
+import type { Abonnement, BankrollSummary, Bet, BookRow, Legal, MatchDetail, MatchSummary, Pagination, Quota, TrackRow, User } from "./types";
 
 import { parseEnvelope } from "./envelope";
 
@@ -36,6 +36,8 @@ export const api = {
   billing: {
     /** Le tarif réel, lu chez Stripe : la page affiche ce qui sera prélevé. */
     plan: () => call<{ amount_cents: number; currency: string; interval: string; interval_count: number; livemode: boolean } | null>("/api/v1/billing/plan", { revalidate: 300 }),
+    /** L'état de l'abonnement : sans lui, une résiliation ne se voit nulle part. */
+    abonnement: (token: string) => call<Abonnement | null>("/api/v1/billing/abonnement", { token }),
     checkout: (token: string) => call<{ url: string; id: string }>("/api/v1/billing/checkout", { method: "POST", token }),
     portal: (token: string) => call<{ url: string }>("/api/v1/billing/portal", { method: "POST", token }),
   },

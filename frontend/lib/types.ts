@@ -62,6 +62,13 @@ export type BankrollSummary = { stakes: number; settled_stakes: number; payouts:
   by_bookmaker: Record<string, { stakes: number; payouts: number; profit: number; bets: number }>;
   by_competition: Record<string, { stakes: number; payouts: number; profit: number; bets: number }> };
 
+/** L'état de l'abonnement, tel que le dernier webhook Stripe l'a laissé. */
+export type Abonnement = {
+  plan: string;
+  status: string;
+  cancel_at_period_end: boolean;
+  current_period_end: string | null;
+};
 export type User = { id: string; first_name: string; email: string; role: string; subscription_plan: Plan };
 export type Legal = { warning: string; minimum_age: number; positioning: string };
 export type Pagination = { page: number; limit: number; total: number };

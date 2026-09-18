@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getUser, isPro } from "@/lib/session";
+import { getToken, getUser, isPro } from "@/lib/session";
+import { api } from "@/lib/api";
+import type { Abonnement } from "@/lib/types";
 import { PLAN_NAMES, PRICE_MONTHLY } from "@/lib/pricing";
 import { LogoutButton } from "@/components/LogoutButton";
 import { BillingButton } from "@/components/BillingButton";
@@ -9,6 +11,22 @@ export default async function Compte({ searchParams }: { searchParams: Promise<{
   const user = await getUser();
   if (!user) redirect("/connexion");
   const { abonnement, paiement } = await searchParams;
+
+  // L'état réel de l'abonnement. Le plan seul ne suffit pas : après une
+  // résiliation il reste PRO jusqu'à la fin de la période payée, et la page
+  // afficherait exactement ce qu'elle affichait avant. Une panne d'API ne doit
+  // pas emporter la page : on dégrade en n'affichant rien de plus.
+  let etat: Abonnement | null = null;
+  try {
+    const token = await getToken();
+    if (token) etat = await api.billing.abonnement(token);
+  } catch {
+    etat = null;
+  }
+
+  const finDePeriode = etat?.current_period_end
+    ? new Date(etat.current_period_end).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })
+    : null;
   return (
     <section className="site py-16 md:py-24">
       <h1 className="h-section">{user.first_name}.</h1>
@@ -39,12 +57,24 @@ export default async function Compte({ searchParams }: { searchParams: Promise<{
           <>
             {/* Les CGU promettent une résiliation « en un clic depuis la page
                 Compte ». C'était un e-mail à écrire. Le portail de Stripe tient
-                la promesse, et gère aussi le moyen de paiement et les factures. */}
-            <BillingButton action="portal" label="Gérer mon abonnement" variant="btn-ghost" />
-            <p className="mt-3 max-w-[48ch] text-[14px] text-muted">
-              Résiliation, moyen de paiement et factures. Sans engagement : la résiliation prend
-              effet à la fin de la période déjà payée.
-            </p>
+                la promesse, et gère aussi le moyen de paiement et les factures.
+
+                Le libellé nomme la résiliation : « Gérer » seul n'indique pas
+                qu'on peut partir, et quelqu'un qui cherche à se désabonner ne
+                clique pas sur un bouton qui ne le dit pas. */}
+            <BillingButton action="portal" label="Résilier ou gérer mon abonnement" variant="btn-ghost" />
+            {etat?.cancel_at_period_end ? (
+              <p className="mt-3 max-w-[48ch] text-[14px] text-muted">
+                Résiliation enregistrée{finDePeriode ? ` : votre accès reste ouvert jusqu'au ${finDePeriode}` : ""}.
+                Vous ne serez pas prélevé ensuite. Vous pouvez revenir sur cette décision depuis le même bouton.
+              </p>
+            ) : (
+              <p className="mt-3 max-w-[48ch] text-[14px] text-muted">
+                Résiliation, moyen de paiement et factures. Sans engagement : la résiliation prend
+                effet à la fin de la période déjà payée
+                {finDePeriode ? `, soit le ${finDePeriode}` : ""}.
+              </p>
+            )}
           </>
         ) : (
           <>

@@ -53,6 +53,34 @@ def lire_plan():
         return {"success": True, "message": "Tarif indisponible", "data": None}
 
 
+@router.get("/abonnement")
+def lire_abonnement(
+    current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    """L'état de l'abonnement, tel que le dernier webhook l'a laissé.
+
+    Sans lui, la page Compte ne peut rien dire après une résiliation : elle
+    affiche « Lecture complète » comme avant, et l'utilisateur repart sans
+    savoir si sa demande a été prise en compte — ni s'il sera prélevé le mois
+    suivant. Une résiliation qu'on ne voit pas nulle part est une résiliation
+    qu'on refait, ou qu'on conteste à sa banque.
+    """
+    sub = db.query(Subscription).filter(Subscription.user_id == current_user.id).first()
+    if sub is None or not sub.stripe_subscription_id:
+        return {"success": True, "message": "", "data": None}
+
+    return {
+        "success": True,
+        "message": "",
+        "data": {
+            "plan": sub.plan.value,
+            "status": sub.status.value,
+            "cancel_at_period_end": bool(sub.cancel_at_period_end),
+            "current_period_end": sub.current_period_end.isoformat() if sub.current_period_end else None,
+        },
+    }
+
+
 @router.post("/checkout")
 def ouvrir_paiement(
     current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
