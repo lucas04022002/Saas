@@ -1,5 +1,5 @@
 import { LEGAL, TO_FILL } from "@/lib/legal";
-import { PRICE_MONTHLY } from "@/lib/pricing";
+import { lireTarif } from "@/lib/tarif";
 
 export const metadata = { robots: { index: false } };
 
@@ -7,7 +7,8 @@ const h3 = "font-tight text-[18px] font-semibold tracking-[-0.02em] mt-6";
 const p = "mt-3 text-[16px] leading-relaxed text-muted";
 const ul = "mt-3 list-disc space-y-1 pl-5 text-[16px] leading-relaxed text-muted";
 
-export default function Cgu() {
+export default async function Cgu() {
+  const tarif = await lireTarif();
   return (
     <section className="site py-16 md:py-24">
       <div className="max-w-[65ch]">
@@ -52,8 +53,8 @@ export default function Cgu() {
             matchs par semaine calendaire, avec le favori, sa probabilité et le score exact le
             plus probable. Un match ouvert le reste définitivement pour le compte qui l&apos;a
             ouvert ; le quota se recharge chaque lundi. Sans compte, aucune de ces données
-            n&apos;est accessible. L&apos;offre « Lecture complète », à {PRICE_MONTHLY} € TTC par
-            mois, ouvre tous les matchs sans quota, ainsi que les écarts entre bookmakers, le
+            n&apos;est accessible. L&apos;offre « Lecture complète », à {tarif.montant} {tarif.devise} TTC {tarif.periodeLongue},
+            ouvre tous les matchs sans quota, ainsi que les écarts entre bookmakers, le
             mouvement des cotes et le carnet automatisé.
             L&apos;offre payante est sans engagement et résiliable à tout moment depuis la page
             « Compte » de l&apos;utilisateur. La résiliation prend effet à la fin de la période

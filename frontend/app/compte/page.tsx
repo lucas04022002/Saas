@@ -3,12 +3,13 @@ import { redirect } from "next/navigation";
 import { getToken, getUser, isPro } from "@/lib/session";
 import { api } from "@/lib/api";
 import type { Abonnement } from "@/lib/types";
-import { PLAN_NAMES, PRICE_MONTHLY } from "@/lib/pricing";
+import { PLAN_NAMES } from "@/lib/pricing";
+import { lireTarif } from "@/lib/tarif";
 import { LogoutButton } from "@/components/LogoutButton";
 import { BillingButton } from "@/components/BillingButton";
 export const dynamic = "force-dynamic";
 export default async function Compte({ searchParams }: { searchParams: Promise<{ abonnement?: string; paiement?: string }> }) {
-  const user = await getUser();
+  const [user, tarif] = await Promise.all([getUser(), lireTarif()]);
   if (!user) redirect("/connexion");
   const { abonnement, paiement } = await searchParams;
 
@@ -46,7 +47,7 @@ export default async function Compte({ searchParams }: { searchParams: Promise<{
       )}
       {abonnement === "1" && !isPro(user) && (
         <p className="mt-4 max-w-[48ch] text-[17px] text-muted">
-          Tous les matchs, sans quota, pour {PRICE_MONTHLY} € par mois.
+          Tous les matchs, sans quota, pour {tarif.phrase}.
         </p>
       )}
       <dl className="mt-10 max-w-[520px] border-t border-ink text-[17px]">
@@ -78,7 +79,7 @@ export default async function Compte({ searchParams }: { searchParams: Promise<{
           </>
         ) : (
           <>
-            <BillingButton action="checkout" label={`S'abonner — ${PRICE_MONTHLY} € / mois`} />
+            <BillingButton action="checkout" label={`S'abonner — ${tarif.montant} ${tarif.devise} ${tarif.periode}`} />
             <p className="mt-3 max-w-[48ch] text-[14px] text-muted">
               Paiement par carte, chez Stripe. Sans engagement, résiliable en un clic depuis cette
               page. <Link href="/tarifs" className="link">Ce que contient l&apos;offre ›</Link>

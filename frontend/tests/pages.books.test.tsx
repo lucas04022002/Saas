@@ -30,6 +30,31 @@ describe("bookmakers", () => {
 });
 
 describe("tarifs", () => {
+  it("le prix affiché est celui de Stripe, pas une constante", async () => {
+    // Le défaut corrigé : le prix était écrit en dur dans la page. Un tarif
+    // passé à 12,50 € chez Stripe aurait laissé le site annoncer 9 €, et
+    // l'écart ne se serait vu que sur le relevé d'un client.
+    server.use(
+      http.get(`${API}/api/v1/auth/me`, () => HttpResponse.json({ detail: "non" }, { status: 401 })),
+      http.get(`${API}/api/v1/billing/plan`, () =>
+        HttpResponse.json({ success: true, message: "", data: { amount_cents: 1250, currency: "EUR", interval: "month", interval_count: 1, livemode: true } })),
+    );
+    const Page = (await import("@/app/tarifs/page")).default;
+    render(await Page());
+    expect(screen.getByText("12,50")).toBeInTheDocument();
+    expect(screen.queryByText("9")).not.toBeInTheDocument();
+  });
+
+  it("Stripe injoignable : la page affiche le repli plutôt qu'un trou", async () => {
+    server.use(
+      http.get(`${API}/api/v1/auth/me`, () => HttpResponse.json({ detail: "non" }, { status: 401 })),
+      http.get(`${API}/api/v1/billing/plan`, () => HttpResponse.json({ detail: "boom" }, { status: 500 })),
+    );
+    const Page = (await import("@/app/tarifs/page")).default;
+    render(await Page());
+    expect(screen.getByText("9")).toBeInTheDocument();
+  });
+
   it("tarifs : un abonné ne voit « Ton offre actuelle » qu'une fois", async () => {
     server.use(
       http.get(`${API}/api/v1/auth/me`, () => HttpResponse.json({ success: true, message: "", data: { id: "u", first_name: "L", email: "l@t.fr", role: "USER", subscription_plan: "PRO" } })),

@@ -16,8 +16,9 @@ describe("pages légales", () => {
   });
 
   it("CGU : rend le titre et les sections obligatoires", async () => {
+    // La page lit désormais le tarif chez Stripe : elle est asynchrone.
     const Page = (await import("@/app/cgu/page")).default;
-    render(<Page />);
+    render(await Page());
     expect(screen.getByRole("heading", { level: 1, name: "Conditions d'utilisation." })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Offres et prix" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Droit de rétractation" })).toBeInTheDocument();
