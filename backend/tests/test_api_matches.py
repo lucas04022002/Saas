@@ -34,20 +34,35 @@ def seed_match_with_odds(db, kickoff=None):
     return m
 
 
-def test_list_upcoming_shows_favourite_and_locks_premium_for_anonymous(client, db):
+def test_list_sans_compte_ne_montre_aucun_chiffre(client, db):
+    """Sans compte : les équipes et la date, pas un chiffre.
+
+    Le favori et le score exact étaient auparavant publics et sans limite. Ils
+    sont désormais ce que le compte gratuit ouvre, deux fois par semaine.
+    """
     seed_match_with_odds(db)
     r = client.get("/api/v1/matches")
     assert r.status_code == 200
-    items = r.json()["data"]["items"]
-    assert len(items) == 1
-    it = items[0]
-    assert it["favourite"]["outcome"] == "home" and it["favourite"]["label"] == "Arsenal" and it["favourite"]["source"] == "pinnacle"
-    assert it["locked"] is True and it["best_gap"] is None and it["movement"] is None
-    # score le plus probable : public, non verrouillé même pour l'anonyme
-    assert it["top_score"]["score"].count("-") == 1
-    i, j = (int(x) for x in it["top_score"]["score"].split("-"))
-    assert i > j    # favori domicile -> score de victoire domicile
-    assert 0 < it["top_score"]["probability"] < 1
+    data = r.json()["data"]
+    it = data["items"][0]
+
+    assert it["locked"] is True
+    assert it["favourite"] is None
+    # `reference` porte les probabilités par issue : le laisser passer
+    # rendrait le verrou cosmétique.
+    assert it["reference"] is None
+    assert it["top_score"] is None
+    assert it["best_gap"] is None and it["movement"] is None
+    # Ce qui identifie le match reste lisible, sinon il n'y a plus de site.
+    assert it["home_team"] and it["away_team"] and it["kickoff_at"]
+
+    assert data["quota"] == {
+        "plan": "ANONYMOUS",
+        "limit": 0,
+        "used": 0,
+        "remaining": 0,
+        "resets_at": None,
+    }
 
 
 def test_list_shows_gap_and_movement_for_pro(client, db, pro_user):
@@ -125,16 +140,20 @@ def test_detail_pro_has_books_history_analysis(client, db, pro_user):
     assert probs == sorted(probs, reverse=True)
 
 
-def test_detail_anonymous_is_locked_but_keeps_favourite_and_analysis(client, db):
+def test_detail_sans_compte_ne_montre_ni_favori_ni_score(client, db):
     m = seed_match_with_odds(db)
     d = client.get(f"/api/v1/matches/{m.id}").json()["data"]
-    assert d["locked"] is True and d["books"] is None and d["history"] is None and d["movement"] is None
-    assert d["favourite"]["outcome"] == "home" and d["analysis"]
+
+    assert d["locked"] is True
+    assert d["favourite"] is None
+    assert d["reference"] is None
+    assert d["top_score"] is None
+    assert d["score_distribution"] is None
+    assert d["books"] is None and d["history"] is None and d["movement"] is None
+    # L'analyse reste lisible : elle donne envie sans donner le chiffre.
+    assert d["analysis"]
     assert "au-dessus de la référence" not in d["analysis"]
     assert "depuis le premier relevé" not in d["analysis"]
-    # top_score public même verrouillé, score_distribution réservé au pro
-    assert d["top_score"] is not None
-    assert d["score_distribution"] is None
 
 
 def test_detail_uses_finished_history_for_form_and_h2h(client, db, pro_user):

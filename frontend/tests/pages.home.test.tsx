@@ -13,7 +13,7 @@ const match = { id: "m1", competition: "F1", league: "Ligue 1", home_team: "Lyon
 describe("accueil", () => {
   it("héros avec le match phare et quatre lignes", async () => {
     server.use(
-      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [match, { ...match, id: "m2", home_team: "Lens", away_team: "Lille" }], pagination: { page: 1, limit: 50, total: 2 } } })),
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [match, { ...match, id: "m2", home_team: "Lens", away_team: "Lille" }], pagination: { page: 1, limit: 50, total: 2 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
       http.get(`${API}/api/v1/track-record`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ competition: "F1", played: 72, favourite_won: 39, favourite_rate: 0.542 }], note: "n" } })),
     );
     const Page = (await import("@/app/page")).default;
@@ -26,7 +26,7 @@ describe("accueil", () => {
   });
   it("sans match du jour : titre générique", async () => {
     server.use(
-      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 50, total: 0 } } })),
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 50, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
       http.get(`${API}/api/v1/track-record`, () => HttpResponse.json({ success: true, message: "", data: { items: [], note: "n" } })),
     );
     const Page = (await import("@/app/page")).default;

@@ -8,9 +8,17 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.api.deps import get_current_user_optional, get_db
 from app.collectors.competitions import COMPETITION_PATTERN
-from app.core.access import gate_detail, gate_list, is_pro
+from app.core.access import (
+    can_unlock,
+    gate_detail,
+    gate_list,
+    is_pro,
+    quota_for,
+    unlocked_match_ids,
+)
 from app.models.enums import MatchStatus
 from app.models.match import Match
+from app.models.match_unlock import MatchUnlock
 from app.models.user import User
 from app.services.market_reading import match_detail, match_summary
 
@@ -47,8 +55,19 @@ def list_matches(
         q = q.where(Match.competition == competition)
     total = db.scalar(select(func.count()).select_from(q.subquery()))
     rows = db.scalars(q.order_by(Match.kickoff_at.asc()).offset((page - 1) * limit).limit(limit)).unique().all()
-    items = gate_list([match_summary(db, m) for m in rows], current_user)
-    return {"success": True, "message": "Matches fetched", "data": {"items": items, "pagination": {"page": page, "limit": limit, "total": total}}}
+    ouverts = unlocked_match_ids(current_user, db)
+    items = gate_list([match_summary(db, m) for m in rows], current_user, ouverts)
+    return {
+        "success": True,
+        "message": "Matches fetched",
+        "data": {
+            "items": items,
+            "pagination": {"page": page, "limit": limit, "total": total},
+            # Le client affiche « il te reste N matchs cette semaine » sans avoir
+            # à compter lui-même : le serveur seul sait ce qui a été dépensé.
+            "quota": quota_for(current_user, db),
+        },
+    }
 
 
 @router.get("/{match_id}")
@@ -60,5 +79,58 @@ def get_match(match_id: str, db: Session = Depends(get_db), current_user: User |
     row = db.scalar(select(Match).where(Match.id == match_uuid).options(selectinload(Match.snapshots), selectinload(Match.totals)))
     if row is None or row.status == MatchStatus.QUARANTINE:
         raise HTTPException(status_code=404, detail="Match not found")
+    ouverts = unlocked_match_ids(current_user, db)
     detail = match_detail(db, row, public=not is_pro(current_user))
-    return {"success": True, "message": "Match detail fetched", "data": gate_detail(detail, current_user)}
+    detail = gate_detail(detail, current_user, ouverts)
+    # Le quota vit DANS `data` : le client ne lit que cette clé de l'enveloppe,
+    # et un quota posé à côté serait silencieusement perdu.
+    detail["quota"] = quota_for(current_user, db)
+    return {"success": True, "message": "Match detail fetched", "data": detail}
+
+
+@router.post("/{match_id}/unlock")
+def unlock_match(
+    match_id: str,
+    db: Session = Depends(get_db),
+    current_user: User | None = Depends(get_current_user_optional),
+):
+    """Dépense un crédit hebdomadaire pour ouvrir un match.
+
+    Une action explicite, et non un effet de bord de la lecture : le
+    préchargement de Next.js au survol d'un lien viderait sinon le quota de
+    l'utilisateur avant qu'il ait cliqué.
+
+    Rejouer l'appel sur un match déjà ouvert ne coûte rien et répond comme la
+    première fois : deux onglets, ou un double clic, ne doivent pas coûter deux
+    crédits.
+    """
+    if current_user is None:
+        raise HTTPException(status_code=401, detail="Créez un compte gratuit pour ouvrir un match.")
+
+    try:
+        match_uuid = uuid.UUID(match_id)
+    except ValueError:
+        raise HTTPException(status_code=404, detail="Match not found")
+
+    row = db.scalar(select(Match).where(Match.id == match_uuid))
+    if row is None or row.status == MatchStatus.QUARANTINE:
+        raise HTTPException(status_code=404, detail="Match not found")
+
+    if is_pro(current_user):
+        return {"success": True, "message": "Inclus dans l'abonnement", "data": quota_for(current_user, db)}
+
+    deja = db.scalar(
+        select(MatchUnlock).where(
+            MatchUnlock.user_id == current_user.id, MatchUnlock.match_id == match_uuid
+        )
+    )
+    if deja is None:
+        if not can_unlock(current_user, db):
+            raise HTTPException(
+                status_code=402,
+                detail="Vous avez ouvert vos matchs de la semaine. Le quota se recharge lundi.",
+            )
+        db.add(MatchUnlock(user_id=current_user.id, match_id=match_uuid))
+        db.commit()
+
+    return {"success": True, "message": "Match ouvert", "data": quota_for(current_user, db)}

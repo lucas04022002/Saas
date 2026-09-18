@@ -1,4 +1,4 @@
-import type { BankrollSummary, Bet, BookRow, Legal, MatchDetail, MatchSummary, Pagination, TrackRow, User } from "./types";
+import type { BankrollSummary, Bet, BookRow, Legal, MatchDetail, MatchSummary, Pagination, Quota, TrackRow, User } from "./types";
 
 import { parseEnvelope } from "./envelope";
 
@@ -26,8 +26,13 @@ const qs = (p: Record<string, string | number | undefined>) =>
 export const api = {
   legal: () => call<Legal>("/api/v1/legal", { revalidate: 3600 }),
   matches: (p: { date?: string; competition?: string; page?: number; limit?: number } = {}, token?: string) =>
-    call<{ items: MatchSummary[]; pagination: Pagination }>(`/api/v1/matches?${qs(p)}`, { token, revalidate: 60 }),
-  match: (id: string, token?: string) => call<MatchDetail>(`/api/v1/matches/${id}`, { token, revalidate: 60 }),
+    call<{ items: MatchSummary[]; pagination: Pagination; quota: Quota }>(`/api/v1/matches?${qs(p)}`, { token, revalidate: 60 }),
+  match: (id: string, token?: string) =>
+    call<MatchDetail & { quota: Quota }>(`/api/v1/matches/${id}`, { token, revalidate: 60 }),
+  // Dépense un crédit hebdomadaire. Une action explicite, jamais un effet de
+  // bord de la lecture : le préchargement de Next.js viderait sinon le quota.
+  unlockMatch: (id: string, token?: string) =>
+    call<Quota>(`/api/v1/matches/${id}/unlock`, { method: "POST", token }),
   books: (token?: string) => call<{ items: BookRow[]; threshold: number }>("/api/v1/books", { token, revalidate: 60 }),
   trackRecord: (competition?: string) =>
     call<{ items: TrackRow[]; note: string; n_scored: number; exact_score_rate: number | null; winner_rate_from_score: number | null; score_note: string }>(

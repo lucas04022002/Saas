@@ -10,7 +10,7 @@ const m = (id: string, competition: string, league: string, home: string, away: 
 describe("liste des matchs", () => {
   it("groupe par compétition et affiche le sous-titre", async () => {
     let query = "";
-    server.use(http.get(`${API}/api/v1/matches`, ({ request }) => { query = new URL(request.url).search; return HttpResponse.json({ success: true, message: "", data: { items: [m("1", "E0", "Premier League", "Arsenal", "Chelsea"), m("2", "F1", "Ligue 1", "Lyon", "Marseille")], pagination: { page: 1, limit: 200, total: 2 } } }); }));
+    server.use(http.get(`${API}/api/v1/matches`, ({ request }) => { query = new URL(request.url).search; return HttpResponse.json({ success: true, message: "", data: { items: [m("1", "E0", "Premier League", "Arsenal", "Chelsea"), m("2", "F1", "Ligue 1", "Lyon", "Marseille")], pagination: { page: 1, limit: 200, total: 2 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } }); }));
     const Page = (await import("@/app/matchs/page")).default;
     render(await Page({ searchParams: Promise.resolve({ date: "2026-09-13", competition: undefined }) }));
     expect(query).toContain("date=2026-09-13");
@@ -20,13 +20,13 @@ describe("liste des matchs", () => {
     expect(headings).toEqual(["Ligue 1", "Premier League"]);
   });
   it("sous-titre : compte les matchs groupés, pas items.length (une compétition hors ORDER ne compte pas)", async () => {
-    server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [m("1", "E0", "Premier League", "Arsenal", "Chelsea"), m("2", "XX", "Ligue inconnue", "A", "B")], pagination: { page: 1, limit: 200, total: 2 } } })));
+    server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [m("1", "E0", "Premier League", "Arsenal", "Chelsea"), m("2", "XX", "Ligue inconnue", "A", "B")], pagination: { page: 1, limit: 200, total: 2 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })));
     const Page = (await import("@/app/matchs/page")).default;
     render(await Page({ searchParams: Promise.resolve({ date: "2026-09-13", competition: undefined }) }));
     expect(screen.getByText(/1 match · relevé de/)).toBeInTheDocument();
   });
   it("vide : phrase d'invitation", async () => {
-    server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })));
+    server.use(http.get(`${API}/api/v1/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })));
     const Page = (await import("@/app/matchs/page")).default;
     render(await Page({ searchParams: Promise.resolve({ date: "2026-09-13", competition: "CL" }) }));
     expect(screen.getByText("Aucun match ce jour-là pour cette compétition.")).toBeInTheDocument();

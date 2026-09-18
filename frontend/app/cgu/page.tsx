@@ -48,9 +48,13 @@ export default function Cgu() {
         <div className="hair pt-8 pb-6">
           <h2 className="font-tight text-[24px] font-bold tracking-[-0.03em]">Offres et prix</h2>
           <p className={p}>
-            Le site propose une offre gratuite, sans compte requis pour le favori et sa
-            probabilité, et une offre « Lecture complète » à {PRICE_MONTHLY} € TTC par mois, qui
-            ouvre les écarts entre bookmakers, le mouvement des cotes et le carnet automatisé.
+            Le site propose une offre gratuite, sur compte : elle permet d&apos;ouvrir deux
+            matchs par semaine calendaire, avec le favori, sa probabilité et le score exact le
+            plus probable. Un match ouvert le reste définitivement pour le compte qui l&apos;a
+            ouvert ; le quota se recharge chaque lundi. Sans compte, aucune de ces données
+            n&apos;est accessible. L&apos;offre « Lecture complète », à {PRICE_MONTHLY} € TTC par
+            mois, ouvre tous les matchs sans quota, ainsi que les écarts entre bookmakers, le
+            mouvement des cotes et le carnet automatisé.
             L&apos;offre payante est sans engagement et résiliable à tout moment depuis la page
             « Compte » de l&apos;utilisateur. La résiliation prend effet à la fin de la période
             déjà payée : aucun remboursement au prorata n&apos;est dû pour la période en cours.

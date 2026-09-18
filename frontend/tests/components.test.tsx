@@ -48,11 +48,22 @@ describe("MatchRow", () => {
     expect(screen.getByText("2-1")).toBeInTheDocument();
     expect(screen.getByText("score le plus probable")).toBeInTheDocument();
   });
-  it("non abonné : « Réservé » à la place de l'écart, score public quand même affiché", () => {
-    render(<MatchRow match={{ ...base, locked: true, best_gap: null, movement: null }} />);
-    expect(screen.getByText("Réservé")).toBeInTheDocument();
+  it("verrouillé : rien de chiffré, et aucun état inventé", () => {
+    render(
+      <MatchRow
+        match={{ ...base, locked: true, favourite: null, reference: null, best_gap: null, movement: null, top_score: null }}
+      />,
+    );
+
+    expect(screen.getAllByText("Réservé").length).toBe(2); // écarts et mouvement
     expect(screen.queryByText(/Betclic/)).not.toBeInTheDocument();
-    expect(screen.getByText("2-1")).toBeInTheDocument();
+    expect(screen.queryByText("2-1")).not.toBeInTheDocument();
+    expect(screen.getByText("Verrouillé")).toBeInTheDocument();
+    expect(screen.getByText("à ouvrir")).toBeInTheDocument();
+
+    // Deux affirmations qui seraient fausses : la donnée existe, elle est réservée.
+    expect(screen.queryByText("stable")).not.toBeInTheDocument();
+    expect(screen.queryByText("pas encore de relevé")).not.toBeInTheDocument();
   });
   it("match serré : libellé « serré » et pas de couleur favori", () => {
     render(<MatchRow match={{ ...base, favourite: { outcome: "home", label: "Lens", prob: 0.41, source: "pinnacle" }, reference: { home: 0.41, draw: 0.3, away: 0.29 } }} />);

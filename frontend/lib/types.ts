@@ -38,6 +38,21 @@ export type MatchDetail = MatchSummary & {
 export type BookRow = { bookmaker: string; label: string; matches: number; avg_margin: number | null; gaps_above_threshold: number;
   best: { match_id: string; home_team: string; away_team: string; kickoff_at: string; outcome: Outcome; gap: number; odds: number } | null };
 
+/**
+ * L'état du quota hebdomadaire, tel que le serveur le calcule.
+ *
+ * `limit` et `remaining` valent `null` pour un abonné : il n'a pas de quota,
+ * et afficher « 0 restant » serait mensonger. `ANONYMOUS` n'a droit à rien
+ * tant qu'il n'a pas de compte.
+ */
+export type Quota = {
+  plan: "ANONYMOUS" | "STARTER" | "PRO";
+  limit: number | null;
+  used: number;
+  remaining: number | null;
+  resets_at: string | null;
+};
+
 export type TrackRow = { competition: string; played: number; favourite_won: number; favourite_rate: number };
 
 export type Bet = { id: string; match_id: string; home_team: string; away_team: string; competition: string; kickoff_at: string;

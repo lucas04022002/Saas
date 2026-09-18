@@ -8,7 +8,15 @@ export function MatchRow({ match }: { match: MatchSummary }) {
   const tight = !!fav && fav.prob < 0.45;
   const mv = match.movement && fav ? match.movement[fav.outcome] : null;
   const stale = match.odds_taken_at ? sinceHours(match.odds_taken_at) : null;
-  const refLabel = fav ? (fav.source === "moyenne" ? "moyenne, Pinnacle absent" : "référence Pinnacle") : "pas encore de relevé";
+  // « pas encore de relevé » serait faux sur un match verrouillé : la donnée
+  // existe, elle est réservée.
+  const refLabel = fav
+    ? fav.source === "moyenne"
+      ? "moyenne, Pinnacle absent"
+      : "référence Pinnacle"
+    : match.locked
+      ? "verrouillé"
+      : "pas encore de relevé";
   return (
     <Link href={`/matchs/${match.id}`} className="grid grid-cols-[1fr_auto] md:grid-cols-[1.6fr_1fr_1fr_1fr_auto] items-center gap-3 md:gap-6 border-t border-line py-5 md:py-6 hover:bg-grey/60 transition-colors">
       <div>
@@ -21,16 +29,26 @@ export function MatchRow({ match }: { match: MatchSummary }) {
           <><b className="block text-[15px] font-semibold text-ink">—</b>aucun écart</>}
       </div>
       <div className="hidden md:block text-[14px] text-muted">
-        {mv === null ? <><b className="block text-[15px] font-semibold text-ink">—</b>stable</> :
+        {/* « stable » affirmerait une absence de mouvement qu'on n'a pas
+            mesurée : sur un match verrouillé, la donnée existe, elle est
+            réservée. */}
+        {mv === null ? (
+            match.locked
+              ? <><b className="block text-[15px] font-semibold text-ink">Réservé</b>mouvement</>
+              : <><b className="block text-[15px] font-semibold text-ink">—</b>stable</>
+          ) :
           <><b className="block text-[15px] font-semibold text-ink">{mv >= 0 ? "▲" : "▼"} {Math.round(Math.abs(mv))} pts</b>depuis le premier relevé</>}
       </div>
       <div className="hidden md:block text-[14px] text-muted">
         {match.top_score ? <><b className="block text-[15px] font-semibold text-ink">{match.top_score.score}</b>score le plus probable</> :
+          match.locked ? <><b className="block text-[15px] font-semibold text-ink">Verrouillé</b>score le plus probable</> :
           <><b className="block text-[15px] font-semibold text-ink">—</b>score le plus probable</>}
       </div>
       <div className={`num-row text-right min-w-[110px] md:min-w-[150px] ${tight || !fav ? "text-faint" : "text-ink"}`}>
-        {fav ? formatPctInt(fav.prob) : "—"}
-        <small className="mt-1.5 block font-sans text-[12px] font-medium tracking-normal text-muted">{fav ? (tight ? `${fav.label}, serré` : `${fav.label} favori`) : "pas encore de relevé"}</small>
+        {fav ? formatPctInt(fav.prob) : match.locked ? "?" : "—"}
+        <small className="mt-1.5 block font-sans text-[12px] font-medium tracking-normal text-muted">
+          {fav ? (tight ? `${fav.label}, serré` : `${fav.label} favori`) : match.locked ? "à ouvrir" : "pas encore de relevé"}
+        </small>
       </div>
     </Link>
   );

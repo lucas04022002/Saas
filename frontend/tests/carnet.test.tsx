@@ -16,7 +16,7 @@ describe("carnet", () => {
     server.use(
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [bet, { ...bet, id: "b2", status: "PENDING", payout: null, stake: 50 }], summary } })),
       http.delete(`${APP}/api/bankroll/b2`, () => { deleted = "b2"; return HttpResponse.json({ success: true, message: "", data: { id: "b2" } }); }),
-      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
     );
     const { Bankroll } = await import("@/components/Bankroll");
     render(<Bankroll />);
@@ -32,7 +32,7 @@ describe("carnet", () => {
     let posted: unknown = null;
     server.use(
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [], summary: { ...summary, stakes: 0, settled_stakes: 0, payouts: 0, profit: 0, roi: null, pending: 0, settled: 0 } } })),
-      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ id: "m1", competition: "F1", league: "Ligue 1", home_team: "Lyon", away_team: "Marseille", kickoff_at: "2026-09-13T15:15:00Z", status: "SCHEDULED", favourite: null, reference: null, best_gap: null, movement: null, odds_taken_at: null, locked: false }], pagination: { page: 1, limit: 200, total: 1 } } })),
+      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ id: "m1", competition: "F1", league: "Ligue 1", home_team: "Lyon", away_team: "Marseille", kickoff_at: "2026-09-13T15:15:00Z", status: "SCHEDULED", favourite: null, reference: null, best_gap: null, movement: null, odds_taken_at: null, locked: false }], pagination: { page: 1, limit: 200, total: 1 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
       http.post(`${APP}/api/bankroll`, async ({ request }) => { posted = await request.json(); return HttpResponse.json({ success: true, message: "", data: bet }, { status: 201 }); }),
     );
     const { Bankroll } = await import("@/components/Bankroll");
@@ -48,7 +48,7 @@ describe("carnet", () => {
     server.use(
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ ...bet, id: "b2", status: "PENDING", payout: null, stake: 50, match_status: "POSTPONED" }], summary } })),
       http.post(`${APP}/api/bankroll/b2/void`, () => { voided = "b2"; return HttpResponse.json({ success: true, message: "", data: { ...bet, id: "b2", status: "VOID" } }); }),
-      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
     );
     const { Bankroll } = await import("@/components/Bankroll");
     render(<Bankroll />);
@@ -61,7 +61,7 @@ describe("carnet", () => {
     server.use(
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: false, message: "boom" }, { status: 500 }), { once: true }),
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [], summary: { ...summary, stakes: 0, settled_stakes: 0, payouts: 0, profit: 0, roi: null, pending: 0, settled: 0 } } })),
-      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
     );
     const { Bankroll } = await import("@/components/Bankroll");
     render(<Bankroll />);
@@ -73,7 +73,7 @@ describe("carnet", () => {
     server.use(
       http.get(`${APP}/api/bankroll`, () => HttpResponse.json({ success: true, message: "", data: { items: [{ ...bet, id: "b2", status: "PENDING", payout: null, stake: 50 }], summary } })),
       http.delete(`${APP}/api/bankroll/b2`, () => HttpResponse.json({ success: false, message: "Only pending bets can be deleted" }, { status: 409 })),
-      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 } } })),
+      http.get(`${APP}/api/matches`, () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } })),
     );
     const { Bankroll } = await import("@/components/Bankroll");
     render(<Bankroll />);

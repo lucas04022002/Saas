@@ -4,7 +4,7 @@ import { http, HttpResponse } from "msw";
 import { server } from "./msw/server";
 import { API } from "./msw/handlers";
 vi.mock("next/headers", () => ({ cookies: async () => ({ get: () => undefined }) }));
-const empty = () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 50, total: 0 }, note: "n" } });
+const empty = () => HttpResponse.json({ success: true, message: "", data: { items: [], pagination: { page: 1, limit: 50, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null }, note: "n" } });
 describe("accessibilité de base", () => {
   it("un seul h1 par page, alt sur les images, en-têtes de tableau", async () => {
     server.use(http.get(`${API}/api/v1/matches`, empty), http.get(`${API}/api/v1/track-record`, empty));
