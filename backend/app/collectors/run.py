@@ -13,6 +13,7 @@ from sqlalchemy.orm import Session
 from app.api.deps import get_db
 from app.collectors import fd_org, fd_uk, odds_api
 from app.collectors.aliases import seed_aliases
+from app.core.access import retrograder_echus
 from app.collectors.dedup import dedup_matches
 from app.core.logging import setup_logging
 from app.models.enums import MatchStatus
@@ -87,6 +88,8 @@ def main(argv: list[str] | None = None) -> int:
         elif args.collector == "fd_org":
             summary = vars(fd_org.run(db))
             summary["bets_settled"] = settle_bets(db)
+            # Le plan de chaque compte doit finir par dire la vérité sur son abonnement (audit C3).
+            summary["plans_retrogrades"] = retrograder_echus(db)
         elif args.collector == "fixtures":
             summary = vars(fd_uk.run_fixtures(db))
         elif args.collector == "dedup":

@@ -1,3 +1,4 @@
+import time
 from collections import defaultdict
 
 from fastapi import APIRouter, Depends, Query
@@ -25,8 +26,31 @@ def _outcome(i: int, j: int) -> str:
     return "home" if i > j else "away" if j > i else "draw"
 
 
+#: Le résultat ne change qu'à l'arrivée des résultats, une fois par jour : une heure de cache suffit.
+#: Sans cache, la route recalculait la grille de Poisson de tous les matchs terminés à chaque requête
+#: (13,9 s en production sur 5 357 matchs, publique, non bornée — audit du 22/09/2026). Les collecteurs
+#: tournent dans un autre processus : l'invalidation ne peut être que temporelle.
+TTL_SECONDES = 3600
+_CACHE: dict[str | None, tuple[float, dict]] = {}
+_maintenant = time.monotonic
+
+
+def vider_le_cache() -> None:
+    _CACHE.clear()
+
+
 @router.get("")
 def track_record(competition: str | None = Query(default=None, pattern=COMPETITION_PATTERN), db: Session = Depends(get_db)):
+    entree = _CACHE.get(competition)
+    if entree is not None and _maintenant() - entree[0] < TTL_SECONDES:
+        data = entree[1]
+    else:
+        data = compute_track_record(db, competition)
+        _CACHE[competition] = (_maintenant(), data)
+    return {"success": True, "message": "Track record", "data": data}
+
+
+def compute_track_record(db: Session, competition: str | None) -> dict:
     q = select(Match).where(Match.status == MatchStatus.FINISHED, Match.home_score.is_not(None)).options(
         selectinload(Match.snapshots), selectinload(Match.totals))
     if competition:
@@ -61,4 +85,4 @@ def track_record(competition: str | None = Query(default=None, pattern=COMPETITI
         "winner_rate_from_score": round(winner_from_score / n_scored, 3) if n_scored else None,
         "score_note": SCORE_NOTE,
     }
-    return {"success": True, "message": "Track record", "data": data}
+    return data

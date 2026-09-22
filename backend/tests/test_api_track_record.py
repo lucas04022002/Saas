@@ -79,6 +79,10 @@ def test_track_record_score_uses_closing_totals_snapshot_before_kickoff(client, 
     db.add(TotalsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=kick + timedelta(hours=1), line=2.5, over=1.01, under=50.0))
     db.commit()
 
+    # Un relevé est arrivé entre les deux requêtes : en production c'est l'heure de cache qui expire,
+    # ici on la vide à la main.
+    from app.api.v1.endpoints.track_record import vider_le_cache
+    vider_le_cache()
     d = client.get("/api/v1/track-record").json()["data"]
     assert d["exact_score_rate"] == 0.0          # score en tête devenu 2-1, ne touche plus le résultat réel 1-0
     assert d["winner_rate_from_score"] == 1.0    # toujours favori domicile (2-1)

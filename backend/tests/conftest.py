@@ -1,6 +1,6 @@
 import os
 import uuid
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import pytest
 from fastapi.testclient import TestClient
@@ -17,9 +17,10 @@ from app import models  # noqa: E402,F401
 from app.api.deps import get_db  # noqa: E402
 from app.core.security import create_access_token, hash_password  # noqa: E402
 from app.main import app  # noqa: E402
-from app.models.enums import MatchStatus, SubscriptionPlan, UserRole  # noqa: E402
+from app.models.enums import MatchStatus, SubscriptionPlan, SubscriptionStatus, UserRole  # noqa: E402
 from app.models.match import Match  # noqa: E402
 from app.models.team import Team  # noqa: E402
+from app.models.subscription import Subscription
 from app.models.user import User  # noqa: E402
 
 
@@ -80,4 +81,19 @@ def starter_user(db):
 
 @pytest.fixture
 def pro_user(db):
-    return make_user(db, plan=SubscriptionPlan.PRO)
+    """Un abonné : plan PRO ET abonnement actif, comme le webhook Stripe le laisse. Depuis le 22/09/2026,
+    un plan PRO sans abonnement n'ouvre plus rien (audit C3)."""
+    user = make_user(db, plan=SubscriptionPlan.PRO)
+    db.add(Subscription(user_id=user.id, plan=SubscriptionPlan.PRO, status=SubscriptionStatus.ACTIVE,
+                        current_period_end=datetime.now(timezone.utc) + timedelta(days=30)))
+    db.commit(); db.refresh(user)
+    return user
+
+@pytest.fixture(autouse=True)
+def _cache_track_record_vide():
+    """Le cache de /track-record est un état de module : sans ceci, un test lirait le résultat
+    (souvent vide) calculé par le test précédent."""
+    from app.api.v1.endpoints.track_record import vider_le_cache
+    vider_le_cache()
+    yield
+    vider_le_cache()

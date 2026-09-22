@@ -14,9 +14,10 @@ d'un lien dépenserait les crédits de l'utilisateur avant même qu'il clique.
 """
 from datetime import datetime, time, timedelta, timezone
 
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from app.models.enums import SubscriptionPlan
+from app.models.enums import SubscriptionPlan, SubscriptionStatus
 from app.models.match_unlock import MatchUnlock
 from app.models.user import User
 
@@ -62,8 +63,45 @@ SUBSCRIBER_ONLY_FIELDS = (
 )
 
 
-def is_pro(user: User | None) -> bool:
-    return user is not None and user.subscription_plan in PAID_PLANS
+#: Tolérance après la fin de période : Stripe réessaie un prélèvement pendant quelques jours, et
+#: couper l'accès le jour J punirait un client dont la carte a juste expiré.
+GRACE = timedelta(days=3)
+
+
+def is_pro(user: User | None, now: datetime | None = None) -> bool:
+    """Un accès payant est ouvert si le plan est payant ET que l'abonnement le justifie.
+
+    Audit du 22/09/2026 : lire le seul `subscription_plan` laissait un résilié abonné tant que le
+    webhook `customer.subscription.deleted` n'était pas arrivé. Le plan reste la valeur rapide ;
+    l'abonnement (statut, fin de période) est la vérité. Un plan payant sans abonnement ne vient
+    que d'une modification à la main : on ferme.
+    """
+    if user is None or user.subscription_plan not in PAID_PLANS:
+        return False
+    sub = user.subscription
+    if sub is None or sub.status != SubscriptionStatus.ACTIVE:
+        return False
+    fin = sub.current_period_end
+    if fin is None:
+        return False
+    if fin.tzinfo is None:            # SQLite rend des dates naïves ; Postgres des dates UTC
+        fin = fin.replace(tzinfo=timezone.utc)
+    return fin + GRACE > (now or datetime.now(timezone.utc))
+
+
+def retrograder_echus(db: Session, now: datetime | None = None) -> int:
+    """Le passage quotidien : remet à STARTER le plan de qui n'a plus d'abonnement valable.
+
+    `is_pro` ferme déjà l'accès à chaque requête ; ceci fait dire la vérité au champ que tout
+    le reste lit (barre de navigation, page Tarifs, quota). Rend le nombre de comptes rétrogradés.
+    """
+    n = 0
+    for user in db.scalars(select(User).where(User.subscription_plan.in_(PAID_PLANS))).all():
+        if not is_pro(user, now):
+            user.subscription_plan = SubscriptionPlan.STARTER
+            db.add(user); n += 1
+    db.commit()
+    return n
 
 
 def week_start(now: datetime | None = None) -> datetime:
