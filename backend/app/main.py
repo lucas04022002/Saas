@@ -5,7 +5,9 @@ from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
@@ -46,13 +48,25 @@ async def lifespan(_: FastAPI):
 
 
 
-async def http_exception_handler(_: Request, exc: HTTPException):
-    return JSONResponse(status_code=exc.status_code, content={"success": False, "message": exc.detail})
+async def http_exception_handler(_: Request, exc: StarletteHTTPException):
+    # Couvre aussi les 404 de routes inconnues (Starlette), qui sortaient en `{"detail": "Not Found"}`.
+    return JSONResponse(status_code=exc.status_code, content={"success": False, "message": exc.detail, "data": None})
+
+
+async def validation_exception_handler(_: Request, exc: RequestValidationError):
+    """Un 422 dans l'enveloppe, avec le premier message lisible — pas la forme brute de FastAPI ni
+    l'expression régulière complète du paramètre (audit du 22/09/2026, F2)."""
+    erreurs = exc.errors() or []
+    premier = erreurs[0] if erreurs else {}
+    champ = ".".join(str(x) for x in premier.get("loc", ()) if x not in ("body", "query", "path"))
+    msg = str(premier.get("msg", "Requête invalide")).replace("Value error, ", "")
+    message = f"{champ} : {msg}" if champ and champ not in msg else msg
+    return JSONResponse(status_code=422, content={"success": False, "message": message, "data": None})
 
 
 async def generic_exception_handler(_: Request, exc: Exception):
     log.exception("Unhandled exception: %s", exc)
-    return JSONResponse(status_code=500, content={"success": False, "message": "Internal server error"})
+    return JSONResponse(status_code=500, content={"success": False, "message": "Internal server error", "data": None})
 
 
 def _collectors_status() -> dict:
@@ -130,7 +144,8 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     application.middleware("http")(security_headers)
-    application.exception_handler(HTTPException)(http_exception_handler)
+    application.exception_handler(StarletteHTTPException)(http_exception_handler)
+    application.exception_handler(RequestValidationError)(validation_exception_handler)
     application.exception_handler(Exception)(generic_exception_handler)
     application.get("/health")(health)
     application.get("/api/v1/legal")(legal)

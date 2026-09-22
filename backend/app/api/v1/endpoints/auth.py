@@ -11,6 +11,9 @@ from app.models.subscription import Subscription
 from app.models.user import User
 from app.schemas.auth import LoginRequest, SignUpRequest
 
+#: Un hachage réel, calculé une fois au chargement, pour égaliser le temps de réponse.
+_DUMMY_HASH = hash_password("mot-de-passe-factice-pour-egaliser-le-temps")
+
 router = APIRouter(prefix="/auth", tags=["auth"])
 from app.core.client_ip import limiter  # noqa: E402  (un seul limiteur pour toute l'application)
 
@@ -65,7 +68,10 @@ def signup(request: Request, payload: SignUpRequest, db: Session = Depends(get_d
 @limiter.limit("10/minute")
 def login(request: Request, payload: LoginRequest, db: Session = Depends(get_db)):
     user = db.scalar(select(User).where(User.email == payload.email.lower()))
-    if user is None or not verify_password(payload.password, user.password_hash):
+    # Toujours un hachage, même pour une adresse inconnue : sinon elle répond en 1 ms contre ~100 ms
+    # pour une adresse connue, et l'on devine qui a un compte au chronomètre (audit du 22/09/2026, F1).
+    valide = verify_password(payload.password, user.password_hash if user else _DUMMY_HASH)
+    if user is None or not valide:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid credentials")
 
     token = create_access_token(str(user.id))

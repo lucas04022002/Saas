@@ -201,13 +201,13 @@ def test_un_impaye_passe_en_past_due_et_ferme_l_acces(client, db, starter_user, 
 # --- Le client ne se sur-classe toujours pas lui-même ------------------------
 
 
-def test_un_utilisateur_ne_peut_pas_s_offrir_le_plan_payant(client, starter_user):
-    r = client.post(
-        "/api/v1/subscriptions/upgrade",
-        json={"plan": "PRO"},
-        headers=auth_header(starter_user),
-    )
-    assert r.status_code == 403
+def test_la_route_heritee_d_attribution_de_plan_n_existe_plus(client, starter_user):
+    """Audit du 22/09/2026 (M6) : `/subscriptions/upgrade` attribuait un plan payant sans Stripe, pour 30
+    jours, à tout compte ADMIN. Un admin compromis vendait des abonnements gratuits. Seul le webhook
+    signé rend un compte payant : la route est retirée, pas protégée."""
+    r = client.post("/api/v1/subscriptions/upgrade", json={"plan": "PRO"}, headers=auth_header(starter_user))
+    assert r.status_code == 404
+    assert client.get("/api/v1/subscriptions/me", headers=auth_header(starter_user)).status_code == 404
 
 
 def test_deja_abonne_le_paiement_est_refuse(client, db, starter_user, stripe_configure):

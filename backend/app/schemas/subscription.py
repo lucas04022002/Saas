@@ -8,6 +8,3 @@ class SubscriptionOut(BaseModel):
     status: str
     current_period_end: datetime
 
-
-class UpgradeSubscriptionRequest(BaseModel):
-    plan: str

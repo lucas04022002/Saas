@@ -1,9 +1,8 @@
-from app.api.v1.endpoints import auth, favorites, matches, subscriptions, users
+from app.api.v1.endpoints import auth, favorites, matches, users
 
 __all__ = [
     "auth",
     "users",
     "matches",
     "favorites",
-    "subscriptions",
 ]
