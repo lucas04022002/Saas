@@ -203,7 +203,9 @@ la valeur de `JWT_EXPIRE_MINUTES`, et le webhook réel prouvé par un vrai paiem
 ## Ce que cet audit ne couvre pas
 
 - Le front n'a pas été passé au crible XSS composant par composant. Next.js échappe par
-  défaut, et **aucun `dangerouslySetInnerHTML`** n'existe dans `app/`, `components/`, `lib/` (mesuré : 1 occurrence).
+  défaut ; **une seule** occurrence de `dangerouslySetInnerHTML` (mesuré) : le script de thème de
+  `app/layout.tsx`, constante statique sans donnée utilisateur — pas un risque XSS, mais c'est
+  l'unique script inline que la CSP (M2) devra couvrir par un nonce.
 - Pas de test de charge au-delà des mesures ponctuelles ci-dessus.
 - Pas de revue des collecteurs sous l'angle « données empoisonnées » (un CSV de
   football-data.co.uk malformé) : les parseurs ignorent les lignes invalides, sans plus.
