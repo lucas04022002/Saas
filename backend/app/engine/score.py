@@ -10,9 +10,16 @@ from app.engine.types import ScoreDistribution, ScoreProbability
 
 MAXG = 8
 
-# Buts moyens mesurés sur la saison 2025/26 (football-data.co.uk, cotes de clôture) — sert de repli tant que le
-# marché over/under n'est pas collecté. CL/EL et toute compétition inconnue utilisent DEFAULT_GOALS.
-LEAGUE_GOALS = {"E0": 2.75, "F1": 2.82, "SP1": 2.69, "D1": 3.24, "I1": 2.43}
+# Buts moyens par match, mesurés sur football-data.co.uk — sert de repli tant que le marché over/under n'est pas
+# collecté. Top 5 : saison 2025/26. Championnats secondaires (mode gratuit, jamais de relevé over/under, donc
+# TOUJOURS ce repli) : saisons 2024/25 + 2025/26 complètes, de 456 (SC0) à 1 104 (E1) matchs par ligue,
+# mesurées le 22/09/2026. Sans entrée, l'Eredivisie (3,08) et la Serie B (2,51) auraient le même score.
+# CL/EL/NL et toute compétition inconnue utilisent DEFAULT_GOALS.
+LEAGUE_GOALS = {
+    "E0": 2.75, "F1": 2.82, "SP1": 2.69, "D1": 3.24, "I1": 2.43,
+    "E1": 2.53, "F2": 2.56, "SP2": 2.58, "D2": 2.98, "I2": 2.51,
+    "N1": 3.08, "P1": 2.63, "B1": 2.72, "T1": 2.80, "G1": 2.51, "SC0": 2.87,
+}
 DEFAULT_GOALS = 2.75
 
 _FAVOURITE_SIGN = {"home": 1, "draw": 0, "away": -1}

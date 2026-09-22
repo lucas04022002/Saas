@@ -4,7 +4,7 @@ import argparse
 import json
 import logging
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 from sqlalchemy import select
@@ -57,11 +57,23 @@ def print_quarantine_report(db: Session) -> None:
     print("\najouter ces noms dans KNOWN_TEAMS puis relancer seed et le collecteur")
 
 
+def current_season(today: date | None = None) -> str:
+    """Le code de saison football-data.co.uk (« 2627 » pour 2026/27) de la saison en cours.
+
+    Une saison commence en août. Le crontab passait `--seasons 2526` en dur : depuis août 2026 il
+    réimportait la saison précédente, complète et sans rien de neuf, et les résultats des championnats
+    sans calendrier football-data.org (Serie B, 2. Bundesliga, Liga 2…) ne seraient jamais arrivés.
+    """
+    today = today or date.today()
+    debut = today.year if today.month >= 8 else today.year - 1
+    return f"{debut % 100:02d}{(debut + 1) % 100:02d}"
+
+
 def main(argv: list[str] | None = None) -> int:
     setup_logging()
     p = argparse.ArgumentParser()
     p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "fixtures", "dedup", "quarantine"])
-    p.add_argument("--seasons", nargs="*", default=["2526"])
+    p.add_argument("--seasons", nargs="*", default=None, help="codes fd_uk (ex. 2526 2627) ; défaut : la saison en cours")
     args = p.parse_args(argv)
     db = next(get_db())
     try:
@@ -71,7 +83,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.collector == "seed":
             n = seed_aliases(db); summary = {"aliases_created": n}
         elif args.collector == "fd_uk":
-            reports = fd_uk.run(db, args.seasons); summary = {k: vars(v) for k, v in reports.items()}
+            reports = fd_uk.run(db, args.seasons or [current_season()]); summary = {k: vars(v) for k, v in reports.items()}
         elif args.collector == "fd_org":
             summary = vars(fd_org.run(db))
             summary["bets_settled"] = settle_bets(db)

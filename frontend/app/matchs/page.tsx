@@ -2,12 +2,13 @@ import Link from "next/link";
 import { api } from "@/lib/api";
 import { getToken } from "@/lib/session";
 import { formatDateFr, formatTimeFr, parisDate } from "@/lib/format";
-import { COMPETITIONS } from "@/lib/types";
+import { COMPETITIONS, COMPETITION_ORDER } from "@/lib/types";
 import { DayPicker } from "@/components/DayPicker";
 import { CompetitionFilter } from "@/components/CompetitionFilter";
 import { MatchRow } from "@/components/MatchRow";
 
-const ORDER = ["F1", "E0", "SP1", "D1", "I1", "CL", "EL"];
+// L'ordre des groupes est celui du catalogue : une liste locale finirait par oublier une compétition.
+const ORDER = COMPETITION_ORDER;
 
 export default async function Matchs({ searchParams }: { searchParams: Promise<{ date?: string; competition?: string }> }) {
   const { date = parisDate(), competition } = await searchParams;

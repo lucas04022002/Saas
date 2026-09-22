@@ -166,3 +166,24 @@ def test_run_skips_competitions_without_a_free_fd_org_calendar(db, monkeypatch):
 
     assert "EL" not in calls
     assert set(calls) == {c for c, comp in COMPETITIONS.items() if comp.fd_org_free}
+
+
+# ---- les compétitions sans calendrier football-data.org sont sautées, jamais interrogées avec un code None ----
+
+def test_run_skips_competitions_without_fd_org_calendar(db, monkeypatch):
+    """Ligue Europa, Ligue des Nations et la plupart des championnats secondaires n'ont pas de calendrier
+    dans le plan gratuit : `run` ne doit pas les appeler (un code None ferait une URL `/competitions/None/`)."""
+    appels: list[str] = []
+
+    def faux_fetch(code, date_from, date_to):
+        appels.append(code)
+        return {"competition": {"code": COMPETITIONS[code].fd_org_code}, "matches": []}
+
+    monkeypatch.setattr(fd_org, "fetch", faux_fetch)
+    monkeypatch.setattr(time, "sleep", lambda s: None)
+
+    fd_org.run(db)
+
+    assert "EL" not in appels and "NL" not in appels and "D2" not in appels
+    assert {"E0", "E1", "N1", "P1"} <= set(appels)
+    assert all(COMPETITIONS[c].fd_org_code for c in appels)

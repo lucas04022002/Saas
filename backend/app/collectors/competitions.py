@@ -3,13 +3,23 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class Competition:
-    code: str          # clé interne et football-data.co.uk (E0, F1, SP1, D1, I1) ; CL/EL n'existent pas chez fd_uk
+    """Une compétition et ce que chaque source en connaît. Un champ à None = la source l'ignore.
+
+    Deux régimes coexistent, et c'est le champ `odds_api_key` qui les sépare :
+
+    - **cotes live** : The Odds API est interrogée à chaque relevé (3 crédits par compétition,
+      500 crédits gratuits par mois). Top 5, coupes d'Europe, Ligue des Nations.
+    - **gratuit** (`odds_api_key=None`) : football-data.co.uk seul — calendrier de la semaine et
+      cotes moyennes hebdomadaires, sans mouvement de cotes entre deux relevés. Zéro crédit.
+      C'est le régime des championnats secondaires tant qu'ils ne financent pas leur relevé.
+    """
+    code: str                  # clé interne = code football-data.co.uk (E0, E1, SP1…) ; CL/EL/NL n'existent pas chez fd_uk
     name: str
     country: str
-    odds_api_key: str  # The Odds API sport key
-    fd_org_code: str   # football-data.org competition code
+    odds_api_key: str | None   # The Odds API sport key ; None = pas de cotes live (mode gratuit)
+    fd_org_code: str | None    # football-data.org competition code ; None = pas de calendrier fd_org
     fd_uk_code: str | None
-    fd_org_free: bool = True   # False si le calendrier de la compétition n'est pas dans le plan gratuit de football-data.org
+    fd_org_free: bool = True   # False si le calendrier n'est pas dans le plan gratuit de football-data.org
 
 
 COMPETITIONS: dict[str, Competition] = {
@@ -23,6 +33,24 @@ COMPETITIONS: dict[str, Competition] = {
     # fd_org.run doit sauter cette compétition. Les matchs EL sont créés par le collecteur de cotes
     # (odds_api.store_events crée des matchs SCHEDULED à partir des événements) et n'ont pas de résultat pour l'instant.
     "EL": Competition("EL", "Ligue Europa", "Europe", "soccer_uefa_europa_league", "EL", None, fd_org_free=False),
+    # Même régime que la Ligue Europa : cotes live, aucun calendrier gratuit. Les sélections nationales
+    # sont des équipes comme les autres pour les alias (pays « Sélections »).
+    "NL": Competition("NL", "Ligue des Nations", "Europe", "soccer_uefa_nations_league", None, None, fd_org_free=False),
+
+    # ---- Championnats secondaires, mode gratuit : fd_uk seul (odds_api_key=None, zéro crédit). ----
+    # Le calendrier football-data.org n'est gratuit que pour ELC, DED et PPL ; ailleurs fd_uk fixtures.csv
+    # fait seul le calendrier (quotidien) et les cotes moyennes.
+    "E1": Competition("E1", "Championship", "Angleterre", None, "ELC", "E1"),
+    "F2": Competition("F2", "Ligue 2", "France", None, None, "F2", fd_org_free=False),
+    "SP2": Competition("SP2", "Liga 2", "Espagne", None, None, "SP2", fd_org_free=False),
+    "D2": Competition("D2", "2. Bundesliga", "Allemagne", None, None, "D2", fd_org_free=False),
+    "I2": Competition("I2", "Serie B", "Italie", None, None, "I2", fd_org_free=False),
+    "N1": Competition("N1", "Eredivisie", "Pays-Bas", None, "DED", "N1"),
+    "P1": Competition("P1", "Liga Portugal", "Portugal", None, "PPL", "P1"),
+    "B1": Competition("B1", "Pro League", "Belgique", None, None, "B1", fd_org_free=False),
+    "T1": Competition("T1", "Süper Lig", "Turquie", None, None, "T1", fd_org_free=False),
+    "G1": Competition("G1", "Super League", "Grèce", None, None, "G1", fd_org_free=False),
+    "SC0": Competition("SC0", "Premiership", "Écosse", None, None, "SC0", fd_org_free=False),
 }
 
 FRENCH_BOOKMAKERS = ("betclic_fr", "winamax_fr", "unibet_fr", "pmu_fr", "netbet_fr")

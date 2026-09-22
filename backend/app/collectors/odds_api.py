@@ -205,11 +205,15 @@ def fetch_totals(sport_key: str) -> tuple[list, str | None]:
 
 
 def run(db: Session) -> StoreReport:
-    """Un relevé complet = 7 compétitions × 3 crédits (2 h2h + 1 totals) = 21 crédits. L'horodatage est arrondi
-    à l'heure, commun au relevé h2h et au relevé totals de ce passage."""
+    """Un relevé complet = 8 compétitions à cotes live × 3 crédits (2 h2h + 1 totals) = 24 crédits.
+    Les compétitions en mode gratuit (`odds_api_key=None`, championnats secondaires) sont sautées :
+    elles ne coûtent rien et n'ont pas de mouvement de cotes. L'horodatage est arrondi à l'heure, commun
+    au relevé h2h et au relevé totals de ce passage."""
     taken_at = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
     total = StoreReport()
     for comp in COMPETITIONS.values():
+        if comp.odds_api_key is None:
+            continue
         try:
             payload = fetch_sport(comp.odds_api_key)
         except requests.HTTPError as e:

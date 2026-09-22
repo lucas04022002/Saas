@@ -33,10 +33,10 @@ l'interface Coolify.
 
 6. **Amorçage des collecteurs** : depuis le terminal Coolify du service,
    lancer à la main dans l'ordre `python -m app.collectors.run seed`, puis
-   `python -m app.collectors.run fd_uk --seasons 2324 2425 2526`, puis
+   `python -m app.collectors.run fd_uk --seasons 2425 2526 2627` (deux saisons complètes + la saison en cours), puis
    `python -m app.collectors.run fd_org`, puis
    `python -m app.collectors.run fixtures`, puis
-   `python -m app.collectors.run odds` (21 crédits), puis
+   `python -m app.collectors.run odds` (24 crédits : 8 compétitions à cotes live ; les championnats secondaires n'en coûtent aucun), puis
    `python -m app.collectors.run dedup`. Vérifier ensuite `/health` : les
    collecteurs doivent apparaître avec un horodatage récent et `stale: false`,
    et `python -m app.collectors.run quarantine` doit répondre « Aucun match en

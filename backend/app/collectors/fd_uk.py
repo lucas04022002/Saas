@@ -66,7 +66,7 @@ class ImportReport:
     snapshots: int = 0
 
 
-FIXTURE_DIVS = {c.fd_uk_code for c in COMPETITIONS.values() if c.fd_uk_code}   # {"E0", "F1", "SP1", "D1", "I1"}
+FIXTURE_DIVS = {c.fd_uk_code for c in COMPETITIONS.values() if c.fd_uk_code}   # top 5 + les 11 championnats en mode gratuit
 
 
 def _f(v: str | None) -> float | None:
@@ -113,8 +113,8 @@ def parse_csv(text: str) -> list[FdUkRow]:
 
 
 def parse_fixtures_csv(text: str) -> list[FixtureRow]:
-    """fixtures.csv : matchs à venir toutes compétitions confondues, sans score. On ne garde que les 5 championnats
-    fd_uk connus (COMPETITIONS[*].fd_uk_code) ; les autres divisions (E1, SC0, ...) sont ignorées."""
+    """fixtures.csv : matchs à venir toutes compétitions confondues, sans score. On ne garde que les divisions du
+    catalogue (COMPETITIONS[*].fd_uk_code) ; les autres (E2, E3, EC, SC1…) sont ignorées sans bruit."""
     rows = []
     for r in csv.DictReader(io.StringIO(text.lstrip("﻿"))):
         div = (r.get("Div") or "").strip()
@@ -310,7 +310,7 @@ def fetch_season(code: str, season: str) -> str:
 
 
 def run(db: Session, seasons: list[str]) -> dict[str, ImportReport]:
-    """Importe les saisons demandées pour les 5 championnats fd_uk. `seasons` ex. ["2425", "2526"]."""
+    """Importe les saisons demandées pour chaque compétition couverte par fd_uk. `seasons` ex. ["2526", "2627"]."""
     out: dict[str, ImportReport] = {}
     for comp in COMPETITIONS.values():
         if comp.fd_uk_code is None:

@@ -4,10 +4,10 @@ from app.collectors.aliases import KNOWN_TEAMS, TeamAliasError, resolve_team, se
 from app.models.team import Team
 
 
-def test_seed_creates_150_teams(db):
+def test_seed_creates_every_known_team(db):
     created = seed_aliases(db)
-    assert db.query(Team).count() == 150
-    assert created > 150            # chaque équipe a au moins un alias par source
+    assert db.query(Team).count() == len(KNOWN_TEAMS)
+    assert created > len(KNOWN_TEAMS)            # chaque équipe a au moins un alias par source
 
 
 def test_seed_is_idempotent(db):
@@ -49,7 +49,8 @@ def test_known_teams_cover_five_leagues():
     countries = {country for _, country, _ in KNOWN_TEAMS}
     assert {"Angleterre", "France", "Espagne", "Allemagne", "Italie"} <= countries
     # 98 (saison 2025/26 + 2 relégués 2024/25) + 12 promus 2026/27 + 14 clubs LdC + 9 clubs LE hors des cinq championnats
-    assert len(KNOWN_TEAMS) == 150
+    # 150 (top 5 + coupes d'Europe) + 170 clubs des onze championnats secondaires + 52 sélections, le 22/09/2026
+    assert len(KNOWN_TEAMS) == 372
 
 
 def test_resolve_team_fallback_other_source(db):
@@ -61,3 +62,58 @@ def test_resolve_team_fallback_other_source(db):
     team = resolve_team(db, "odds_api", "Sporting Clube de Portugal")   # alias fd_org seulement
     assert team.name == "Sporting CP"
     assert db.scalar(select(TeamAlias).where(TeamAlias.source == "odds_api", TeamAlias.alias == normalize("Sporting Clube de Portugal"))) is not None
+
+
+# ---- Les noms RÉELS des sources, relevés le 22/09/2026, doivent tous se résoudre ----
+#
+# Les listes viennent des sources elles-mêmes (CSV 2026/27 de football-data.co.uk + fixtures.csv,
+# /competitions/{ELC,DED,PPL}/teams de football-data.org, un relevé Ligue des Nations de The Odds API),
+# jamais de Wikipédia : les listes recopiées de mémoire étaient fausses au premier passage.
+
+import json
+from pathlib import Path
+
+from app.collectors.aliases import resolve_team
+
+_FIX = Path(__file__).parent / "fixtures"
+FD_UK_2627 = json.loads((_FIX / "fd_uk_teams_2627.json").read_text(encoding="utf-8"))
+FD_ORG_2627 = json.loads((_FIX / "fd_org_teams_2627.json").read_text(encoding="utf-8"))
+NATIONS_2026 = json.loads((_FIX / "odds_api_nations_league_2026.json").read_text(encoding="utf-8"))
+
+
+def _introuvables(db, source, noms):
+    out = []
+    for n in noms:
+        try:
+            resolve_team(db, source, n)
+        except TeamAliasError:
+            out.append(n)
+    return out
+
+
+def test_toutes_les_equipes_fd_uk_des_onze_championnats_se_resolvent(db):
+    """Un nom inconnu = un match en quarantaine, invisible sur le site. Sur 200 clubs, zéro toléré."""
+    seed_aliases(db)
+    manquants = {code: _introuvables(db, "fd_uk", noms) for code, noms in FD_UK_2627.items()}
+    assert {c: m for c, m in manquants.items() if m} == {}
+
+
+def test_toutes_les_equipes_fd_org_des_trois_calendriers_gratuits_se_resolvent(db):
+    seed_aliases(db)
+    manquants = {code: _introuvables(db, "fd_org", [n for n, _court in noms]) for code, noms in FD_ORG_2627.items()}
+    assert {c: m for c, m in manquants.items() if m} == {}
+
+
+def test_toutes_les_selections_de_la_ligue_des_nations_se_resolvent(db):
+    seed_aliases(db)
+    assert _introuvables(db, "odds_api", NATIONS_2026) == []
+
+
+def test_les_noms_fd_uk_abreges_rejoignent_les_clubs_deja_connus(db):
+    """« Sp Lisbon » est le Sporting CP des coupes d'Europe, pas un nouveau club : sinon le même club
+    existerait deux fois, et son historique européen et son championnat ne se rejoindraient jamais."""
+    seed_aliases(db)
+    assert resolve_team(db, "fd_uk", "Sp Lisbon").name == "Sporting CP"
+    assert resolve_team(db, "fd_uk", "Nijmegen").name == "NEC Nijmegen"
+    assert resolve_team(db, "fd_uk", "St. Gilloise").name == "Union Saint-Gilloise"
+    assert resolve_team(db, "fd_uk", "West Ham").name == "West Ham"   # relégué : même club, nouvelle division

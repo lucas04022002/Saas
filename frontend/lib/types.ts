@@ -73,9 +73,36 @@ export type User = { id: string; first_name: string; email: string; role: string
 export type Legal = { warning: string; minimum_age: number; positioning: string };
 export type Pagination = { page: number; limit: number; total: number };
 
-export const COMPETITIONS: Record<string, string> = {
-  E0: "Premier League", F1: "Ligue 1", SP1: "Liga", D1: "Bundesliga", I1: "Serie A", CL: "Ligue des Champions", EL: "Ligue Europa",
-};
+/**
+ * Le catalogue des compétitions, groupé comme il s'affiche.
+ *
+ * Les groupes sont la source unique : les libellés (`COMPETITIONS`) et l'ordre
+ * d'affichage (`COMPETITION_ORDER`) en dérivent. Deux listes tenues à la main
+ * finissent par diverger, et une compétition présente dans l'une mais pas dans
+ * l'autre serait renvoyée par l'API, comptée nulle part et jamais montrée.
+ *
+ * Les codes sont ceux de l'API (= football-data.co.uk) ; le libellé est celui
+ * que lit un lecteur français.
+ */
+export const COMPETITION_GROUPS: readonly (readonly [string, readonly (readonly [string, string])[]])[] = [
+  ["Top 5", [["F1", "Ligue 1"], ["E0", "Premier League"], ["SP1", "Liga"], ["D1", "Bundesliga"], ["I1", "Serie A"]]],
+  ["Coupes d'Europe et sélections", [["CL", "Ligue des Champions"], ["EL", "Ligue Europa"], ["NL", "Ligue des Nations"]]],
+  [
+    "Autres championnats",
+    [
+      ["E1", "Championship"], ["F2", "Ligue 2"], ["SP2", "Liga 2"], ["D2", "2. Bundesliga"], ["I2", "Serie B"],
+      ["N1", "Eredivisie"], ["P1", "Liga Portugal"], ["B1", "Pro League belge"], ["T1", "Süper Lig"],
+      ["G1", "Super League grecque"], ["SC0", "Premiership écossaise"],
+    ],
+  ],
+] as const;
+
+export const COMPETITIONS: Record<string, string> = Object.fromEntries(
+  COMPETITION_GROUPS.flatMap(([, entries]) => entries.map(([code, label]) => [code, label])),
+);
+
+/** L'ordre d'affichage des groupes de matchs : celui du catalogue. */
+export const COMPETITION_ORDER: readonly string[] = COMPETITION_GROUPS.flatMap(([, entries]) => entries.map(([code]) => code));
 export const BOOK_LABELS: Record<string, string> = {
   betclic_fr: "Betclic", winamax_fr: "Winamax", unibet_fr: "Unibet", pmu_fr: "PMU", netbet_fr: "NetBet", pinnacle: "Pinnacle",
 };

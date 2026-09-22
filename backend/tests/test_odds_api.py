@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 
 import app.collectors.odds_api as odds_api
 from app.collectors.aliases import normalize, seed_aliases
+from app.collectors.competitions import COMPETITIONS
 from app.collectors.fd_uk import FixtureRow, import_fixtures
 from app.collectors.odds_api import parse_events, parse_totals, store_events, store_totals
 from app.models.enums import MatchStatus
@@ -160,3 +161,22 @@ def test_store_totals_reports_zero_when_market_missing(db):
     seed_aliases(db)
     report = store_totals(db, [], taken_at=T0)
     assert (report.matched, report.totals, report.quarantined) == (0, 0, 0)
+
+
+# ---- mode gratuit : les championnats sans clé The Odds API ne coûtent aucun crédit ----
+
+def test_run_skips_competitions_without_odds_api_key(db, monkeypatch):
+    """Chaque appel coûte des crédits (3 par compétition et par relevé, 500 par mois). Les championnats
+    secondaires sont en mode gratuit (fd_uk seul) : `run` ne doit ni les interroger ni passer `None` à l'API."""
+    appels: list[str] = []
+    monkeypatch.setattr(odds_api, "fetch_sport", lambda key: appels.append(key) or [])
+    monkeypatch.setattr(odds_api, "fetch_totals", lambda key: ([], "480"))
+
+    odds_api.run(db)
+
+    assert None not in appels
+    assert "soccer_uefa_nations_league" in appels
+    # La liste appelée est exactement celle des compétitions à cotes live.
+    attendus = {c.odds_api_key for c in COMPETITIONS.values() if c.odds_api_key}
+    assert set(appels) == attendus
+    assert len(appels) == len(attendus)   # aucune compétition appelée deux fois

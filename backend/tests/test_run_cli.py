@@ -56,3 +56,27 @@ def test_cli_dedup_runs_dedup_matches_and_writes_heartbeat(db, monkeypatch):
     assert written["name"] == "dedup"
     assert written["summary"] == {"groups": 1, "removed": 1}
     assert db.query(Match).filter(Match.competition == "E0").count() == 1
+
+
+# ---- la saison courante se calcule, elle ne se code pas en dur ----
+
+def test_current_season_follows_the_football_calendar():
+    """Le crontab passait `--seasons 2526` en dur : depuis août 2026 il importait la saison PRÉCÉDENTE,
+    complète et sans rien de neuf, et les résultats des championnats sans calendrier football-data.org
+    (Serie B, 2. Bundesliga, Liga 2…) ne seraient jamais arrivés. Une saison commence en août."""
+    from datetime import date
+    assert run_cli.current_season(date(2026, 9, 22)) == "2627"
+    assert run_cli.current_season(date(2026, 8, 1)) == "2627"
+    assert run_cli.current_season(date(2026, 7, 31)) == "2526"
+    assert run_cli.current_season(date(2027, 1, 15)) == "2627"
+
+
+def test_fd_uk_defaults_to_the_current_season(db, monkeypatch):
+    vu = {}
+    monkeypatch.setattr(run_cli.fd_uk, "run", lambda db, seasons: (vu.setdefault("seasons", seasons), {})[1])
+    monkeypatch.setattr(run_cli, "write_heartbeat", lambda *a, **k: None)
+    monkeypatch.setattr(run_cli, "get_db", lambda: iter([db]))
+
+    run_cli.main(["fd_uk"])
+
+    assert vu["seasons"] == [run_cli.current_season()]

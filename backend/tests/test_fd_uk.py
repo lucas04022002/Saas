@@ -244,9 +244,12 @@ def test_malformed_row_is_skipped_others_still_imported(db, caplog):
 
 # ---- fixtures.csv (matchs à venir avec cotes, sans score) ----
 
-def test_parse_fixtures_csv_keeps_only_the_five_leagues():
+def test_parse_fixtures_csv_keeps_catalogue_divisions_only():
+    """Les divisions du catalogue sont gardées — dont la Championship (E1), en mode gratuit — ;
+    une division hors catalogue (E2, League One) est ignorée sans bruit."""
     rows = parse_fixtures_csv(SAMPLE_FIXTURES)
-    assert [r.div for r in rows] == ["E0", "F1"]   # la ligne E1 est ignorée
+    assert [r.div for r in rows] == ["E0", "E1", "F1"]
+    assert not any(r.div == "E2" for r in rows)
     e0 = rows[0]
     assert (e0.date, e0.time, e0.home, e0.away) == (date(2026, 9, 12), time(15, 0), "Aston Villa", "Nott'm Forest")
     assert e0.avg == (2.22, 3.39, 3.17)
@@ -260,7 +263,9 @@ def test_import_fixtures_creates_scheduled_match_with_one_avg_snapshot(db):
 
     report = import_fixtures(db, rows, taken_at)
 
-    assert report.created == 1 and report.quarantined == 1
+    # 2 créés : Aston Villa – Nott'm Forest (E0) et West Ham – Wrexham (E1, Championship en mode gratuit) ;
+    # 1 quarantaine : FC Nulle Part.
+    assert report.created == 2 and report.quarantined == 1
     m = db.query(Match).filter(Match.home_team == "Aston Villa").one()
     assert m.status == MatchStatus.SCHEDULED
     assert m.home_score is None and m.away_score is None
@@ -322,8 +327,9 @@ def test_import_fixtures_is_idempotent(db):
     report = import_fixtures(db, rows, taken_at)
 
     assert (report.created, report.snapshots) == (0, 0)
-    assert db.query(Match).filter(Match.status == MatchStatus.SCHEDULED).count() == 1
-    assert db.query(OddsSnapshot).count() == 1
+    # deux matchs programmés (E0 et E1), une cote fd_uk_avg chacun — et toujours autant après le second passage
+    assert db.query(Match).filter(Match.status == MatchStatus.SCHEDULED).count() == 2
+    assert db.query(OddsSnapshot).count() == 2
 
 
 def test_import_fixtures_never_downgrades_a_finished_match(db):
