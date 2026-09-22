@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from slowapi import Limiter
-from slowapi.util import get_remote_address
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
@@ -14,7 +12,7 @@ from app.models.user import User
 from app.schemas.auth import LoginRequest, SignUpRequest
 
 router = APIRouter(prefix="/auth", tags=["auth"])
-limiter = Limiter(key_func=get_remote_address)
+from app.core.client_ip import limiter  # noqa: E402  (un seul limiteur pour toute l'application)
 
 
 @router.post("/signup")

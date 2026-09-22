@@ -8,11 +8,11 @@ from pathlib import Path
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
-from slowapi.util import get_remote_address
 
 from app.api.v1.router import api_router
+from app.core.client_ip import client_ip, limiter
 from app.core.config import settings
 from app.core.database import Base, engine
 from app.core.logging import setup_logging
@@ -44,7 +44,6 @@ async def lifespan(_: FastAPI):
     yield
 
 
-limiter = Limiter(key_func=get_remote_address)
 
 
 async def http_exception_handler(_: Request, exc: HTTPException):
@@ -101,6 +100,12 @@ async def security_headers(request: Request, call_next):
     return response
 
 
+def whoami(request: Request):
+    """L'adresse que l'API attribue à l'appelant : la seule preuve directe que le proxy est bien lu.
+    Elle ne révèle à l'appelant que sa propre adresse."""
+    return {"success": True, "message": "", "data": {"ip": client_ip(request)}}
+
+
 def create_app() -> FastAPI:
     """L'application, assemblée d'après `settings` — une fabrique, pour que les tests puissent
     construire une instance de production sans redémarrer le processus.
@@ -129,6 +134,7 @@ def create_app() -> FastAPI:
     application.exception_handler(Exception)(generic_exception_handler)
     application.get("/health")(health)
     application.get("/api/v1/legal")(legal)
+    application.get("/api/v1/whoami")(whoami)
     application.include_router(api_router, prefix="/api/v1")
     return application
 

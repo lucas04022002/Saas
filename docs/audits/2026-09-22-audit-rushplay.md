@@ -74,8 +74,14 @@ monde ; et un attaquant n'est jamais distingué d'un client.
 conteneur n'est joignable que par Traefik). ~15 min. **Preuve après déploiement** : je
 déclenche 429 depuis ici, Lucas se connecte normalement depuis chez lui.
 
-**Prouvé le 22/09/2026, 13:46–13:50 UTC** : mon adresse bloquée en 429 quatre minutes d'affilée
-(dix essais puis 429 chaque minute), Lucas s'est connecté normalement pendant ce temps.
+**Première « preuve » invalide (13:46–13:50 UTC)** : Lucas a répondu « connecté » alors que sa session
+était simplement déjà ouverte. **Second test, propre (14:2x UTC, serveur stable, déconnexion préalable)** :
+il a reçu « Trop de tentatives » pendant que mon adresse était bloquée. Le correctif uvicorn seul
+**n'a pas suffi**. Second correctif : le limiteur est désormais clé sur la première adresse de
+`X-Forwarded-For` (`core/client_ip.py`), en-tête que Traefik écrase par la vraie adresse (mesuré :
+seize valeurs inventées n'ont pas contourné le 429), et `GET /api/v1/whoami` rend l'adresse que
+l'API attribue à l'appelant — la seule preuve directe. Leçon : « je suis connecté » n'est pas une
+mesure ; se déconnecter d'abord, et lire le message.
 
 ### C3 — CRITIQUE · Un abonné résilié peut rester abonné
 
