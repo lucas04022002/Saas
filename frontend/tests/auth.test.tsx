@@ -38,3 +38,29 @@ describe("AuthForm", () => {
     expect(screen.getByRole("button", { name: "Créer mon compte" })).toBeDisabled();
   });
 });
+
+describe("AuthForm : quand le serveur limite les tentatives", () => {
+  it("un 429 de slowapi affiche un message lisible, pas une erreur vide", async () => {
+    // Constaté le 22/09/2026 : le corps d'un 429 est `{"error": …}` (slowapi), pas notre enveloppe,
+    // et `statusText` est vide en HTTP/2. Le formulaire affichait une erreur vide : « il se passe rien ».
+    server.use(http.post(`${API}/api/v1/auth/login`, () =>
+      HttpResponse.json({ error: "Rate limit exceeded: 10 per 1 minute" }, { status: 429, statusText: "" })));
+    const { AuthForm } = await import("@/components/AuthForm");
+    render(<AuthForm mode="login" />);
+    fireEvent.change(screen.getByLabelText("E-mail"), { target: { value: "l@t.fr" } });
+    fireEvent.change(screen.getByLabelText("Mot de passe"), { target: { value: "motdepasse123" } });
+    fireEvent.click(screen.getByRole("button", { name: "Se connecter" }));
+    expect(await screen.findByText(/Trop de tentatives/)).toBeInTheDocument();
+  });
+
+  it("une erreur sans message ni statusText n'est jamais affichée vide", async () => {
+    server.use(http.post(`${API}/api/v1/auth/login`, () => new HttpResponse(null, { status: 503, statusText: "" })));
+    const { AuthForm } = await import("@/components/AuthForm");
+    render(<AuthForm mode="login" />);
+    fireEvent.change(screen.getByLabelText("E-mail"), { target: { value: "l@t.fr" } });
+    fireEvent.change(screen.getByLabelText("Mot de passe"), { target: { value: "motdepasse123" } });
+    fireEvent.click(screen.getByRole("button", { name: "Se connecter" }));
+    const alerte = await screen.findByRole("alert");
+    expect(alerte.textContent?.trim().length).toBeGreaterThan(10);
+  });
+});

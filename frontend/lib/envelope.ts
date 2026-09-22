@@ -12,12 +12,16 @@ export async function parseEnvelope<T>(res: Response): Promise<T> {
   let body: unknown = null;
   try { body = await res.json(); } catch { body = null; }
   if (!res.ok) {
-    const b = body as { message?: string; detail?: unknown };
-    let message = b?.message ?? res.statusText;
+    const b = body as { message?: string; detail?: unknown; error?: string };
+    let message = b?.message ?? "";
     if (Array.isArray(b?.detail) && b.detail.length) {
       const msg = String((b.detail[0] as { msg?: string }).msg ?? "");
       message = msg.replace(/^Value error, /, "");
     } else if (typeof b?.detail === "string") message = b.detail;
+    // Le limiteur de débit (slowapi) ne parle pas notre enveloppe : son corps est `{"error": …}`, et
+    // `statusText` est vide en HTTP/2. Sans ce repli, un 429 affichait une erreur vide — l'utilisateur
+    // voyait un bouton qui « ne fait rien » (constaté le 22/09/2026).
+    if (!message) message = res.status === 429 ? "Trop de tentatives. Réessaie dans une minute." : (res.statusText || `Erreur ${res.status}`);
     throw new ApiError(res.status, message);
   }
   return (body as Envelope<T>).data;
