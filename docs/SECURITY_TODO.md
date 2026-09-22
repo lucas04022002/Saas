@@ -23,12 +23,21 @@ tenu à jour à chaque correctif.
 - **E1** · `/track-record` en cache une heure par compétition (13,9 s → quelques ms au 2e appel, 22/09/2026).
 - **E2** · fastapi 0.141.1 / starlette 1.6.0 / python-jose 3.5.0 / requests 2.34.2 ; il ne reste que
   `ecdsa` (dépendance de python-jose sans correctif ; l'application signe en HS256, 22/09/2026).
+- **M2** · Content-Security-Policy avec nonce par requête (`frontend/proxy.ts`, `lib/csp.ts`), vérifiée
+  dans le navigateur (22/09/2026).
+- **M3** · Le cookie de session expire quand le jeton expire (`exp` lu dans le jeton) ; `JWT_EXPIRE_MINUTES`
+  recommandé à 10080 (22/09/2026).
+- **M6** · `/subscriptions/upgrade` et `/subscriptions/me` retirés (22/09/2026).
+- **F1** · Hachage factice au login pour une adresse inconnue (22/09/2026). L'inscription répond toujours
+  409 sur une adresse déjà prise : choix assumé (message clair > énumération, limitée par IP).
+- **F2** · Toutes les erreurs dans l'enveloppe `{success, message, data}`, 422 et 404 compris (22/09/2026).
+- **F3** · `robots.txt` et `sitemap.xml` (22/09/2026).
 
 ## Reste à faire (voir l'audit pour la preuve et l'effort)
 
+- **Coolify** · poser des *Watch Paths* (`backend/**` pour l'API, `frontend/**` pour le site) : chaque push,
+  même de documentation, redéploie les deux applications et provoque quelques 502 pendant la bascule.
+- **Session** · aucune révocation de jeton avant expiration (pas de changement de mot de passe à ce jour).
+
 - **C4** · Mentions légales : « site sans activité commerciale » est faux ; SIREN.
 - **E3** · Sauvegardes de la base à planifier dans Coolify.
-- **M2** · Content-Security-Policy avec nonce (un seul script inline : le thème).
-- **M3** · Cookie 7 jours vs jeton `JWT_EXPIRE_MINUTES` ; révocation à changer de mot de passe.
-- **M6** · Retirer `/subscriptions/upgrade` (attribue un plan sans Stripe).
-- **F1–F3** · Énumération d'adresses, 422 hors enveloppe, `robots.txt` / `sitemap.xml`.
