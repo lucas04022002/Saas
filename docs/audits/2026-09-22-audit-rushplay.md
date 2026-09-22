@@ -74,6 +74,9 @@ monde ; et un attaquant n'est jamais distingué d'un client.
 conteneur n'est joignable que par Traefik). ~15 min. **Preuve après déploiement** : je
 déclenche 429 depuis ici, Lucas se connecte normalement depuis chez lui.
 
+**Prouvé le 22/09/2026, 13:46–13:50 UTC** : mon adresse bloquée en 429 quatre minutes d'affilée
+(dix essais puis 429 chaque minute), Lucas s'est connecté normalement pendant ce temps.
+
 ### C3 — CRITIQUE · Un abonné résilié peut rester abonné
 
 **Lu.** `core/access.py` : `is_pro = user.subscription_plan in PAID_PLANS`. Ni
