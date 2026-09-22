@@ -95,3 +95,19 @@ def test_describe_public_hides_gap_and_movement():
     assert "au-dessus de la référence" not in t
     assert "depuis le premier relevé" not in t
     assert t.startswith("Lyon est favori à 58 %.")
+
+
+# ---- match verrouillé : le texte ne doit rien dire de ce qu'on fait payer ----
+
+def test_locked_text_keeps_form_but_neither_favourite_nor_score_nor_percentage():
+    """Audit du 22/09/2026 : sur un match verrouillé, `analysis` disait « Lens favori de peu à 40 %.
+    Le marché voit Lens l'emporter, 2-1 en tête. » — le favori, sa probabilité et le score exact,
+    offerts dans la phrase d'à côté des champs `null`."""
+    import re
+    t = describe(ctx(reading=reading(mov=(4.2, -1.5, -2.7))), locked=True)
+    assert "favori" not in t and "l'emporter" not in t and "en tête" not in t
+    assert not re.search(r"\d+ ?%", t)          # aucune probabilité
+    assert not re.search(r"\b\d-\d\b", t)        # aucun score
+    assert "points depuis le premier relevé" not in t and "au-dessus de la référence" not in t
+    assert "Lyon reste sur trois victoires" in t   # la forme reste : elle est gratuite
+    assert "Ouvrez ce match" in t

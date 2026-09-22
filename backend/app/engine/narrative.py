@@ -109,13 +109,26 @@ def _h2h_sentence(ctx: MatchContext) -> str | None:
     return None
 
 
-def describe(ctx: MatchContext, public: bool = False) -> str:
-    parts = [
-        _favourite_sentence(ctx),
-        _score_sentence(ctx),
-        None if public else _gap_sentence(ctx),
-        None if public else _movement_sentence(ctx),
-        _form_sentence(ctx),
-        _h2h_sentence(ctx),
-    ]
+LOCKED_LEAD = "Ouvrez ce match pour lire la tendance du marché, sa probabilité et le score le plus probable."
+
+
+def describe(ctx: MatchContext, public: bool = False, locked: bool = False) -> str:
+    """Le texte d'analyse, selon ce que le lecteur a le droit de voir.
+
+    - `public` (compte gratuit, match ouvert) : sans les écarts ni le mouvement, que l'abonnement vend ;
+    - `locked` (match verrouillé) : sans le favori, sa probabilité ni le score non plus. Audit du
+      22/09/2026 : le mode public seul laissait le texte offrir gratuitement les trois choses que
+      les champs `null` d'à côté verrouillaient. Restent la forme et le face-à-face, qui sont gratuits.
+    """
+    if locked:
+        parts = [LOCKED_LEAD, _form_sentence(ctx), _h2h_sentence(ctx)]
+    else:
+        parts = [
+            _favourite_sentence(ctx),
+            _score_sentence(ctx),
+            None if public else _gap_sentence(ctx),
+            None if public else _movement_sentence(ctx),
+            _form_sentence(ctx),
+            _h2h_sentence(ctx),
+        ]
     return " ".join(p for p in parts if p)

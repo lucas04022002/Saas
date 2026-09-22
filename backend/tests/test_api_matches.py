@@ -217,3 +217,36 @@ def test_detail_expected_goals_picks_the_line_with_closest_over_under_odds_not_2
     d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
     assert d["expected_goals"]["source"] == "marché"
     assert d["expected_goals"]["total"] == pytest.approx(2.908, abs=1e-3)   # ligne 2,75, pas 2,5 (3,805)
+
+
+# ---- le texte d'analyse suit le verrou (audit du 22/09/2026) ----
+
+import re
+
+FUITE = re.compile(r"favori|l'emporter|en tête|\d+ ?%|\b\d-\d\b")
+
+
+def test_detail_sans_compte_le_texte_ne_donne_ni_favori_ni_score(client, db):
+    m = seed_match_with_odds(db)
+    d = client.get(f"/api/v1/matches/{m.id}").json()["data"]
+    assert d["locked"] is True
+    assert d["analysis"] and not FUITE.search(d["analysis"]), d["analysis"]
+    assert "analysis_locked" not in d
+    assert d["expected_goals"] is None
+
+
+def test_detail_pro_garde_le_texte_complet(client, db, pro_user):
+    m = seed_match_with_odds(db)
+    d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(pro_user)).json()["data"]
+    assert "favori" in d["analysis"] and "analysis_locked" not in d
+    assert d["expected_goals"] is not None
+
+
+def test_detail_match_ouvert_par_un_compte_gratuit_montre_le_favori_dans_le_texte(client, db, starter_user):
+    m = seed_match_with_odds(db)
+    assert client.post(f"/api/v1/matches/{m.id}/unlock", headers=auth_header(starter_user)).status_code == 200
+    d = client.get(f"/api/v1/matches/{m.id}", headers=auth_header(starter_user)).json()["data"]
+    assert d["locked"] is False
+    assert "favori" in d["analysis"]
+    # mais toujours pas ce que l'abonnement vend
+    assert "au-dessus de la référence" not in d["analysis"] and "points depuis le premier relevé" not in d["analysis"]

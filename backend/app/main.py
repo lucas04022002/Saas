@@ -45,25 +45,12 @@ async def lifespan(_: FastAPI):
 
 
 limiter = Limiter(key_func=get_remote_address)
-app = FastAPI(title=settings.app_name, version="0.1.0", lifespan=lifespan)
-app.state.limiter = limiter
-app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 
-@app.exception_handler(HTTPException)
 async def http_exception_handler(_: Request, exc: HTTPException):
     return JSONResponse(status_code=exc.status_code, content={"success": False, "message": exc.detail})
 
 
-@app.exception_handler(Exception)
 async def generic_exception_handler(_: Request, exc: Exception):
     log.exception("Unhandled exception: %s", exc)
     return JSONResponse(status_code=500, content={"success": False, "message": "Internal server error"})
@@ -89,14 +76,61 @@ def _collectors_status() -> dict:
     return out
 
 
-@app.get("/health")
 def health():
     return {"success": True, "message": "API healthy", "data": {"env": settings.env, "collectors": _collectors_status()}}
 
 
-@app.get("/api/v1/legal")
 def legal():
     return {"success": True, "message": "Legal notice", "data": LEGAL_NOTICE}
 
 
-app.include_router(api_router, prefix="/api/v1")
+SECURITY_HEADERS = {
+    "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    # Les réponses sont personnalisées (plan, quota, carnet) : aucun proxy ne doit les garder.
+    "Cache-Control": "no-store",
+}
+
+
+async def security_headers(request: Request, call_next):
+    response = await call_next(request)
+    for k, v in SECURITY_HEADERS.items():
+        response.headers.setdefault(k, v)
+    return response
+
+
+def create_app() -> FastAPI:
+    """L'application, assemblée d'après `settings` — une fabrique, pour que les tests puissent
+    construire une instance de production sans redémarrer le processus.
+
+    En production la documentation interactive est fermée : `/docs` répondait 200 sur
+    `api.rushplay.fr` et décrivait toute la surface, webhook compris (audit du 22/09/2026).
+    """
+    en_production = settings.env == "production"
+    application = FastAPI(
+        title=settings.app_name, version="0.1.0", lifespan=lifespan,
+        docs_url=None if en_production else "/docs",
+        redoc_url=None if en_production else "/redoc",
+        openapi_url=None if en_production else "/openapi.json",
+    )
+    application.state.limiter = limiter
+    application.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.cors_origins_list,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    application.middleware("http")(security_headers)
+    application.exception_handler(HTTPException)(http_exception_handler)
+    application.exception_handler(Exception)(generic_exception_handler)
+    application.get("/health")(health)
+    application.get("/api/v1/legal")(legal)
+    application.include_router(api_router, prefix="/api/v1")
+    return application
+
+
+app = create_app()

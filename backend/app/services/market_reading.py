@@ -130,5 +130,9 @@ def match_detail(db: Session, match: Match, public: bool = False) -> dict:
     d = score_for(match.competition, r, totals_snapshot)
     if d:
         out["score_distribution"] = [{"score": sp.score, "probability": sp.probability} for sp in d.distribution]
-    out["analysis"] = describe(MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r), score=d), public=public)
+    ctx = MatchContext(match.home_team, match.away_team, r, hf, af, h2h, best_gap(r), score=d)
+    out["analysis"] = describe(ctx, public=public)
+    # La version pour un match verrouillé. C'est `gate_detail` qui décide laquelle des deux part au
+    # client : ici on ne sait pas encore si ce match a été ouvert.
+    out["analysis_locked"] = describe(ctx, locked=True)
     return out

@@ -47,6 +47,8 @@ LOCKED_DETAIL_FIELDS = (
     "reference_book",
     "history",
     "score_distribution",
+    # le total de buts attendu par le marché fait partie de la lecture qu'on vend
+    "expected_goals",
 )
 
 #: Réservé à l'abonnement, même sur un match ouvert par un compte gratuit.
@@ -158,9 +160,15 @@ def gate_detail(detail: dict, user: User | None, unlocked: set | None = None) ->
     """La fiche d'un match, selon le plan et selon qu'il a été ouvert."""
     if is_pro(user):
         detail["locked"] = False
+        detail.pop("analysis_locked", None)
         return detail
 
     est_ouvert = detail.get("id") in (unlocked or set())
     detail["locked"] = not est_ouvert
     _hide(detail, SUBSCRIBER_ONLY_FIELDS if est_ouvert else LOCKED_DETAIL_FIELDS)
+    if not est_ouvert:
+        # Le texte suit le verrou : mettre les champs à None ne sert à rien si la phrase d'à côté
+        # nomme le favori et le score (audit du 22/09/2026).
+        detail["analysis"] = detail.get("analysis_locked")
+    detail.pop("analysis_locked", None)
     return detail

@@ -32,7 +32,7 @@ export type MatchDetail = MatchSummary & {
   form: { home: Form; away: Form }; h2h: H2H[]; analysis: string | null;
   result: { home: number; away: number } | null;
   score_distribution: ScoreProbability[] | null;   // les 5 scores les plus probables, réservé au pro
-  expected_goals: ExpectedGoals | null;             // public, même verrouillé
+  expected_goals: ExpectedGoals | null;             // null quand le match est verrouillé (audit du 22/09/2026)
 };
 
 export type BookRow = { bookmaker: string; label: string; matches: number; avg_margin: number | null; gaps_above_threshold: number;
