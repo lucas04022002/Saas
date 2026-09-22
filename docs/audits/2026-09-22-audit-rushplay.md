@@ -74,14 +74,22 @@ monde ; et un attaquant n'est jamais distingué d'un client.
 conteneur n'est joignable que par Traefik). ~15 min. **Preuve après déploiement** : je
 déclenche 429 depuis ici, Lucas se connecte normalement depuis chez lui.
 
-**Première « preuve » invalide (13:46–13:50 UTC)** : Lucas a répondu « connecté » alors que sa session
-était simplement déjà ouverte. **Second test, propre (14:2x UTC, serveur stable, déconnexion préalable)** :
-il a reçu « Trop de tentatives » pendant que mon adresse était bloquée. Le correctif uvicorn seul
-**n'a pas suffi**. Second correctif : le limiteur est désormais clé sur la première adresse de
-`X-Forwarded-For` (`core/client_ip.py`), en-tête que Traefik écrase par la vraie adresse (mesuré :
-seize valeurs inventées n'ont pas contourné le 429), et `GET /api/v1/whoami` rend l'adresse que
-l'API attribue à l'appelant — la seule preuve directe. Leçon : « je suis connecté » n'est pas une
-mesure ; se déconnecter d'abord, et lire le message.
+**Comment C2 a été prouvé — et ce que les tests intermédiaires ont réellement montré.**
+
+1. *13:46 UTC* — « je suis connecté » pendant mon blocage : **invalide**, la session était déjà ouverte.
+2. *14:0x UTC* — test propre depuis le PC, déconnexion préalable : « Trop de tentatives ». Conclu à tort
+   que le correctif uvicorn ne suffisait pas. **La vraie raison** : cet audit tourne *sur le PC de Lucas* ;
+   mes requêtes et son navigateur sortent par la même adresse publique. Ce n'était pas un test à deux
+   adresses, et le serveur faisait exactement ce qu'il doit.
+3. **`GET /api/v1/whoami`** (ajouté pour en finir avec les suppositions) rend l'adresse que l'API attribue
+   à l'appelant : `88.186.164.xxx`, égale à l'adresse publique mesurée par un service tiers. **Le proxy est
+   lu.** Le limiteur est en outre clé sur la première adresse de `X-Forwarded-For` (`core/client_ip.py`),
+   en-tête que Traefik écrase par la vraie adresse (seize valeurs inventées n'ont pas contourné le 429).
+4. *14:2x UTC* — **preuve à deux adresses, pour de bon** : PC bloqué en 429, téléphone en 4G (Wi-Fi coupé,
+   déconnexion préalable) connecté normalement.
+
+Leçon de méthode : une preuve exige deux adresses *réellement* distinctes et une mesure directe de ce
+que le serveur voit (`/whoami`) ; « je suis connecté » n'est pas une mesure.
 
 ### C3 — CRITIQUE · Un abonné résilié peut rester abonné
 

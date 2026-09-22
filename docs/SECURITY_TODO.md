@@ -12,8 +12,9 @@ tenu à jour à chaque correctif.
   le JS client ne voit jamais le jeton (`frontend/app/api/session/route.ts`, 11/09/2026).
 - **Paywall côté serveur**, y compris le texte d'analyse d'un match verrouillé
   (`backend/app/core/access.py`, `engine/narrative.py`, 22/09/2026 — audit C1).
-- **Limitation de débit réelle derrière le proxy** : uvicorn `--proxy-headers
-  --forwarded-allow-ips='*'` (`Dockerfile`, 22/09/2026 — audit C2).
+- **Limitation de débit réelle derrière le proxy** : uvicorn `--proxy-headers --forwarded-allow-ips='*'`
+  (`Dockerfile`) + limiteur clé sur `X-Forwarded-For` (`core/client_ip.py`) ; `GET /api/v1/whoami` rend
+  l'adresse vue. Prouvé à deux adresses (PC bloqué, téléphone 4G connecté), 22/09/2026 — audit C2.
 - **Swagger fermé en production** (`create_app()`, 22/09/2026 — audit M1).
 - **Conteneur API non-root**, en-têtes de sécurité et `Server` masqué (22/09/2026 — M4, M5).
 - Anti brute-force `login` 10/min et `signup` 5/h (par vraie IP depuis le 22/09/2026).
