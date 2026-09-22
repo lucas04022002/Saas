@@ -9,11 +9,11 @@ import { API } from "./msw/handlers";
 // direct au handler (hors du cycle de requête réel de Next.js) ne matérialise pas d'en-tête Set-Cookie sur
 // la réponse : on vérifie donc que cookies().set()/.delete() ont bien été invoqués, ce qui est le
 // comportement observable équivalent pour cette couche.
-const cookieStore = vi.hoisted(() => ({ token: undefined as string | undefined, sets: [] as { name: string; value: string }[], deletes: [] as string[] }));
+const cookieStore = vi.hoisted(() => ({ token: undefined as string | undefined, sets: [] as { name: string; value: string; options?: { maxAge?: number } }[], deletes: [] as string[] }));
 vi.mock("next/headers", () => ({
   cookies: async () => ({
     get: (name: string) => (name === "rp_token" && cookieStore.token !== undefined ? { value: cookieStore.token } : undefined),
-    set: (name: string, value: string) => { cookieStore.sets.push({ name, value }); },
+    set: (name: string, value: string, options?: { maxAge?: number }) => { cookieStore.sets.push({ name, value, options }); },
     delete: (name: string) => { cookieStore.deletes.push(name); },
   }),
 }));
@@ -128,10 +128,10 @@ describe("app/api/session — garde d'origine (CSRF)", () => {
   it("POST avec sec-fetch-site: same-origin : 200 et le cookie est posé", async () => {
     cookieStore.sets = [];
     const { POST } = await import("@/app/api/session/route");
-    const req = new Request("http://localhost:3000/api/session", { method: "POST", headers: { "sec-fetch-site": "same-origin", "content-type": "application/json" }, body: JSON.stringify({ token: "x" }) });
+    const req = new Request("http://localhost:3000/api/session", { method: "POST", headers: { "sec-fetch-site": "same-origin", "content-type": "application/json" }, body: JSON.stringify({ token: jwtAvecExp(3600) }) });
     const res = await POST(req);
     expect(res.status).toBe(200);
-    expect(cookieStore.sets).toContainEqual(expect.objectContaining({ name: "rp_token", value: "x" }));
+    expect(cookieStore.sets.some((c) => c.name === "rp_token" && c.value.includes("."))).toBe(true);
   });
 
   it("DELETE sans sec-fetch-site ni origin same-site : 403", async () => {
@@ -148,5 +148,37 @@ describe("app/api/session — garde d'origine (CSRF)", () => {
     const res = await DELETE(req);
     expect(res.status).toBe(200);
     expect(cookieStore.deletes).toContain("rp_token");
+  });
+});
+
+// ---- la durée du cookie suit l'expiration du jeton (audit du 22/09/2026, M3) ----
+//
+// Le cookie vivait 7 jours quand le jeton expirait après JWT_EXPIRE_MINUTES : passé ce délai, chaque
+// page voyait un 401 et l'utilisateur se retrouvait « Se connecter » sans avoir rien fait, cookie
+// toujours là. La durée est lue dans le jeton lui-même (`exp`), donc alignée quelle que soit la
+// valeur configurée côté API.
+
+function jwtAvecExp(expDansSecondes: number): string {
+  const b64 = (o: unknown) => Buffer.from(JSON.stringify(o)).toString("base64url");
+  return `${b64({ alg: "HS256", typ: "JWT" })}.${b64({ sub: "u1", exp: Math.floor(Date.now() / 1000) + expDansSecondes })}.signature`;
+}
+
+describe("session : durée du cookie", () => {
+  it("le cookie expire quand le jeton expire", async () => {
+    cookieStore.sets.length = 0;
+    const { POST } = await import("@/app/api/session/route");
+    const res = await POST(new Request("http://localhost:3000/api/session", { method: "POST", headers: { "Content-Type": "application/json", "Sec-Fetch-Site": "same-origin" }, body: JSON.stringify({ token: jwtAvecExp(7200) }) }));
+    expect(res.status).toBe(200);
+    const pose = cookieStore.sets.find((c) => c.name === "rp_token");
+    expect(pose?.options?.maxAge).toBeGreaterThan(7200 - 60);
+    expect(pose?.options?.maxAge).toBeLessThanOrEqual(7200);
+  });
+
+  it("un jeton déjà expiré n'est pas posé", async () => {
+    cookieStore.sets.length = 0;
+    const { POST } = await import("@/app/api/session/route");
+    const res = await POST(new Request("http://localhost:3000/api/session", { method: "POST", headers: { "Content-Type": "application/json", "Sec-Fetch-Site": "same-origin" }, body: JSON.stringify({ token: jwtAvecExp(-10) }) }));
+    expect(res.status).toBe(400);
+    expect(cookieStore.sets.find((c) => c.name === "rp_token")).toBeUndefined();
   });
 });
