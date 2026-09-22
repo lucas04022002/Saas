@@ -17,13 +17,15 @@ tenu à jour à chaque correctif.
 - **Swagger fermé en production** (`create_app()`, 22/09/2026 — audit M1).
 - **Conteneur API non-root**, en-têtes de sécurité et `Server` masqué (22/09/2026 — M4, M5).
 - Anti brute-force `login` 10/min et `signup` 5/h (par vraie IP depuis le 22/09/2026).
+- **C3** · `is_pro` exige un abonnement ACTIVE et une période non échue (3 jours de tolérance) ;
+  `retrograder_echus` remet le plan à STARTER chaque jour (`core/access.py`, 22/09/2026).
+- **E1** · `/track-record` en cache une heure par compétition (13,9 s → quelques ms au 2e appel, 22/09/2026).
+- **E2** · fastapi 0.141.1 / starlette 1.6.0 / python-jose 3.5.0 / requests 2.34.2 ; il ne reste que
+  `ecdsa` (dépendance de python-jose sans correctif ; l'application signe en HS256, 22/09/2026).
 
 ## Reste à faire (voir l'audit pour la preuve et l'effort)
 
-- **C3** · `is_pro` doit exiger un abonnement actif et une période non échue.
 - **C4** · Mentions légales : « site sans activité commerciale » est faux ; SIREN.
-- **E1** · `/track-record` : cache ou précalcul (13,9 s, public, non borné).
-- **E2** · `python-jose`, `starlette`, `requests` à monter (`pip-audit`).
 - **E3** · Sauvegardes de la base à planifier dans Coolify.
 - **M2** · Content-Security-Policy avec nonce (un seul script inline : le thème).
 - **M3** · Cookie 7 jours vs jeton `JWT_EXPIRE_MINUTES` ; révocation à changer de mot de passe.
