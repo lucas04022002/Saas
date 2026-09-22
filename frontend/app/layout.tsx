@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Inter, Inter_Tight } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
@@ -14,14 +15,16 @@ export const metadata: Metadata = {
   icons: { icon: "/favicon.svg", apple: "/apple-touch-icon.png" },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Le nonce de la requête, posé par proxy.ts : sans lui la CSP bloquerait le script de thème.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     // suppressHydrationWarning : le script inline pose data-theme sur <html> avant l'hydratation,
     // React doit garder le DOM plutôt que sa propre sortie pour cet élément.
     <html lang="fr" className={`${inter.variable} ${interTight.variable}`} suppressHydrationWarning>
       <head>
         {/* Joué pendant l'analyse du HTML, avant la première peinture : aucun flash clair. */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <script nonce={nonce} dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
       </head>
       <body className="min-h-screen flex flex-col">
         <Nav />

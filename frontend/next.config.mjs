@@ -13,8 +13,8 @@ const nextConfig = {
     if (process.env.NODE_ENV === "production") {
       securityHeaders.push({ key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" });
     }
-    // Pas de CSP ici : une CSP correcte demanderait des nonces par requête (styles/scripts inline de
-    // Next.js) — voir README, section Sécurité, pour le suivi.
+    // La Content-Security-Policy n'est pas ici : elle demande un nonce par requête, posé par proxy.ts
+    // (voir lib/csp.ts).
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
 };
