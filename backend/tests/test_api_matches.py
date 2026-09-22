@@ -250,3 +250,39 @@ def test_detail_match_ouvert_par_un_compte_gratuit_montre_le_favori_dans_le_text
     assert "favori" in d["analysis"]
     # mais toujours pas ce que l'abonnement vend
     assert "au-dessus de la référence" not in d["analysis"] and "points depuis le premier relevé" not in d["analysis"]
+
+
+# ---- « Prochains matchs » : un jour vide ne doit pas être un cul-de-sac (22/09/2026, trêve internationale) ----
+
+def test_next_rend_le_premier_jour_suivant_avec_un_match(client, db):
+    """Un visiteur arrivé un mardi de trêve voyait « Aucun match ce jour-là » et repartait : rien ne lui
+    disait que la Ligue des Nations reprenait jeudi."""
+    from tests.conftest import make_team
+    h, a = make_team(db, "France"), make_team(db, "Espagne")
+    seed_match_with_odds(db, kickoff=NOW + timedelta(days=2))
+    seed_match_with_odds(db, kickoff=NOW + timedelta(days=5))
+    aujourd_hui = paris_day(NOW)
+    d = client.get(f"/api/v1/matches/next?after={aujourd_hui}").json()["data"]
+    assert d["date"] == paris_day(NOW + timedelta(days=2))
+    assert d["count"] == 1
+
+
+def test_next_respecte_le_filtre_de_competition(client, db):
+    from tests.conftest import make_team
+    h, a = make_team(db, "Lens"), make_team(db, "Sporting CP")
+    m = make_match(db, h, a, competition="CL", kickoff=NOW + timedelta(days=3))
+    db.add(OddsSnapshot(match_id=m.id, bookmaker="pinnacle", taken_at=NOW, home=2.0, draw=3.5, away=3.8)); db.commit()
+    seed_match_with_odds(db, kickoff=NOW + timedelta(days=1))   # E0, la veille
+    d = client.get(f"/api/v1/matches/next?after={paris_day(NOW)}&competition=CL").json()["data"]
+    assert d["date"] == paris_day(NOW + timedelta(days=3)) and d["competitions"] == ["CL"]
+
+
+def test_next_sans_rien_devant_rend_null(client, db):
+    seed_match_with_odds(db, kickoff=NOW - timedelta(days=3))   # seulement du passé
+    assert client.get(f"/api/v1/matches/next?after={paris_day(NOW)}").json()["data"] is None
+
+
+def test_next_ne_compte_pas_le_jour_demande_lui_meme(client, db):
+    seed_match_with_odds(db, kickoff=NOW + timedelta(days=2))
+    j = paris_day(NOW + timedelta(days=2))
+    assert client.get(f"/api/v1/matches/next?after={j}").json()["data"] is None

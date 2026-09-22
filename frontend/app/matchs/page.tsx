@@ -19,6 +19,9 @@ export default async function Matchs({ searchParams }: { searchParams: Promise<{
   // Le sous-titre compte les matchs réellement affichés (groupés par compétition), pas `items.length` :
   // une compétition renvoyée par l'API mais absente de ORDER serait comptée sans jamais être montrée.
   const shown = groups.reduce((n, [, ms]) => n + ms.length, 0);
+  // Un jour vide annonce le prochain jour joué (22/09/2026 : un mardi de trêve internationale, la page
+  // disait « Aucun match » et le visiteur repartait sans savoir que la Ligue des Nations reprenait jeudi).
+  const prochain = groups.length === 0 ? await api.matchesNext(date, competition).catch(() => null) : null;
   const day = formatDateFr(`${date}T12:00:00Z`).split(",")[0];
   const dayCap = day.charAt(0).toUpperCase() + day.slice(1);
   return (
@@ -48,7 +51,19 @@ export default async function Matchs({ searchParams }: { searchParams: Promise<{
       </p>
       <DayPicker selected={date} competition={competition} />
       <CompetitionFilter date={date} selected={competition} />
-      {groups.length === 0 ? <p className="hair mt-6 py-10 text-[19px]">Aucun match ce jour-là pour cette compétition.</p> : groups.map(([code, ms]) => (
+      {groups.length === 0 ? (
+        <div className="hair mt-6 py-10">
+          <p className="text-[19px]">Aucun match ce jour-là pour cette compétition.</p>
+          {prochain ? (
+            <p className="mt-3 text-[16px] text-muted">
+              <Link href={`/matchs?date=${prochain.date}${competition ? `&competition=${competition}` : ""}`} className="underline underline-offset-4 text-ink">
+                Prochains matchs : {formatDateFr(`${prochain.date}T12:00:00Z`).split(",")[0]}
+              </Link>
+              {" — "}{prochain.count} match{prochain.count > 1 ? "s" : ""} ({prochain.competitions.map((c) => COMPETITIONS[c] ?? c).join(", ")})
+            </p>
+          ) : null}
+        </div>
+      ) : groups.map(([code, ms]) => (
         <div key={code} className="mt-10">
           <h3 className="eyebrow mb-2">{COMPETITIONS[code]}</h3>
           <div className="border-b border-line">{ms.map((m) => <MatchRow key={m.id} match={m} />)}</div>

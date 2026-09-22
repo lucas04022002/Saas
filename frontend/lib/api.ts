@@ -27,6 +27,9 @@ export const api = {
   legal: () => call<Legal>("/api/v1/legal", { revalidate: 3600 }),
   matches: (p: { date?: string; competition?: string; page?: number; limit?: number } = {}, token?: string) =>
     call<{ items: MatchSummary[]; pagination: Pagination; quota: Quota }>(`/api/v1/matches?${qs(p)}`, { token, revalidate: 60 }),
+  /** Le premier jour après `after` qui a des matchs : un jour vide ne doit pas être un cul-de-sac. */
+  matchesNext: (after: string, competition?: string) =>
+    call<{ date: string; count: number; competitions: string[] } | null>(`/api/v1/matches/next?${qs({ after, competition })}`, { revalidate: 300 }),
   match: (id: string, token?: string) =>
     call<MatchDetail & { quota: Quota }>(`/api/v1/matches/${id}`, { token, revalidate: 60 }),
   // Dépense un crédit hebdomadaire. Une action explicite, jamais un effet de

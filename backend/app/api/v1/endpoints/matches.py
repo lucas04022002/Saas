@@ -70,6 +70,40 @@ def list_matches(
     }
 
 
+@router.get("/next")
+def next_match_day(
+    after: date = Query(...),
+    competition: str | None = Query(default=None, pattern=COMPETITION_PATTERN),
+    db: Session = Depends(get_db),
+):
+    """Le premier jour (heure de Paris) strictement après `after` qui a au moins un match programmé.
+
+    Un jour vide ne doit pas être un cul-de-sac : un visiteur arrivé un mardi de trêve internationale
+    voyait « Aucun match ce jour-là » et repartait, alors que la Ligue des Nations reprenait jeudi
+    (22/09/2026). Déclaré avant `/{match_id}`, sinon « next » serait pris pour un identifiant.
+    """
+    _, fin_du_jour = _paris_day_utc_bounds(after)
+    q = select(Match).where(Match.status == MatchStatus.SCHEDULED, Match.kickoff_at > fin_du_jour,
+                            Match.kickoff_at <= fin_du_jour + timedelta(days=60))
+    if competition:
+        q = q.where(Match.competition == competition)
+    premier = db.scalar(q.order_by(Match.kickoff_at.asc()).limit(1))
+    if premier is None:
+        return {"success": True, "message": "", "data": None}
+    kickoff = premier.kickoff_at if premier.kickoff_at.tzinfo else premier.kickoff_at.replace(tzinfo=timezone.utc)
+    jour = kickoff.astimezone(PARIS).date()
+    debut, fin = _paris_day_utc_bounds(jour)
+    qj = select(Match).where(Match.status == MatchStatus.SCHEDULED, Match.kickoff_at >= debut, Match.kickoff_at <= fin)
+    if competition:
+        qj = qj.where(Match.competition == competition)
+    du_jour = db.scalars(qj).all()
+    return {"success": True, "message": "", "data": {
+        "date": jour.isoformat(),
+        "count": len(du_jour),
+        "competitions": sorted({m.competition for m in du_jour}),
+    }}
+
+
 @router.get("/{match_id}")
 def get_match(match_id: str, db: Session = Depends(get_db), current_user: User | None = Depends(get_current_user_optional)):
     try:

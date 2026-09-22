@@ -32,3 +32,46 @@ describe("liste des matchs", () => {
     expect(screen.getByText("Aucun match ce jour-là pour cette compétition.")).toBeInTheDocument();
   });
 });
+
+// ---- un jour vide annonce les prochains matchs (22/09/2026, trêve internationale) ----
+
+const VIDE = { success: true, message: "", data: { items: [], pagination: { page: 1, limit: 200, total: 0 }, quota: { plan: "ANONYMOUS", limit: 0, used: 0, remaining: 0, resets_at: null } } };
+
+describe("jour sans match", () => {
+  it("annonce le prochain jour avec des matchs, avec le lien", async () => {
+    server.use(
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json(VIDE)),
+      http.get(`${API}/api/v1/matches/next`, () => HttpResponse.json({ success: true, message: "", data: { date: "2026-09-24", count: 12, competitions: ["NL"] } })),
+    );
+    const Page = (await import("@/app/matchs/page")).default;
+    render(await Page({ searchParams: Promise.resolve({ date: "2026-09-22", competition: undefined }) }));
+    const lien = screen.getByRole("link", { name: /Prochains matchs/ });
+    expect(lien).toHaveAttribute("href", "/matchs?date=2026-09-24");
+    expect(lien.textContent).toMatch(/jeudi 24 septembre/);
+    // « Ligue des Nations » existe aussi dans la pastille du filtre : on lit le paragraphe des prochains matchs.
+    expect(screen.getByText(/12 matchs/).textContent).toMatch(/Ligue des Nations/);
+  });
+
+  it("le lien garde le filtre de compétition", async () => {
+    let question = "";
+    server.use(
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json(VIDE)),
+      http.get(`${API}/api/v1/matches/next`, ({ request }) => { question = new URL(request.url).search; return HttpResponse.json({ success: true, message: "", data: { date: "2026-10-13", count: 18, competitions: ["CL"] } }); }),
+    );
+    const Page = (await import("@/app/matchs/page")).default;
+    render(await Page({ searchParams: Promise.resolve({ date: "2026-09-22", competition: "CL" }) }));
+    expect(question).toContain("competition=CL");
+    expect(screen.getByRole("link", { name: /Prochains matchs/ })).toHaveAttribute("href", "/matchs?date=2026-10-13&competition=CL");
+  });
+
+  it("rien devant : le message reste sobre, sans lien cassé", async () => {
+    server.use(
+      http.get(`${API}/api/v1/matches`, () => HttpResponse.json(VIDE)),
+      http.get(`${API}/api/v1/matches/next`, () => HttpResponse.json({ success: true, message: "", data: null })),
+    );
+    const Page = (await import("@/app/matchs/page")).default;
+    render(await Page({ searchParams: Promise.resolve({ date: "2026-09-22", competition: undefined }) }));
+    expect(screen.getByText(/Aucun match ce jour-là/)).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /Prochains matchs/ })).not.toBeInTheDocument();
+  });
+});
