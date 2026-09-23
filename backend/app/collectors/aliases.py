@@ -244,7 +244,8 @@ KNOWN_TEAMS: list[tuple[str, str, dict[str, list[str]]]] = [
     # ---- Espagne (Liga 2 2026/27, mode gratuit fd_uk)
     ('Albacete', 'Espagne', {}),
     ('Almeria', 'Espagne', {}),
-    ('Andorra', 'Espagne', {}),
+    # « Andorra » seul désigne la sélection chez The Odds API : le club garde ce nom pour fd_uk uniquement.
+    ('FC Andorra', 'Espagne', {'fd_uk': ['Andorra']}),
     ('Burgos', 'Espagne', {}),
     ('Cadiz', 'Espagne', {}),
     ('Castellon', 'Espagne', {}),

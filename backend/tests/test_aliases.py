@@ -117,3 +117,34 @@ def test_les_noms_fd_uk_abreges_rejoignent_les_clubs_deja_connus(db):
     assert resolve_team(db, "fd_uk", "Nijmegen").name == "NEC Nijmegen"
     assert resolve_team(db, "fd_uk", "St. Gilloise").name == "Union Saint-Gilloise"
     assert resolve_team(db, "fd_uk", "West Ham").name == "West Ham"   # relégué : même club, nouvelle division
+
+
+# ---- aucun nom ne désigne deux équipes (23/09/2026, Andorre) ----
+
+def test_aucun_alias_n_est_partage_par_deux_equipes():
+    """Le club FC Andorra (Liga 2, fd_uk « Andorra ») et la sélection d'Andorre (odds_api « Andorra »)
+    partageaient la clé odds_api `andorra` : le premier servi gagnait, et la sélection a été rattachée au
+    club — ses matchs internationaux auraient pollué la forme et l'historique du club."""
+    import collections
+    from app.collectors.aliases import SOURCES, normalize
+    proprietaires = collections.defaultdict(set)
+    for nom, _pays, par_source in KNOWN_TEAMS:
+        for source in SOURCES:
+            for alias in [nom, *par_source.get(source, [])]:
+                proprietaires[(source, normalize(alias))].add(nom)
+    assert {k: sorted(v) for k, v in proprietaires.items() if len(v) > 1} == {}
+
+
+def test_chaque_selection_de_la_ligue_des_nations_se_resout_vers_une_selection(db):
+    """Résoudre ne suffit pas : il faut résoudre vers la BONNE équipe. Le test précédent sur ces noms
+    passait alors qu'« Andorra » désignait le club espagnol."""
+    seed_aliases(db)
+    mauvais = {n: resolve_team(db, "odds_api", n).country for n in NATIONS_2026
+               if resolve_team(db, "odds_api", n).country != "Sélections"}
+    assert mauvais == {}
+
+
+def test_le_club_fc_andorra_reste_joignable_par_fd_uk(db):
+    seed_aliases(db)
+    club = resolve_team(db, "fd_uk", "Andorra")
+    assert club.name == "FC Andorra" and club.country == "Espagne"

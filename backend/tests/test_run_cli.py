@@ -42,7 +42,7 @@ def test_cli_dedup_runs_dedup_matches_and_writes_heartbeat(db, monkeypatch):
     heartbeats/ ni à un dev.db réel : get_db et write_heartbeat sont monkeypatchés vers la session de test)."""
     monkeypatch.setattr(run_cli, "get_db", lambda: iter([db]))
     written = {}
-    monkeypatch.setattr(run_cli, "write_heartbeat", lambda name, summary: written.update(name=name, summary=summary))
+    monkeypatch.setattr(run_cli, "write_heartbeat", lambda db, name, summary: written.update(name=name, summary=summary))
 
     seed_aliases(db)
     h, a = db.query(Team).filter_by(name="Arsenal").one(), db.query(Team).filter_by(name="Chelsea").one()

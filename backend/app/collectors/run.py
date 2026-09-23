@@ -5,7 +5,6 @@ import json
 import logging
 import sys
 from datetime import date, datetime, timezone
-from pathlib import Path
 
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -17,15 +16,17 @@ from app.core.access import retrograder_echus
 from app.collectors.dedup import dedup_matches
 from app.core.logging import setup_logging
 from app.models.enums import MatchStatus
+from app.models.collector_heartbeat import CollectorHeartbeat
 from app.models.match import Match
 from app.services.settlement import settle_bets
 
-HEARTBEATS = Path(__file__).resolve().parents[2] / "heartbeats"
-
-
-def write_heartbeat(name: str, summary: dict) -> None:
-    HEARTBEATS.mkdir(exist_ok=True)
-    (HEARTBEATS / f"{name}.json").write_text(json.dumps({"at": datetime.now(timezone.utc).isoformat(), **summary}), encoding="utf-8")
+def write_heartbeat(db: Session, name: str, summary: dict) -> None:
+    """Le dernier passage du collecteur, en base : lu par `/health` (voir `CollectorHeartbeat`)."""
+    row = db.get(CollectorHeartbeat, name) or CollectorHeartbeat(name=name)
+    row.at = datetime.now(timezone.utc)
+    row.summary = json.dumps(summary, default=str)
+    db.add(row)
+    db.commit()
 
 
 def quarantine_report(db: Session) -> dict[str, list[dict]]:
@@ -98,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
             print(report)
         else:
             summary = vars(odds_api.run(db))
-        write_heartbeat(args.collector, summary)
+        write_heartbeat(db, args.collector, summary)
         logging.getLogger("rushplay.collectors").info("%s terminé : %s", args.collector, summary)
         return 0
     finally:
