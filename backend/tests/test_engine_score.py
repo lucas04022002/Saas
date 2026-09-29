@@ -130,6 +130,24 @@ def test_total_goals_from_market_none_when_odds_missing_or_invalid():
     assert total_goals_from_market(0.9, 2.05, 2.5) is None
 
 
+# Valeurs de référence recalculées hors du code (balayage de λ au pas de 1e-4, probabilités Poisson exactes)
+# le 29/09/2026, quand les totaux affichés (3,1 à 4,6 sur 10 affiches) ont fait soupçonner un biais : le
+# calcul est exact, les totaux hauts viennent des lignes Pinnacle (4,5 ; 4,25 ; 4,0...), cf. le complément du
+# 29/09/2026 dans docs/mesures/2026-09-11-score-le-plus-probable.md.
+@pytest.mark.parametrize("over, under, line, expected", [
+    (2.00, 2.00, 2.5, 2.6741),    # 50/50 sur 2,5 : médiane de Poisson
+    (2.00, 2.00, 3.0, 3.1594),    # entière : P(X>3) = P(X<3), le 3 est remboursé
+    (2.00, 2.00, 2.75, 2.9082),   # quart : demi-mises 2,5 et 3,0
+    (2.00, 2.00, 2.25, 2.4176),
+    (2.00, 2.00, 3.5, 3.6721),
+    (1.85, 2.05, 2.5, 2.7795),    # over favori -> λ monte
+    (2.05, 1.85, 2.5, 2.5714),    # cotes inversées -> λ descend (sens over/under vérifié)
+    (1.97, 1.85, 4.5, 4.5868),    # Augsburg - Bayern, relevé Pinnacle du 28/09/2026 08:00 UTC
+])
+def test_total_goals_from_market_matches_independent_reference(over, under, line, expected):
+    assert total_goals_from_market(over, under, line) == pytest.approx(expected, abs=2e-4)
+
+
 class _FakeTotalsSnapshot:
     def __init__(self, over, under, line):
         self.over, self.under, self.line = over, under, line
