@@ -39,3 +39,14 @@ def test_le_battement_n_ecrit_rien_sur_le_disque(db, tmp_path, monkeypatch):
 def test_legal_endpoint(client):
     d = client.get("/api/v1/legal").json()["data"]
     assert d["minimum_age"] == 18 and "09 74 75 13 13" in d["warning"]
+
+
+def test_les_cotes_ne_sont_pas_perimees_entre_deux_releves_normaux(client, db):
+    # relevés dim/lun/mer/ven 08:00 UTC : 48 h entre deux passages normaux ne doit pas déclencher d'alerte
+    db.add(CollectorHeartbeat(name="odds", at=datetime.now(timezone.utc) - timedelta(hours=49), summary="{}")); db.commit()
+    assert client.get("/health").json()["data"]["collectors"]["odds"]["stale"] is False
+
+
+def test_un_releve_de_cotes_manque_est_signale(client, db):
+    db.add(CollectorHeartbeat(name="odds", at=datetime.now(timezone.utc) - timedelta(hours=61), summary="{}")); db.commit()
+    assert client.get("/health").json()["data"]["collectors"]["odds"]["stale"] is True

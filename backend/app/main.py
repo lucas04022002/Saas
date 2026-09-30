@@ -28,7 +28,9 @@ from app import models  # noqa: F401
 setup_logging()
 log = logging.getLogger("rushplay")
 
-STALE_AFTER = {"fd_uk": timedelta(days=8), "fd_org": timedelta(hours=36), "odds": timedelta(hours=36),
+# odds : dimanche/lundi/mercredi/vendredi 08:00 UTC → écarts de 48 h entre deux passages normaux ;
+# 60 h = un passage manqué est signalé, mais plus de fausse alerte entre deux relevés (36 h en déclenchait une sur deux).
+STALE_AFTER = {"fd_uk": timedelta(days=8), "fd_org": timedelta(hours=36), "odds": timedelta(hours=60),
                # lundi/mercredi/vendredi 07:30 UTC : le plus long écart est vendredi → lundi (72 h) ; 4 jours = un passage manqué
                "scores": timedelta(days=4)}
 LEGAL_NOTICE = {
