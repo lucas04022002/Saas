@@ -60,6 +60,17 @@ l'interface Coolify.
     stricte `CI_STRICT_LEGAL=1` dans la CI, remplacer les photos Unsplash
     (`frontend/PHOTOS.md`), et régler `CORS_ORIGINS` sur le domaine du front.
 
+11. **Données des vidéos TikTok** : dans le terminal Coolify du service `api`,
+    `cd /app` puis, pour le week-end à venir (jours en heure de Paris, bornes incluses) :
+    `python -m app.tools.video_data --a-venir-du 2026-10-02 --a-venir-au 2026-10-04`
+    et pour le bilan du week-end passé (lecture d'avant coup d'envoi seulement) :
+    `python -m app.tools.video_data --termines-du 2026-09-25 --termines-au 2026-09-27`.
+    Les deux options se combinent ; `--competitions E0,F1` restreint la liste
+    (défaut : E0,F1,SP1,I1,D1,CL,EL). Le JSON s'affiche dans le terminal : le copier
+    dans un fichier `.json` sur le PC pour les modèles de `rushplay-formats`
+    (format : `rushplay-formats/SCHEMA.md`). `--sortie /tmp/videos.json` écrit un
+    fichier dans le conteneur, effacé au prochain déploiement. Lecture seule : rien n'est écrit en base.
+
 ## Ce que fait Claude et ce que fait Lucas
 
 - Lucas : compte Hetzner (paiement), création du VPS avec la clé SSH publique
