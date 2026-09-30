@@ -38,6 +38,10 @@ class Settings(BaseSettings):
     football_data_org_key: str | None = None
     fd_uk_base_url: str = "https://www.football-data.co.uk/mmz4281"
 
+    #: Jeton de `GET /api/v1/internal/video-data` (en-tête `X-Video-Token`). Vide — ou trop court
+    #: pour résister à l'essai systématique — la route n'existe pas (404) : elle échoue fermée.
+    video_data_token: str = ""
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @property

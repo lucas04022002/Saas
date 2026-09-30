@@ -71,6 +71,12 @@ l'interface Coolify.
     dans un fichier `.json` sur le PC pour les modèles de `rushplay-formats`
     (format : `rushplay-formats/SCHEMA.md`). `--sortie /tmp/videos.json` écrit un
     fichier dans le conteneur, effacé au prochain déploiement. Lecture seule : rien n'est écrit en base.
+    **Sans copier-coller** : générer un jeton sur le PC (`python -c "import secrets; print(secrets.token_urlsafe(32))"`),
+    l'ajouter dans Coolify → service `api` → *Environment Variables* : `VIDEO_DATA_TOKEN=<jeton>`, puis redéployer.
+    Le recopier ensuite dans le fichier local du programme du PC (jamais dans le dépôt ni dans le chat).
+    Appel : `GET https://api.rushplay.fr/api/v1/internal/video-data?a_venir_du=2026-10-02&a_venir_au=2026-10-04`
+    avec l'en-tête `X-Video-Token: <jeton>` (mêmes paramètres que la commande, `termines_du`/`termines_au`, `competitions`).
+    Sans jeton, jeton faux ou variable vide : 404. 30 appels/heure par adresse ; 10 jetons faux/heure ferment l'adresse.
 
 12. **Résultats Ligue des Nations et Ligue Europa** (depuis le 30/09/2026) :
     aucune source gratuite ne les donne (fd_uk ne couvre pas ces compétitions,

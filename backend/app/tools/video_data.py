@@ -143,11 +143,44 @@ def build(db: Session, *, a_venir_du: date | None = None, a_venir_au: date | Non
     }
 
 
-def _jour(s: str) -> date:
+class ParametresInvalides(ValueError):
+    """Paramètres refusés — mêmes règles pour la commande et pour la route `/api/v1/internal/video-data`."""
+
+
+def jour(s: str) -> date:
     try:
         return date.fromisoformat(s)
     except ValueError:
-        raise argparse.ArgumentTypeError(f"date attendue au format AAAA-MM-JJ, reçu « {s} »")
+        raise ParametresInvalides(f"date attendue au format AAAA-MM-JJ, reçu « {s} »") from None
+
+
+def valider(*, a_venir_du: date | None, a_venir_au: date | None, termines_du: date | None,
+            termines_au: date | None, competitions: str, option=lambda nom: nom) -> tuple[str, ...]:
+    """Contrôle les deux fenêtres et la liste de compétitions ; rend les codes normalisés.
+    `option` met en forme le nom d'un paramètre dans le message (`--a-venir-du` pour la commande)."""
+    bornes = {"a_venir": (a_venir_du, a_venir_au), "termines": (termines_du, termines_au)}
+    for nom, (du, au) in bornes.items():
+        o_du, o_au = option(f"{nom}_du"), option(f"{nom}_au")
+        if (du is None) != (au is None):
+            raise ParametresInvalides(f"{o_du} et {o_au} vont ensemble")
+        if du and du > au:
+            raise ParametresInvalides(f"{o_du} est après {o_au}")
+    if a_venir_du is None and termines_du is None:
+        raise ParametresInvalides(f"rien à produire : donner {option('a_venir_du')}/{option('a_venir_au')} "
+                                  f"et/ou {option('termines_du')}/{option('termines_au')}")
+    codes = tuple(c.strip().upper() for c in competitions.split(",") if c.strip())
+    inconnus = [c for c in codes if c not in COMPETITIONS]
+    if not codes or inconnus:
+        raise ParametresInvalides(f"compétition inconnue : {', '.join(inconnus) or '(aucune)'} — "
+                                  f"codes possibles : {', '.join(COMPETITIONS)}")
+    return codes
+
+
+def _jour(s: str) -> date:
+    try:
+        return jour(s)
+    except ParametresInvalides as e:
+        raise argparse.ArgumentTypeError(str(e))
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -166,20 +199,12 @@ def _parser() -> argparse.ArgumentParser:
 def _arguments(argv: list[str] | None) -> argparse.Namespace:
     p = _parser()
     a = p.parse_args(argv)
-    for nom in ("a_venir", "termines"):
-        du, au = getattr(a, f"{nom}_du"), getattr(a, f"{nom}_au")
-        option = nom.replace("_", "-")
-        if (du is None) != (au is None):
-            p.error(f"--{option}-du et --{option}-au vont ensemble")
-        if du and du > au:
-            p.error(f"--{option}-du est après --{option}-au")
-    if a.a_venir_du is None and a.termines_du is None:
-        p.error("rien à produire : donner --a-venir-du/--a-venir-au et/ou --termines-du/--termines-au")
-    codes = tuple(c.strip().upper() for c in a.competitions.split(",") if c.strip())
-    inconnus = [c for c in codes if c not in COMPETITIONS]
-    if not codes or inconnus:
-        p.error(f"compétition inconnue : {', '.join(inconnus) or '(aucune)'} — codes possibles : {', '.join(COMPETITIONS)}")
-    a.competitions = codes
+    try:
+        a.competitions = valider(a_venir_du=a.a_venir_du, a_venir_au=a.a_venir_au, termines_du=a.termines_du,
+                                 termines_au=a.termines_au, competitions=a.competitions,
+                                 option=lambda nom: "--" + nom.replace("_", "-"))
+    except ParametresInvalides as e:
+        p.error(str(e))
     return a
 
 
