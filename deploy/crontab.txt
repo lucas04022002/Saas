@@ -13,5 +13,13 @@
 # C'est la SEULE source de résultats pour les championnats sans calendrier football-data.org (D2, I2, SP2, F2, B1,
 # T1, G1, SC0) : sans ce cron, leurs matchs restent « programmés » et les paris du carnet ne se règlent pas.
 0 7 * * 1   cd /app && python -m app.collectors.run fd_uk
+# résultats Ligue des Nations + Ligue Europa (The Odds API /scores, daysFrom=3) : lundi, mercredi, vendredi 07:30 UTC.
+# Aucune source gratuite ne donne ces résultats (ni fd_uk, ni le plan gratuit fd_org). daysFrom=3 : chaque passage
+# couvre les 3 jours précédents (ven→lun, dim→mer, mar→ven), donc tous les jours de la semaine.
+# Coût : 2 crédits par compétition et par passage, et SEULEMENT si un match de cette compétition, coup d'envoi il y a
+# 2 h à 3 jours, est encore sans score (sinon aucun appel). Pire cas : 14 passages/mois (lun/mer/ven, mois de 31 jours)
+# x 2 compétitions x 2 crédits = 56 crédits. Relevé de cotes au pire cas : 18 relevés x 24 = 432. Total pire cas
+# 488/500. En pratique ≈ 15-20 crédits (EL joue le jeudi → 1 appel le vendredi ; NL seulement en fenêtre internationale).
+30 7 * * 1,3,5   cd /app && python -m app.collectors.run scores
 # fusion des doublons entre sources : tous les jours 07:15 UTC, après les imports
 15 7 * * *  cd /app && python -m app.collectors.run dedup

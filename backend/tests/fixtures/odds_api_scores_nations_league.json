@@ -1,0 +1,69 @@
+[
+  {
+    "id": "5f0b6c1e8a2d4f3b9c7e1a2b3c4d5e6f",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-09-28T18:45:00Z",
+    "completed": true,
+    "home_team": "Germany",
+    "away_team": "Netherlands",
+    "scores": [
+      {"name": "Germany", "score": "2"},
+      {"name": "Netherlands", "score": "1"}
+    ],
+    "last_update": "2026-09-28T20:52:11Z"
+  },
+  {
+    "id": "7a9e2f41c0b84d6e8f3a5b7c9d1e2f30",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-09-29T18:45:00Z",
+    "completed": true,
+    "home_team": "England",
+    "away_team": "Denmark",
+    "scores": [
+      {"name": "Denmark", "score": "0"},
+      {"name": "England", "score": "0"}
+    ],
+    "last_update": "2026-09-29T20:49:37Z"
+  },
+  {
+    "id": "c3d4e5f60718293a4b5c6d7e8f901a2b",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-09-28T16:00:00Z",
+    "completed": true,
+    "home_team": "Bosnia and Herzegovina",
+    "away_team": "Croatia",
+    "scores": [
+      {"name": "Bosnia and Herzegovina", "score": "1"},
+      {"name": "Croatia", "score": "3"}
+    ],
+    "last_update": "2026-09-28T17:58:02Z"
+  },
+  {
+    "id": "e1f2a3b4c5d6e7f8091a2b3c4d5e6f70",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-09-29T18:45:00Z",
+    "completed": false,
+    "home_team": "Scotland",
+    "away_team": "Greece",
+    "scores": [
+      {"name": "Scotland", "score": "1"},
+      {"name": "Greece", "score": "1"}
+    ],
+    "last_update": "2026-09-29T20:31:40Z"
+  },
+  {
+    "id": "0a1b2c3d4e5f60718293a4b5c6d7e8f9",
+    "sport_key": "soccer_uefa_nations_league",
+    "sport_title": "UEFA Nations League",
+    "commence_time": "2026-10-08T18:45:00Z",
+    "completed": false,
+    "home_team": "Italy",
+    "away_team": "Norway",
+    "scores": null,
+    "last_update": null
+  }
+]

@@ -1,4 +1,4 @@
-"""CLI des collecteurs : python -m app.collectors.run {seed,fd_uk,fd_org,odds,fixtures,dedup,quarantine} [--seasons 2425 2526]
+"""CLI des collecteurs : python -m app.collectors.run {seed,fd_uk,fd_org,odds,scores,fixtures,dedup,quarantine} [--seasons 2425 2526]
 Écrit un heartbeat JSON dans backend/heartbeats/<nom>.json après chaque run réussi (lu par /health)."""
 import argparse
 import json
@@ -10,7 +10,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.collectors import fd_org, fd_uk, odds_api
+from app.collectors import fd_org, fd_uk, odds_api, scores
 from app.collectors.aliases import seed_aliases
 from app.core.access import retrograder_echus
 from app.collectors.dedup import dedup_matches
@@ -74,7 +74,7 @@ def current_season(today: date | None = None) -> str:
 def main(argv: list[str] | None = None) -> int:
     setup_logging()
     p = argparse.ArgumentParser()
-    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "fixtures", "dedup", "quarantine"])
+    p.add_argument("collector", choices=["seed", "fd_uk", "fd_org", "odds", "scores", "fixtures", "dedup", "quarantine"])
     p.add_argument("--seasons", nargs="*", default=None, help="codes fd_uk (ex. 2526 2627) ; défaut : la saison en cours")
     args = p.parse_args(argv)
     db = next(get_db())
@@ -91,6 +91,10 @@ def main(argv: list[str] | None = None) -> int:
             summary["bets_settled"] = settle_bets(db)
             # Le plan de chaque compte doit finir par dire la vérité sur son abonnement (audit C3).
             summary["plans_retrogrades"] = retrograder_echus(db)
+        elif args.collector == "scores":
+            # Résultats Ligue des Nations / Ligue Europa (Odds API /scores) : aucun appel sans match en attente.
+            summary = vars(scores.run(db))
+            summary["bets_settled"] = settle_bets(db)
         elif args.collector == "fixtures":
             summary = vars(fd_uk.run_fixtures(db))
         elif args.collector == "dedup":

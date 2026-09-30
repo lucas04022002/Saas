@@ -37,6 +37,7 @@ l'interface Coolify.
    `python -m app.collectors.run fd_org`, puis
    `python -m app.collectors.run fixtures`, puis
    `python -m app.collectors.run odds` (24 crédits : 8 compétitions à cotes live ; les championnats secondaires n'en coûtent aucun), puis
+   `python -m app.collectors.run scores` (0 à 4 crédits : résultats Ligue des Nations / Ligue Europa), puis
    `python -m app.collectors.run dedup`. Vérifier ensuite `/health` : les
    collecteurs doivent apparaître avec un horodatage récent et `stale: false`,
    et `python -m app.collectors.run quarantine` doit répondre « Aucun match en
@@ -70,6 +71,29 @@ l'interface Coolify.
     dans un fichier `.json` sur le PC pour les modèles de `rushplay-formats`
     (format : `rushplay-formats/SCHEMA.md`). `--sortie /tmp/videos.json` écrit un
     fichier dans le conteneur, effacé au prochain déploiement. Lecture seule : rien n'est écrit en base.
+
+12. **Résultats Ligue des Nations et Ligue Europa** (depuis le 30/09/2026) :
+    aucune source gratuite ne les donne (fd_uk ne couvre pas ces compétitions,
+    le plan gratuit de football-data.org non plus). La commande
+    `python -m app.collectors.run scores` les prend sur The Odds API
+    (`/scores`, `daysFrom=3`) : elle n'appelle l'API que pour une compétition
+    ayant un match au coup d'envoi passé (2 h à 3 jours) encore sans score, écrit
+    le score et le statut FINISHED, règle les paris, n'écrase jamais un score
+    existant (un désaccord est journalisé) et ne crée jamais de match (nom
+    inconnu → journal, à ajouter dans `KNOWN_TEAMS`). Battement `scores` dans
+    `/health` (périmé après 4 jours).
+    - **Budget crédits** (plan gratuit, 500/mois) : 2 crédits par compétition et
+      par passage. Cron lundi/mercredi/vendredi 07:30 UTC → pire cas 14 passages
+      × 2 compétitions × 2 = **56 crédits/mois** ; avec le relevé de cotes au pire
+      cas (18 × 24 = 432), **488/500**. Marge faible : ne pas ajouter de passage
+      sans retirer ailleurs. En pratique ≈ 15-20 crédits/mois.
+    - **Rattrapage** : lancer une fois `python -m app.collectors.run scores` dans le
+      terminal Coolify du service `api` dès le déploiement (couvre les 3 derniers
+      jours, 2 à 4 crédits). Les matchs de Ligue des Nations du 24 au 26/09/2026
+      sont **hors de portée** (`daysFrom` ≤ 3) : ils restent SCHEDULED, sans score.
+      Rien n'est fabriqué ; pour les rattraper, saisir les scores à la main depuis
+      une source officielle (uefa.com) ou via football-data.org si un jour le plan
+      payant est pris (NL/EL y sont, statut `FINISHED` avec score).
 
 ## Ce que fait Claude et ce que fait Lucas
 
