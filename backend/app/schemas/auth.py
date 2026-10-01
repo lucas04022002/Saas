@@ -2,6 +2,8 @@ from datetime import date
 
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
+from app.core.sources import source_valide
+
 
 class SignUpRequest(BaseModel):
     first_name: str = Field(min_length=2, max_length=120)
@@ -9,6 +11,13 @@ class SignUpRequest(BaseModel):
     email: EmailStr
     password: str = Field(min_length=8, max_length=128)
     birth_date: date
+    #: réseau d'arrivée gardé par le navigateur ; une valeur inconnue devient None, sans refuser l'inscription
+    source: str | None = Field(default=None, max_length=32)
+
+    @field_validator("source")
+    @classmethod
+    def _source(cls, v: str | None) -> str | None:
+        return source_valide(v)
 
     @field_validator("birth_date")
     @classmethod

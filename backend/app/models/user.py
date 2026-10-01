@@ -22,6 +22,8 @@ class User(Base):
     subscription_plan: Mapped[SubscriptionPlan] = mapped_column(
         Enum(SubscriptionPlan), nullable=False, default=SubscriptionPlan.STARTER
     )
+    #: réseau d'où vient l'inscription (`?ref=` du lien en bio, voir app/core/sources.py) ; None = inconnu
+    signup_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False

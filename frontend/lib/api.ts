@@ -50,9 +50,11 @@ export const api = {
       `/api/v1/track-record?${qs({ competition })}`, { revalidate: 300 },
     ),
   login: (email: string, password: string) => call<{ access_token: string; user: User }>("/api/v1/auth/login", { method: "POST", body: JSON.stringify({ email, password }) }),
-  signup: (p: { first_name: string; email: string; password: string; birth_date: string }) =>
+  signup: (p: { first_name: string; email: string; password: string; birth_date: string; source?: string }) =>
     call<{ access_token: string; user: User }>("/api/v1/auth/signup", { method: "POST", body: JSON.stringify(p) }),
   me: (token: string) => call<User>("/api/v1/auth/me", { token }),
+  // arrivée par le lien d'un réseau (lib/ref.ts) ; keepalive : part même si l'utilisateur quitte la page aussitôt
+  visit: (source: string) => call<null>("/api/v1/visits", { method: "POST", body: JSON.stringify({ source }), keepalive: true }),
   bankroll: {
     list: (token: string) => call<{ items: Bet[]; summary: BankrollSummary }>("/api/v1/bankroll", { token }),
     create: (token: string, p: { match_id: string; outcome: string; bookmaker: string; odds: number; stake: number }) =>

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { api, ApiError } from "@/lib/api";
 import { saveSession } from "@/lib/client-session";
+import { sourceGardee } from "@/lib/ref";
 
 const field = "mt-2 w-full border-0 border-b border-ink bg-transparent py-2 text-[17px] font-medium outline-none focus:border-b-2";
 const label = "block text-[12px] font-semibold uppercase tracking-[0.04em] text-muted";
@@ -19,7 +20,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   async function submit(e: React.FormEvent) {
     e.preventDefault(); setBusy(true); setError(null);
     try {
-      const data = signup ? await api.signup({ first_name: f.first_name, email: f.email, password: f.password, birth_date: f.birth_date }) : await api.login(f.email, f.password);
+      const data = signup ? await api.signup({ first_name: f.first_name, email: f.email, password: f.password, birth_date: f.birth_date, source: sourceGardee() ?? undefined }) : await api.login(f.email, f.password);
       await saveSession(data.access_token);
       router.push("/matchs"); router.refresh();
     } catch (err) {

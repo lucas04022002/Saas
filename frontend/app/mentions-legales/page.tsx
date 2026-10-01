@@ -90,7 +90,9 @@ export default function MentionsLegales() {
             <li>l&apos;adresse e-mail, utilisée pour la création et la connexion au compte ;</li>
             <li>le mot de passe, jamais stocké en clair : seule une version hachée est conservée ;</li>
             <li>la date de naissance, demandée uniquement pour vérifier la majorité de l&apos;utilisateur ;</li>
-            <li>les paris que l&apos;utilisateur choisit d&apos;enregistrer dans son carnet de suivi.</li>
+            <li>les paris que l&apos;utilisateur choisit d&apos;enregistrer dans son carnet de suivi ;</li>
+            <li>le réseau social par lequel l&apos;utilisateur est arrivé sur le site (par exemple TikTok
+              ou Instagram), s&apos;il est arrivé par le lien publié sur l&apos;un de nos comptes.</li>
           </ul>
           <h3 className={h3}>Finalité et base légale</h3>
           <p className={p}>
@@ -125,6 +127,14 @@ export default function MentionsLegales() {
             Le site dépose un seul cookie, nommé <code>rp_token</code>, strictement nécessaire au
             maintien de la connexion au compte. Ce cookie ne sert à aucune autre fin. RushPlay ne
             dépose aucun traceur publicitaire et ne recourt à aucune mesure d&apos;audience tierce.
+          </p>
+          <p className={p}>
+            Le navigateur conserve aussi, dans son stockage local et sans cookie, deux informations
+            sans identifiant : le thème choisi (clair ou sombre) et, pendant 30 jours au plus, le nom
+            du réseau social par lequel le visiteur est arrivé (<code>rp_ref</code>, par exemple
+            « tiktok »). Cette dernière sert uniquement à compter, réseau par réseau, les arrivées et
+            les inscriptions ; ces comptes sont anonymes. Effacer les données du site dans le
+            navigateur supprime ces deux informations.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from app.api.v1.endpoints import auth, bankroll, billing, books, favorites, internal, matches, track_record, users
+from app.api.v1.endpoints import auth, bankroll, billing, books, favorites, internal, matches, track_record, users, visits
 
 api_router = APIRouter()
 api_router.include_router(auth.router)
@@ -12,3 +12,4 @@ api_router.include_router(track_record.router)
 api_router.include_router(favorites.router)
 api_router.include_router(billing.router)
 api_router.include_router(internal.router)
+api_router.include_router(visits.router)

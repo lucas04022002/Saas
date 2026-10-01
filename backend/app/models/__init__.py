@@ -8,3 +8,4 @@ from app.models.odds_snapshot import OddsSnapshot  # noqa: F401
 from app.models.totals_snapshot import TotalsSnapshot  # noqa: F401
 from app.models.bet import Bet  # noqa: F401
 from app.models.collector_heartbeat import CollectorHeartbeat  # noqa: F401
+from app.models.source_visit import SourceVisit  # noqa: F401
