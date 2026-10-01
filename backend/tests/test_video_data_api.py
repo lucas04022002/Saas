@@ -132,7 +132,7 @@ def test_200_bon_jeton_json_identique_a_la_commande(client, db, jeton, donnees, 
     assert "Saint-Étienne".encode("utf-8") in r.content                  # UTF-8, pas d'échappement É
     assert ecritures == []                                                # lecture seule
     data = r.json()
-    assert list(data) == ["version", "genere_le", "a_venir", "termines"]  # pas d'enveloppe {success, data}
+    assert list(data) == ["version", "genere_le", "a_venir", "lus_par_jour", "termines"]  # pas d'enveloppe {success, data}
     assert data["genere_le"] == "2026-10-09T06:30:12Z"
     assert [i["competition"] for i in data["a_venir"]] == ["E0"]          # N1 exclu par défaut, comme la commande
     assert [i["competition"] for i in data["termines"]] == ["F1"]

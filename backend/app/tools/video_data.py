@@ -105,6 +105,18 @@ def a_venir(db: Session, du: date, au: date, competitions: tuple[str, ...]) -> l
     return out
 
 
+def lus_par_jour(db: Session, du: date, au: date) -> dict[str, int]:
+    """Matchs à venir que le site sait lire, TOUTES compétitions, par jour (heure de Paris) : ce qui rend vrai
+    « + 38 autres matchs du week-end sur rushplay.fr » à la fin des vidéos (01/10/2026). Même règle que
+    `a_venir` : un match sans relevé exploitable n'est pas compté, le site n'en montre rien."""
+    out: dict[str, int] = {}
+    for m in _matchs(db, MatchStatus.SCHEDULED, du, au, tuple(COMPETITIONS)):
+        if reading_for(m) is not None:
+            j = _utc(m.kickoff_at).astimezone(PARIS).date().isoformat()
+            out[j] = out.get(j, 0) + 1
+    return out
+
+
 def termines(db: Session, du: date, au: date, competitions: tuple[str, ...]) -> list[dict]:
     out = []
     for m in _matchs(db, MatchStatus.FINISHED, du, au, competitions):
@@ -139,6 +151,7 @@ def build(db: Session, *, a_venir_du: date | None = None, a_venir_au: date | Non
         "version": VERSION,
         "genere_le": to_utc_iso(now.replace(microsecond=0)),
         "a_venir": a_venir(db, a_venir_du, a_venir_au, competitions) if a_venir_du else [],
+        "lus_par_jour": lus_par_jour(db, a_venir_du, a_venir_au) if a_venir_du else {},
         "termines": termines(db, termines_du, termines_au, competitions) if termines_du else [],
     }
 

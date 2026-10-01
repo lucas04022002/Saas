@@ -52,7 +52,7 @@ def test_a_venir_format_conforme_au_schema(db, equipes):
     cotes(db, m, (1.09, 11.79, 18.03), datetime(2026, 9, 28, 8, 0, tzinfo=timezone.utc))
     cotes(db, m, (1.08, 12.0, 19.0), datetime(2026, 9, 28, 8, 0, tzinfo=timezone.utc), bookmaker="betclic_fr")
     data = build(db, a_venir_du=SAMEDI, a_venir_au=SAMEDI, competitions=("E0",), now=datetime(2026, 10, 9, 8, 5, 0, 123, tzinfo=timezone.utc))
-    assert list(data) == ["version", "genere_le", "a_venir", "termines"]
+    assert list(data) == ["version", "genere_le", "a_venir", "lus_par_jour", "termines"]
     assert data["version"] == 1 and data["genere_le"] == "2026-10-09T08:05:00Z" and data["termines"] == []
     [it] = data["a_venir"]
     assert list(it) == CLES_A_VENIR
@@ -237,3 +237,23 @@ def test_arguments_invalides(argv, capsys):
     with pytest.raises(SystemExit) as e:
         main(argv, session_factory=lambda: pytest.fail("aucune base ne doit être ouverte"))
     assert e.value.code == 2
+
+
+# --- compteur « + N autres matchs » (fin des vidéos, 01/10/2026) -------------------------------------------------
+
+def test_lus_par_jour_toutes_competitions_et_seulement_les_matchs_lisibles(db, equipes):
+    h, a = equipes
+    for code in ("E0", "N1", "P1"):                       # N1 et P1 hors des compétitions des vidéos : comptés quand même
+        m = make_match(db, h, a, kickoff=KICK, competition=code)
+        cotes(db, m, (1.5, 4.2, 6.5), KICK - timedelta(days=1))
+    make_match(db, h, a, kickoff=KICK, competition="F1")   # sans relevé : le site n'en montre rien, pas compté
+    dimanche = make_match(db, h, a, kickoff=datetime(2026, 10, 11, 22, 30, tzinfo=timezone.utc), competition="SP1")  # lundi 00:30 à Paris
+    cotes(db, dimanche, (2.0, 3.4, 3.8), KICK)
+    fini(db, a, h, 1, 0)                                    # terminé : pas « à venir »
+    data = build(db, a_venir_du=SAMEDI, a_venir_au=date(2026, 10, 12), competitions=("E0",))
+    assert data["lus_par_jour"] == {"2026-10-10": 3, "2026-10-12": 1}
+    assert len(data["a_venir"]) == 1                        # le filtre de compétitions ne touche que la liste
+
+
+def test_lus_par_jour_vide_sans_fenetre_a_venir(db, equipes):
+    assert build(db, termines_du=SAMEDI, termines_au=SAMEDI)["lus_par_jour"] == {}
