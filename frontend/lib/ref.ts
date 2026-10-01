@@ -5,7 +5,7 @@
 // ce nom au compte : c'est ce qui permet de savoir quel réseau amène des inscrits et des abonnés.
 import { api } from "./api";
 
-export const SOURCES = ["tiktok", "insta", "youtube", "facebook", "snap", "x"] as const;
+export const SOURCES = ["tiktok", "insta", "youtube", "facebook", "snap", "x", "linkedin"] as const;
 export type Source = (typeof SOURCES)[number];
 export const REF_KEY = "rp_ref";
 export const REF_DUREE_MS = 30 * 24 * 3600 * 1000;

@@ -6,7 +6,7 @@ Aucune donnée personnelle : la visite est un compteur par jour et par source ; 
 source déclarée par le navigateur, rien d'autre.
 """
 
-SOURCES = ("tiktok", "insta", "youtube", "facebook", "snap", "x")
+SOURCES = ("tiktok", "insta", "youtube", "facebook", "snap", "x", "linkedin")
 
 
 def source_valide(valeur: str | None) -> str | None:

@@ -32,6 +32,7 @@ def _inscription(client, email, **extra):
 def test_source_valide_liste_fermee():
     assert source_valide(" TikTok ") == "tiktok"
     assert source_valide("insta") == "insta"
+    assert source_valide("LinkedIn") == "linkedin"
     assert source_valide("pirate") is None
     assert source_valide("") is None and source_valide(None) is None
 
